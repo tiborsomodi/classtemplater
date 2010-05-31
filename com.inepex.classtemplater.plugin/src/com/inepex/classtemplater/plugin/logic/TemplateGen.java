@@ -14,7 +14,11 @@ import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 
 public class TemplateGen {
 
-	public static String generate(String templateAsString, ArrayList<String[]> attrs
+	public static String generate(
+			String templateAsString
+			, String packagename
+			, String classname
+			, ArrayList<Attribute> attrs
 			) throws Exception {
 		String res = "";
 		Velocity.addProperty("resource.loader", "string");
@@ -37,6 +41,8 @@ public class TemplateGen {
 
 		VelocityContext context = new VelocityContext();
 
+		context.put("classname", classname);
+		context.put("package", packagename);
 		context.put("attrs", attrs);
 		context.put("delimiter", '\n');
 

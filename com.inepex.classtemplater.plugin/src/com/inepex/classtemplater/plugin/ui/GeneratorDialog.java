@@ -7,6 +7,7 @@ import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IType;
@@ -27,6 +28,7 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import com.inepex.classtemplater.plugin.logic.Attribute;
 import com.inepex.classtemplater.plugin.logic.TemplateGen;
 
 public class GeneratorDialog extends Dialog {
@@ -44,7 +46,10 @@ public class GeneratorDialog extends Dialog {
 	private Button btn_close;
 
 	private String selectionName = "";
-	private ArrayList<String[]> attrs = new ArrayList<String[]>();
+	private ArrayList<Attribute> attrs = new ArrayList<Attribute>();
+	private String className = "";
+	private String packageName = "";
+	
 	
 	private LogiSelectionListener listener = new LogiSelectionListener() {
 		
@@ -76,9 +81,13 @@ public class GeneratorDialog extends Dialog {
 	
 	public void open(ISelection selection) throws Exception {
 		TreeSelection sel = (TreeSelection) selection;
-		if (ICompilationUnit.class.isInstance(sel.getFirstElement())){			
-			selectionName = ((ICompilationUnit) sel.getFirstElement()).getElementName();
-			attrs = getAttrs((ICompilationUnit) sel.getFirstElement());
+		if (ICompilationUnit.class.isInstance(sel.getFirstElement())){	
+			ICompilationUnit compunit = ((ICompilationUnit) sel.getFirstElement());
+			selectionName = compunit.getElementName();
+			attrs = getAttrs(compunit);
+			className = compunit.findPrimaryType().getTypeQualifiedName();
+			packageName = compunit.getPackageDeclarations()[0].getElementName();
+			
 		} else if (IField.class.isInstance(sel.getFirstElement())){
 			Iterator<IField> iter = sel.iterator();
 			while (iter.hasNext()){
@@ -129,23 +138,35 @@ public class GeneratorDialog extends Dialog {
 	 	shell.open();
 	}
 	
-	private ArrayList<String[]> getAttrs(ICompilationUnit unit) throws Exception {
-		ArrayList<String[]> attrs = new ArrayList<String[]>();
+	private ArrayList<Attribute> getAttrs(ICompilationUnit unit) throws Exception {
+		ArrayList<Attribute> attrs = new ArrayList<Attribute>();
 		IType[] allTypes = unit.getAllTypes();
 		for (IType type : allTypes) {
 			for (IField field : type.getFields()) {
-				String[] attr = getAttr(field);
-				attrs.add(attr);
+				attrs.add(getAttr(field));
 			}
 		}		
 		return attrs;
 	}
 	
-	private String[] getAttr(IField field) throws Exception {
-		String[] attr = new String[2];
-		attr[0] = field.getElementName();
+	private Attribute getAttr(IField field) throws Exception {
 		String sign = field.getTypeSignature();
-		if (sign.startsWith("Q")) sign = sign.substring(1, sign.length()-1);
+
+		if (sign.startsWith("Q")) {
+			if (sign.indexOf("<") == -1) sign = sign.substring(1, sign.length()-1);
+			else {
+				//generic type
+				String basetype = sign.substring(1, sign.indexOf("<"));
+				String gentype = sign.substring(sign.indexOf("<") + 1, sign.indexOf(">"));
+				String[] parts = gentype.split(";");
+				String partString = "";
+				for (String s : parts){
+					partString += s.substring(1) + ", ";
+				}
+				partString = partString.substring(0, partString.length() - 2);
+				sign = basetype + "<" + partString + ">";				
+			}
+		}
 		else if (sign.equals("I")) sign = "int";
 		else if (sign.equals("J")) sign = "long";
 		else if (sign.equals("Z")) sign = "boolean";
@@ -154,7 +175,18 @@ public class GeneratorDialog extends Dialog {
 		else if (sign.equals("S")) sign = "short";
 		else if (sign.equals("F")) sign = "float";
 		else if (sign.equals("C")) sign = "char";
-		attr[1] = sign;
+		String visibility = "";
+		if (Flags.isPublic(field.getFlags())) visibility = "public";
+		else if (Flags.isPrivate(field.getFlags())) visibility = "private";
+		else if (Flags.isProtected(field.getFlags())) visibility = "protected";
+		else visibility = "public";
+		Attribute attr = new Attribute(
+				field.getElementName()
+				, sign
+				, visibility
+				, Flags.isStatic(field.getFlags())
+				, Flags.isAbstract(field.getFlags())
+				, Flags.isFinal(field.getFlags()));
 		return attr;
 	}
 	
@@ -180,7 +212,11 @@ public class GeneratorDialog extends Dialog {
 		
 		try {
 			String templateContent = readFile((IFile)template);
-			String generated = TemplateGen.generate(templateContent, attrs);
+			String generated = TemplateGen.generate(
+					templateContent
+					, packageName
+					, className				
+					, attrs);
 			text_result.setText(generated);
 		} catch (Exception e) {
 			e.printStackTrace();
