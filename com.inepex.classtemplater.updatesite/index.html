@@ -1,0 +1,37 @@
+<html>
+<body>
+<h1>classtemplater</h1>
+
+<h2>Letöltés:</h2>
+Update site-nak ezt kell megadni: http://sotiwin.hu/classtemplater/
+
+<h2>Használat:</h2>
+<p>
+1. Hozz létre a workspace-edben egy template fájlt. Pl:
+<pre>
+hello world $delimiter
+#foreach( $attr in $attrs )
+${attr.get(0)} - ${attr.get(1)} $delimiter
+#end
+</pre>
+A fájl kiterjesztése vt legyen. <br/>
+Ez velocity template nyelven íródott. Az attrs változó-val érheted el az attribútumokat.
+</p>
+<p>
+2. A Package Explorer-ben válassz ki egy .java file-t
+nyomj jobbgombot és a menübõl válaszd a classtemplater/Generate...-et
+</p>
+<p>
+3. A felugró ablakban kattints a template-re
+</p>
+<p>
+4. A generált kód azonnal megjelenik az ablakban.
+</p>
+<p>
+A fájlba mentés még nem mûködik. De tud olyat is, hogy nem egy .java fájlt választasz ki, hanem mondjuk az outline nézetben két attribútumot.
+</p> 
+
+
+</body>
+
+</html>

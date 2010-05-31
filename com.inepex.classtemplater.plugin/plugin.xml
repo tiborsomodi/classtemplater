@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.jdt.core.ICompilationUnit"
+            id="com.inepex.classtemplater.plugin.objectContribution1">
+         <menu
+               label="classtemplater"
+               path="additions"
+               id="com.inepex.classtemplater.plugin.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Generate..."
+               class="com.inepex.classtemplater.plugin.popup.actions.Generator"
+               menubarPath="com.inepex.classtemplater.plugin.menu1/group1"
+               enablesFor="1"
+               id="com.inepex.classtemplater.plugin.action1">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="com.inepex.classtemplater.plugin.objectContribution2"
+            objectClass="org.eclipse.jdt.core.IField">
+         <menu
+               id="com.inepex.classtemplater.plugin.menu2"
+               label="classtemplater"
+               path="additions">
+            <separator
+                  name="group2">
+            </separator>
+         </menu>
+         <action
+               class="com.inepex.classtemplater.plugin.popup.actions.Generator"
+               enablesFor="+"
+               id="com.inepex.classtemplater.plugin.action1"
+               label="Generate..."
+               menubarPath="com.inepex.classtemplater.plugin.menu2/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>
