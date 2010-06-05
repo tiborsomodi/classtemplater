@@ -2,6 +2,8 @@ package com.inepex.classtemplater.plugin.ui;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -95,6 +97,9 @@ public class GeneratorDialog extends Dialog {
 				attrs.add(getAttr(field));
 			}
 			selectionName = "custom fields";
+			IField field = ((IField)sel.getFirstElement());
+			className = field.getDeclaringType().getTypeQualifiedName();
+			packageName = ((ICompilationUnit)field.getParent().getParent()).getPackageDeclarations()[0].getElementName();
 		}
 		shell = new Shell(getParent(), getStyle());
 		shell.setText("Classtemplater: " + selectionName);
@@ -122,8 +127,8 @@ public class GeneratorDialog extends Dialog {
 	 	comp_result.setLayoutData(new RowData(shell.getBounds().width - 20, 325));
 	 	lbl_result = new Label(comp_result, SWT.LEFT);
 	 	lbl_result.setText("Result of code generation:");
-	 	text_result = new Text(comp_result, SWT.MULTI);
-	 	text_result.setLayoutData(new RowData(shell.getBounds().width - 33, 300));
+	 	text_result = new Text(comp_result, SWT.MULTI | SWT.V_SCROLL);
+	 	text_result.setLayoutData(new RowData(shell.getBounds().width - 45, 300));
 //	 	select_folder = new FolderSelector(shell, "Select output folder");
 //	 	select_folder.setWidth(250);
 	 	text_outfile = new Text(shell, SWT.SINGLE);
@@ -195,7 +200,7 @@ public class GeneratorDialog extends Dialog {
 		String content = "";
 		String strLine = "";
 		while ((strLine = breader.readLine()) != null) {
-			content += strLine;
+			content += strLine + "\n";
 		}
 		return content;
 	}
@@ -218,8 +223,12 @@ public class GeneratorDialog extends Dialog {
 					, className				
 					, attrs);
 			text_result.setText(generated);
+			text_result.setFocus();
+			text_result.selectAll();			
 		} catch (Exception e) {
-			e.printStackTrace();
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			text_result.setText(sw.toString());
 		}
 	}
 	

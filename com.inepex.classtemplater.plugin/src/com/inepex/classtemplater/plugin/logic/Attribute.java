@@ -25,6 +25,15 @@ public class Attribute {
 	public String getName() {
 		return name;
 	}
+	
+	public String getNameL1(){
+		return StringUtil.getL1(name); 
+	}
+	
+	public String getNameU1(){
+		return StringUtil.getU1(name);
+	}	
+	
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -34,6 +43,15 @@ public class Attribute {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	public String getTypeL1(){
+		return StringUtil.getL1(type); 
+	}
+	
+	public String getTypeU1(){
+		return StringUtil.getU1(type);
+	}	
+	
 	public String getVisibility() {
 		return visibility;
 	}

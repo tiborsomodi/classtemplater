@@ -31,6 +31,7 @@ public class TemplateGen {
 				.addProperty("string.resource.loader.repository.class",
 						"org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl");
 		Velocity.addProperty("string.resource.loader.repository.name", "repo");
+		Velocity.addProperty("input.encoding", "UTF-8");
 
 		Velocity.init();
 		StringResourceRepository repo = StringResourceLoader.getRepository("repo");
@@ -42,24 +43,15 @@ public class TemplateGen {
 		VelocityContext context = new VelocityContext();
 
 		context.put("classname", classname);
+		context.put("classnameL1", StringUtil.getL1(classname));
 		context.put("package", packagename);
 		context.put("attrs", attrs);
 		context.put("delimiter", '\n');
+		context.put("nl", '\n');
 
 		Template template = null;
 
-		try {
-
-			template = Velocity.getTemplate(templateName);
-		} catch (ResourceNotFoundException rnfe) {
-			// couldn't find the template
-		} catch (ParseErrorException pee) {
-			// syntax error: problem parsing the template
-		} catch (MethodInvocationException mie) {
-			// something invoked in the template
-			// threw an exception
-		} catch (Exception e) {
-		}
+		template = Velocity.getTemplate(templateName);
 
 		StringWriter sw = new StringWriter();
 

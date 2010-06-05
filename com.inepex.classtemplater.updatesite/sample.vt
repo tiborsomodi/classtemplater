@@ -1,0 +1,17 @@
+package: ${package} ${delimiter}
+class: ${classname} ${delimiter}
+
+--- ${delimiter}
+
+#foreach( $attr in $attrs )
+Name: ${attr.name} ${delimiter}
+Type: ${attr.type} ${delimiter}
+Is private (boolean): ${attr.private} ${delimiter}
+Is public (boolean): ${attr.public} ${delimiter}
+Is protected (boolean): ${attr.protected} ${delimiter}
+Visibility: ${attr.visibility} ${delimiter}
+Is static (boolean): ${attr.static} ${delimiter}
+Is abstract (boolean): ${attr.abstract} ${delimiter}
+Is final (boolean): ${attr.final} ${delimiter}
+--- ${delimiter}
+#end

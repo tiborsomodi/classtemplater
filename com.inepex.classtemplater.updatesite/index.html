@@ -11,7 +11,7 @@ Update site-nak ezt kell megadni: http://sotiwin.hu/classtemplater/
 <pre>
 hello world $delimiter
 #foreach( $attr in $attrs )
-${attr.get(0)} - ${attr.get(1)} $delimiter
+${attr.name} - ${attr.type} $delimiter
 #end
 </pre>
 A fájl kiterjesztése vt legyen. <br/>
@@ -30,7 +30,30 @@ nyomj jobbgombot és a menübõl válaszd a classtemplater/Generate...-et
 <p>
 A fájlba mentés még nem mûködik. De tud olyat is, hogy nem egy .java fájlt választasz ki, hanem mondjuk az outline nézetben két attribútumot.
 </p> 
+<p>
+<b>Összetettebb template az összes használható változóval</b>:
+<pre>
+package: ${package} ${delimiter}
+class: ${classname} ${delimiter}
 
+--- ${delimiter}
+
+#foreach( $attr in $attrs )
+Name: ${attr.name} ${delimiter}
+Type: ${attr.type} ${delimiter}
+Is private (boolean): ${attr.private} ${delimiter}
+Is public (boolean): ${attr.public} ${delimiter}
+Is protected (boolean): ${attr.protected} ${delimiter}
+Visibility: ${attr.visibility} ${delimiter}
+Is static (boolean): ${attr.static} ${delimiter}
+Is abstract (boolean): ${attr.abstract} ${delimiter}
+Is final (boolean): ${attr.final} ${delimiter}
+--- ${delimiter}
+#end
+</pre> 
+Letöltés: <a href = "sample.vt">sample.vt</a> <br/>
+Használat: töltsd le és másold be a workspacedbe.
+</p>
 
 </body>
 

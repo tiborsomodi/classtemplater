@@ -2,7 +2,7 @@
 <feature
       id="com.inepex.classtemplater.feature"
       label="classtemplater"
-      version="1.0.0.20100524"
+      version="1.1.4.20100603"
       provider-name="INEPEX">
 
    <description url="http://www.example.com/description">
@@ -21,7 +21,7 @@
          id="com.inepex.classtemplater.plugin"
          download-size="0"
          install-size="0"
-         version="1.0.0.20100524"
+         version="0.0.0"
          unpack="false"/>
 
 </feature>
