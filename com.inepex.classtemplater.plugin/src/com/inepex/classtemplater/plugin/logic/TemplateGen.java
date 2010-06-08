@@ -2,13 +2,12 @@ package com.inepex.classtemplater.plugin.logic;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
-import org.apache.velocity.exception.MethodInvocationException;
-import org.apache.velocity.exception.ParseErrorException;
-import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 
@@ -16,9 +15,7 @@ public class TemplateGen {
 
 	public static String generate(
 			String templateAsString
-			, String packagename
-			, String classname
-			, ArrayList<Attribute> attrs
+			, Class classModel
 			) throws Exception {
 		String res = "";
 		Velocity.addProperty("resource.loader", "string");
@@ -42,13 +39,34 @@ public class TemplateGen {
 
 		VelocityContext context = new VelocityContext();
 
-		context.put("classname", classname);
-		context.put("classnameL1", StringUtil.getL1(classname));
-		context.put("package", packagename);
-		context.put("attrs", attrs);
+		context.put("classname", classModel.getName());
+		context.put("classnameL1", StringUtil.getL1(classModel.getName()));
+		context.put("package", classModel.packageName);
+		context.put("attrs", classModel.getAttributes());
 		context.put("delimiter", '\n');
 		context.put("nl", '\n');
 
+		//imports
+		Set<Importable> imports = new HashSet<Importable>();
+		for (Attribute attr : classModel.getAttributes()){
+			if (!attr.isStatic){
+				if (!attr.getType().equals("Long")
+						&& !attr.getType().equals("Boolean")
+						&& !attr.getType().equals("String")
+						&& !attr.getType().equals("Double")){
+					
+					if (attr.getType().contains("List")){
+						imports.addAll(attr.getTypesInGenerics());
+					} else if (attr.getType().contains("Map")){
+						//TODO handle maps
+					} else {
+						imports.add(new Importable(attr.getType()));
+					}
+				}
+			}
+		}
+		context.put("importables", imports);
+		
 		Template template = null;
 
 		template = Velocity.getTemplate(templateName);

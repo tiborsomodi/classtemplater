@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Classtemplater - Advanced usage</title>
+</head>
+<body>
+<a href="index.html">Vissza a főoldalra</a>
+<h1>További funkciók</h1>
+
+<h2>Automatikus fájlba mentés</h2>
+<p>A template első sorában megadhatjuk a generált fájl elérési útját és nevét. 
+A névben használható a forrás osztály neve.</p>
+<pre>
+outpath:workspace/relative/path${classname}Hello.java
+hello world
+#foreach( $attr in $attrs )
+${attr.name} - ${attr.type} 
+#end
+</pre>
+<p>Az "outpath"-nak a template első sorában kell szerepelnie. Csak a classname 
+változó használható hozzá.</p>
+<h2>Generálás egyszerre több osztályhoz</h2>
+<p>Amennyiben több osztályt jelölünk ki egyszerre, és ezek helyi menüjéből hívjuk meg a 
+classtemplater-t, akkor a kijelölt osztályokhoz egyben végezhetjük el a kódgenerálást.
+</p>
+<p>Ilyenkor az eredmény nem jelenik meg a textboxban és a generálás csak a "Save to file"
+gombra kattintva történik meg. Ezért ez a funkció csak a fájlba mentéssel együtt használható.
+</p>
+
+<h2>Generálás egyszerre több template-el</h2>
+<p>
+A popupban több template-t is választhatunk. Ugyanaz érvényes rá mint a több osztállyal
+történő generálásra, azaz csak fájlba mentéssel működik.
+</p>
+<h2>Generálás egyszerre több osztályhoz, több template-el</h2>
+<p>Lehetséges egyszerre több osztályhoz több template kiválasztása is.</p>
+
+<h2>A generált kód kézi módosításának támogatása</h2>
+<p>
+A template-ben megjelölhetünk "kézzel-írt-kód" helyeket. A generált kódban ezen helyre írt 
+szöveg ottmarad az újragenerálások után is.
+</p>
+<pre>
+outpath:workspace/relative/path${classname}Hello.java
+hello world
+/*hc:usercode*/
+/*hc*/
+#foreach( $attr in $attrs )
+${attr.name} - ${attr.type} 
+#end
+</pre> 
+<p>A példában egy generálás után a hc:usercode bekerül a generált kódba. A java értelmező
+számára ez comment. E közé írhatjuk a saját java kódunkat. Az "usercode" egy szabadon 
+választott azonosító. Fontos, hogy egy template-n belül egyedi legyen!</p>
+<h2>Annotációk támogatása</h2>
+<pre>
+#if (${attr.hasAnnotation("SuppressWarnings")})
+it has been annoted
+#end
+</pre>
+
+<pre>
+#if (${attr.hasAnnotation("SuppressWarnings")})
+${attr.getAnnotations().get("SuppressWarnings").getParams().get("value")}
+#end
+</pre>
+<p>Az attr.getAnnotations() null-t ad vissza, ha nincs olyan annotáció az adott attribútumhoz
+rendlelve. Ilyenkor az attr.getAnnotations().get("SuppressWarnings") hívás hibás eredményt 
+ad. Ezért kell az itt látható módon if-fel ellenőrizni, hogy létezik-e az annotáció.
+</p>
+<h1>Modellek</h1>
+<h2>Attribútum</h2>
+<p>Egy attribútum objektum a következőképpen néz ki.
+Ezek a metódusok a template-ben is használhatóak. Pl ${attr.name} vagy ${attr.final}
+(a boolean típusú változóknál az "is"-t le kell hagyni.) 
+</p>
+<pre>
+package com.inepex.classtemplater.plugin.logic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.IAnnotation;
+import org.eclipse.jdt.core.ICompilationUnit;
+import org.eclipse.jdt.core.IField;
+import org.eclipse.jdt.core.IType;
+
+public class Attribute {
+
+	String name;
+	String type;
+	String visibility;
+	boolean isPrivate = false;
+	boolean isPublic = false;
+	boolean isProtected = false;
+	boolean isStatic = false;
+	boolean isAbstract = false;
+	boolean isFinal = false;
+	boolean isList = false;
+	Set&lt;String&gt; typesInGenerics = new HashSet&lt;String&gt;();
+	Map&lt;String, Annotation&gt; annotations = new HashMap&lt;String, Annotation&gt;();
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getNameL1(){
+		return StringUtil.getL1(name); 
+	}
+	
+	public String getNameU1(){
+		return StringUtil.getU1(name);
+	}	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	
+	public String getTypeL1(){
+		return StringUtil.getL1(type); 
+	}
+	
+	public String getTypeU1(){
+		return StringUtil.getU1(type);
+	}	
+	
+	public String getVisibility() {
+		return visibility;
+	}
+	public boolean isPrivate() {
+		return isPrivate;
+	}
+	public void setPrivate(boolean isPrivate) {
+		this.isPrivate = isPrivate;
+	}
+	public boolean isPublic() {
+		return isPublic;
+	}
+	public void setPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+	}
+	public boolean isProtected() {
+		return isProtected;
+	}
+	public void setProtected(boolean isProtected) {
+		this.isProtected = isProtected;
+	}
+	public boolean isStatic() {
+		return isStatic;
+	}
+	public void setStatic(boolean isStatic) {
+		this.isStatic = isStatic;
+	}
+	public boolean isAbstract() {
+		return isAbstract;
+	}
+	public void setAbstract(boolean isAbstract) {
+		this.isAbstract = isAbstract;
+	}
+	public boolean isFinal() {
+		return isFinal;
+	}
+	public void setFinal(boolean isFinal) {
+		this.isFinal = isFinal;
+	}
+	
+	public boolean isList() {
+		return isList;
+	}
+	public void setList(boolean isList) {
+		this.isList = isList;
+	}
+	public Set&lt;String> getTypesInGenerics() {
+		return typesInGenerics;
+	}
+	public void setTypesInGenerics(Set&lt;String&gt; typesInGenerics) {
+		this.typesInGenerics = typesInGenerics;
+	}
+
+	public Map&lt;String, Annotation&gt; getAnnotations() {
+		return annotations;
+	}
+	public void setAnnotations(Map&lt;String, Annotation&gt; annotations) {
+		this.annotations = annotations;
+	}
+	public boolean hasAnnotation(String name){
+		return (annotations.get(name) != null);
+	}
+}
+
+</pre>
+<h2>Annotáció</h2>
+<pre>
+package com.inepex.classtemplater.plugin.logic;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.jdt.core.IMemberValuePair;
+
+public class Annotation {
+
+	String name;
+	Map&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Map&lt;String, String&gt; getParams() {
+		return params;
+	}
+	public void setParams(Map&lt;String, String&gt; params) {
+		this.params = params;
+	}
+	
+	public String getParamValue(String name){
+		return params.get("name");
+	}
+	
+}
+
+</pre>
+</body>
+</html>

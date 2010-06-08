@@ -1,59 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Classtemplater</title>
+</head>
 <body>
-<h1>classtemplater</h1>
+<img style = "display:inline" src="img/icon.png"/>
+<h1 style = "display:inline">classtemplater</h1>
 
-<h2>Letöltés:</h2>
+<h2>LetÃ¶ltÃ©s</h2>
 Update site-nak ezt kell megadni: http://sotiwin.hu/classtemplater/
 
-<h2>Használat:</h2>
-<p>
-1. Hozz létre a workspace-edben egy template fájlt. Pl:
-<pre>
-hello world $delimiter
+<h2>HasznÃ¡lat</h2>
+<p>1. Hozz lÃ©tre a workspace-edben egy template fÃ¡jlt. Pl: <pre>
+hello world
 #foreach( $attr in $attrs )
-${attr.name} - ${attr.type} $delimiter
+${attr.name} - ${attr.type} 
 #end
-</pre>
-A fájl kiterjesztése vt legyen. <br/>
-Ez velocity template nyelven íródott. Az attrs változó-val érheted el az attribútumokat.
-</p>
-<p>
-2. A Package Explorer-ben válassz ki egy .java file-t
-nyomj jobbgombot és a menübõl válaszd a classtemplater/Generate...-et
-</p>
-<p>
-3. A felugró ablakban kattints a template-re
-</p>
-<p>
-4. A generált kód azonnal megjelenik az ablakban.
-</p>
-<p>
-A fájlba mentés még nem mûködik. De tud olyat is, hogy nem egy .java fájlt választasz ki, hanem mondjuk az outline nézetben két attribútumot.
-</p> 
-<p>
-<b>Összetettebb template az összes használható változóval</b>:
-<pre>
-package: ${package} ${delimiter}
-class: ${classname} ${delimiter}
+</pre> A fÃ¡jl kiterjesztÃ©se vm legyen. <br />
+Ez velocity template nyelven Ã­rÃ³dott. Az attrs vÃ¡ltozÃ³-val Ã©rheted el az
+attribÃºtumokat. A ${attr.name} vÃ¡ltozÃ³ az attribÃºtum neve, az
+${attr.type} az attribÃºtum tÃ­pusa.</p>
+<p>2. A Package Explorer-ben vÃ¡lassz ki egy .java file-t nyomj
+jobbgombot Ã©s a menÃ¼bÅ‘l vÃ¡laszd a classtemplater/Generate...-et</p>
+<p>3. A felugrÃ³ ablakban kattints a template-re</p>
+<p>4. A generÃ¡lt kÃ³d azonnal megjelenik az ablakban Ã©s a vÃ¡gÃ³lapra
+mÃ¡solÃ³dik.</p>
 
---- ${delimiter}
+<h2>TovÃ¡bbi funkciÃ³k</h2>
+<ul>
+	<li>automatikus fÃ¡jlba mentÃ©s</li>
+	<li>generÃ¡lÃ¡s egyszerre tÃ¶bb osztÃ¡lyhoz</li>
+	<li>generÃ¡lÃ¡s egyszerre tÃ¶bb template-el</li>
+	<li>generÃ¡lÃ¡s egyszerre tÃ¶bb osztÃ¡lyhoz, tÃ¶bb template-el</li>
+	<li>a generÃ¡lt kÃ³d kÃ©zi mÃ³dosÃ­tÃ¡sÃ¡nak tÃ¡mogatÃ¡sa</li>
+	<li>annotÃ¡ciÃ³k tÃ¡mogatÃ¡sa</li>
+</ul>
 
-#foreach( $attr in $attrs )
-Name: ${attr.name} ${delimiter}
-Type: ${attr.type} ${delimiter}
-Is private (boolean): ${attr.private} ${delimiter}
-Is public (boolean): ${attr.public} ${delimiter}
-Is protected (boolean): ${attr.protected} ${delimiter}
-Visibility: ${attr.visibility} ${delimiter}
-Is static (boolean): ${attr.static} ${delimiter}
-Is abstract (boolean): ${attr.abstract} ${delimiter}
-Is final (boolean): ${attr.final} ${delimiter}
---- ${delimiter}
-#end
-</pre> 
-Letöltés: <a href = "sample.vt">sample.vt</a> <br/>
-Használat: töltsd le és másold be a workspacedbe.
-</p>
+<a href="advanced.html">RÃ©szletes leÃ­rÃ¡s</a>
 
 </body>
 

@@ -19,7 +19,7 @@
                label="Generate..."
                class="com.inepex.classtemplater.plugin.popup.actions.Generator"
                menubarPath="com.inepex.classtemplater.plugin.menu1/group1"
-               enablesFor="1"
+               enablesFor="+"
                id="com.inepex.classtemplater.plugin.action1">
          </action>
       </objectContribution>

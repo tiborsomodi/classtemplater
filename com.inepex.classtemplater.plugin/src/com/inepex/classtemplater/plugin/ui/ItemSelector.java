@@ -44,11 +44,10 @@ public class ItemSelector extends Composite implements HasSelection{
 			}
 		});
 		
-		list_items = new List(this, SWT.SINGLE);
+		list_items = new List(this, SWT.MULTI);
 		list_items.addListener (SWT.Selection, new Listener () {
 			public void handleEvent (Event e) {
-				int [] selection = list_items.getSelectionIndices ();
-				fireSelection(filtered.get(selection[0]));
+				fireSelection(getSelectedObjects());
 			}
 		});
 		filter();
@@ -99,7 +98,7 @@ public class ItemSelector extends Composite implements HasSelection{
 		if (!listeners.contains(listener)) listeners.remove(listener);		
 	}
 	
-	private void fireSelection(Object selected){
+	private void fireSelection(java.util.List<Object> selected){
 		LogiSelectionEvent e = new LogiSelectionEvent(selected);
 		for(LogiSelectionListener l : listeners){
 			l.onSelection(e);
@@ -109,6 +108,15 @@ public class ItemSelector extends Composite implements HasSelection{
 	public void setWidth(int width){
 		tb_filter.setLayoutData(new RowData(width, 20));
 		list_items.setLayoutData(new RowData(width, 100));
+	}
+	
+	public java.util.List<Object> getSelectedObjects(){
+		int [] selection = list_items.getSelectionIndices ();
+		java.util.List<Object> selectedObjects = new ArrayList<Object>();
+		for (int sel : selection){
+			selectedObjects.add(filtered.get(sel));
+		}
+		return selectedObjects;
 	}
 
 }
