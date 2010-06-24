@@ -30,6 +30,7 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 //	private Text text_outfile;
 	private Composite comp_buttons;
 	private Button btn_savetofile;
+	private Button btn_savetofileAndOrganize;
 	private Button btn_close;
 
 	private String titleText;
@@ -78,6 +79,8 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 	 	comp_buttons.setLayout(new RowLayout(SWT.HORIZONTAL));
 	 	btn_savetofile = new Button(comp_buttons, SWT.PUSH);
 	 	btn_savetofile.setText("Save to file");
+	 	btn_savetofileAndOrganize = new Button(comp_buttons, SWT.PUSH);
+	 	btn_savetofileAndOrganize.setText("Save and organize (experimental)");
 	 	btn_close = new Button(comp_buttons, SWT.PUSH);
 	 	btn_close.setText("Close");
 	 	btn_close.addListener(SWT.Selection, closeListener);
@@ -97,6 +100,11 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 	@Override
 	public void addSaveListener(Listener listener) {
 		btn_savetofile.addListener(SWT.Selection, listener);
+	}
+	
+	@Override
+	public void addSaveAndOrganizeListener(Listener listener) {
+		btn_savetofileAndOrganize.addListener(SWT.Selection, listener);
 	}
 
 	@Override

@@ -44,7 +44,7 @@ public class ItemSelector extends Composite implements HasSelection{
 			}
 		});
 		
-		list_items = new List(this, SWT.MULTI);
+		list_items = new List(this, SWT.MULTI | SWT.V_SCROLL);
 		list_items.addListener (SWT.Selection, new Listener () {
 			public void handleEvent (Event e) {
 				fireSelection(getSelectedObjects());

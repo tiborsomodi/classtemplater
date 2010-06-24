@@ -11,6 +11,7 @@ public interface GeneratorUI {
 
 	void addTemplateSelectionListener(LogiSelectionListener listener);
 	void addSaveListener(Listener listener);
+	void addSaveAndOrganizeListener(Listener listener);
 	void addText(String text);
 	void clearText();
 	void open();

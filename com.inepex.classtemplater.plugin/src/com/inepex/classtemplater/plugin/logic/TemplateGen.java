@@ -39,6 +39,7 @@ public class TemplateGen {
 
 		VelocityContext context = new VelocityContext();
 
+		context.put("class", classModel);
 		context.put("classname", classModel.getName());
 		context.put("classnameL1", StringUtil.getL1(classModel.getName()));
 		context.put("package", classModel.packageName);
@@ -65,7 +66,9 @@ public class TemplateGen {
 				}
 			}
 		}
+		
 		context.put("importables", imports);
+		context.put("utils", new StringUtil());
 		
 		Template template = null;
 

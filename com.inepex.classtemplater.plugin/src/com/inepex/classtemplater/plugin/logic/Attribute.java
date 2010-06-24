@@ -1,17 +1,15 @@
 package com.inepex.classtemplater.plugin.logic;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.jdt.core.Flags;
-import org.eclipse.jdt.core.IAnnotation;
-import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.internal.core.SourceField;
+import org.eclipse.jdt.internal.core.SourceFieldElementInfo;
 
 public class Attribute {
 
@@ -25,12 +23,16 @@ public class Attribute {
 	boolean isAbstract = false;
 	boolean isFinal = false;
 	boolean isList = false;
+	boolean isGeneric = false;
+	boolean isEnum = false;
+	String fistGenType;
 	Set<Importable> typesInGenerics = new HashSet<Importable>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
 	
 	
 	public Attribute(String name, String type, String visibility,
-			boolean isStatic, boolean isAbstract, boolean isFinal, boolean isList) {
+			boolean isStatic, boolean isAbstract, boolean isFinal, boolean isList, boolean isGeneric
+			, boolean isEnum) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -39,6 +41,8 @@ public class Attribute {
 		this.isAbstract = isAbstract;
 		this.isFinal = isFinal;
 		this.isList = isList;
+		this.isGeneric = isGeneric;
+		this.isEnum = isEnum;
 	}
 	
 	public Attribute(IField field) throws Exception {
@@ -54,9 +58,11 @@ public class Attribute {
 				String partString = "";
 				for (String s : parts){
 					String type = s.substring(1);
+					if (typesInGenerics.size() == 0) fistGenType = type;
 					typesInGenerics.add(new Importable(type));
 					partString +=  type + ", ";
 				}
+				if (typesInGenerics.size() > 0) isGeneric = true;
 				partString = partString.substring(0, partString.length() - 2);
 				sign = basetype + "<" + partString + ">";				
 			}
@@ -82,12 +88,17 @@ public class Attribute {
 		isAbstract = Flags.isAbstract(field.getFlags());
 		isFinal = Flags.isFinal(field.getFlags());
 		isList = sign.contains("List");
+		
+		try {
+			String[][] type = field.getDeclaringType().resolveType(field.getTypeSignature().substring(1, field.getTypeSignature().length()-1));
+			isEnum = field.getJavaProject().findType(type[0][0] + "." + type[0][1]).isEnum();
+		} catch (Exception e) {
+			System.out.println("Error at enum check" + e.getMessage());
+			
+		}
 
 		//annotations
-		for (IAnnotation annotation : field.getAnnotations()){
-			Annotation a = new Annotation(annotation.getElementName(), annotation.getMemberValuePairs());
-			annotations.put(a.getName(), a);
-		}
+		annotations = Annotation.getAnnotationsOf(field);
 	}
 	
 	public String getName() {
@@ -190,4 +201,39 @@ public class Attribute {
 	public boolean hasAnnotation(String name){
 		return (annotations.get(name) != null);
 	}
+
+	public String getFistGenType() {
+		return fistGenType;
+	}
+	
+	public String getFistGenTypeU1() {
+		return StringUtil.getU1(fistGenType);
+	}
+	
+	public String getFistGenTypeL1() {
+		return StringUtil.getL1(fistGenType);
+	}
+
+	public void setFistGenType(String fistGenType) {
+		this.fistGenType = fistGenType;
+	}
+
+	public boolean isGeneric() {
+		return isGeneric;
+	}
+
+	public void setGeneric(boolean isGeneric) {
+		this.isGeneric = isGeneric;
+	}
+
+	public boolean isEnum() {
+		return isEnum;
+	}
+
+	public void setEnum(boolean isEnum) {
+		this.isEnum = isEnum;
+	}
+	
+	
+	
 }

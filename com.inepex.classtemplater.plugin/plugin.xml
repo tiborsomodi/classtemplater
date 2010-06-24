@@ -44,5 +44,30 @@
          </action>
       </objectContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            category="classtemplater"
+            categoryId="org.eclipse.ui.category.navigate"
+            id="com.inepex.classtemplater.commands.generate"
+            name="Classtemplater generator">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.inepex.classtemplater.plugin.popup.actions.GeneratorHandler"
+            commandId="com.inepex.classtemplater.commands.generate">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.inepex.classtemplater.commands.generate"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+i,M1+c">
+      </key>
+   </extension>
 
 </plugin>

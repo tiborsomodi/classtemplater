@@ -1,7 +1,9 @@
 package com.inepex.classtemplater.plugin.logic;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
@@ -12,6 +14,8 @@ public class Class {
 	String name;
 	String packageName;
 	List<Attribute> attributes = new ArrayList<Attribute>();
+	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+	String workspaceRelativePath;
 	
 	public Class(String name, String packageName) {
 		super();
@@ -19,18 +23,26 @@ public class Class {
 		this.packageName = packageName;
 	}
 	
-	public Class(String name, String packageName, List<IField> fields) throws Exception {
-		this.name = name;
-		this.packageName = packageName;
-		for (IField field : fields){
+	public Class(List<IField> jdtFields) throws Exception {
+		name = jdtFields.get(0).getDeclaringType().getTypeQualifiedName();
+		packageName = ((ICompilationUnit)jdtFields.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
+		for (IField field : jdtFields){
 			attributes.add(new Attribute(field));
 		}
+		annotations = Annotation.getAnnotationsOf(jdtFields.get(0).getDeclaringType());
+		workspaceRelativePath = getWorkspaceRelatevePath((ICompilationUnit)jdtFields.get(0).getParent().getParent());
 	}
 	
 	public Class(ICompilationUnit compunit) throws Exception {
 		name = compunit.findPrimaryType().getTypeQualifiedName();
 		packageName = compunit.getPackageDeclarations()[0].getElementName();
 		attributes = getAttrs(compunit);
+		annotations = Annotation.getAnnotationsOf(compunit.getAllTypes()[0]);
+		workspaceRelativePath = getWorkspaceRelatevePath(compunit);
+	}
+	
+	private String getWorkspaceRelatevePath(ICompilationUnit compunit){
+		return compunit.getPath().removeLastSegments(1).addTrailingSeparator().toString();
 	}
 
 	private ArrayList<Attribute> getAttrs(ICompilationUnit unit) throws Exception {
@@ -69,6 +81,23 @@ public class Class {
 		this.attributes = attributes;
 	}
 	
+	public Map<String, Annotation> getAnnotations() {
+		return annotations;
+	}
+	public void setAnnotations(Map<String, Annotation> annotations) {
+		this.annotations = annotations;
+	}
+	public boolean hasAnnotation(String name){
+		return (annotations.get(name) != null);
+	}
+
+	public String getWorkspaceRelativePath() {
+		return workspaceRelativePath;
+	}
+
+	public void setWorkspaceRelativePath(String workspaceRelativePath) {
+		this.workspaceRelativePath = workspaceRelativePath;
+	}
 	
 	
 }

@@ -1,0 +1,10 @@
+public class Annotation {
+
+	String name;
+	Map<String, String> params = new HashMap<String, String>();
+	
+	public String getParamValue(String name){
+		return params.get("name");
+	}
+	
+}

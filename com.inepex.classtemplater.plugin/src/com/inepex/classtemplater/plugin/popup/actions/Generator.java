@@ -7,12 +7,10 @@ import java.io.StringBufferInputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -20,6 +18,8 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
+import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.ui.actions.OrganizeImportsAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -40,6 +40,7 @@ public class Generator implements IObjectActionDelegate {
 
 	private GeneratorUI ui;
 	private Shell shell;
+	private IWorkbenchPart targetPart;
 	private ISelection selection;
 	private List<Class> classModels = new ArrayList<Class>();
 	private String mode = "";
@@ -48,8 +49,15 @@ public class Generator implements IObjectActionDelegate {
 		
 		@Override
 		public void onSelection(LogiSelectionEvent event) {
-			if (event.getSelected().size() == 1) save(true);
-			else save(false);
+			if (mode.equals("One class") || mode.equals("Attribute list")){
+				save(true, false);
+			} else {
+				ui.clearText();
+				ui.addText("Click Save to file to generate code!");
+			}
+			
+//			if (event.getSelected().size() == 1) save(true);
+//			else save(false);
 		}
 	};
 	
@@ -57,16 +65,31 @@ public class Generator implements IObjectActionDelegate {
 		
 		@Override
 		public void handleEvent(Event event) {
-			save(false);
+			save(false, false);
 		}
 	};
 	
+	private Listener saveAndOrganizeListener = new Listener() {
+		
+		@Override
+		public void handleEvent(Event event) {
+			save(false, true);
+		}
+	};
 	
 	/**
 	 * Constructor for Action1.
 	 */
 	public Generator() {
+	}
+	
+	public Generator(IWorkbenchPart activePart, IStructuredSelection selection) {
 		super();
+		shell = activePart.getSite().getShell();
+		this.targetPart = activePart;
+		this.selection = selection;
+		
+		
 	}
 
 	/**
@@ -74,6 +97,7 @@ public class Generator implements IObjectActionDelegate {
 	 */
 	public void setActivePart(IAction action, IWorkbenchPart targetPart) {
 		shell = targetPart.getSite().getShell();
+		this.targetPart = targetPart;
 	}
 
 	/**
@@ -84,10 +108,9 @@ public class Generator implements IObjectActionDelegate {
 			processSelection((IStructuredSelection)selection);
 			ui = new GeneratorDialog(shell, mode);
 			ui.open();
-			if (mode.equals("One class") || mode.equals("Attribute list")){
-				ui.addTemplateSelectionListener(filterListener);
-			} 
+			ui.addTemplateSelectionListener(filterListener);
 			ui.addSaveListener(saveListener);
+			ui.addSaveAndOrganizeListener(saveAndOrganizeListener);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -103,12 +126,7 @@ public class Generator implements IObjectActionDelegate {
 			if (selection.size() == 1) mode = "One class";
 			else mode = "Multiple class";
 		} else if (IField.class.isInstance(selection.getFirstElement())){
-			IField field = ((IField)selection.getFirstElement());
-			classModels.add(new Class(
-					field.getDeclaringType().getTypeQualifiedName()
-					, ((ICompilationUnit)field.getParent().getParent()).getPackageDeclarations()[0].getElementName()
-					, selection.toList()
-					)); 
+			classModels.add(new Class(selection.toList())); 
 			mode = "Attribute list";
 		}
 	}
@@ -124,23 +142,25 @@ public class Generator implements IObjectActionDelegate {
 		return content;
 	}
 	
-	private String generate(IResource template, Class classModel) throws Exception {
+	private String generate(boolean simpleMode, boolean organize, IResource template, Class classModel) throws Exception {
 		String templateContent = readFile((IFile)template);
 		String outpath = "";
 		if (templateContent.startsWith("outpath")){
 			outpath = templateContent.substring(8, templateContent.indexOf('\n'));
 			outpath = outpath.replace("${classname}", classModel.getName());
+			outpath = outpath.replace("${class.workspaceRelativePath}", classModel.getWorkspaceRelativePath());
 			templateContent = templateContent.substring(templateContent.indexOf('\n') + 1);
 		}
 		String generated = TemplateGen.generate(
 				templateContent
 				, classModel
 				);
+
 		if (!outpath.equals("")){
 			String actual = readActualVersion(outpath);
 			String merged = mergeHandWrittenCode(actual, generated);
 			generated = merged;
-			saveToFile(outpath, merged);
+			if (!simpleMode) saveToFile(organize, outpath, merged);
 		} 
 		return generated;		
 
@@ -209,7 +229,7 @@ public class Generator implements IObjectActionDelegate {
 		return content;
 	}
 	
-	private void saveToFile(String path, String content) throws Exception {
+	private void saveToFile(boolean organize, String path, String content) throws Exception {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot root = workspace.getRoot();
 		IFile file = root.getFile(new Path(path));
@@ -219,20 +239,32 @@ public class Generator implements IObjectActionDelegate {
 			file.create(new StringBufferInputStream(content), true, null);
 		}
 //		file.refreshLocal(IProject.DEPTH_ONE, null);
+		if (organize) organizeImports(file);
 	}
 
-	private void save(boolean simpleMode){
+	private void organizeImports(IFile file) throws Exception {
+		// only need this if you do not already have a ICompilatioinUnit
+		ICompilationUnit cu = JavaCore.createCompilationUnitFrom(file);
+
+		ICompilationUnit[] cus = new ICompilationUnit[1];
+		cus[0] = cu;
+		OrganizeImportsAction a = new OrganizeImportsAction(targetPart.getSite());
+//		a.runOnMultiple(cus);
+		a.run(cu);
+	}
+	
+	private void save(boolean simpleMode, boolean organize){
 		try {
 			ui.clearText();
 			for (IResource template : ui.getSelectedTemplates()){
 				for (Class classModel : classModels){
 					if (simpleMode){
-						String generated = generate(template, classModel);
+						String generated = generate(simpleMode, organize, template, classModel);
 						ui.addText(generated);
 						ui.selectTextAndFocus();
 					} else {
 						ui.addText("Generate from " + classModel.getName() + " with " + template.getName());
-						generate(template, classModel);
+						generate(simpleMode, organize, template, classModel);
 					}
 				}
 			}

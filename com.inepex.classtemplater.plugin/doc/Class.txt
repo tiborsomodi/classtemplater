@@ -1,0 +1,12 @@
+public class Class {
+
+	String name;
+	String packageName;
+	List<Attribute> attributes = new ArrayList<Attribute>();
+	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+
+	public boolean hasAnnotation(String name){
+		return (annotations.get(name) != null);
+	}
+		
+}

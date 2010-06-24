@@ -1,0 +1,46 @@
+public class Attribute {
+
+	String name;
+	String type;
+	String visibility;
+	boolean isPrivate = false;
+	boolean isPublic = false;
+	boolean isProtected = false;
+	boolean isStatic = false;
+	boolean isAbstract = false;
+	boolean isFinal = false;
+	boolean isList = false;
+	boolean isGeneric = false;
+	String fistGenType;
+	Set<Importable> typesInGenerics = new HashSet<Importable>();
+	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+	
+	public String getNameL1(){
+		return StringUtil.getL1(name); 
+	}
+	
+	public String getNameU1(){
+		return StringUtil.getU1(name);
+	}	
+		
+	public String getTypeL1(){
+		return StringUtil.getL1(type); 
+	}
+	
+	public String getTypeU1(){
+		return StringUtil.getU1(type);
+	}		
+
+	public boolean hasAnnotation(String name){
+		return (annotations.get(name) != null);
+	}
+
+	public String getFistGenTypeU1() {
+		return StringUtil.getU1(fistGenType);
+	}
+	
+	public String getFistGenTypeL1() {
+		return StringUtil.getL1(fistGenType);
+	}
+
+}

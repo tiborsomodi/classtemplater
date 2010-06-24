@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Classtemplater
 Bundle-SymbolicName: com.inepex.classtemplater.plugin;singleton:=true
-Bundle-Version: 1.2.4.20100608
+Bundle-Version: 1.2.13.20100624
 Bundle-Activator: com.inepex.classtemplater.plugin.Activator
 Bundle-Vendor: Inepex
 Require-Bundle: org.eclipse.ui,
@@ -12,7 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.core;bundle-version="3.5.2",
  org.eclipse.jdt.ui;bundle-version="3.5.2",
  org.eclipse.ui.navigator;bundle-version="3.4.1",
- org.eclipse.ui.navigator.resources;bundle-version="3.4.1"
+ org.eclipse.ui.navigator.resources;bundle-version="3.4.1",
+ org.eclipse.jface.text;bundle-version="3.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .,
