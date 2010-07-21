@@ -78,7 +78,8 @@ public class Class {
 	String packageName;
 	List&lt;Attribute&gt; attributes = new ArrayList&lt;Attribute&gt;();
 	Map&lt;String, Annotation> annotations = new HashMap&lt;String, Annotation&gt;();
-
+	String workspaceRelativePath;
+	
 	public boolean hasAnnotation(String name){
 		return (annotations.get(name) != null);
 	}
@@ -104,6 +105,7 @@ public class Attribute {
 	boolean isFinal = false;
 	boolean isList = false;
 	boolean isGeneric = false;
+	boolean isEnum = false;
 	String fistGenType;
 	Set&lt;Importable&gt; typesInGenerics = new HashSet&lt;Importable&gt;();
 	Map&lt;String, Annotation&gt; annotations = new HashMap&lt;String, Annotation&gt;();

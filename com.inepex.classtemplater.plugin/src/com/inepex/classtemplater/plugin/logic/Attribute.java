@@ -84,6 +84,7 @@ public class Attribute {
 		name = field.getElementName();
 		type = sign;
 		this.visibility = visibility;
+		setVisibility(visibility);
 		isStatic = Flags.isStatic(field.getFlags());
 		isAbstract = Flags.isAbstract(field.getFlags());
 		isFinal = Flags.isFinal(field.getFlags());

@@ -4,6 +4,7 @@ public class Class {
 	String packageName;
 	List<Attribute> attributes = new ArrayList<Attribute>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+	String workspaceRelativePath;
 
 	public boolean hasAnnotation(String name){
 		return (annotations.get(name) != null);

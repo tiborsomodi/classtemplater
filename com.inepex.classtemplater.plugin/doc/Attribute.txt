@@ -11,6 +11,7 @@ public class Attribute {
 	boolean isFinal = false;
 	boolean isList = false;
 	boolean isGeneric = false;
+	boolean isEnum = false;
 	String fistGenType;
 	Set<Importable> typesInGenerics = new HashSet<Importable>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();

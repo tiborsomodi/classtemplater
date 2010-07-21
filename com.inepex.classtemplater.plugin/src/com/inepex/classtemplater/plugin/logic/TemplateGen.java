@@ -1,7 +1,6 @@
 package com.inepex.classtemplater.plugin.logic;
 
 import java.io.StringWriter;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
