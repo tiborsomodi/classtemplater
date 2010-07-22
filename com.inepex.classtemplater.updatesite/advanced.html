@@ -5,12 +5,16 @@
 <title>Classtemplater - Advanced usage</title>
 </head>
 <body>
-<a href="index.html">Vissza a főoldalra</a>
-<h1>További funkciók</h1>
+<img style="display: inline" src="img/icon.png" />
+<h1 style="display: inline">classtemplater</h1><br>
 
-<h2>Automatikus fájlba mentés</h2>
-<p>A template első sorában megadhatjuk a generált fájl elérési útját és nevét. 
-A névben használható a forrás osztály neve.</p>
+<a href="index.html">Back</a>
+<h1>Detailed description of features</h1>
+
+<h2>Save output to file automatically</h2>
+<p>The output path and filename can be defined in the first line of the template.
+You can use ${classname} and ${class.workspaceRelativePath} variables.
+</p>
 <pre>
 outpath:workspace/relative/path${classname}Hello.java
 hello world
@@ -18,28 +22,29 @@ hello world
 ${attr.name} - ${attr.type} 
 #end
 </pre>
-<p>Az "outpath"-nak a template első sorában kell szerepelnie. Csak a classname 
-változó használható hozzá.</p>
-<h2>Generálás egyszerre több osztályhoz</h2>
-<p>Amennyiben több osztályt jelölünk ki egyszerre, és ezek helyi menüjéből hívjuk meg a 
-classtemplater-t, akkor a kijelölt osztályokhoz egyben végezhetjük el a kódgenerálást.
+<h2>Generate code based more than one classes with one step</h2>
+<p>You can select multiple classes in Package Explorer, and execute classtemplater for each
+class.
 </p>
-<p>Ilyenkor az eredmény nem jelenik meg a textboxban és a generálás csak a "Save to file"
-gombra kattintva történik meg. Ezért ez a funkció csak a fájlba mentéssel együtt használható.
+<p>The generated code doesn't appear in the textbox. You have to use "Save to file" button. 
+That means, this feature works only if youe set outpath in your template.
 </p>
 
-<h2>Generálás egyszerre több template-el</h2>
+<h2>Generate code based more than one templates with one step</h2>
 <p>
-A popupban több template-t is választhatunk. Ugyanaz érvényes rá mint a több osztállyal
-történő generálásra, azaz csak fájlba mentéssel működik.
+You can select more than one template in classtemplater window.
 </p>
-<h2>Generálás egyszerre több osztályhoz, több template-el</h2>
-<p>Lehetséges egyszerre több osztályhoz több template kiválasztása is.</p>
+<p>The generated code doesn't appear in the textbox. You have to use "Save to file" button. 
+That means, this feature works only if youe set outpath in your template.
+</p>
 
-<h2>A generált kód kézi módosításának támogatása</h2>
+<h2>Generate code based multiple classes and multiple templates with one step</h2>
+<p>You can combine the previous two features</p>
+
+<h2>Handwritten parts in generated code</h2>
 <p>
-A template-ben megjelölhetünk "kézzel-írt-kód" helyeket. A generált kódban ezen helyre írt 
-szöveg ottmarad az újragenerálások után is.
+You can mark "handwritten-code" parts in your template. You can modify these in the generated code, 
+and it will be kept during codegeneration.
 </p>
 <pre>
 outpath:workspace/relative/path${classname}Hello.java
@@ -50,10 +55,12 @@ hello world
 ${attr.name} - ${attr.type} 
 #end
 </pre> 
-<p>A példában egy generálás után a hc:usercode bekerül a generált kódba. A java értelmező
-számára ez comment. E közé írhatjuk a saját java kódunkat. Az "usercode" egy szabadon 
-választott azonosító. Fontos, hogy egy template-n belül egyedi legyen!</p>
-<h2>Annotációk támogatása</h2>
+<p>
+After codegeneration the hc:usercode part will be in generated code. For the java compiler 
+it is comment. You can write code between /*hc*/. "usercode" is just an example id. However 
+it must be unique in a template. 
+</p>
+<h2>Annotation support for base class</h2>
 <pre>
 #if (${attr.hasAnnotation("SuppressWarnings")})
 it has been annoted
@@ -65,12 +72,12 @@ it has been annoted
 ${attr.getAnnotations().get("SuppressWarnings").getParams().get("value")}
 #end
 </pre>
-<p>Az attr.getAnnotations() null-t ad vissza, ha nincs olyan annotáció az adott attribútumhoz
-rendlelve. Ilyenkor az attr.getAnnotations().get("SuppressWarnings") hívás hibás eredményt 
-ad. Ezért kell az itt látható módon if-fel ellenőrizni, hogy létezik-e az annotáció.
+<p>attr.getAnnotations() returns null, if no annotation defined for the attribute. So 
+attr.getAnnotations().get("SuppressWarnings") will fail if you don't check existence of annotation
+with ${attr.hasAnnotation("SuppressWarnings")}.
 </p>
-<h1>Modellek</h1>
-<h2>Osztály</h2>
+<h1>Models</h1>
+<h2>Class</h2>
 <pre>
 public class Class {
 
@@ -86,10 +93,10 @@ public class Class {
 		
 }
 </pre>
-<h2>Attribútum</h2>
-<p>Egy attribútum objektum a következőképpen néz ki.
-Ezek a metódusok a template-ben is használhatóak. Pl ${attr.name} vagy ${attr.final}
-(a boolean típusú változóknál az "is"-t le kell hagyni.) 
+<h2>Attribute</h2>
+<p>
+These methods can be used in templates. For example ${attr.name} vagy ${attr.final}
+(for boolean types you have to skip starting "is")
 </p>
 <pre>
 public class Attribute {
@@ -140,7 +147,7 @@ public class Attribute {
 
 }
 </pre>
-<h2>Annotáció</h2>
+<h2>Annotation</h2>
 <pre>
 public class Annotation {
 

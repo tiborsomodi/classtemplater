@@ -32,36 +32,37 @@
 	</tr>
 </table>
 
-<h2>Letöltés</h2>
-Update site-nak ezt kell megadni: http://sotiwin.hu/classtemplater/
+<h2>Download</h2>
+Update site: http://classtemplater.inepex.com
 
-<h2>Használat</h2>
-<p>1. Hozz létre a workspace-edben egy template fájlt. Pl: <pre>
+<h2>Usage</h2>
+<p>1. Create a template file in your workspace with .vm extension. For example: <pre>
 hello world
 #foreach( $attr in $attrs )
 ${attr.name} - ${attr.type} 
 #end
-</pre> A fájl kiterjesztése vm legyen. <br />
-Ez velocity template nyelven íródott. Az attrs változó-val érheted el az
-attribútumokat. A ${attr.name} változó az attribútum neve, az
-${attr.type} az attribútum típusa.</p>
-<p>2. A Package Explorer-ben válassz ki egy .java file-t nyomj
-jobbgombot és a menüből válaszd a classtemplater/Generate...-et</p>
-<p>3. A felugró ablakban kattints a template-re</p>
-<p>4. A generált kód azonnal megjelenik az ablakban és a vágólapra
-másolódik.</p>
+</pre>
+It is a Velocity template. The attr variable contains the attributes. The ${attr.name}
+variable holds the name of the attribute while ${attr.type} is the type of the attribute. 
+</p>
+<p>2. Select a java class in Package Explorer, hit right mouse button and choose 
+"classtemplater/Generate..."
+</p>
+<p>3. In the classtemplater window select your template</p>
+<p>4. The generated code shows up in the bottom window and gets to the clipboard.
+</p>
 
-<h2>További funkciók</h2>
+<h2>Features</h2>
 <ul>
-	<li>automatikus fájlba mentés</li>
-	<li>generálás egyszerre több osztályhoz</li>
-	<li>generálás egyszerre több template-el</li>
-	<li>generálás egyszerre több osztályhoz, több template-el</li>
-	<li>a generált kód kézi módosításának támogatása</li>
-	<li>annotációk támogatása</li>
+	<li>save output to file automatically</li>
+	<li>generate code based more than one classes with one step</li>
+	<li>generate code based more than one templates with one step</li>
+	<li>generate code based multiple classes and multiple templates with one step</li>
+	<li>handwritten parts in generated code</li>
+	<li>annotation support for base class</li>
 </ul>
 
-<a href="advanced.html">Részletes leírás</a>
+<a href="advanced.html">Detailed description</a>
 
 </body>
 
