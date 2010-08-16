@@ -14,6 +14,8 @@ import org.eclipse.jdt.core.IAnnotatable;
 import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.IMemberValuePair;
 
+import com.inepex.classtemplater.plugin.Log;
+
 public class Annotation {
 
 	String name;
@@ -22,7 +24,12 @@ public class Annotation {
 	public Annotation(IAnnotation jdtAnnotation) throws Exception {
 		name = jdtAnnotation.getElementName();
 		for (IMemberValuePair pair : jdtAnnotation.getMemberValuePairs()){
-			params.put(pair.getMemberName(), (String)pair.getValue());
+			try {
+				params.put(pair.getMemberName(), (String)pair.getValue());
+			} catch (ClassCastException e) {
+				Log.log("Could not cast value of annotation-attribute: " + name + ", " + pair.getMemberName() + ". \n" +
+						"Only string values can be used for annotation-attribute");
+			}
 		}
 	}
 	

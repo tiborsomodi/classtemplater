@@ -17,12 +17,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.print.attribute.standard.Severity;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.JavaCore;
@@ -37,6 +41,7 @@ import org.eclipse.ui.IActionDelegate;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import com.inepex.classtemplater.plugin.Log;
 import com.inepex.classtemplater.plugin.logic.Class;
 import com.inepex.classtemplater.plugin.logic.TemplateGen;
 import com.inepex.classtemplater.plugin.ui.GeneratorDialog;
@@ -119,7 +124,9 @@ public class Generator implements IObjectActionDelegate {
 			ui.addSaveListener(saveListener);
 			ui.addSaveAndOrganizeListener(saveAndOrganizeListener);
 		} catch (Exception e) {
-			e.printStackTrace();
+			StringWriter sw = new StringWriter();
+			e.printStackTrace(new PrintWriter(sw));
+			Log.log(sw.toString());
 		}
 	}
 	
