@@ -209,6 +209,16 @@ public class Attribute {
 	public boolean hasAnnotation(String name){
 		return (annotations.get(name) != null);
 	}
+	
+	public String getAnnotationParamValue(String annotationName, String paramName){
+		if (!annotations.containsKey(annotationName))
+			return "";
+		
+		String paramValue = annotations.get(annotationName).getParamValue(paramName);
+		
+		return paramValue == null ? "" : paramValue;
+			
+	}
 
 	public String getFistGenType() {
 		return fistGenType;

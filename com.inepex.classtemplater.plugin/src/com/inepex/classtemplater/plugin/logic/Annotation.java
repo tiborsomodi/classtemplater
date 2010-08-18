@@ -25,7 +25,13 @@ public class Annotation {
 		name = jdtAnnotation.getElementName();
 		for (IMemberValuePair pair : jdtAnnotation.getMemberValuePairs()){
 			try {
-				params.put(pair.getMemberName(), (String)pair.getValue());
+				if (pair.getValue() instanceof String)
+					params.put(pair.getMemberName(), (String)pair.getValue());
+				else if (pair.getValue() instanceof Boolean)
+					params.put(pair.getMemberName(), String.valueOf(pair.getValue()));
+				else if (pair.getValue() instanceof Integer)
+					params.put(pair.getMemberName(), String.valueOf(pair.getValue()));
+				
 			} catch (ClassCastException e) {
 				Log.log("Could not cast value of annotation-attribute: " + name + ", " + pair.getMemberName() + ". \n" +
 						"Only string values can be used for annotation-attribute");
@@ -53,7 +59,7 @@ public class Annotation {
 	}
 	
 	public String getParamValue(String name){
-		return params.get("name");
+		return params.get(name);
 	}
 	
 	public static Map<String, Annotation> getAnnotationsOf(IAnnotatable annotable) throws Exception {
