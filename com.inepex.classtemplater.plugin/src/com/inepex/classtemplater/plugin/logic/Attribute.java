@@ -14,9 +14,6 @@ import java.util.Set;
 
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IField;
-import org.eclipse.jdt.core.IType;
-import org.eclipse.jdt.internal.core.SourceField;
-import org.eclipse.jdt.internal.core.SourceFieldElementInfo;
 
 public class Attribute {
 
@@ -54,13 +51,49 @@ public class Attribute {
 	
 	public Attribute(IField field) throws Exception {
 		String sign = field.getTypeSignature();
+		processSignature(sign);
 		
-		if (sign.startsWith("Q")) {
-			if (sign.indexOf("<") == -1) sign = sign.substring(1, sign.length()-1);
+		String visibility = "";
+		if (Flags.isPublic(field.getFlags())) visibility = "public";
+		else if (Flags.isPrivate(field.getFlags())) visibility = "private";
+		else if (Flags.isProtected(field.getFlags())) visibility = "protected";
+		else visibility = "public";
+		
+		name = field.getElementName();
+		this.visibility = visibility;
+		setVisibility(visibility);
+		isStatic = Flags.isStatic(field.getFlags());
+		isAbstract = Flags.isAbstract(field.getFlags());
+		isFinal = Flags.isFinal(field.getFlags());
+		
+		try {
+			String[][] type = field.getDeclaringType().resolveType(field.getTypeSignature().substring(1, field.getTypeSignature().length()-1));
+			isEnum = field.getJavaProject().findType(type[0][0] + "." + type[0][1]).isEnum();
+		} catch (Exception e) {
+			System.out.println("Error at enum check" + e.getMessage());
+		}
+
+		//annotations
+		annotations = Annotation.getAnnotationsOf(field);
+	}
+	
+	/**
+	 * Used for method parameters
+	 * @param name
+	 * @param signature
+	 */
+	public Attribute(String name, String signature){
+		this.name = name;
+		processSignature(signature);
+	}
+	
+	private void processSignature(String signature){
+		if (signature.startsWith("Q")) {
+			if (signature.indexOf("<") == -1) signature = signature.substring(1, signature.length()-1);
 			else {
 				////process generic types 
-				String basetype = sign.substring(1, sign.indexOf("<"));
-				String gentype = sign.substring(sign.indexOf("<") + 1, sign.indexOf(">"));
+				String basetype = signature.substring(1, signature.indexOf("<"));
+				String gentype = signature.substring(signature.indexOf("<") + 1, signature.indexOf(">"));
 				String[] parts = gentype.split(";");
 				String partString = "";
 				for (String s : parts){
@@ -71,42 +104,22 @@ public class Attribute {
 				}
 				if (typesInGenerics.size() > 0) isGeneric = true;
 				partString = partString.substring(0, partString.length() - 2);
-				sign = basetype + "<" + partString + ">";				
+				signature = basetype + "<" + partString + ">";				
 			}
 		}
-		else if (sign.equals("I")) sign = "int";
-		else if (sign.equals("J")) sign = "long";
-		else if (sign.equals("Z")) sign = "boolean";
-		else if (sign.equals("D")) sign = "double";
-		else if (sign.equals("B")) sign = "byte";
-		else if (sign.equals("S")) sign = "short";
-		else if (sign.equals("F")) sign = "float";
-		else if (sign.equals("C")) sign = "char";
-		String visibility = "";
-		if (Flags.isPublic(field.getFlags())) visibility = "public";
-		else if (Flags.isPrivate(field.getFlags())) visibility = "private";
-		else if (Flags.isProtected(field.getFlags())) visibility = "protected";
-		else visibility = "public";
+		else if (signature.equals("I")) signature = "int";
+		else if (signature.equals("J")) signature = "long";
+		else if (signature.equals("Z")) signature = "boolean";
+		else if (signature.equals("D")) signature = "double";
+		else if (signature.equals("B")) signature = "byte";
+		else if (signature.equals("S")) signature = "short";
+		else if (signature.equals("F")) signature = "float";
+		else if (signature.equals("C")) signature = "char";
+		else if (signature.equals("V")) signature = "void";
+		type = signature;
 		
-		name = field.getElementName();
-		type = sign;
-		this.visibility = visibility;
-		setVisibility(visibility);
-		isStatic = Flags.isStatic(field.getFlags());
-		isAbstract = Flags.isAbstract(field.getFlags());
-		isFinal = Flags.isFinal(field.getFlags());
-		isList = sign.contains("List");
-		
-		try {
-			String[][] type = field.getDeclaringType().resolveType(field.getTypeSignature().substring(1, field.getTypeSignature().length()-1));
-			isEnum = field.getJavaProject().findType(type[0][0] + "." + type[0][1]).isEnum();
-		} catch (Exception e) {
-			System.out.println("Error at enum check" + e.getMessage());
-			
-		}
-
-		//annotations
-		annotations = Annotation.getAnnotationsOf(field);
+		isList = signature.contains("List");
+				
 	}
 	
 	public String getName() {

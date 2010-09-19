@@ -43,6 +43,26 @@
                menubarPath="com.inepex.classtemplater.plugin.menu2/group1">
          </action>
       </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="com.inepex.classtemplater.plugin.objectContribution3"
+            objectClass="org.eclipse.jdt.core.IMethod">
+         <menu
+               id="com.inepex.classtemplater.plugin.menu3"
+               label="classtemplater"
+               path="additions">
+            <separator
+                  name="group3">
+            </separator>
+         </menu>
+         <action
+               class="com.inepex.classtemplater.plugin.popup.actions.Generator"
+               enablesFor="+"
+               id="com.inepex.classtemplater.plugin.action1"
+               label="Generate..."
+               menubarPath="com.inepex.classtemplater.plugin.menu3/group3">
+         </action>
+      </objectContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">

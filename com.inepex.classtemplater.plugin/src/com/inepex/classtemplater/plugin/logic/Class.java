@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 
 public class Class {
@@ -21,6 +22,7 @@ public class Class {
 	String name;
 	String packageName;
 	List<Attribute> attributes = new ArrayList<Attribute>();
+	List<Method> methods = new ArrayList<Method>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
 	String workspaceRelativePath;
 	
@@ -40,10 +42,21 @@ public class Class {
 		workspaceRelativePath = getWorkspaceRelatevePath((ICompilationUnit)jdtFields.get(0).getParent().getParent());
 	}
 	
+	public Class(List<IMethod> jdtMethods, boolean isMethods) throws Exception {
+		name = jdtMethods.get(0).getDeclaringType().getTypeQualifiedName();
+		packageName = ((ICompilationUnit)jdtMethods.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
+		for (IMethod method : jdtMethods){
+			methods.add(new Method(method));
+		}
+		annotations = Annotation.getAnnotationsOf(jdtMethods.get(0).getDeclaringType());
+		workspaceRelativePath = getWorkspaceRelatevePath((ICompilationUnit)jdtMethods.get(0).getParent().getParent());
+	}
+	
 	public Class(ICompilationUnit compunit) throws Exception {
 		name = compunit.findPrimaryType().getTypeQualifiedName();
 		packageName = compunit.getPackageDeclarations()[0].getElementName();
 		attributes = getAttrs(compunit);
+		methods = getMethods(compunit);
 		annotations = Annotation.getAnnotationsOf(compunit.getAllTypes()[0]);
 		workspaceRelativePath = getWorkspaceRelatevePath(compunit);
 	}
@@ -61,6 +74,17 @@ public class Class {
 			}
 		}		
 		return attrs;
+	}
+	
+	private ArrayList<Method> getMethods(ICompilationUnit unit) throws Exception {
+		ArrayList<Method> methods = new ArrayList<Method>();
+		IType[] allTypes = unit.getAllTypes();
+		for (IType type : allTypes) {
+			for (IMethod method : type.getMethods()) {
+				methods.add(new Method(method));
+			}
+		}		
+		return methods;
 	}
 	
 	
@@ -105,6 +129,11 @@ public class Class {
 	public void setWorkspaceRelativePath(String workspaceRelativePath) {
 		this.workspaceRelativePath = workspaceRelativePath;
 	}
+
+	public List<Method> getMethods() {
+		return methods;
+	}
+	
 	
 	
 }

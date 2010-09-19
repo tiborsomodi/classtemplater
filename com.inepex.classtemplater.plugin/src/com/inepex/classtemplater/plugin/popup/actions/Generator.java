@@ -18,15 +18,14 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
+import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.ui.actions.OrganizeImportsAction;
 import org.eclipse.jface.action.IAction;
@@ -60,7 +59,7 @@ public class Generator implements IObjectActionDelegate {
 		
 		@Override
 		public void onSelection(LogiSelectionEvent event) {
-			if (mode.equals("One class") || mode.equals("Attribute list")){
+			if (mode.equals("One class") || mode.equals("Attribute list") || mode.equals("Method list")){
 				save(true, false);
 			} else {
 				ui.clearText();
@@ -141,6 +140,9 @@ public class Generator implements IObjectActionDelegate {
 		} else if (IField.class.isInstance(selection.getFirstElement())){
 			classModels.add(new Class(selection.toList())); 
 			mode = "Attribute list";
+		} else if (IMethod.class.isInstance(selection.getFirstElement())){
+			classModels.add(new Class(selection.toList(), true)); 
+			mode = "Method list";
 		}
 	}
 	
