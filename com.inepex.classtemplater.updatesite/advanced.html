@@ -6,6 +6,12 @@
 <meta name="keywords" content="codegeneration, mdd, eclipse, plugin, developer, develop, generate,
 code, template, class, velocity" />
 <title>Classtemplater - Advanced usage</title>
+<script type="text/javascript" src="highslide/highslide.js"></script>
+<link rel="stylesheet" type="text/css" href="highslide/highslide.css" />
+<script type="text/javascript">
+    // override Highslide settings here
+    // instead of editing the highslide.js file
+</script>
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -76,7 +82,7 @@ After codegeneration the hc:usercode part will be in generated code. For the jav
 it is comment. You can write code between /*hc*/. "usercode" is just an example id. However 
 it must be unique in a template. 
 </p>
-<h2>Annotation support for base class</h2>
+<h2>Annotation support for base class, attributes and methods</h2>
 <pre>
 #if (${attr.hasAnnotation("SuppressWarnings")})
 it has been annoted
@@ -92,6 +98,21 @@ ${attr.getAnnotations().get("SuppressWarnings").getParams().get("value")}
 attr.getAnnotations().get("SuppressWarnings") will fail if you don't check existence of annotation
 with ${attr.hasAnnotation("SuppressWarnings")}.
 </p>
+
+<pre>
+#if (${method.hasAnnotation("SuppressWarnings")})
+Supress warnings
+#end
+</pre>
+<h2>Generate code based on selected attributes</h2>
+<p>You can select a subset of class-attributes using Package Navigator (or Outline):</p>
+<a href="img/selectFields.png" class="highslide"
+			onclick="return hs.expand(this)"> <img alt="Highslide js"
+			src="img/selectFields_s.png" title="Click to enlarge"></a>
+		<div class='highslide-caption'><center><b>Select a subset of fields for code generation</b></center></div>
+<h2>Generate code based on selected methods</h2>
+<p>You can select a subset of class-methods the same way as selecting attributes. See screenshot in 
+previous section!</p>
 <h1>Models</h1>
 <h2>Class</h2>
 <pre>
@@ -100,6 +121,7 @@ public class Class {
 	String name;
 	String packageName;
 	List&lt;Attribute&gt; attributes = new ArrayList&lt;Attribute&gt;();
+	List&lt;Method&gt; methods = new ArrayList&lt;Method&gt;();
 	Map&lt;String, Annotation> annotations = new HashMap&lt;String, Annotation&gt;();
 	String workspaceRelativePath;
 	
@@ -113,6 +135,9 @@ public class Class {
 <p>
 These methods can be used in templates. For example ${attr.name} vagy ${attr.final}
 (for boolean types you have to skip starting "is")
+</p>
+<p>
+When using as method parameter, only "name", "type", "isList", "isGeneric" and "firstGenType" works!
 </p>
 <pre>
 public class Attribute {
@@ -160,9 +185,62 @@ public class Attribute {
 	public String getFistGenTypeL1() {
 		return StringUtil.getL1(fistGenType);
 	}
+	
+	public String getAnnotationParamValue(String annotationName, String paramName){
+		if (!annotations.containsKey(annotationName))
+			return "";
+		
+		String paramValue = annotations.get(annotationName).getParamValue(paramName);
+		
+		return paramValue == null ? "" : paramValue;
+			
+	}
 
 }
 </pre>
+<h2>Method</h2>
+<p>Note that although method parameters are represented the same class as class fields, method parameters
+have some limitation. See description at Attribute section!
+<pre>
+public class Method {
+
+	String name;
+	List&lt;Attribute&gt; parameters = new ArrayList&lt;Attribute&gt;();
+	String returnType;
+	
+	String visibility;
+	boolean isPrivate = false;
+	boolean isPublic = false;
+	boolean isProtected = false;
+	boolean isStatic = false;
+	boolean isAbstract = false;
+	boolean isFinal = false;
+	Set&lt;Importable&gt; typesInGenerics = new HashSet&lt;Importable&gt;();
+	Map&lt;String, Annotation&gt; annotations = new HashMap&lt;String, Annotation&gt;();
+	
+	public String getNameU1() {
+		return StringUtil.getU1(name);
+	}
+	
+	public String getNameL1() {
+		return StringUtil.getL1(name);
+	}
+	
+	public boolean hasAnnotation(String name){
+		return (annotations.get(name) != null);
+	}
+	
+	public String getAnnotationParamValue(String annotationName, String paramName){
+		if (!annotations.containsKey(annotationName))
+			return "";
+		
+		String paramValue = annotations.get(annotationName).getParamValue(paramName);
+		
+		return paramValue == null ? "" : paramValue;
+			
+	}
+</pre>
+
 <h2>Annotation</h2>
 <pre>
 public class Annotation {

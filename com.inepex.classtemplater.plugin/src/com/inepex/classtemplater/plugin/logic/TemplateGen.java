@@ -50,6 +50,7 @@ public class TemplateGen {
 		context.put("classnameL1", StringUtil.getL1(classModel.getName()));
 		context.put("package", classModel.packageName);
 		context.put("attrs", classModel.getAttributes());
+		context.put("methods", classModel.getMethods());
 		context.put("delimiter", '\n');
 		context.put("nl", '\n');
 
