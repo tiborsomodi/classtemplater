@@ -17,16 +17,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.print.attribute.standard.Severity;
-
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.JavaCore;
@@ -43,6 +41,7 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import com.inepex.classtemplater.plugin.Log;
 import com.inepex.classtemplater.plugin.logic.Class;
+import com.inepex.classtemplater.plugin.logic.ResourceUtil;
 import com.inepex.classtemplater.plugin.logic.TemplateGen;
 import com.inepex.classtemplater.plugin.ui.GeneratorDialog;
 import com.inepex.classtemplater.plugin.ui.LogiSelectionEvent;
@@ -183,7 +182,8 @@ public class Generator implements IObjectActionDelegate {
 	private String mergeHandWrittenCode(String actual, String generated) {
 		String merged = "";
 		Map<String, String> actualCodes = getHandWrittenCodes(actual);
-		merged = putHandWrittenCodes(generated, actualCodes);
+		Map<String, String> codesInTemplate = getHandWrittenCodes(generated);
+		merged = putHandWrittenCodes(generated, actualCodes, codesInTemplate);
 		return merged;
 	}
 	
@@ -208,7 +208,10 @@ public class Generator implements IObjectActionDelegate {
 		return codes;
 	}
 	
-	private String putHandWrittenCodes(String content, Map<String, String> actualCodes){
+	private String putHandWrittenCodes(String content
+			, Map<String, String> actualCodes
+			, Map<String, String> codesInTemplate
+			){
 		int pos = 0;
 		
 		do {
@@ -223,6 +226,11 @@ public class Generator implements IObjectActionDelegate {
 				if (actualCodes.get(id) != null){
 					sb.replace(startend + 2, end, "");
 					sb.insert(startend + 2, actualCodes.get(id));
+					
+					if (codesInTemplate.get(id) != null){
+						int lengthDifference = codesInTemplate.get(id).length() - actualCodes.get(id).length();
+						pos -= lengthDifference;
+					}
 				}
 			} else {
 				pos = -1;
@@ -246,7 +254,9 @@ public class Generator implements IObjectActionDelegate {
 	private void saveToFile(boolean organize, String path, String content) throws Exception {
 		IWorkspace workspace = ResourcesPlugin.getWorkspace();
 		IWorkspaceRoot root = workspace.getRoot();
-		IFile file = root.getFile(new Path(path));
+		Path filePath = new Path(path);
+		ResourceUtil.createPath(filePath.removeLastSegments(1));
+		IFile file = root.getFile(filePath);
 		if (file.exists()) {
 			file.setContents(new StringBufferInputStream(content), true, true, null);
 		} else {	
