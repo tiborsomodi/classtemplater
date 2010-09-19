@@ -86,7 +86,7 @@
             commandId="com.inepex.classtemplater.commands.generate"
             contextId="org.eclipse.ui.contexts.window"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
-            sequence="M1+i,M1+c">
+            sequence="M1+i M1+c">
       </key>
    </extension>
 
