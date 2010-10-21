@@ -8,6 +8,10 @@
 package com.inepex.classtemplater.plugin.ui;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.swt.SWT;
@@ -31,6 +35,7 @@ public class ItemSelector extends Composite implements HasSelection{
 	private Label lbl_title;
 	private Text tb_filter;
 	private List list_items;
+	private Map<String, String> filteredMap = new HashMap<String, String>();
 	
 	private ArrayList<LogiSelectionListener> listeners = new ArrayList<LogiSelectionListener>();
 	
@@ -87,6 +92,15 @@ public class ItemSelector extends Composite implements HasSelection{
 			}
 		}
 		
+		Collections.sort(filtered, new Comparator<IResource>() {
+
+			@Override
+			public int compare(IResource o1, IResource o2) {
+				return (o1.getName().compareToIgnoreCase(o2.getName()));
+			}
+			
+		});
+				
 		for(IResource res : filtered){
 			list_items.add(res.getName());
 		}

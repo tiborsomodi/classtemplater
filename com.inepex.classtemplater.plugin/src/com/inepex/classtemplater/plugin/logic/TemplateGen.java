@@ -17,12 +17,18 @@ import org.apache.velocity.app.Velocity;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 
-public class TemplateGen {
+import com.inepex.classtemplater.plugin.codegeneration.GenerationType;
 
-	public static String generate(
-			String templateAsString
-			, Class classModel
-			) throws Exception {
+public class TemplateGen {
+	private GenerationType type;
+	private Attribute attrModel;
+	private Class classModel;
+	
+	public TemplateGen(GenerationType type){
+		this.type = type;
+	}
+	
+	private String generateBase(String templateAsString) throws Exception {
 		String res = "";
 		Velocity.addProperty("resource.loader", "string");
 		Velocity.addProperty("string.resource.loader.description",
@@ -45,36 +51,41 @@ public class TemplateGen {
 
 		VelocityContext context = new VelocityContext();
 
-		context.put("class", classModel);
-		context.put("classname", classModel.getName());
-		context.put("classnameL1", StringUtil.getL1(classModel.getName()));
-		context.put("package", classModel.packageName);
-		context.put("attrs", classModel.getAttributes());
-		context.put("methods", classModel.getMethods());
-		context.put("delimiter", '\n');
-		context.put("nl", '\n');
-
-		//imports
-		Set<Importable> imports = new HashSet<Importable>();
-		for (Attribute attr : classModel.getAttributes()){
-			if (!attr.isStatic){
-				if (!attr.getType().equals("Long")
-						&& !attr.getType().equals("Boolean")
-						&& !attr.getType().equals("String")
-						&& !attr.getType().equals("Double")){
-					
-					if (attr.getType().contains("List")){
-						imports.addAll(attr.getTypesInGenerics());
-					} else if (attr.getType().contains("Map")){
-						//TODO handle maps
-					} else {
-						imports.add(new Importable(attr.getType()));
+		if (type == GenerationType.CLASS){
+			context.put("class", classModel);
+			context.put("classname", classModel.getName());
+			context.put("classnameL1", StringUtil.getL1(classModel.getName()));
+			context.put("package", classModel.packageName);
+			context.put("attrs", classModel.getAttributes());
+			context.put("methods", classModel.getMethods());
+			
+			//imports
+			Set<Importable> imports = new HashSet<Importable>();
+			for (Attribute attr : classModel.getAttributes()){
+				if (!attr.isStatic){
+					if (!attr.getType().equals("Long")
+							&& !attr.getType().equals("Boolean")
+							&& !attr.getType().equals("String")
+							&& !attr.getType().equals("Double")){
+						
+						if (attr.getType().contains("List")){
+							imports.addAll(attr.getTypesInGenerics());
+						} else if (attr.getType().contains("Map")){
+							//TODO handle maps
+						} else {
+							imports.add(new Importable(attr.getType()));
+						}
 					}
 				}
 			}
+			
+			context.put("importables", imports);
+		} else if (type == GenerationType.ATTRIBUTE){
+			context.put("attr", attrModel);
+			context.put("package", attrModel.getPackageName());
 		}
-		
-		context.put("importables", imports);
+		context.put("delimiter", '\n');
+		context.put("nl", '\n');
 		context.put("utils", new StringUtil());
 		
 		Template template = null;
@@ -87,6 +98,24 @@ public class TemplateGen {
 
 		res = sw.toString();
 		return res;
+	}
+	
+	public String generate(
+			String templateAsString
+			, Attribute model
+			) throws Exception {
+		attrModel = model;
+		return generateBase(templateAsString);
+	}
+	
+
+	public String generate(
+			String templateAsString
+			, Class classModel
+			) throws Exception {
+		this.classModel = classModel;
+		
+		return generateBase(templateAsString);
 
 	}
 }

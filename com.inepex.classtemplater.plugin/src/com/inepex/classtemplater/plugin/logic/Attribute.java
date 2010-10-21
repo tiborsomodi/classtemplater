@@ -13,6 +13,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.jdt.core.Flags;
+import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 
 public class Attribute {
@@ -32,6 +33,8 @@ public class Attribute {
 	String fistGenType;
 	Set<Importable> typesInGenerics = new HashSet<Importable>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+	private String workspaceRelativePath;
+	private String packageName;
 	
 	
 	public Attribute(String name, String type, String visibility,
@@ -75,6 +78,10 @@ public class Attribute {
 
 		//annotations
 		annotations = Annotation.getAnnotationsOf(field);
+		
+		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath(field.getCompilationUnit());
+		
+		packageName = ((ICompilationUnit)field.getParent().getParent()).getPackageDeclarations()[0].getElementName();
 	}
 	
 	/**
@@ -263,6 +270,14 @@ public class Attribute {
 
 	public void setEnum(boolean isEnum) {
 		this.isEnum = isEnum;
+	}
+
+	public String getWorkspaceRelativePath() {
+		return workspaceRelativePath;
+	}
+
+	public String getPackageName() {
+		return packageName;
 	}
 	
 	

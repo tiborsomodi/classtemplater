@@ -39,7 +39,7 @@ public class Class {
 			attributes.add(new Attribute(field));
 		}
 		annotations = Annotation.getAnnotationsOf(jdtFields.get(0).getDeclaringType());
-		workspaceRelativePath = getWorkspaceRelatevePath((ICompilationUnit)jdtFields.get(0).getParent().getParent());
+		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath((ICompilationUnit)jdtFields.get(0).getParent().getParent());
 	}
 	
 	public Class(List<IMethod> jdtMethods, boolean isMethods) throws Exception {
@@ -49,7 +49,7 @@ public class Class {
 			methods.add(new Method(method));
 		}
 		annotations = Annotation.getAnnotationsOf(jdtMethods.get(0).getDeclaringType());
-		workspaceRelativePath = getWorkspaceRelatevePath((ICompilationUnit)jdtMethods.get(0).getParent().getParent());
+		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath((ICompilationUnit)jdtMethods.get(0).getParent().getParent());
 	}
 	
 	public Class(ICompilationUnit compunit) throws Exception {
@@ -58,11 +58,7 @@ public class Class {
 		attributes = getAttrs(compunit);
 		methods = getMethods(compunit);
 		annotations = Annotation.getAnnotationsOf(compunit.getAllTypes()[0]);
-		workspaceRelativePath = getWorkspaceRelatevePath(compunit);
-	}
-	
-	private String getWorkspaceRelatevePath(ICompilationUnit compunit){
-		return compunit.getPath().removeLastSegments(1).addTrailingSeparator().toString();
+		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath(compunit);
 	}
 
 	private ArrayList<Attribute> getAttrs(ICompilationUnit unit) throws Exception {

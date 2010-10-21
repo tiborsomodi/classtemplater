@@ -4,6 +4,7 @@ import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.jdt.core.ICompilationUnit;
 
 public class ResourceUtil {
 
@@ -15,6 +16,10 @@ public class ResourceUtil {
 			if (!root.getFolder(path.removeLastSegments(i)).exists()) root.getFolder(path.removeLastSegments(i)).create(true, true, null);	
 		}		
 		
+	}
+	
+	public static String getWorkspaceRelativePath(ICompilationUnit compunit){
+		return compunit.getPath().removeLastSegments(1).addTrailingSeparator().toString();
 	}
 	
 }

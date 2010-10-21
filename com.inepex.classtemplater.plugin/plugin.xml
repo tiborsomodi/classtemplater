@@ -63,6 +63,26 @@
                menubarPath="com.inepex.classtemplater.plugin.menu3/group3">
          </action>
       </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="com.inepex.classtemplater.plugin.objectContribution4"
+            objectClass="org.eclipse.jdt.core.IField">
+         <menu
+               id="com.inepex.classtemplater.plugin.menu4"
+               label="attributetemplater"
+               path="additions">
+            <separator
+                  name="group4">
+            </separator>
+         </menu>
+         <action
+               class="com.inepex.classtemplater.plugin.popup.actions.AttributeGenerator"
+               enablesFor="+"
+               id="com.inepex.classtemplater.plugin.action4"
+               label="Generate..."
+               menubarPath="com.inepex.classtemplater.plugin.menu4/group4">
+         </action>
+      </objectContribution>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
