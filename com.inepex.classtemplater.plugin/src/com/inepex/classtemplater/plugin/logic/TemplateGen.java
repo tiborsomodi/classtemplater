@@ -66,7 +66,8 @@ public class TemplateGen {
 					if (!attr.getType().equals("Long")
 							&& !attr.getType().equals("Boolean")
 							&& !attr.getType().equals("String")
-							&& !attr.getType().equals("Double")){
+							&& !attr.getType().equals("Double")
+							&& !attr.isEnum){
 						
 						if (attr.getType().contains("List")){
 							imports.addAll(attr.getTypesInGenerics());

@@ -36,6 +36,8 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 //	private FolderSelector select_folder;
 //	private Text text_outfile;
 	private Composite comp_buttons;
+	private Button ignoreHcContent;
+	private Button dontRenderHc;
 	private Button btn_savetofile;
 	private Button btn_savetofileAndOrganize;
 	private Button btn_close;
@@ -70,20 +72,26 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 	 			, 585);
 	 	
 	 	select_template = new ResourceSelector(shell, "Select template (by typing its name and click on it in the list)");
-	 	select_template.setWidth(250);
 	 	select_template.setExtensionFilter(".vm");
 	 	comp_result = new Composite(shell, SWT.BORDER);
 	 	comp_result.setLayout(new RowLayout());
-	 	comp_result.setLayoutData(new RowData(shell.getBounds().width - 20, 325));
+	 	comp_result.setLayoutData(new RowData(shell.getBounds().width - 20, 225));
 	 	lbl_result = new Label(comp_result, SWT.LEFT);
 	 	lbl_result.setText("Result of code generation:");
 	 	text_result = new Text(comp_result, SWT.MULTI | SWT.V_SCROLL);
-	 	text_result.setLayoutData(new RowData(shell.getBounds().width - 45, 300));
+	 	text_result.setLayoutData(new RowData(shell.getBounds().width - 45, 200));
 //	 	select_folder = new FolderSelector(shell, "Select output folder");
 //	 	select_folder.setWidth(250);
 //	 	text_outfile = new Text(shell, SWT.SINGLE);
 	 	comp_buttons = new Composite(shell, SWT.NONE);
 	 	comp_buttons.setLayout(new RowLayout(SWT.HORIZONTAL));
+	 	dontRenderHc = new Button(comp_buttons, SWT.CHECK);
+	 	dontRenderHc.setText("Don't render hc's");
+	 	dontRenderHc.setToolTipText("Remove handwritten code parts from generated code (also /*hc../ notation)");
+	 	ignoreHcContent = new Button(comp_buttons, SWT.CHECK);
+	 	ignoreHcContent.setText("Ignore hc's content");
+	 	ignoreHcContent.setToolTipText("Ignore text written in hc part of generated code and replace " +
+	 			"it with the default value from template.");
 	 	btn_savetofile = new Button(comp_buttons, SWT.PUSH);
 	 	btn_savetofile.setText("Save to file");
 	 	btn_savetofileAndOrganize = new Button(comp_buttons, SWT.PUSH);
@@ -142,6 +150,16 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 		text_result.setFocus();
 		text_result.selectAll();
 		text_result.copy();
+	}
+
+	@Override
+	public boolean ignoreHcContent() {
+		return ignoreHcContent.getSelection();
+	}
+
+	@Override
+	public boolean dontRenderHc() {
+		return dontRenderHc.getSelection();
 	}
 
 

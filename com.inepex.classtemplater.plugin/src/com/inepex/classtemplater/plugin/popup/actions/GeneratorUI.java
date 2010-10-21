@@ -24,4 +24,6 @@ public interface GeneratorUI {
 	void open();
 	List<IResource> getSelectedTemplates();
 	void selectTextAndFocus();
+	boolean ignoreHcContent();
+	boolean dontRenderHc();
 }

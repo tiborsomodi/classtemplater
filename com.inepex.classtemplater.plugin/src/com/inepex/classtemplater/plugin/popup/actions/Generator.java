@@ -155,14 +155,18 @@ public class Generator implements IObjectActionDelegate {
 			for (IResource template : ui.getSelectedTemplates()){
 				for (Class classModel : classModels){
 					if (simpleMode){
-						String generated = generator.generate(simpleMode, organize, template, classModel);
+						String generated = generator.generate(
+								simpleMode, organize, template, classModel
+								, ui.ignoreHcContent(), ui.dontRenderHc());
 						ui.addText(generated);
 						ui.selectTextAndFocus();
 					} else {
 						ui.addText("Generate from " + classModel.getName() + " with " + template.getName());
-						generator.generate(simpleMode, organize, template, classModel);
+						generator.generate(simpleMode, organize, template, classModel
+								, ui.ignoreHcContent(), ui.dontRenderHc());
 					}
 				}
+				generator.organizeAll();
 			}
 		} catch (Exception e) {
 			StringWriter sw = new StringWriter();

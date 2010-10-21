@@ -10,8 +10,6 @@ package com.inepex.classtemplater.plugin.ui;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.swt.SWT;
@@ -35,7 +33,6 @@ public class ItemSelector extends Composite implements HasSelection{
 	private Label lbl_title;
 	private Text tb_filter;
 	private List list_items;
-	private Map<String, String> filteredMap = new HashMap<String, String>();
 	
 	private ArrayList<LogiSelectionListener> listeners = new ArrayList<LogiSelectionListener>();
 	
@@ -43,7 +40,7 @@ public class ItemSelector extends Composite implements HasSelection{
 		super(shell, SWT.BORDER);
 		RowLayout layout = new RowLayout(SWT.VERTICAL);
 		layout.pack = true;
-		layout.fill = false;
+		layout.fill = true;
 		setLayout(layout);
 		lbl_title = new Label(this, SWT.LEFT);
 		lbl_title.setText(title);
@@ -62,6 +59,7 @@ public class ItemSelector extends Composite implements HasSelection{
 				fireSelection(getSelectedObjects());
 			}
 		});
+		list_items.setLayoutData(new RowData(400, 200));
 		filter();
 
 	}
@@ -86,23 +84,35 @@ public class ItemSelector extends Composite implements HasSelection{
 		String filtertext = tb_filter.getText();
 		for(IResource res : resources){
 			if (((extensionFilter != null && res.getName().endsWith(extensionFilter))
-				|| extensionFilter == null)	&& res.getName().contains(filtertext))
+				|| extensionFilter == null)	&& res.getName().toLowerCase().contains(filtertext.toLowerCase()))
 			{
 				filtered.add(res);
 			}
+		}
+		
+		ArrayList<String> itemNames = new ArrayList<String>();
+		for(IResource res : filtered){
+			if (res.getProject() != null){
+				itemNames.add(res.getProject().getName() + " - " + res.getName());
+			} 
 		}
 		
 		Collections.sort(filtered, new Comparator<IResource>() {
 
 			@Override
 			public int compare(IResource o1, IResource o2) {
-				return (o1.getName().compareToIgnoreCase(o2.getName()));
+				if (o1.getProject() != null && o2.getProject() != null){
+					String o1Item = o1.getProject().getName() + " - " + o1.getName();
+					String o2Item = o2.getProject().getName() + " - " + o2.getName();
+				return o1Item.compareTo(o2Item);
+				}
+				return 0;
 			}
-			
 		});
-				
-		for(IResource res : filtered){
-			list_items.add(res.getName());
+		Collections.sort(itemNames);
+		
+		for(String name : itemNames){
+			list_items.add(name);
 		}
 		
 	}

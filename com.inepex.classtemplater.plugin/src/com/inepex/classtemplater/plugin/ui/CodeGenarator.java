@@ -3,7 +3,9 @@ package com.inepex.classtemplater.plugin.ui;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.StringBufferInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -29,6 +31,8 @@ public class CodeGenarator {
 	private GenerationType type;
 	private IWorkbenchPart targetPart;
 	private TemplateGen templateGen;
+	
+	private List<IFile> modifiedFiles = new ArrayList<IFile>();
 	
 	public CodeGenarator(GenerationType type, IWorkbenchPart targetPart) {
 		this.type = type;
@@ -73,8 +77,14 @@ public class CodeGenarator {
 		return generated;	
 	}
 
-	public String generate(boolean simpleMode, boolean organize, IResource template, Class classModel) throws Exception {
+	public String generate(boolean simpleMode
+			, boolean organize
+			, IResource template
+			, Class classModel
+			, boolean ignoreHcContent
+			, boolean dontRenderHc) throws Exception {
 		String templateContent = readFile((IFile)template);
+		if (dontRenderHc) templateContent = removeHcs(templateContent);
 		String outpath = "";
 		if (templateContent.startsWith("outpath")){
 			outpath = templateContent.substring(8, templateContent.indexOf('\n'));
@@ -88,10 +98,12 @@ public class CodeGenarator {
 				);
 
 		if (!outpath.equals("")){
-			String actual = readActualVersion(outpath);
-			String merged = mergeHandWrittenCode(actual, generated);
-			generated = merged;
-			if (!simpleMode) saveToFile(organize, outpath, merged);
+			if (!ignoreHcContent){
+				String actual = readActualVersion(outpath);
+				String merged = mergeHandWrittenCode(actual, generated);
+				generated = merged;
+			}
+			if (!simpleMode) saveToFile(organize, outpath, generated);
 		} 
 		return generated;		
 
@@ -181,7 +193,7 @@ public class CodeGenarator {
 			file.create(new StringBufferInputStream(content), true, null);
 		}
 //		file.refreshLocal(IProject.DEPTH_ONE, null);
-		if (organize) organizeImports(file);
+		if (organize) modifiedFiles.add(file);
 	}
 
 	private void organizeImports(IFile file) throws Exception {
@@ -193,6 +205,31 @@ public class CodeGenarator {
 		OrganizeImportsAction a = new OrganizeImportsAction(targetPart.getSite());
 //		a.runOnMultiple(cus);
 		a.run(cu);
+	}
+	
+	public void organizeAll() throws Exception {
+		for (IFile file : modifiedFiles){
+			organizeImports(file);
+		}
+	}
+	
+	private String removeHcs(String content){
+		int pos = 0;
+		
+		do {
+			StringBuffer sb = new StringBuffer(content);
+			int start = content.indexOf("/*hc:", pos);
+			if (start != -1){
+				int end = content.indexOf("/*hc*/", start);
+				pos = start;
+				
+				sb.replace(start, end + 6, "");
+			} else {
+				pos = -1;
+			}
+			content = sb.toString();
+		} while (pos != -1);
+		return content;
 	}
 	
 }
