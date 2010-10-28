@@ -11,9 +11,11 @@ import java.io.StringWriter;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
+import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 
@@ -23,9 +25,15 @@ public class TemplateGen {
 	private GenerationType type;
 	private Attribute attrModel;
 	private Class classModel;
+	private String loggerName = "Classtempletar velocity logger";
+	private Logger log;
+	
+
 	
 	public TemplateGen(GenerationType type){
 		this.type = type;
+		log = Logger.getLogger(loggerName);
+
 	}
 	
 	private String generateBase(String templateAsString) throws Exception {
@@ -41,6 +49,11 @@ public class TemplateGen {
 						"org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl");
 		Velocity.addProperty("string.resource.loader.repository.name", "repo");
 		Velocity.addProperty("input.encoding", "UTF-8");
+		Velocity.addProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+	      "org.apache.velocity.runtime.log.Log4JLogChute" );
+		Velocity.addProperty("runtime.log.logsystem.log4j.logger",
+				loggerName);
+
 
 		Velocity.init();
 		StringResourceRepository repo = StringResourceLoader.getRepository("repo");
@@ -58,6 +71,7 @@ public class TemplateGen {
 			context.put("package", classModel.packageName);
 			context.put("attrs", classModel.getAttributes());
 			context.put("methods", classModel.getMethods());
+			context.put("parentPackage", classModel.getParentPackage());
 			
 			//imports
 			Set<Importable> imports = new HashSet<Importable>();

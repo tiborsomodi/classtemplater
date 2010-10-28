@@ -130,6 +130,13 @@ public class Class {
 		return methods;
 	}
 	
+	public String getParentPackage() {
+		int index = getPackageName().lastIndexOf(".");
+		if (index != -1){
+			return getPackageName().substring(0, index);
+		} else return "";
+	}
+	
 	
 	
 }
