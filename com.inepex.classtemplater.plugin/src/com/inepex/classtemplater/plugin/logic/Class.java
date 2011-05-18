@@ -11,132 +11,206 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 
 public class Class {
+  static final Pattern getterPattern = Pattern.compile("get([A-Z])(.+?)");
+  static final Pattern setterSetter = Pattern.compile("set([A-Z])(.+?)");
+  
+  String name;
 
-	String name;
-	String packageName;
-	List<Attribute> attributes = new ArrayList<Attribute>();
-	List<Method> methods = new ArrayList<Method>();
-	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
-	String workspaceRelativePath;
-	
-	public Class(String name, String packageName) {
-		super();
-		this.name = name;
-		this.packageName = packageName;
-	}
-	
-	public Class(List<IField> jdtFields) throws Exception {
-		name = jdtFields.get(0).getDeclaringType().getTypeQualifiedName();
-		packageName = ((ICompilationUnit)jdtFields.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
-		for (IField field : jdtFields){
-			attributes.add(new Attribute(field));
-		}
-		annotations = Annotation.getAnnotationsOf(jdtFields.get(0).getDeclaringType());
-		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath((ICompilationUnit)jdtFields.get(0).getParent().getParent());
-	}
-	
-	public Class(List<IMethod> jdtMethods, boolean isMethods) throws Exception {
-		name = jdtMethods.get(0).getDeclaringType().getTypeQualifiedName();
-		packageName = ((ICompilationUnit)jdtMethods.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
-		for (IMethod method : jdtMethods){
-			methods.add(new Method(method));
-		}
-		annotations = Annotation.getAnnotationsOf(jdtMethods.get(0).getDeclaringType());
-		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath((ICompilationUnit)jdtMethods.get(0).getParent().getParent());
-	}
-	
-	public Class(ICompilationUnit compunit) throws Exception {
-		name = compunit.findPrimaryType().getTypeQualifiedName();
-		packageName = compunit.getPackageDeclarations()[0].getElementName();
-		attributes = getAttrs(compunit);
-		methods = getMethods(compunit);
-		annotations = Annotation.getAnnotationsOf(compunit.getAllTypes()[0]);
-		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath(compunit);
-	}
+  String packageName;
 
-	private ArrayList<Attribute> getAttrs(ICompilationUnit unit) throws Exception {
-		ArrayList<Attribute> attrs = new ArrayList<Attribute>();
-		IType[] allTypes = unit.getAllTypes();
-		for (IType type : allTypes) {
-			for (IField field : type.getFields()) {
-				attrs.add(new Attribute(field));
-			}
-		}		
-		return attrs;
-	}
-	
-	private ArrayList<Method> getMethods(ICompilationUnit unit) throws Exception {
-		ArrayList<Method> methods = new ArrayList<Method>();
-		IType[] allTypes = unit.getAllTypes();
-		for (IType type : allTypes) {
-			for (IMethod method : type.getMethods()) {
-				methods.add(new Method(method));
-			}
-		}		
-		return methods;
-	}
-	
-	
-	public String getName() {
-		return name;
-	}
+  List<Attribute> attributes = new ArrayList<Attribute>();
 
-	public void setName(String name) {
-		this.name = name;
-	}
+  List<Method> methods = new ArrayList<Method>();
 
-	public String getPackageName() {
-		return packageName;
-	}
+  List<Property> properthies;
 
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
-	}
+  Map<String, Annotation> annotations = new HashMap<String, Annotation>();
 
-	public List<Attribute> getAttributes() {
-		return attributes;
-	}
+  String workspaceRelativePath;
 
-	public void setAttributes(List<Attribute> attributes) {
-		this.attributes = attributes;
-	}
-	
-	public Map<String, Annotation> getAnnotations() {
-		return annotations;
-	}
-	public void setAnnotations(Map<String, Annotation> annotations) {
-		this.annotations = annotations;
-	}
-	public boolean hasAnnotation(String name){
-		return (annotations.get(name) != null);
-	}
+  public Class(String name, String packageName) {
 
-	public String getWorkspaceRelativePath() {
-		return workspaceRelativePath;
-	}
+    super();
+    this.name = name;
+    this.packageName = packageName;
+  }
 
-	public void setWorkspaceRelativePath(String workspaceRelativePath) {
-		this.workspaceRelativePath = workspaceRelativePath;
-	}
+  public Class(List<IField> jdtFields) throws Exception {
 
-	public List<Method> getMethods() {
-		return methods;
-	}
-	
-	public String getParentPackage() {
-		int index = getPackageName().lastIndexOf(".");
-		if (index != -1){
-			return getPackageName().substring(0, index);
-		} else return "";
-	}
-	
-	
-	
+    this.name = jdtFields.get(0).getDeclaringType().getTypeQualifiedName();
+    this.packageName =
+        ((ICompilationUnit) jdtFields.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
+    for (IField field : jdtFields) {
+      this.attributes.add(new Attribute(field));
+    }
+    this.annotations = Annotation.getAnnotationsOf(jdtFields.get(0).getDeclaringType());
+    this.workspaceRelativePath =
+        ResourceUtil.getWorkspaceRelativePath((ICompilationUnit) jdtFields.get(0).getParent().getParent());
+  }
+
+  public Class(List<IMethod> jdtMethods, boolean isMethods) throws Exception {
+
+    this.name = jdtMethods.get(0).getDeclaringType().getTypeQualifiedName();
+    this.packageName =
+        ((ICompilationUnit) jdtMethods.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
+    for (IMethod method : jdtMethods) {
+      this.methods.add(new Method(method));
+    }
+    this.annotations = Annotation.getAnnotationsOf(jdtMethods.get(0).getDeclaringType());
+    this.workspaceRelativePath =
+        ResourceUtil.getWorkspaceRelativePath((ICompilationUnit) jdtMethods.get(0).getParent().getParent());
+  }
+
+  public Class(ICompilationUnit compunit) throws Exception {
+
+    this.name = compunit.findPrimaryType().getTypeQualifiedName();
+    this.packageName = compunit.getPackageDeclarations()[0].getElementName();
+    this.attributes = getAttrs(compunit);
+    this.methods = getMethods(compunit);
+    this.annotations = Annotation.getAnnotationsOf(compunit.getAllTypes()[0]);
+    this.workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath(compunit);
+  }
+
+  private void buildProperthies() {
+    Map<String, Property> props = new HashMap<String, Property>();
+
+    for (Method method : this.methods) {
+      Matcher matcher = getterPattern.matcher(method.name);
+      if (matcher.matches()) {
+        if (!method.getReturnType().equals("void")) {
+          Property prop = getOrCreateProperty(matcher, props);
+          prop.setGetter(method);
+          prop.setReturnType(method.getReturnType());
+        }
+      } else {
+        matcher = setterSetter.matcher(method.name);
+        if (matcher.matches() && method.getParameters().size() == 1) {
+          Property prop = getOrCreateProperty(matcher, props);
+          prop.setSetter(method);
+          prop.setInputAttribute(method.getParameters().get(0));
+        }
+      }
+    }
+    this.properthies = new ArrayList<Property>(props.values());
+  }
+
+  private Property getOrCreateProperty(Matcher matcher, Map<String, Property> props) {
+
+    String propertyName = matcher.group(1).toLowerCase().concat(matcher.group(2));
+    Property prop = props.get(propertyName);
+    if (prop == null) {
+      props.put(propertyName, prop = new Property(propertyName));
+    }
+    return prop;
+  }
+
+  private ArrayList<Attribute> getAttrs(ICompilationUnit unit) throws Exception {
+
+    ArrayList<Attribute> attrs = new ArrayList<Attribute>();
+    IType[] allTypes = unit.getAllTypes();
+    for (IType type : allTypes) {
+      for (IField field : type.getFields()) {
+        attrs.add(new Attribute(field));
+      }
+    }
+    return attrs;
+  }
+
+  private ArrayList<Method> getMethods(ICompilationUnit unit) throws Exception {
+
+    ArrayList<Method> methods = new ArrayList<Method>();
+    IType[] allTypes = unit.getAllTypes();
+    for (IType type : allTypes) {
+      for (IMethod method : type.getMethods()) {
+        methods.add(new Method(method));
+      }
+    }
+    return methods;
+  }
+
+  public String getName() {
+
+    return this.name;
+  }
+
+  public void setName(String name) {
+
+    this.name = name;
+  }
+
+  public String getPackageName() {
+
+    return this.packageName;
+  }
+
+  public void setPackageName(String packageName) {
+
+    this.packageName = packageName;
+  }
+
+  public List<Attribute> getAttributes() {
+
+    return this.attributes;
+  }
+
+  public void setAttributes(List<Attribute> attributes) {
+
+    this.attributes = attributes;
+  }
+
+  public Map<String, Annotation> getAnnotations() {
+
+    return this.annotations;
+  }
+
+  public void setAnnotations(Map<String, Annotation> annotations) {
+
+    this.annotations = annotations;
+  }
+
+  public boolean hasAnnotation(String name) {
+
+    return (this.annotations.get(name) != null);
+  }
+
+  public String getWorkspaceRelativePath() {
+
+    return this.workspaceRelativePath;
+  }
+
+  public void setWorkspaceRelativePath(String workspaceRelativePath) {
+
+    this.workspaceRelativePath = workspaceRelativePath;
+  }
+
+  public List<Method> getMethods() {
+
+    return this.methods;
+  }
+
+  public List<Property> getProperties() {
+    if(this.properthies==null){
+      buildProperthies();
+    }
+    return this.properthies;
+  }
+
+  public String getParentPackage() {
+
+    int index = getPackageName().lastIndexOf(".");
+    if (index != -1) {
+      return getPackageName().substring(0, index);
+    } else {
+      return "";
+    }
+  }
+
 }
