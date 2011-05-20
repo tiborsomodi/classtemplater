@@ -1,0 +1,38 @@
+outpath:${class.workspaceRelativePath}/impl/${classname}Impl.java
+package ${package}.impl;
+#set ($genClassName = "${classname}Impl")
+#set ($props = $class.getProperties())
+public class $genClassName implements ${classname}{
+	/** The Constant serialVersionUID. */
+	private static final long serialVersionUID = 1L;
+#foreach( $prop in $props )
+    protected ${prop.getInputType()} ${prop.getName()};
+#end
+	public $genClassName(){
+		super();
+	}
+	
+	public $genClassName(
+#set ($first = true) 
+#foreach( $prop in $props ) 
+#if ( $prop.getSetter() )#if ($first) #set ($first = false) #else, #end 
+        ${prop.getInputType()} ${prop.getInputName()} 
+    #end 
+#end){
+#foreach( $prop in $props )
+    this.${prop.getName()} = ${prop.getName()};
+#end
+	}
+#foreach( $prop in $props )
+    #if( $prop.getGetter() )
+    public ${prop.getReturnType()} ${prop.getGetter().getName()}(){
+        return this.${prop.getName()};  
+    }
+    #end
+    #if( $prop.getSetter() )
+    public void ${prop.getSetter().getName()}(${prop.getInputType()} ${prop.getInputName()}){
+        this.${prop.getName()} = ${prop.getInputName()};
+    }
+    #end
+#end
+}

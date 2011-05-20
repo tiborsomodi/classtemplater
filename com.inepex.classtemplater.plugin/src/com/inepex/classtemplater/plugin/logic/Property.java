@@ -2,7 +2,7 @@ package com.inepex.classtemplater.plugin.logic;
 
 /**
  * The Class Property.
- *
+ * 
  * @author Eugen Eisler
  */
 public class Property {
@@ -19,12 +19,15 @@ public class Property {
   /** e.g. "String" */
   String returnType;
 
-  /** e.g. "String label" */
-  Attribute inputAttribute;
+  /** e.g. "String" */
+  String inputType;
+
+  /** e.g. "label" */
+  String inputName;
 
   /**
    * Instantiates a new property.
-   *
+   * 
    * @param name the name
    */
   public Property(String name) {
@@ -34,8 +37,8 @@ public class Property {
   }
 
   /**
-   * Gets the getter.
-   *
+   * Gets the getter of th property, e.g. 'String getLabel()'
+   * 
    * @return the getter
    */
   public Method getGetter() {
@@ -44,8 +47,8 @@ public class Property {
   }
 
   /**
-   * Gets the setter.
-   *
+   * Gets the setter of the property, e.g. 'void setLabel(String label)'
+   * 
    * @return the setter
    */
   public Method getSetter() {
@@ -54,8 +57,8 @@ public class Property {
   }
 
   /**
-   * Gets the name.
-   *
+   * Gets the name of the property e.g. 'label'
+   * 
    * @return the name
    */
   public String getName() {
@@ -65,7 +68,7 @@ public class Property {
 
   /**
    * Sets the getter.
-   *
+   * 
    * @param getter the new getter
    */
   public void setGetter(Method getter) {
@@ -75,7 +78,7 @@ public class Property {
 
   /**
    * Sets the setter.
-   *
+   * 
    * @param setter the new setter
    */
   public void setSetter(Method setter) {
@@ -85,7 +88,7 @@ public class Property {
 
   /**
    * Sets the name.
-   *
+   * 
    * @param name the new name
    */
   public void setName(String name) {
@@ -95,42 +98,35 @@ public class Property {
 
   /**
    * Gets the return type.
-   *
+   * 
    * @return the return type
    */
   public String getReturnType() {
 
+    if (this.returnType == null) {
+      this.returnType = this.getGetter() != null ? getGetter().getReturnType() : getSetterAttribute().getType();
+    }
     return this.returnType;
   }
 
-  /**
-   * Sets the return type.
-   *
-   * @param returnType the new return type
-   */
-  public void setReturnType(String returnType) {
+  private Attribute getSetterAttribute() {
 
-    this.returnType = returnType;
+    return this.getSetter().getParameters().get(0);
   }
 
-  /**
-   * Gets the input attribute.
-   *
-   * @return the input attribute
-   */
-  public Attribute getInputAttribute() {
+  public String getInputType() {
 
-    return this.inputAttribute;
+    if (this.inputName == null) {
+      this.inputType = this.getSetter() != null ? getSetterAttribute().getType() : this.getReturnType();
+    }
+    return this.inputType;
   }
 
-  /**
-   * Sets the input attribute.
-   *
-   * @param inputAttribute the new input attribute
-   */
-  public void setInputAttribute(Attribute inputAttribute) {
+  public String getInputName() {
 
-    this.inputAttribute = inputAttribute;
+    if (this.inputName == null) {
+      this.inputName = this.getSetter() != null ? getSetterAttribute().getName() : this.name;
+    }
+    return this.inputName;
   }
-
 }

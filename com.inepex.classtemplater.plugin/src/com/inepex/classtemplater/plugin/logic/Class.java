@@ -19,8 +19,8 @@ import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 
 public class Class {
-  static final Pattern getterPattern = Pattern.compile("get([A-Z])(.+?)");
-  static final Pattern setterSetter = Pattern.compile("set([A-Z])(.+?)");
+  static final Pattern getterPattern = Pattern.compile("(get|is)([A-Z])(.*)");
+  static final Pattern setterSetter = Pattern.compile("(set)([A-Z])(.*)");
   
   String name;
 
@@ -88,14 +88,12 @@ public class Class {
         if (!method.getReturnType().equals("void")) {
           Property prop = getOrCreateProperty(matcher, props);
           prop.setGetter(method);
-          prop.setReturnType(method.getReturnType());
         }
       } else {
         matcher = setterSetter.matcher(method.name);
         if (matcher.matches() && method.getParameters().size() == 1) {
           Property prop = getOrCreateProperty(matcher, props);
           prop.setSetter(method);
-          prop.setInputAttribute(method.getParameters().get(0));
         }
       }
     }
@@ -104,7 +102,7 @@ public class Class {
 
   private Property getOrCreateProperty(Matcher matcher, Map<String, Property> props) {
 
-    String propertyName = matcher.group(1).toLowerCase().concat(matcher.group(2));
+    String propertyName = matcher.group(2).toLowerCase().concat(matcher.group(3));
     Property prop = props.get(propertyName);
     if (prop == null) {
       props.put(propertyName, prop = new Property(propertyName));
