@@ -210,5 +210,20 @@ public class Class {
       return "";
     }
   }
+  
+  /**
+   * returns package without the last level segments
+   * @param level
+   * @return
+   */
+  public String getParentPackage(int level) {
+	  String[] parts = getPackageName().split("\\.");
+	  if (level >= parts.length) return "";
+	  String parentPackage = "";
+	  for (int i = 0; i < parts.length - level; i++){
+		  parentPackage += parts[i] + ".";
+	  }
+	  return parentPackage.substring(0, parentPackage.length()-1);
+	  }
 
 }

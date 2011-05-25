@@ -122,12 +122,14 @@ public class Class {
 	String packageName;
 	List&lt;Attribute&gt; attributes = new ArrayList&lt;Attribute&gt;();
 	List&lt;Method&gt; methods = new ArrayList&lt;Method&gt;();
-	Map&lt;String, Annotation> annotations = new HashMap&lt;String, Annotation&gt;();
+	Map&lt;String, Annotation&gt; annotations = new HashMap&lt;String, Annotation&gt;();
 	String workspaceRelativePath;
 	
 	public boolean hasAnnotation(String name){
 		return (annotations.get(name) != null);
 	}
+	
+	public List&lt;Property&gt; getProperties()
 		
 }
 </pre>
@@ -195,6 +197,11 @@ public class Attribute {
 		return paramValue == null ? "" : paramValue;
 			
 	}
+	
+	/**
+   	* returns package without the last level segments
+   	*/
+  	public String getParentPackage(int level) 
 
 }
 </pre>
@@ -251,6 +258,32 @@ public class Annotation {
 	public String getParamValue(String name){
 		return params.get("name");
 	}
+	
+}
+
+</pre>
+
+<h2>Property</h2>
+<pre>
+public class Property {
+
+	  /** e.g. String getLabel() */
+	  Method getter;
+	
+	  /** e.g. void setLabel(String label) */
+	  Method setter;
+	
+	  /** e.g. "label" */
+	  String name;
+	
+	  /** e.g. "String" */
+	  String returnType;
+	
+	  /** e.g. "String" */
+	  String inputType;
+	
+	  /** e.g. "label" */
+	  String inputName;
 	
 }
 

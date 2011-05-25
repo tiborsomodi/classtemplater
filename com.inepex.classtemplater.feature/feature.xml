@@ -2,7 +2,7 @@
 <feature
       id="com.inepex.classtemplater.feature"
       label="classtemplater"
-      version="1.3.3.20110520"
+      version="1.3.4.20110525"
       provider-name="INEPEX">
 
    <description url="http://classtemplater.inepex.com">
