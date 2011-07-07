@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>HTML 4.0 Common Attributes</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="index.html">
+<link rel=StyleSheet href="style.css" type="text/css">
+<link rel=StyleSheet href="aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of the HTML 4.0 attributes that are common to most elements, including core attributes, internationalization attributes, and scripting events.">
+<meta name="keywords" content="id, class, style, title, lang, dir, onclick, ondblclick, onmousedown, onmouseup, onmouseover, onmousemove, onmouseout, onkeypress, onkeydown, onkeyup, onClick, onDblClick, onMouseDown, onMouseUp, onMouseOver, onMouseMove, onMouseOut, onKeyPress, onKeyDown, onKeyUp, attribute, attributes, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG">
+</head>
+<body>
+<h2><img src="wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>HTML 4.0 Common Attributes</h1>
+<p>A number of attributes in HTML 4.0 are common to most elements. These attributes are divided into <a href="#core">core attributes</a>, <a href="#i18n">internationalization attributes</a>, and <a href="#events">scripting events</a>.</p>
+
+<h2><a name=core>Core Attributes</a></h2>
+
+<h3><a name=id>ID</a></h3>
+
+<p>The <strong class=html>ID</strong> attribute uniquely identifies an element within a document. No two elements can have the same <strong class=html>ID</strong> value in a single document. The attribute's value must begin with a letter in the range A-Z or a-z and may be followed by letters (A-Za-z), digits (0-9), hyphens ("-"), underscores ("_"), colons (":"), and periods (".").</p>
+<p>The following example uses the <strong class=html>ID</strong> attribute to identify each of the first two paragraphs of a document:</p>
+<p class=example><code class=html>&lt;P <strong>ID=firstp</strong>&gt;My first paragraph.&lt;/P&gt;<br>&lt;P <strong>ID=secondp</strong>&gt;My second paragaph.&lt;/P&gt;</code></p>
+<p>The paragraphs in the example could have style rules associated with them through their <strong class=html>ID</strong> attributes. The following <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheet</a> defines unique colors for the two paragraphs:</p>
+<pre class=example><code class=css><strong>P#firstp</strong> {
+  color: navy;
+  background: transparent
+}
+
+<strong>P#secondp</strong> {
+  color: black;
+  background: transparent
+}</code></pre>
+<p>The paragraphs in the initial example could also be used as a target anchor for links:</p>
+<p class=example><code class=html>&lt;P&gt;See &lt;A HREF="#firstp"&gt;the opening paragraph&lt;/A&gt; for more information.&lt;/P&gt;</code></p>
+<div class=note>
+<p>Note that most browsers do not support the <strong class=html>ID</strong> attribute for link anchors. For current browsers, authors should use <strong class=html>&lt;<a href="special/a.html#name">A NAME="<var>...</var>"</a>&gt;<var>...</var>&lt;/A&gt;</strong> within the element instead of <strong class=html>ID</strong>.</p>
+<p>Since <strong class=html>ID</strong> and <strong class=html>A</strong>'s <strong class=html>NAME</strong> attribute share the same name space, authors cannot use the same value for an <strong class=html>ID</strong> attribute and an <strong class=html>A</strong> element's <strong class=html>NAME</strong> attribute in the same document. Also note that while <strong class=html>NAME</strong> may contain <a href="entities/index.html">entities</a>, the <strong class=html>ID</strong> attribute value may not.</p>
+</div>
+
+<h3><a name=class>CLASS</a></h3>
+
+<p>The <strong class=html>CLASS</strong> attribute specifies the element to be a member of one or more classes. Classes allow authors to define specific <em>kinds</em> of a given element. For example, an author could use <strong class=html>&lt;CODE CLASS=Java&gt;</strong> when giving Java code and <strong class=html>&lt;CODE CLASS=Perl&gt;</strong> when giving Perl code.</p>
+<p>Unlike with the <strong class=html><a href="#id">ID</a></strong> attribute, any number of elements can share the same class. An element may also belong to multiple classes; the <strong class=html>CLASS</strong> attribute value is a space-separated list of class names.</p>
+<p class=note>Note that most current browsers do not support multiple classes. Such browsers typically ignore a <strong class=html>CLASS</strong> attribute that specifies multiple classes.</p>
+<p>The <strong class=html>CLASS</strong> attribute is particularly useful when combined with style sheets. For example, consider the following navigation bar:</p>
+<p class=example><code class=html>&lt;DIV <strong>CLASS=navbar</strong>&gt;<br>&lt;P&gt;&lt;A HREF="/"&gt;Home&lt;/A&gt; | &lt;A HREF="./"&gt;Index&lt;/A&gt; | &lt;A HREF="/search.html"&gt;Search&lt;/A&gt;&lt;/P&gt;<br>&lt;P&gt;&lt;A HREF="/"&gt;&lt;IMG SRC="logo.gif" ALT="" TITLE="WDG Logo"&gt;&lt;/A&gt;&lt;/P&gt;<br>&lt;/DIV&gt;</code></p>
+<p>This example's use of the <strong class=html>CLASS</strong> attribute allows style rules to easily be added. The following <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheet</a> suggests a presentation for the preceding example:</p>
+<pre class=example><code class=css><strong>.navbar</strong> {
+  margin-top: 2em;
+  padding-top: 1em;
+  border-top: solid thin navy
+}
+
+<strong>.navbar</strong> IMG { float: right }
+
+@media print {
+  <strong>.navbar</strong> { display: none }
+}</code></pre>
+
+<h3><a name=style>STYLE</a></h3>
+
+<p>The <strong class=html>STYLE</strong> attribute allows authors to specify style rules <em>inline</em> for a single occurrence of an element. An example follows:</p>
+<p class=example><code class=html>&lt;P&gt;A popular font for on-screen reading is &lt;SPAN <strong>STYLE="</strong></code><code class=css><strong>font-family: Verdana</strong></code><code class=html><strong>"</strong>&gt;Verdana&lt;/SPAN&gt;.&lt;/P&gt;</code></p>
+<p>When the <strong class=html>STYLE</strong> attribute is used, a default style sheet language must be specified for the document by setting the <strong>Content-Style-Type</strong> <abbr class=initialism title="HyperText Transport Protocol">HTTP</abbr> header to the media type of the style sheet language. The previous example could use the following <strong class=html><a href="head/meta.html">META</a></strong> element in the document's <strong class=html><a href="head/head.html">HEAD</a></strong>:</p>
+<p class=example><code class=html>&lt;META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css"&gt;</code></p>
+<p>In most cases, use of the <strong class=html><a href="#class">CLASS</a></strong> or <strong class=html><a href="#id">ID</a></strong> attributes is a better choice than using <strong class=html>STYLE</strong> since <strong class=html>ID</strong> and <strong class=html>CLASS</strong> can be selectively applied to different media and since they provide a separation of content and presentation that often simplifies maintenance.</p>
+
+<h3><a name=title>TITLE</a></h3>
+
+<p>The <strong class=html>TITLE</strong> attribute provides a title for an element and is commonly implemented as a "tooltip" on visual browsers, though many browsers lack support for <strong class=html>TITLE</strong>. The attribute is most useful with <strong class=html><a href="special/a.html">A</a></strong>, <strong class=html><a href="head/link.html">LINK</a></strong>, <strong class=html><a href="special/img.html">IMG</a></strong>, and <strong class=html><a href="special/object.html">OBJECT</a></strong> elements, where it provides a title for the linked or embedded resource. Some examples follow:</p>
+<ul class=example>
+  <li><code class=html>&lt;A HREF="mailto:liam@htmlhelp.com" <strong>TITLE="Feedback on HTML 4.0 Reference"</strong>&gt;liam@htmlhelp.com&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="http://www-genome.wi.mit.edu/ftp/pub/software/WWW/cgi_docs.html" <strong>TITLE="CGI.pm - a Perl5 CGI Library"</strong>&gt;CGI.pm&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;LINK REL=Alternate HREF="index.fr.html" HREFLANG=fr LANG=fr <strong>TITLE="Version française"</strong>&gt;</code></li>
+  <li><code class=html>&lt;OBJECT CLASSID="java:Yahtzee.class" CODETYPE="application/java" WIDTH=400 HEIGHT=250 STANDBY="Ready to play Yahtzee?" <strong>TITLE="My Yahtzee Game"</strong>&gt;<br>&lt;IMG SRC="yahtzee.gif" ALT="" <strong>TITLE="A Yahtzee animation"</strong>&gt;<br>Yahtzee is my &lt;EM&gt;favorite&lt;/EM&gt; game!<br>&lt;/OBJECT&gt;</code></li>
+</ul>
+<p><strong class=html>TITLE</strong> is also helpful with the <strong class=html><a href="phrase/abbr.html">ABBR</a></strong> and <strong class=html><a href="phrase/acronym.html">ACRONYM</a></strong> elements to provide the long form of the abbreviation. Examples:</p>
+<ul class=example>
+  <li><code class=html>He weighs 180 &lt;ABBR <strong>TITLE=pounds</strong>&gt;lbs.&lt;/ABBR&gt;</code></li>
+  <li><code class=html>&lt;ABBR <strong>TITLE="Parti Québécois"</strong> LANG=fr-CA&gt;PQ&lt;/ABBR&gt;</code></li>
+  <li><code class=html>&lt;ACRONYM <strong>TITLE="North Atlantic Treaty Organization"</strong>&gt;NATO&lt;/ACRONYM&gt;</code></li>
+</ul>
+
+<h2><a name=i18n>Internationalization Attributes</a></h2>
+
+<h3><a name=lang>LANG</a></h3>
+
+<p>The <strong class=html>LANG</strong> attribute specifies the language of an element's attribute values and its content, including all contained elements that do not specify their own <strong class=html>LANG</strong> attribute. While the <strong class=html>LANG</strong> attribute is not widely supported, its use may help search engines index a document by its language while allowing speech synthesizers to use language-dependent pronunciation rules. As well, visual browsers can use the language's proper quotation marks when rendering the <strong class=html><a href="special/q.html">Q</a></strong> element.</p>
+<p>The attribute value is case-insensitive, and should be specified according to <a href="http://www.ietf.org/rfc/rfc1766.txt" title="Tags for the Identification of Languages"><abbr class=initialism title="Request for Comments">RFC</abbr> 1766</a>; examples include <strong class=html>en</strong> for English, <strong class=html>en-US</strong> for American English, and <strong class=html>ja</strong> for Japanese. Whitespace is not allowed in the language code.</p>
+<p>Use of the <strong class=html>LANG</strong> attribute also allows authors to easily change the <a href="http://www.htmlhelp.com/reference/css/">style</a> of text depending on the language. For example, a bilingual document may have one language in italics if rendered visually or a different voice if rendered aurally. The <abbr class=initialism title="HyperText Markup Language">HTML</abbr> of such a document might be as follows:</p>
+<pre class=example><code class=html>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd"&gt;
+&lt;TITLE&gt;Welcome - <span lang=fr>Bienvenue</span>&lt;/TITLE&gt;
+&lt;H1&gt;
+  &lt;SPAN <strong>LANG=en</strong>&gt;Welcome&lt;/SPAN&gt; -
+  &lt;SPAN <strong>LANG=fr</strong>&gt;<span lang=fr>Bienvenue</span>&lt;/SPAN&gt;
+&lt;/H1&gt;
+&lt;P <strong>LANG=en</strong>&gt;This paragraph is in English.&lt;/P&gt;
+&lt;P <strong>LANG=fr</strong>&gt;<span lang=fr>Ce paragraphe est en français</span>.&lt;/P&gt;
+<var>...</var></code></pre>
+<p>A document's primary language may be set using the <strong class=html>LANG</strong> attribute on the <strong class=html><a href="html/html.html">HTML</a></strong> element, or, alternatively, by using the <strong>Content-Language</strong> <abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> header.</p>
+
+<h3><a name=dir>DIR</a></h3>
+
+<p>The <strong class=html>DIR</strong> attribute specifies the directionality of text--left-to-right (<strong class=html>DIR=ltr</strong>, the default) or right-to-left (<strong class=html>DIR=rtl</strong>). Characters in <a href="http://www.unicode.org/">Unicode</a> are assigned a directionality, left-to-right or right-to-left, to allow the text to be rendered properly. For example, while English characters are presented left-to-right, Hebrew characters are presented right-to-left.</p>
+<p>Unicode defines a <dfn>bidirectional algorithm</dfn> that must be applied whenever a document contains right-to-left characters. While this algorithm usually gives the proper presentation, some situations leave directionally neutral text and require the <strong class=html>DIR</strong> attribute to specify the base directionality.</p>
+<p>Text is often directionally neutral when there are multiple embeddings of content with a different directionality. For example, an English sentence that contains a Hebrew phrase that contains an English quotation would require the <strong class=html>DIR</strong> attribute to define the directionality of the Hebrew phrase. The Hebrew phrase, including the English quotation, should be contained within a <strong class=html><a href="special/span.html">SPAN</a></strong> element with <strong class=html>DIR=rtl</strong>.</p>
+
+<h2><a name=events>Common Scripting Events</a></h2>
+
+<p>A number of attributes that define client-side scripting events are common to most elements. The attribute value is a script--typically a function call or a few short statements--that is executed when the event occurs. The value may contain <a href="entities/index.html">entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr>, <strong class=html>&amp;quot;</strong>).</p>
+<p>The following example features JavaScript code to handle two events of a submit button, giving the user a reminder in the status bar when the mouse moves over the button and clearing the status bar when the mouse moves away. Note that the attribute values are delimited by single quotes since double quotes are used within them.</p>
+<p class=example><code class=html>&lt;INPUT TYPE=submit <strong>ONMOUSEOVER='</strong></code><code class=javascript><strong>window.status="Did you fill in all required fields?";</strong></code><code class=html><strong>' ONMOUSEOUT='</strong></code><code class=javascript><strong>window.status="";</strong></code><code class=html><strong>'</strong>&gt;</code></p>
+<p>When an event attribute is used, a default scripting language must be specified for the document by setting the <strong>Content-Script-Type</strong> <abbr class=initialism title="HyperText Transport Protocol">HTTP</abbr> header to the media type of the scripting language. The previous example could use the following <strong class=html><a href="head/meta.html">META</a></strong> element in the document's <strong class=html><a href="head/head.html">HEAD</a></strong>:</p>
+<p class=example><code class=html>&lt;META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript"&gt;</code></p>
+<p>The common event attributes are device-dependent and largely tailored for the graphical user interface. The available events are as follows:</p>
+<ul>
+  <li><strong class=html>ONCLICK</strong>, when the mouse button is clicked on an element;</li>
+  <li><strong class=html>ONDBLCLICK</strong>, when the mouse button is double-clicked on an element;</li>
+  <li><strong class=html>ONMOUSEDOWN</strong>, when the mouse button is pressed over an element;</li>
+  <li><strong class=html>ONMOUSEUP</strong>, when the mouse button is released over an element;</li>
+  <li><strong class=html>ONMOUSEOVER</strong>, when the mouse is moved onto an element;</li>
+  <li><strong class=html>ONMOUSEMOVE</strong>, when the mouse is moved while over an element;</li>
+  <li><strong class=html>ONMOUSEOUT</strong>, when the mouse is moved away from an element;</li>
+  <li><strong class=html>ONKEYPRESS</strong>, when a key is pressed and released over an element;</li>
+  <li><strong class=html>ONKEYDOWN</strong>, when a key is pressed down over an element;</li>
+  <li><strong class=html>ONKEYUP</strong>, when a key is released over an element.</li>
+</ul>
+
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="olist.html">Elements by Function</a> ~ <a href="alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>PARAM - Object Parameter</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's PARAM element for object and applet parameters.">
+<meta name="keywords" content="PARAM, param element, parameter, attribute, parameters, attributes, object, applet, embed, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;param&gt; tag, &lt;PARAM&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>PARAM - Object Parameter</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;PARAM&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (property name)</strong></li>
+        <li>VALUE=<var><a href="../values.html#cdata">CDATA</a></var> (property value)</li>
+        <li>VALUETYPE=[ <em class=default>data</em> | ref | object ] (type of value)</li>
+        <li>TYPE=<var><a href="../values.html#contenttype">ContentType</a></var> (content-type of value resource)</li>
+        <li><a href="../attrs.html#id">ID</a>=<var><a href="../values.html#id">ID</a></var></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="applet.html">APPLET</a>, </span><a href="object.html">OBJECT</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>PARAM</strong> element provides parameters for the <strong class=html><a href="object.html">OBJECT</a></strong> <span class=transitional> and <strong class=html><a href="applet.html">APPLET</a></strong> </span>element<span class=transitional>s</span>. An <strong class=html>OBJECT</strong> <span class=transitional> or <strong class=html>APPLET</strong> </span>may contain any number of <strong class=html>PARAM</strong> elements prior to the alternate content that is also contained within the <strong class=html>OBJECT</strong> <span class=transitional> or <strong class=html>APPLET</strong> </span>element.</p>
+<p>The required <strong class=html>NAME</strong> attribute of <strong class=html>PARAM</strong> gives the name of the parameter while the <strong class=html>VALUE</strong> attribute gives the parameter's value. The parameters recognized are specific to the kind of object being embedded or to the plug-in that renders the embedded object. For example, a clock applet may accept parameters to specify the style of the clock and the colors to use:</p>
+<p class=example><code class=html>&lt;OBJECT CLASSID="java:Clock.class" CODETYPE="application/java" WIDTH=100 HEIGHT=100 TITLE="A real live clock!" STANDBY="Do you know what time it is?"&gt;<br>&lt;PARAM NAME=TYPE VALUE=ANALOG&gt;<br>
+&lt;PARAM NAME=BGCOLOR VALUE=WHITE&gt;<br>&lt;PARAM NAME=FGCOLOR VALUE=NAVY&gt;<br>&lt;/OBJECT&gt;</code></p>
+<div class=transitional>
+<p class=note>Note that the <strong class=html>PARAM</strong> elements used in the preceding example would not change if the <strong class=html>APPLET</strong> element were used in place of <strong class=html>OBJECT</strong>.</p>
+</div>
+<p>Objects such as videos, audio clips, and <abbr class=initialism title="Virtual Reality Modeling Language">VRML</abbr> worlds are typically handled by browser plug-ins. Each plug-in recognizes certain parameters, which can make choosing parameters difficult when the author does not know which plug-in the user has. However, unsupported parameters should be safely ignored. The following example uses parameters specific to the <a href="http://www.apple.com/quicktime/">QuickTime</a> movie plug-in as well as parameters specific to the <a href="http://www.netscape.com/comprod/products/navigator/version_3.0/multimedia/audio/index.html">LiveAudio</a> audio plug-in:</p>
+<p class=example><code class=html>&lt;OBJECT DATA="mlk.mov" TYPE="video/quicktime" TITLE="Martin Luther King's &amp;quot;I Have a Dream&amp;quot; speech" WIDTH=150 HEIGHT=150&gt;<br>&lt;PARAM NAME=pluginspage VALUE="http://quicktime.apple.com/"&gt;<br>&lt;PARAM NAME=autoplay VALUE=true&gt;<br>&lt;OBJECT DATA="mlk.wav" TYPE="audio/x-wav" TITLE="Martin Luther King's &amp;quot;I Have a Dream&amp;quot; speech"&gt;<br>&lt;PARAM NAME=autostart VALUE=true&gt;<br>&lt;PARAM NAME=hidden VALUE=true&gt;<br>&lt;A HREF="mlk.html"&gt;Full text of Martin Luther King's "I Have a Dream" speech&lt;/A&gt;<br>&lt;/OBJECT&gt;<br>&lt;/OBJECT&gt;</code></p>
+<p>Note that only the parameters specified within the <strong class=html>OBJECT</strong> and prior to the alternate content are passed onto the plug-in, so that the <strong class=html>pluginspage</strong> and <strong class=html>autoplay</strong> parameters are used if the QuickTime movie is played while the <strong class=html>autostart</strong> and <strong class=html>hidden</strong> parameters are used if the audio clip is played.</p>
+<p>The <strong class=html>VALUETYPE</strong> parameter of <strong class=html>PARAM</strong> designates the type of the <strong class=html>VALUE</strong> attribute. The default value for <strong class=html>VALUETYPE</strong> is <strong class=html>data</strong>, which indicates that the <strong class=html>VALUE</strong> attribute contains a string.</p>
+<p>The <strong class=html>ref</strong> value for <strong class=html>VALUETYPE</strong> indicates that the <strong class=html>VALUE</strong> attribute contains a <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> where run-time values are stored. The Internet media type of the resource is specified by the <strong class=html>TYPE</strong> attribute. The following example uses values with <strong class=html>VALUETYPE=ref</strong> to specify the location of images to animate and a sound to play during the animation:</p>
+<p class=example><code class=html>&lt;OBJECT CLASSID="java:Animator.class" CODETYPE="application/java" WIDTH=200 HEIGHT=300 TITLE="Wedding Photos"&gt;<br>&lt;PARAM NAME=IMAGE1 VALUE="images/wedding/bride.jpg" VALUETYPE=ref TYPE="image/jpeg"&gt;<br>&lt;PARAM NAME=IMAGE2 VALUE="images/wedding/groom.jpg" VALUETYPE=ref TYPE="image/jpeg"&gt;<br>&lt;PARAM NAME=IMAGE3 VALUE="images/wedding/cake.jpg" VALUETYPE=ref TYPE="image/jpeg"&gt;<br>&lt;PARAM NAME=SOUND VALUE="http://www.htmlhelp.com/sounds/weddingmarch.au" VALUETYPE=ref TYPE="audio/basic"&gt;<br>&lt;/OBJECT&gt;</code></p>
+<p class=note>The <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> specified by <strong class=html>VALUE</strong> is passed to the object without being resolved to a full <abbr class=initialism title="Uniform Resource Locator">URL</abbr>. In the preceding example, the Java class would be responsible for resolving and fetching the contents of partial <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s like "images/wedding/cake.jpg".</p>
+<p><strong class=html>VALUETYPE</strong> also takes an <strong class=html>object</strong> value, for use when a <strong class=html>VALUE</strong> attribute specifies an identifier of a separate <strong class=html><a href="object.html">OBJECT</a></strong> in the document. The following example features a hypothetical application for interactively walking through the frames of an animated <acronym title="Graphics Interchange Format">GIF</acronym>. The <acronym title="Graphics Interchange Format">GIF</acronym> is loaded in a separate <strong class=html>OBJECT</strong> from the application that uses it.</p>
+<p class=example><code class=html>&lt;OBJECT DECLARE ID=mygif DATA="animation.gif" TYPE="image/gif"&gt;<br>&lt;/OBJECT&gt;<br>&lt;OBJECT CLASSID="framepicker"&gt;<br>&lt;PARAM NAME=image VALUE="#mygif" VALUETYPE=object&gt;<br>&lt;IMG SRC="animation.gif" ALT="[Example of an animated GIF]"&gt;<br>&lt;/OBJECT&gt;</code></p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/objects.html#edef-PARAM">PARAM in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#param">PARAM in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/param.html">PARAM in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.43.html">PARAM in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LINK - Document Relationship</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's LINK element for document relationships.">
+<meta name="keywords" content="LINK, link element, links, relationship, relationships, document, external style sheets, stylesheets, made, alternate, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;link&gt; tag, &lt;LINK&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>LINK - Document Relationship</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;LINK&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>REL=<var><a href="../values.html#linktypes">LinkTypes</a></var> (relationship to link)</li>
+        <li>REV=<var><a href="../values.html#linktypes">LinkTypes</a></var> (relationship from link)</li>
+        <li>HREF=<var><a href="../values.html#uri">URI</a></var> (hypertext reference)</li>
+        <li>TYPE=<var><a href="../values.html#contenttype">ContentType</a></var> (content-type of link)</li>
+        <li class=transitional>TARGET=<var><a href="../values.html#frametarget">FrameTarget</a></var> (frame to render link in)</li>
+        <li>MEDIA=<var><a href="../values.html#mediadesc">MediaDesc</a></var> (media appropriate for link)</li>
+        <li>HREFLANG=<var><a href="../values.html#languagecode">LanguageCode</a></var> (language of link)</li>
+        <li>CHARSET=<var><a href="../values.html#charset">Charset</a></var> (character encoding of link)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="head.html">HEAD</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>LINK</strong> element defines <em>document relationships</em>. Any number of <strong class=html>LINK</strong> elements may be contained in the <strong class=html><a href="head.html">HEAD</a></strong> of a document. Many browsers lack support for <strong class=html>LINK</strong>, so authors should not depend on the browser making the links available to the user.</p>
+<p>The <strong class=html>REL</strong> and <strong class=html>REV</strong> attributes define the nature of the relationship between the documents and the linked resource. <strong class=html>REL</strong> defines a link relationship from the current document to the linked resource while <strong class=html>REV</strong> defines a relationship in the opposite direction. For example,</p>
+<p class=example><code class=html>&lt;LINK REL=Glossary HREF="foo.html"&gt;</code></p>
+<p>indicates that <strong class=html>foo.html</strong> is a glossary for the current document while</p>
+<p class=example><code class=html>&lt;LINK REV=Subsection HREF="bar.html"&gt;</code></p>
+<p>indicates that the current document is a subsection of <strong class=html>bar.html</strong>. The value of the <strong class=html>REL</strong> and <strong class=html>REV</strong> attributes is a space-separated list of <a href="../values.html#linktypes">link types</a>.</p>
+<p>Commonly used relationships include the next or previous document in a sequence, the starting page in a collection of documents, a document with copyright information, and information about the author. A document could define these relationships as follows:</p>
+<p class=example><code class=html>&lt;LINK REL=Prev HREF="base.html" TITLE="BASE - Document Base URI"&gt;<br>&lt;LINK REL=Next HREF="meta.html" TITLE="META - Metadata"&gt;<br>&lt;LINK REL=Start HREF="../" TITLE="HTML 4.0 Reference"&gt;<br>&lt;LINK REL=Copyright HREF="/copyright.html" TITLE="Copyright Notice"&gt;<br>&lt;LINK REV=Made HREF="mailto:liam@htmlhelp.com" TITLE="HTML 4.0 Reference Feedback"&gt;</code></p>
+<p class=note>While the value of <strong class=html>REL</strong> and <strong class=html>REV</strong> is case-insensitive, the <a href="http://lynx.browser.org/">Lynx</a> browser renders the relationship exactly as given by the author. Authors should therefore be consistent in their case, and may wish to capitalize the first letter while using lowercase for the rest.</p>
+<p><a name="stylesheet">Authors can also use the <strong class=html>LINK</strong> element</a> to apply an external <a href="http://www.htmlhelp.com/reference/css/">style sheet</a>. <strong class=html>REL=StyleSheet</strong> specifies a <em>persistent</em> or <em>preferred</em> style while <strong class=html>REL="Alternate StyleSheet"</strong> defines an <em>alternate</em> style. A <dfn>persistent</dfn> style is one that is always applied when style sheets are enabled. The absence of the <strong class=html>TITLE</strong> attribute indicates a persistent style.</p>
+<p>A <dfn>preferred</dfn> style is one that is automatically applied. The combination of <strong class=html>REL=StyleSheet</strong> and a <strong class=html>TITLE</strong> attribute specifies a preferred style. Authors cannot specify more than one preferred style.</p>
+<p>An <dfn>alternate</dfn> style is indicated by <strong class=html>REL="Alternate StyleSheet"</strong>. The user could choose to replace the preferred style sheet with an alternate one, though current browsers generally lack the ability to choose alternate styles.</p>
+<p>A single style may also be given through multiple style sheets:</p>
+<p class=example><code class=html>&lt;LINK REL=StyleSheet HREF="basics.css" TITLE="Contemporary" TYPE="text/css"&gt;<br>
+&lt;LINK REL=StyleSheet HREF="tables.css" TITLE="Contemporary" TYPE="text/css"&gt;<br>
+&lt;LINK REL=StyleSheet HREF="forms.css" TITLE="Contemporary" TYPE="text/css"&gt;</code></p>
+<p>In this example, three style sheets are combined into one "Contemporary" style that is applied as a preferred style sheet. To combine multiple style sheets into a single style, each style sheet's <strong class=html>LINK</strong> must use the same <strong class=html>TITLE</strong>.</p>
+<p><strong class=html>LINK</strong>'s <strong class=html>MEDIA</strong> attribute specifies the media for which the linked resource is designed. With <strong class=html>REL=StyleSheet</strong>, this allows authors to restrict a style sheet to certain output devices, such as printers or aural browsers. The attribute's value is a comma-separated list of media descriptors. The following media descriptors are defined in HTML 4.0 and are case-sensitive:</p>
+<ul>
+  <li><strong class=html>screen</strong> (the default), for non-paged computer screens;</li>
+  <li><strong class=html>tty</strong>, for fixed-pitch character grid displays (such as the display used by <a href="http://lynx.browser.org/">Lynx</a>);</li>
+  <li><strong class=html>tv</strong>, for television-type devices with low resolution and limited scrollability;</li>
+  <li><strong class=html>projection</strong>, for projectors;</li>
+  <li><strong class=html>handheld</strong>, for handheld devices (characterized by a small, monochrome display and limited bandwidth);</li>
+  <li><strong class=html>print</strong>, for output to a printer;</li>
+  <li><strong class=html>braille</strong>, for braille tactile feedback devices;</li>
+  <li><strong class=html>aural</strong>, for speech synthesizers;</li>
+  <li><strong class=html>all</strong>, for all devices.</li>
+</ul>
+<p class=note><a href="http://home.netscape.com/comprod/products/communicator/navigator.html">Netscape Navigator 4.<var>x</var></a> incorrectly ignores any style sheet linked with a <strong class=html>MEDIA</strong> value other than <strong class=html>screen</strong>. For example, <strong class=html>MEDIA="screen, projection"</strong> will cause the style sheet to be ignored by Navigator 4.<var>x</var>, even if the presentation device is a computer screen. Navigator 4.<var>x</var> also ignores style sheets declared with <strong class=html>MEDIA=all</strong>. Most other browsers ignore the <strong class=html>MEDIA</strong> attribute.</p>
+<p>The optional <strong class=html>HREFLANG</strong> and <strong class=html>CHARSET</strong> attributes of <strong class=html>LINK</strong> give the language and character encoding, respectively, of the link. The language should be specified according to <a href="http://www.ietf.org/rfc/rfc1766.txt" title="Tags for the Identification of Languages"><abbr class=initialism title="Request for Comments">RFC</abbr> 1766</a>; examples include <strong class=html>en</strong> for English, <strong class=html>en-US</strong> for American English, and <strong class=html>ja</strong> for Japanese. Examples of character encodings include <strong class=html>ISO-8859-1</strong>, <strong class=html>SHIFT_JIS</strong>, and <strong class=html>UTF-8</strong>.</p>
+<p>The <strong class=html>Alternate</strong> link relationship defines an alternate version of the document. Translations of a page can be identified by using <strong class=html>REL=Alternate</strong> along with the <strong class=html>HREFLANG</strong> attribute. Versions of the page tailored for specific media can be provided by combining <strong class=html>REL=Alternate</strong> with the <strong class=html>MEDIA</strong> attribute. Some examples follow:</p>
+<p class=example><code class=html>&lt;LINK REL=Alternate HREF="index.fr.html" HREFLANG=fr LANG=fr TITLE="Version française"&gt;<br>&lt;LINK REL=Alternate HREF="index.ja.html" HREFLANG=ja CHARSET="SHIFT_JIS" TITLE="Japanese version"&gt;<br>&lt;LINK REL=Alternate HREF="/distribution/html40.pdf" TYPE="application/pdf" MEDIA=print TITLE="PDF version"&gt;</code></p>
+<p class=note>Note that the <strong class=html><a href="../attrs.html#lang">LANG</a></strong> and <strong class=html><a href="../attrs.html#dir">DIR</a></strong> attributes apply to the text of the <strong class=html>TITLE</strong> attribute, not to the content of the link.</p>
+<div class=transitional>
+<p><a name="target">The <strong class=html>TARGET</strong> attribute</a> is used with <a href="../frames/index.html">frames</a> to specify in which frame the link should be rendered. If no frame with such a name exists, the link is rendered in a new window unless overridden by the user. Special frame names begin with an underscore:</p>
+<ul>
+  <li><strong class=html>_blank</strong> renders the link in a new, unnamed window</li>
+  <li><strong class=html>_self</strong> renders the link in the current frame (useful for overriding a <strong class=html><a href="base.html">BASE</a> TARGET</strong>)</li>
+  <li><strong class=html>_parent</strong> renders the link in the immediate <strong class=html><a href="../frames/frameset.html">FRAMESET</a></strong> parent</li>
+  <li><strong class=html>_top</strong> renders the link in the full, unframed window</li>
+</ul>
+<p class=note>In HTML 4.0, the <strong class=html>TARGET</strong> attribute value is <em>case-insensitive</em>, so that <strong class=html>_top</strong> and <strong class=html>_TOP</strong> both have the same meaning. However, most browsers treat the <strong class=html>TARGET</strong> attribute value as <em>case-sensitive</em> and do not recognize <strong class=html>_TOP</strong> as having the special meaning of <strong class=html>_top</strong>.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/links.html#edef-LINK">LINK in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#link">LINK in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.2.4">LINK in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/head/link.html">LINK in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.36.html">LINK in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://www.euronet.nl/~tekelenb/WWW/LINK/"><cite>The LINK element: Navigating the WWW</cite></a></li>
+  <li><a href="http://www.subotnik.net/html/link.html">Subotnik: The 'link'-Element in (X)HTML</a></li>
+  <li><a href="http://www.w3.org/Metadata/">Metadata at W3C</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>FIELDSET - Form Control Group</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's FIELDSET element for grouping form controls.">
+<meta name="keywords" content="FIELDSET, fieldset element, form, controls, control group, grouping, forms, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;fieldset&gt; tag, &lt;FIELDSET&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>FIELDSET - Form Control Group</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;FIELDSET&gt;</strong>...<strong class=required>&lt;/FIELDSET&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>A <a href="legend.html">LEGEND</a> element followed by zero or more <a href="../block.html">block-level elements</a> and <a href="../inline.html">inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="../block/blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <span class=transitional><a href="../block/center.html">CENTER</a>, </span><a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="../block/div.html">DIV</a>, FIELDSET, <a href="form.html">FORM</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span><a href="../block/noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>FIELDSET</strong> element defines a <em>form control group</em>. By grouping related form controls, authors can divide a form into smaller, more manageable parts, improving the usability disaster that can strike when confronting users with too many form controls. The grouping provided by <strong class=html>FIELDSET</strong> also helps the accessibility of forms to those using aural browsers by allowing these users to more easily orient themselves when filling in a large form.</p>
+<p>While <strong class=html>FIELDSET</strong> is not widely supported by current browsers, it can be used safely by explicitly closing any preceding <strong class=html><a href="../block/p.html">P</a></strong> element with <strong class=html>&lt;/P&gt;</strong> or by including an empty <strong class=html>P</strong> prior to the <strong class=html>FIELDSET</strong>. This causes non-supporting browsers to infer the start of a <a href="../block.html">block-level element</a> even though they ignore the block-level <strong class=html>FIELDSET</strong> element.</p>
+<p>The content of a <strong class=html>FIELDSET</strong> element must begin with a <strong class=html><a href="legend.html">LEGEND</a></strong> to provide a caption for the group of controls. Following the <strong class=html>LEGEND</strong>, <strong class=html>FIELDSET</strong> may contain any <a href="../inline.html">inline</a> or <a href="../block.html">block-level</a> element, including another <strong class=html>FIELDSET</strong>.</p>
+<p>An example follows:</p>
+<pre class=example><code class=html>&lt;FORM METHOD=post ACTION="/cgi-bin/order.cgi"&gt;
+
+  <strong>&lt;FIELDSET&gt;</strong>
+    &lt;LEGEND ACCESSKEY=I&gt;Contact Information&lt;/LEGEND&gt;
+    &lt;TABLE&gt;
+      &lt;TR&gt;
+        &lt;TD&gt;
+          &lt;LABEL FOR=name ACCESSKEY=N&gt;Name:&lt;/LABEL&gt;
+        &lt;/TD&gt;
+        &lt;TD&gt;
+          &lt;INPUT TYPE=text NAME=name ID=name&gt;
+        &lt;/TD&gt;
+      &lt;/TR&gt;
+      &lt;TR&gt;
+        &lt;TD&gt;
+          &lt;LABEL FOR=email ACCESSKEY=E&gt;E-mail Address:&lt;/LABEL&gt;
+        &lt;/TD&gt;
+        &lt;TD&gt;
+          &lt;INPUT TYPE=text NAME=email ID=email&gt;
+        &lt;/TD&gt;
+      &lt;/TR&gt;
+      &lt;TR&gt;
+        &lt;TD&gt;
+          &lt;LABEL FOR=addr ACCESSKEY=A&gt;Mailing Address:&lt;/LABEL&gt;
+        &lt;/TD&gt;
+        &lt;TD&gt;
+          &lt;TEXTAREA NAME=address ID=addr ROWS=4 COLS=40&gt;&lt;/TEXTAREA&gt;
+        &lt;/TD&gt;
+      &lt;/TR&gt;
+    &lt;/TABLE&gt;
+  <strong>&lt;/FIELDSET&gt;</strong>
+
+  <strong>&lt;FIELDSET&gt;</strong>
+    &lt;LEGEND ACCESSKEY=O&gt;Ordering Information&lt;/LEGEND&gt;
+    &lt;P&gt;Please select the product(s) that you wish to order:&lt;/P&gt;
+    &lt;P&gt;
+      &lt;LABEL ACCESSKEY=3&gt;
+        &lt;INPUT TYPE=checkbox NAME=products VALUE="HTML 3.2 Reference"&gt;
+        &lt;A HREF="/reference/wilbur/"&gt;HTML 3.2 Reference&lt;/A&gt;
+      &lt;/LABEL&gt;
+      &lt;BR&gt;
+      &lt;LABEL ACCESSKEY=4&gt;
+        &lt;INPUT TYPE=checkbox NAME=products VALUE="HTML 4.0 Reference"&gt;
+        &lt;A HREF="/reference/html40/"&gt;HTML 4.0 Reference&lt;/A&gt;
+      &lt;/LABEL&gt;
+      &lt;BR&gt;
+      &lt;LABEL ACCESSKEY=S&gt;
+        &lt;INPUT TYPE=checkbox NAME=products VALUE="CSS Guide"&gt;
+        &lt;A HREF="/reference/css/"&gt;Cascading Style Sheets Guide&lt;/A&gt;
+      &lt;/LABEL&gt;
+    &lt;/P&gt;
+  <strong>&lt;/FIELDSET&gt;</strong>
+
+  <strong>&lt;FIELDSET&gt;</strong>
+    &lt;LEGEND ACCESSKEY=C&gt;Credit Card Information&lt;/LEGEND&gt;
+    &lt;P&gt;
+      &lt;LABEL ACCESSKEY=V&gt;
+        &lt;INPUT TYPE=radio NAME=card VALUE=visa&gt; Visa
+      &lt;/LABEL&gt;
+      &lt;LABEL ACCESSKEY=M&gt;
+        &lt;INPUT TYPE=radio NAME=card VALUE=mc&gt; MasterCard
+      &lt;/LABEL&gt;
+      &lt;BR&gt;
+      &lt;LABEL ACCESSKEY=u&gt;
+        Number: &lt;INPUT TYPE=text NAME=number&gt;
+      &lt;/LABEL&gt;
+      &lt;BR&gt;
+      &lt;LABEL ACCESSKEY=E&gt;
+        Expiry: &lt;INPUT TYPE=text NAME=expiry&gt;
+      &lt;/LABEL&gt;
+    &lt;/P&gt;
+  <strong>&lt;/FIELDSET&gt;</strong>
+
+  &lt;P&gt;
+    &lt;INPUT TYPE=submit VALUE="Submit order"&gt;
+    &lt;INPUT TYPE=reset VALUE="Clear order form"&gt;
+  &lt;/P&gt;
+
+&lt;/FORM&gt;</code></pre>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-FIELDSET">FIELDSET in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

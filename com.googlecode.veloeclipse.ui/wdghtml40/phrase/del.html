@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>DEL - Deleted Text</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's DEL element for deleted text.">
+<meta name="keywords" content="DEL, del element, delete, deleted, text, remove, removed, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;del&gt; tag, &lt;DEL&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>DEL - Deleted Text</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;DEL&gt;</strong>...<strong class=required>&lt;/DEL&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>CITE=<var><a href="../values.html#uri">URI</a></var> (reason for deletion)</li>
+        <li>DATETIME=<var><a href="../values.html#datetime">Datetime</a></var> (date and time of deletion)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>DEL</strong> element contains content that has been <em>deleted</em>. This element is useful in marking changes from one version of a document to the next. Through <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, authors can suggest an appropriate rendering, such as not displaying the deleted content or rendering the text with a strike-through style.</p>
+<p><strong class=html>DEL</strong> may be used as either a <a href="../block.html">block-level element</a> or an <a href="../inline.html">inline element</a>. If used as an inline element (<abbr title="for example"><i lang=la>e.g.</i></abbr>, within a <strong class=html><a href="../block/p.html">P</a></strong>), then <strong class=html>DEL</strong> may not contain any block-level elements.</p>
+<p>The optional <strong class=html>CITE</strong> attribute of <strong class=html>DEL</strong> gives a <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> with information on why the content was deleted. A brief explanation for the deletion can be given with the <strong class=html>TITLE</strong> attribute, which may be rendered as a "tooltip" by some browsers.</p>
+<p>The optional <strong class=html>DATETIME</strong> attribute specifies the date and time of the deletion. The value is case-sensitive and of the form <strong class=html><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var><var>TZD</var></strong>. See the <a href="../values.html#datetime" title="Datetime Values">values</a> section for a full explanation of this format.</p>
+<p>An example follows:</p>
+<p class=example><code class=html><strong>&lt;DEL CITE="http://www.w3.org/TR/REC-html40/appendix/changes.html#h-A.1.3" DATETIME="1997-12-19T00:00:00-05:00" TITLE="XMP is obsolete"&gt;</strong>&lt;P&gt;The XMP element contains preformatted text in which markup other than an end tag is treated as literal text.&lt;/P&gt;<strong>&lt;/DEL&gt;</strong></code></p>
+<div class=transitional>
+<p>Since <strong class=html>DEL</strong> is poorly supported among browsers, authors may wish to use a <a href="../fontstyle/index.html">font style element</a> such as <strong class=html><a href="../fontstyle/strike.html">STRIKE</a></strong> (<a href="../deprecated.html">deprecated</a> in HTML 4.0) to attempt to convey the meaning of <strong class=html>DEL</strong> to non-supporting visual browsers. The previous example could also be marked up as follows:</p>
+<p class=example><code class=html><strong>&lt;DEL CITE="http://www.w3.org/TR/REC-html40/appendix/changes.html#h-A.1.3" DATETIME="1997-12-19T00:00:00-05:00" TITLE="XMP is obsolete"&gt;</strong>&lt;P&gt;&lt;STRIKE&gt;The XMP element is used for preformatted text in which markup other than an end tag is treated as literal text.&lt;/STRIKE&gt;&lt;/P&gt;<strong>&lt;/DEL&gt;</strong></code></p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/text.html#edef-del">DEL in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

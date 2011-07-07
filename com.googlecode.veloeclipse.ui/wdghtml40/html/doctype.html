@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>DOCTYPE - Document Type Declaration</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0 Document Type Declarations for giving the version of HTML to which a document adheres.">
+<meta name="keywords" content="DOCTYPE, doctype, document type declaration, document type definition, DTD, dtd, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;!doctype&gt; tag, &lt;!DOCTYPE&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>DOCTYPE - Document Type Declaration</h1>
+<p>Each <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document must begin with a <em>document type declaration</em> that declares which version of <abbr class=initialism title="HyperText Markup Language">HTML</abbr> the document adheres to. HTML 4.0 comes in three flavors, each with a different <strong class=html>DOCTYPE</strong>:</p>
+<dl>
+  <dt><a name=strict>HTML 4.0 Strict</a></dt>
+  <dd>
+    <p>HTML 4.0 Strict is a trimmed down version of HTML 4.0 that emphasizes structure over presentation. <a href="../deprecated.html">Deprecated</a> elements and attributes (including most presentational attributes), <a href="../frames/index.html">frames</a>, and link targets are not allowed in HTML 4.0 Strict. By writing to HTML 4.0 Strict authors can achieve accessible, structurally rich documents that easily adapt to <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> and different browsing situations. However, since many browsers lack full support for style sheets, HTML 4.0 Strict documents may look bland on common visual browsers such as Netscape Navigator 3.<var>x</var>.</p>
+    <p>The document type declaration for HTML 4.0 Strict is</p>
+    <pre><code class=html>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+        "http://www.w3.org/TR/REC-html40/strict.dtd"&gt;</code></pre>
+  </dd>
+  <dt><a name=transitional>HTML 4.0 Transitional</a></dt>
+  <dd>
+    <p>HTML 4.0 Transitional includes all elements and attributes of <a href="#strict">HTML 4.0 Strict</a> but adds presentational attributes, <a href="../deprecated.html">deprecated</a> elements, and link targets. HTML 4.0 Transitional recognizes the relatively poor browser support for <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, allowing many <abbr class=initialism title="HyperText Markup Language">HTML</abbr> presentation features to be used as a transition towards HTML 4.0 Strict.</p>
+    <p>The document type declaration for HTML 4.0 Transitional is</p>
+    <pre><code class=html>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+        "http://www.w3.org/TR/REC-html40/loose.dtd"&gt;</code></pre>
+  </dd>
+  <dt><a name=frameset>HTML 4.0 Frameset</a></dt>
+  <dd>
+    <p>HTML 4.0 Frameset is a variant of <a href="#transitional">HTML 4.0 Transitional</a> for documents that use <a href="../frames/index.html">frames</a>. The <strong class=html><a href="../frames/frameset.html">FRAMESET</a></strong> element replaces the <strong class=html><a href="body.html">BODY</a></strong> in a Frameset document.</p>
+    <p>The document type declaration for HTML 4.0 Frameset is</p>
+    <pre><code class=html>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN"
+        "http://www.w3.org/TR/REC-html40/frameset.dtd"&gt;</code></pre>
+  </dd>
+</dl>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

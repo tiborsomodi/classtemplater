@@ -11,10 +11,9 @@ import java.io.StringWriter;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.Velocity;
+import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
@@ -26,42 +25,35 @@ public class TemplateGen {
 	private Attribute attrModel;
 	private Class classModel;
 	private String loggerName = "Classtempletar velocity logger";
-	private Logger log;
-	
+	StringResourceRepository repo;
+	VelocityEngine ve;
 
 	
-	public TemplateGen(GenerationType type){
+	public TemplateGen(GenerationType type) throws Exception {
 		this.type = type;
-		log = Logger.getLogger(loggerName);
+		ve = new VelocityEngine();
+		ve.setProperty("string.resource.loader.description",
+			"Velocity StringResource loader");
+		ve.setProperty("string.resource.loader.class",
+				"org.apache.velocity.runtime.resource.loader.StringResourceLoader");
+		ve.setProperty("string.resource.loader.repository.class",
+				"org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl");
+		ve.setProperty("string.resource.loader.repository.name", "repo");
+
+		ve.setProperty("resource.loader", "string");
+		ve.setProperty("input.encoding", "UTF-8");
+		ve.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+	      "org.apache.velocity.runtime.log.Log4JLogChute" );
+		ve.setProperty("runtime.log.logsystem.log4j.logger",
+				loggerName);
+
+		ve.init();
+		repo = StringResourceLoader.getRepository("repo");
 
 	}
 	
-	private String generateBase(String templateAsString) throws Exception {
+	private String generateBase(String templateName, boolean renderHc) throws Exception {
 		String res = "";
-		Velocity.addProperty("resource.loader", "string");
-		Velocity.addProperty("string.resource.loader.description",
-				"Velocity StringResource loader");
-		Velocity
-				.addProperty("string.resource.loader.class",
-						"org.apache.velocity.runtime.resource.loader.StringResourceLoader");
-		Velocity
-				.addProperty("string.resource.loader.repository.class",
-						"org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl");
-		Velocity.addProperty("string.resource.loader.repository.name", "repo");
-		Velocity.addProperty("input.encoding", "UTF-8");
-		Velocity.addProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
-	      "org.apache.velocity.runtime.log.Log4JLogChute" );
-		Velocity.addProperty("runtime.log.logsystem.log4j.logger",
-				loggerName);
-
-
-		Velocity.init();
-		StringResourceRepository repo = StringResourceLoader.getRepository("repo");
-
-		String templateName = "/templates/thetemplate.vm";
-		repo.putStringResource(templateName, templateAsString);
-
-
 		VelocityContext context = new VelocityContext();
 
 		if (type == GenerationType.CLASS){
@@ -105,7 +97,10 @@ public class TemplateGen {
 		
 		Template template = null;
 
-		template = Velocity.getTemplate(templateName);
+		if (!renderHc){
+			templateName = "withoutHc_" + templateName;
+		}
+		template = ve.getTemplate(templateName);
 
 		StringWriter sw = new StringWriter();
 
@@ -116,21 +111,27 @@ public class TemplateGen {
 	}
 	
 	public String generate(
-			String templateAsString
+			String templateName
+			, boolean renderHc
 			, Attribute model
 			) throws Exception {
 		attrModel = model;
-		return generateBase(templateAsString);
+		return generateBase(templateName, renderHc);
 	}
 	
 
 	public String generate(
-			String templateAsString
+			String templateName
+			, boolean renderHc
 			, Class classModel
 			) throws Exception {
 		this.classModel = classModel;
 		
-		return generateBase(templateAsString);
+		return generateBase(templateName, renderHc);
 
+	}
+	
+	public void putTemplate(String name, String templateAsString){
+		repo.putStringResource(name, templateAsString);
 	}
 }

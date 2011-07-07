@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Structure of an HTML 4.0 Document</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="index.html">
+<link rel=StyleSheet href="style.css" type="text/css">
+<link rel=StyleSheet href="aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="An explanation of elements, tags, and attributes, and how they are used in an HTML 4.0 document.">
+<meta name="keywords" content="elements, tags, attributes, element, tag, attribute, structure, HTML 4.0 document, HTML4 document, documents, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG">
+</head>
+<body>
+<h2><img src="wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>Structure of an HTML 4.0 Document</h1>
+<ul>
+  <li><a href="#elements">Elements and Tags</a></li>
+  <li><a href="#attributes">Attributes</a></li>
+  <li><a href="#characters">Special Characters</a></li>
+  <li><a href="#comments">Comments</a></li>
+  <li><a href="#doc">A Complete HTML 4.0 Document</a></li>
+  <li><a href="#validation">Validating your <abbr class=initialism title="HyperText Markup Language">HTML</abbr></a></li>
+</ul>
+<h2><a name=elements>Elements and Tags</a></h2>
+<p><dfn>Elements</dfn> are the structures that describe parts of an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document. For example, the <strong class=html><a href="block/p.html">P</a></strong> element represents a <em>paragraph</em> while the <strong class=html><a href="phrase/em.html">EM</a></strong> element gives <em>emphasized</em> content.</p>
+<p>An element has three parts: a start tag, content, and an end tag. A <dfn>tag</dfn> is special text--"markup"--that is delimited by "<strong class=html>&lt;</strong>" and "<strong class=html>&gt;</strong>". An end tag includes a "<strong class=html>/</strong>" after the "<strong class=html>&lt;</strong>". For example, the <strong class=html>EM</strong> element has a start tag, <strong class=html>&lt;EM&gt;</strong>, and an end tag, <strong class=html>&lt;/EM&gt;</strong>. The start and end tags surround the <em>content</em> of the <strong class=html>EM</strong> element:</p>
+<p class=example><code class=html>&lt;EM&gt;This is emphasized text&lt;/EM&gt;</code></p>
+<p>Element names are always case-insensitive, so <strong class=html>&lt;em&gt;</strong>, <strong class=html>&lt;eM&gt;</strong>, and <strong class=html>&lt;EM&gt;</strong> are all the same.</p>
+<p>Elements cannot overlap each other. If the start tag for an <strong class=html>EM</strong> element appears within a <strong class=html>P</strong>, the <strong class=html>EM</strong>'s end tag must also appear within the same <strong class=html>P</strong> element.</p>
+<p>Some elements allow the start or end tag to be omitted. For example, the <strong class=html><a href="lists/li.html">LI</a></strong> end tag is always optional since the element's end is implied by the next <strong class=html>LI</strong> element or by the end of the list:</p>
+<pre class=example><code class=html>&lt;UL&gt;
+  &lt;LI&gt;First list item; no end tag
+  &lt;LI&gt;Second list item; optional end tag included&lt;/LI&gt;
+  &lt;LI&gt;Third list item; no end tag
+&lt;/UL&gt;</code></pre>
+<p>Some elements have no end tag because they have no content. These elements, such as the <strong class=html><a href="special/br.html">BR</a></strong> element for line breaks, are represented only by a start tag and are said to be <em>empty</em>.</p>
+<h2><a name=attributes>Attributes</a></h2>
+<p>An element's <dfn>attributes</dfn> define various properties for the element. For example, the <strong class=html><a href="special/img.html">IMG</a></strong> element takes a <strong class=html>SRC</strong> attribute to provide the location of the image and an <strong class=html>ALT</strong> attribute to give alternate text for those not loading images:</p>
+<p class=example><code class=html>&lt;IMG SRC="wdglogo.gif" ALT="Web Design Group"&gt;</code></p>
+<p>An attribute is included in the start tag only--never the end tag--and takes the form <strong class=html><var>Attribute-name</var>="<var>Attribute-value</var>"</strong>. The attribute value is delimited by single or double quotes. The quotes are optional if the attribute value consists solely of letters in the range A-Z and a-z, digits (0-9), hyphens ("-"), and periods (".").</p>
+<p>Attribute names are case-insensitive, but attribute values may be case-sensitive.</p>
+<h2><a name=characters>Special Characters</a></h2>
+<p>Certain characters in <abbr class=initialism title="HyperText Markup Language">HTML</abbr> are reserved for use as markup and must be escaped to appear literally. The "&lt;" character may be represented with an <em>entity</em>, <strong class=html>&amp;lt;</strong>. Similarly, "&gt;" is escaped as <strong class=html>&amp;gt;</strong>, and "&amp;" is escaped as <strong class=html>&amp;amp;</strong>. If an attribute value contains a double quotation mark and is delimited by double quotation marks, then the quote should be escaped as <strong class=html>&amp;quot;</strong>.</p>
+<p>Other entities exist for special characters that cannot easily be entered with some keyboards. For example, the copyright symbol ("©") may be represented with the entity <strong class=html>&amp;copy;</strong>. See the <a href="entities/index.html">Entities</a> section for a complete list of HTML 4.0 entities.</p>
+<p>As an alternative to entities, authors may also use <em>numeric character references</em>. Any character may be represented by a numeric character reference based on its "code position" in <a href="http://www.unicode.org/">Unicode</a>. For example, one could use <strong class=html>&amp;#169;</strong> for the copyright symbol or <strong class=html>&amp;#1575;</strong> for the Arabic letter ALEF.</p>
+<h2><a name=comments>Comments</a></h2>
+<p>Comments in <abbr class=initialism title="HyperText Markup Language">HTML</abbr> have a complicated syntax that can be simplified by following this rule: Begin a comment with "<strong class=html>&lt;!--</strong>", end it with "<strong class=html>--&gt;</strong>", and do not use "<strong class=html>--</strong>" within the comment.</p>
+<p class=example><code class=html>&lt;!-- An example comment --&gt;</code></p>
+<h2><a name=doc>A Complete HTML 4.0 Document</a></h2>
+<p>An HTML 4.0 document begins with a <strong class=html><a href="html/doctype.html">DOCTYPE</a></strong> declaration that declares the version of <abbr class=initialism title="HyperText Markup Language">HTML</abbr> to which the document conforms. The <strong class=html><a href="html/html.html">HTML</a></strong> element follows and contains the <strong class=html><a href="head/head.html">HEAD</a></strong> and <strong class=html><a href="html/body.html">BODY</a></strong>. The <strong class=html>HEAD</strong> contains information about the document, such as its title and keywords, while the <strong class=html>BODY</strong> contains the actual content of the document, made up of <a href="block.html">block-level elements</a> and <a href="inline.html">inline elements</a>. A basic HTML 4.0 document takes on the following form:</p>
+<pre class=example><code class=html>&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+        "http://www.w3.org/TR/REC-html40/strict.dtd"&gt;
+&lt;HTML&gt;
+  &lt;HEAD&gt;
+    &lt;TITLE&gt;The document title&lt;/TITLE&gt;
+  &lt;/HEAD&gt;
+  &lt;BODY&gt;
+    &lt;H1&gt;Main heading&lt;/H1&gt;
+    &lt;P&gt;A paragraph.&lt;/P&gt;
+    &lt;P&gt;Another paragraph.&lt;/P&gt;
+    &lt;UL&gt;
+      &lt;LI&gt;A list item.&lt;/LI&gt;
+      &lt;LI&gt;Another list item.&lt;/LI&gt;
+    &lt;/UL&gt;
+  &lt;/BODY&gt;
+&lt;/HTML&gt;</code></pre>
+<p class=note>In a <a href="html/doctype.html#frameset">Frameset</a> document, the <strong class=html><a href="frames/frameset.html">FRAMESET</a></strong> element replaces the <strong class=html><a href="html/body.html">BODY</a></strong> element.</p>
+<h2><a name=validation>Validating your <abbr class=initialism title="HyperText Markup Language">HTML</abbr></a></h2>
+<p>Each <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document should be <em>validated</em> to check for errors such as missing quotation marks (<strong class=oops>&lt;A HREF="oops.html&gt;Oops&lt;/A&gt;</strong>), misspelled element or attribute names, and invalid structures. Such errors are not always apparent when viewing a document in a browser since browsers are designed to recover from an author's errors. However, different browsers recover in different ways, sometimes resulting in invisible text on one browser but not on others.</p>
+<p>The <a href="http://www.htmlhelp.com/tools/validator/"><abbr class=initialism title="Web Design Group">WDG</abbr> <abbr class=initialism title="HyperText Markup Language">HTML</abbr> Validator</a> checks the validity of HTML 4.0 documents.</p>
+<p class=note>Note that some programs claim to be validators but really are not. A validator checks a document against a formal <em>document type definition</em> (<abbr class=initialism>DTD</abbr>) while other programs such as <em>lints</em> warn about valid but unsafe <abbr class=initialism title="HyperText Markup Language">HTML</abbr>. Both kinds of programs are useful, but validation should never be forgotten.</p>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="olist.html">Elements by Function</a> ~ <a href="alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

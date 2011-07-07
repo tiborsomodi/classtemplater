@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>MAP - Image Map</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's MAP element for client-side image maps.">
+<meta name="keywords" content="map element, csim, client-side image map, imagemap, imagemapping, image mapping, hotspots, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;map&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>MAP - Image Map</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;MAP&gt;</strong>...<strong class=required>&lt;/MAP&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (name of map)</strong></li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>One or more <a href="../block.html">block-level elements</a> or one or more <a href="area.html">AREA</a> elements</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>MAP</strong> element defines a <em>client-side image map</em> for use with an <strong class=html><a href="img.html">IMG</a></strong> or <strong class=html><a href="object.html">OBJECT</a></strong>. <strong class=html>MAP</strong>'s required <strong class=html>NAME</strong> attribute is used as an anchor for the <strong class=html>USEMAP</strong> attribute of the <strong class=html>IMG</strong> or <strong class=html>OBJECT</strong>.</p>
+<p class=note><abbr class=initialism title="HyperText Markup Language">HTML</abbr> allows <strong class=html>IMG</strong> elements in different documents to use the same <strong class=html>MAP</strong> definition from just one file, but many browsers do not support this and require the <strong class=html>MAP</strong> and <strong class=html>IMG</strong> elements to be in the same document.</p>
+<p><strong class=html>MAP</strong> was originally defined to take one or more <strong class=html><a href="area.html">AREA</a></strong> elements that specified the coordinates of a clickable region on the image. An example follows:</p>
+<p class=example><code class=html>&lt;MAP NAME=mymap&gt;<br>&lt;AREA HREF="/reference/" ALT="HTML and CSS Reference" COORDS="5,5,95,195"&gt;<br>&lt;AREA HREF="/design/" ALT="Design Guide" COORDS="105,5,195,195"&gt;<br>&lt;AREA HREF="/tools/" ALT="Tools" COORDS="205,5,295,195"&gt;<br>&lt;/MAP&gt;<br>&lt;IMG SRC="sitemap.gif" ALT="Site map" USEMAP="#mymap" WIDTH=300 HEIGHT=200&gt;</code></p>
+<p>HTML 4.0 extends the <strong class=html>MAP</strong> element to take one or more <a href="../block.html">block-level elements</a> as an alternative to using <strong class=html><a href="area.html">AREA</a></strong> elements. Combined with the <strong class=html><a href="object.html">OBJECT</a></strong> element, this allows rich alternative content for those not loading images. However, due to poor and buggy browser support for <strong class=html><a href="object.html">OBJECT</a></strong>, client-side image maps through the <strong class=html><a href="img.html">IMG</a></strong> element are more reliable.</p>
+<p>When <strong class=html>MAP</strong> is given within an <strong class=html>OBJECT</strong>, its contents are not rendered on image-loading browsers. <strong class=html>MAP</strong> may also be used outside the <strong class=html>OBJECT</strong> element so that its contents are rendered.</p>
+<p>The following example gives two images, one an alternate if the first type of image is not supported. The images share a single image map definition, which is included within the <strong class=html>OBJECT</strong> element. The <strong class=html>MAP</strong> element contains a menu of links to be rendered on browsers not loading images.</p>
+<p class=example><code class=html>&lt;OBJECT DATA="sitemap.png" USEMAP="#map" TYPE="image/png" TITLE="Site map" WIDTH=300 HEIGHT=200&gt;<br>&lt;OBJECT DATA="sitemap.gif" USEMAP="#map" TYPE="image/gif" TITLE="Site map" WIDTH=300 HEIGHT=200&gt;<br>&lt;MAP NAME=map&gt;<br>&lt;UL&gt;<br>&lt;LI&gt;&lt;A HREF="/reference/" COORDS="5,5,95,195"&gt;HTML and CSS Reference&lt;/A&gt;&lt;/LI&gt;<br>&lt;LI&gt;&lt;A HREF="/design/" COORDS="105,5,195,195"&gt;Design Guide&lt;/A&gt;&lt;/LI&gt;<br>&lt;LI&gt;&lt;A HREF="/tools/" COORDS="205,5,295,195"&gt;Tools&lt;/A&gt;&lt;/LI&gt;<br>&lt;/UL&gt;<br>&lt;/MAP&gt;<br>&lt;/OBJECT&gt;<br>&lt;/OBJECT&gt;</code></p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/objects.html#edef-MAP">MAP in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#map">MAP in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/map.html">MAP in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.37.html">MAP in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>
+

@@ -130,6 +130,12 @@ public class Class {
 	}
 	
 	public List&lt;Property&gt; getProperties()
+	
+	// returns package without the last level segments
+	public String getParentPackage(int level);
+	
+	// returns path without the last level segments
+	public String getParentRelativePath(int level);
 		
 }
 </pre>
@@ -254,10 +260,25 @@ public class Annotation {
 
 	String name;
 	Map&lt;String, String&gt; params = new HashMap&lt;String, String&gt;();
+	Map&lt;String, Object&gt; paramObjects = new HashMap&lt;String, Object&gt;();
 	
 	public String getParamValue(String name){
 		return params.get("name");
 	}
+	
+	public List&lt;Annotation&gt; getNestedAnnotationList(String name);
+	
+	public Object getParamObject(String name);
+	
+	public Boolean getParamBoolean(String name);
+	
+	public Double getParamDouble(String name);
+	
+	public Integer getParamInteger(String name);
+	
+	public Long getParamLong(String name);
+	
+	public List&lt;String&gt; getParamStringList(String name);
 	
 }
 

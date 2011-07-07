@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>HTML 4.0 Attribute Values</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="index.html">
+<link rel=StyleSheet href="style.css" type="text/css">
+<link rel=StyleSheet href="aural.css" type="text/css" media=aural>
+<meta http-equiv="Content-Style-Type" content="text/css">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of common kinds of HTML 4.0 attribute values.">
+<meta name="keywords" content="attribute values, value, cdata, CDATA, id, ID, idref, IDREF, idrefs, IDREFS, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG">
+<style type="text/css">
+<!--
+  table { margin-left: 20% }
+  td, th { text-align: center }
+-->
+</style>
+</head>
+<body>
+<h2><img src="wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>HTML 4.0 Attribute Values</h1>
+<p>There are various kinds of attribute values in HTML 4.0. This document describes common types of values.</p>
+
+<h2><a name=cdata>CDATA</a></h2>
+<p>Attribute values of type CDATA are made up of a sequence of characters that may include <a href="entities/index.html">entities</a>. Line feeds are ignored while each carriage return and tab is replaced with a space. Browsers may ignore leading and trailing whitespace within the attribute value.</p>
+<p>CDATA attribute values are typically case-sensitive, though this is not the case with all attributes that take CDATA values.</p>
+
+<h2><a name=id>ID</a> and <a name=name>NAME</a></h2>
+<p>Attribute values of type ID and NAME must begin with a letter in the range A-Z or a-z and may be followed by letters (A-Za-z), digits (0-9), hyphens ("-"), underscores ("_"), colons (":"), and periods ("."). These values are case-sensitive.</p>
+
+<h2><a name=idref>IDREF</a> and <a name=idrefs>IDREFS</a></h2>
+<p>IDREF and IDREFS values refer to values of other elements' <strong class=html><a href="attrs.html#id">ID</a></strong> attributes. An IDREF value is a single ID while an IDREFS value is a space-separated list of IDs. IDREF and IDREFS are case-sensitive.</p>
+
+<h2><a name=number>Number</a></h2>
+<p>Number attribute values are numbers made of at least one digit in the range 0-9.</p>
+
+<h2><a name=text>Text</a></h2>
+<p>Text attribute values are <a href="#cdata">CDATA</a> values intended to be human readable strings.</p>
+
+<h2><a name=uri>URI</a></h2>
+<p>URI attribute values are Uniform Resource Identifiers (<abbr class=initialism>URI</abbr>s), as defined in <a href="http://www.ietf.org/rfc/rfc2396.txt"><abbr class=initialism title="Request For Comments">RFC</abbr> 2396</a>.</p>
+<p>URI attribute values may include full <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s such as <strong class=html>http://www.htmlhelp.com/</strong> as well as relative <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s such as <strong class=html>foo.html</strong> and <strong class=html>../foo/</strong>.</p>
+<p>While parts of a <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> may be case-insensitive, in general URI values are case-sensitive.</p>
+
+<h2><a name=color>Color</a></h2>
+<p>Color attribute values give a color definition. The value can be any hexadecimal number, specified according to the sRGB color space, or one of sixteen color names. Hexadecimal numbers must be prefixed by a "#" character.</p>
+<p>The case-insensitive color names and their sRGB values are as follows:</p>
+<table cellspacing=5 cellpadding=5>
+  <tr>
+    <th scope=col>Color Name</th>
+    <th scope=col>sRGB Value</th>
+  </tr>
+  <tr>
+    <td style="color: #000000; background: white">Black</td>
+    <td style="color: white; background: #000000">#000000</td>
+  </tr>
+  <tr>
+    <td style="color: #C0C0C0; background: white">Silver</td>
+    <td style="color: white; background: #C0C0C0">#C0C0C0</td>
+  </tr>
+  <tr>
+    <td style="color: #808080; background: white">Gray</td>
+    <td style="color: white; background: #808080">#808080</td>
+  </tr>
+  <tr>
+    <td style="color: #FFFFFF; background: silver">White</td>
+    <td style="color: silver; background: #FFFFFF">#FFFFFF</td>
+  </tr>
+  <tr>
+    <td style="color: #800000; background: white">Maroon</td>
+    <td style="color: white; background: #800000">#800000</td>
+  </tr>
+  <tr>
+    <td style="color: #FF0000; background: white">Red</td>
+    <td style="color: white; background: #FF0000">#FF0000</td>
+  </tr>
+  <tr>
+    <td style="color: #800080; background: white">Purple</td>
+    <td style="color: white; background: #800080">#800080</td>
+  </tr>
+  <tr>
+    <td style="color: #FF00FF; background: white">Fuchsia</td>
+    <td style="color: white; background: #FF00FF">#FF00FF</td>
+  </tr>
+  <tr>
+    <td style="color: #008000; background: white">Green</td>
+    <td style="color: white; background: #008000">#008000</td>
+  </tr>
+  <tr>
+    <td style="color: #00FF00; background: white">Lime</td>
+    <td style="color: white; background: #00FF00">#00FF00</td>
+  </tr>
+  <tr>
+    <td style="color: #808000; background: white">Olive</td>
+    <td style="color: white; background: #808000">#808000</td>
+  </tr>
+  <tr>
+    <td style="color: #FFFF00; background: silver">Yellow</td>
+    <td style="color: silver; background: #FFFF00">#FFFF00</td>
+  </tr>
+  <tr>
+    <td style="color: #000080; background: white">Navy</td>
+    <td style="color: white; background: #000080">#000080</td>
+  </tr>
+  <tr>
+    <td style="color: #0000FF; background: white">Blue</td>
+    <td style="color: white; background: #0000FF">#0000FF</td>
+  </tr>
+  <tr>
+    <td style="color: #008080; background: white">Teal</td>
+    <td style="color: white; background: #008080">#008080</td>
+  </tr>
+  <tr>
+    <td style="color: #00FFFF; background: silver">Aqua</td>
+    <td style="color: silver; background: #00FFFF">#00FFFF</td>
+  </tr>
+</table>
+<p class=note>Note that the hexadecimal form is better supported than the color names for the color attributes of <strong class=html><a href="html/body.html">BODY</a></strong>.</p>
+
+<h2><a name=pixels>Pixels</a></h2>
+<p>These attribute values are integers that represent a number of pixels.</p>
+
+<h2><a name=length>Length</a></h2>
+<p>Length attribute values may be either an integer--interpreted as a number of pixels--or a percentage of the horizontal or vertical space. The value <strong class=html>50%</strong> means half the available space while <strong class=html>50</strong> means 50 pixels.</p>
+
+<h2><a name=multilength>MultiLength</a> and <a name=multilengths>MultiLengths</a></h2>
+<p>MultiLength attribute values may be an integer in pixels, a percentage of the horizontal or vertical space, or a relative length expressed as <strong class=html><var>i</var>*</strong> where <strong class=html><var>i</var></strong> is an integer. In allotting space, a browser first allots pixel and percentage lengths, then divides the remaining space among all elements with a relative length. An element with a length of <strong class=html>3*</strong> will be allotted three times the space of an element with length <strong class=html>1*</strong>. The value <strong class=html>*</strong> is equivalent to <strong class=html>1*</strong> and is often used to mean "fill the remaining space."</p>
+<p>A MultiLengths value is a comma-separated list of MultiLength values.</p>
+
+<h2><a name=contenttype>ContentType</a> and <a name=contenttypes>ContentTypes</a></h2>
+<p>These attribute values are content types (also known as media types or <acronym title="Multipurpose Internet Mail Extensions">MIME</acronym> types) of a linked or embedded resource. Values of type ContentType give a single content type while values of type ContentTypes give a comma-separated list of content types. Content types are case-insensitive.</p>
+<p>Commonly used content types include <strong class=html>text/html</strong>, <strong class=html>image/jpeg</strong>, <strong class=html>model/vrml</strong>, <strong class=html>video/quicktime</strong>, <strong class=html>application/java</strong>, <strong class=html>text/css</strong>, and <strong class=html>text/javascript</strong>. Many <a href="ftp://ftp.isi.edu/in-notes/iana/assignments/media-types/">common content types</a> are registered at the <abbr class=initialism title="Internet Assigned Numbers Authority">IANA</abbr>.</p>
+
+<h2><a name=languagecode>LanguageCode</a></h2>
+<p>Attribute values of type LanguageCode specify a language code according to <a href="http://www.ietf.org/rfc/rfc1766.txt" title="Tags for the Identification of Languages"><abbr class=initialism title="Request for Comments">RFC</abbr> 1766</a>. Examples of language codes include <strong class=html>en</strong> for English, <strong class=html>en-US</strong> for American English, and <strong class=html>ja</strong> for Japanese. Whitespace is not allowed in the language code, which is case-insensitive.</p>
+
+<h2><a name=charset>Charset</a> and <a name=charsets>Charsets</a></h2>
+<p>These attribute values specify character encodings of linked resources. Values of type Charset give a single character encoding while values of type Charsets give a space- and/or comma-separated list of character encodings. Character encodings are case-insensitive.</p>
+<p>Examples of character encodings include <strong class=html>ISO-8859-1</strong>, <strong class=html>SHIFT_JIS</strong>, and <strong class=html>UTF-8</strong>. A list of <a href="http://www.iana.org/assignments/character-sets">registered character encodings</a> is available at the <abbr class=initialism title="Internet Assigned Numbers Authority">IANA</abbr>.
+
+<h2><a name=character>Character</a></h2>
+<p>Character attribute values take a single Unicode character. The character may be specified with an <a href="entities/index.html">entity</a>.</p>
+
+<h2><a name=datetime>Datetime</a></h2>
+<p>Datetime attribute values give a date and time in the format <strong class=html><var>YYYY</var>-<var>MM</var>-<var>DD</var>T<var>hh</var>:<var>mm</var>:<var>ss</var><var>TZD</var></strong> where <var>YYYY</var> is a four-digit year, <var>MM</var> is a two-digit month (<strong class=html>01</strong> through <strong class=html>12</strong>), <var>DD</var> is a two-digit day (<strong class=html>01</strong> through <strong class=html>31</strong>), <var>hh</var> is a two-digit hour (<strong class=html>00</strong> through <strong class=html>23</strong>), <var>mm</var> is a two-digit minute (<strong class=html>00</strong> through <strong class=html>59</strong>), <var>ss</var> is a two-digit second (<strong class=html>00</strong> through <strong class=html>59</strong>), and <var>TZD</var> is the time zone designator. Note that the <strong class=html>T</strong> separating the date from the time must appear literally and is case-sensitive.</p>
+<p>The time zone designator may be one of the following:</p>
+<ul>
+  <li><strong class=html>Z</strong> (case-sensitive), which indicates Coordinated Universal Time (<abbr class=initialism>UTC</abbr>, basically the same as <abbr class=initialism title="Greenwich Mean Time">GMT</abbr>);</li>
+  <li><strong class=html>+hh:mm</strong>, the time ahead of <abbr class=initialism title="Coordinated Universal Time">UTC</abbr> in hours and minutes;</li>
+  <li><strong class=html>-hh:mm</strong>, the time behind <abbr class=initialism title="Coordinated Universal Time">UTC</abbr> in hours and minutes.</li>
+</ul>
+<p>If any of the two-digit components of the Datetime value are unknown, <strong class=html>00</strong> should be used.</p>
+
+<h2><a name=linktypes>LinkTypes</a></h2>
+<p>Attribute values of type LinkTypes give a space-separated list of link types. A link type is case-insensitive and may not contain whitespace. Each link type may be used any number of times in a given document.</p>
+<p class=note>While link types are case-insensitive, the <a href="http://lynx.browser.org/">Lynx</a> browser will render <strong class=html><a href="head/link.html">LINK</a></strong> elements with the same case as is given in the <strong class=html>REL</strong> or <strong class=html>REV</strong> attribute. Authors should therefore be consistent in their case, and may wish to capitalize the first letter while using lowercase for the rest.</p>
+<p>The following link types are defined in HTML 4.0, though authors may use other link types. The <strong class=html>Made</strong> link type, widely used as <strong class=html>&lt;LINK REV=Made HREF="mailto:liam@htmlhelp.com"&gt;</strong> to provide a contact link for the document author, is notably missing from the list of link types defined in HTML 4.0.</p>
+<ul>
+  <li><strong class=html>Alternate</strong> specifies an alternate version of the document. When used with the <strong class=html><a href="head/link.html">LINK</a></strong> element's <strong class=html>HREFLANG</strong> attribute, this value implies a translation of the document. When used with <strong class=html>LINK</strong>'s <strong class=html>MEDIA</strong> attribute, a media-specific version (<abbr title="for example"><i lang=la>e.g.</i></abbr>, for printing) is implied.</li>
+  <li><strong class=html>StyleSheet</strong> specifies an <a href="http://www.htmlhelp.com/reference/css/style-html.html#external">external style sheet</a> for the document. This link type can be combined with the <strong class=html>Alternate</strong> link type to define an alternate style sheet for the user to choose.</li>
+  <li><strong class=html>Start</strong> specifies the first document in a collection.</li>
+  <li><strong class=html>Next</strong> specifies the next document in a suggested sequence of reading. Browsers such as WebTV will preload documents identified as "next" to improve the perceived load time.</li>
+  <li><strong class=html>Prev</strong> specifies the previous document in a suggested sequence of reading.</li>
+  <li><strong class=html>Contents</strong> specifies a table of contents for the document.</li>
+  <li><strong class=html>Index</strong> gives an index for the document.</li>
+  <li><strong class=html>Glossary</strong> gives a glossary of terms used in the document.</li>
+  <li><strong class=html>Copyright</strong> specifies a document with copyright information.</li>
+  <li><strong class=html>Chapter</strong> specifies the chapter of a collection of documents.</li>
+  <li><strong class=html>Section</strong> specifies the section of a collection of documents.</li>
+  <li><strong class=html>Subsection</strong> specifies a subsection of a collection of documents.</li>
+  <li><strong class=html>Appendix</strong> gives an appendix for the collection of documents.</li>
+  <li><strong class=html>Help</strong> specifies a help document.</li>
+  <li><strong class=html>Bookmark</strong> refers to a key related document. The <strong class=html><a href="attrs.html#title">TITLE</a></strong> attribute provides a label for the bookmark.</li>
+</ul>
+
+<h2><a name=mediadesc>MediaDesc</a></h2>
+<p>Attribute values of type MediaDesc are <dfn>media descriptors</dfn>--a comma-separated list of media for which the linked resource is tailored. Media descriptors are <em>case-sensitive</em>.</p>
+<p>The following media descriptors are defined in HTML 4.0:</p>
+<ul>
+  <li><strong class=html>screen</strong> (the default), for non-paged computer screens;</li>
+  <li><strong class=html>tty</strong>, for fixed-pitch character grid displays (such as the display used by <a href="http://lynx.browser.org/">Lynx</a>);</li>
+  <li><strong class=html>tv</strong>, for television-type devices with low resolution and limited scrollability;</li>
+  <li><strong class=html>projection</strong>, for projectors;</li>
+  <li><strong class=html>handheld</strong>, for handheld devices (characterized by a small, monochrome display and limited bandwidth);</li>
+  <li><strong class=html>print</strong>, for output to a printer;</li>
+  <li><strong class=html>braille</strong>, for braille tactile feedback devices;</li>
+  <li><strong class=html>aural</strong>, for speech synthesizers;</li>
+  <li><strong class=html>all</strong>, for all devices.</li>
+</ul>
+
+<h2><a name=script>Script</a></h2>
+<p>Script attribute values are client-side scripts, typically a function call or a few short statements. The value may contain <a href="entities/index.html">entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr>, <strong class=html>&amp;quot;</strong>).</p>
+
+<h2><a name=stylesheet>StyleSheet</a></h2>
+<p>Attribute values of type StyleSheet are style sheet data. The value may contain <a href="entities/index.html">entities</a>.</p>
+
+<h2><a name=frametarget>FrameTarget</a></h2>
+<p>Attribute values of type FrameTarget must begin with a letter in the range A-Z or a-z, with the exception of the following special values that begin with an underscore:</p>
+<ul>
+  <li><strong class=html>_blank</strong> renders the link in a new, unnamed window</li>
+  <li><strong class=html>_self</strong> renders the link in the current frame (useful for overriding a <strong class=html><a href="head/base.html">BASE</a> TARGET</strong>)</li>
+  <li><strong class=html>_parent</strong> renders the link in the immediate <strong class=html><a href="frames/frameset.html">FRAMESET</a></strong> parent</li>
+  <li><strong class=html>_top</strong> renders the link in the full, unframed window</li>
+</ul>
+<p class=note>In HTML 4.0, the <strong class=html>TARGET</strong> attribute value is <em>case-insensitive</em>, so that <strong class=html>_top</strong> and <strong class=html>_TOP</strong> both have the same meaning. However, most browsers treat the <strong class=html>TARGET</strong> attribute value as <em>case-sensitive</em> and do not recognize <strong class=html>_TOP</strong> as having the special meaning of <strong class=html>_top</strong>.</p>
+
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="olist.html">Elements by Function</a> ~ <a href="alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

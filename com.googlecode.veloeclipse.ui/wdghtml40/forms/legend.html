@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LEGEND - Fieldset Caption</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's LEGEND element for captioning form control groups.">
+<meta name="keywords" content="LEGEND, legend element, fieldset, FIELDSET, caption, captions, captioning, header, heading, form, controls, control group, grouping, forms, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;legend&gt; tag, &lt;LEGEND&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>LEGEND - Fieldset Caption</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;LEGEND&gt;</strong>...<strong class=required>&lt;/LEGEND&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>ACCESSKEY=<var><a href="../values.html#character">Character</a></var> (shortcut key)</li>
+        <li class=transitional>ALIGN=[ top | bottom | left | right ] (alignment relative to fieldset)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="fieldset.html">FIELDSET</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>LEGEND</strong> element defines a <em>caption</em> for form controls grouped by the <strong class=html><a href="fieldset.html">FIELDSET</a></strong> element. The <strong class=html>LEGEND</strong> element must be at the start of a <strong class=html>FIELDSET</strong>, before any other elements.</p>
+<p>While the <strong class=html>LEGEND</strong> element is not widely supported by current browsers, it can still be used safely if a <a href="../block.html">block-level element</a> immediately follows the <strong class=html>LEGEND</strong>. Combined with careful use of <strong class=html><a href="fieldset.html">FIELDSET</a></strong>, this will cause non-supporting browsers to render the caption as its own paragraph. Elements such as <strong class=html><a href="../phrase/strong.html">STRONG</a></strong>, <strong class=html><a href="../fontstyle/b.html">B</a></strong>, and <strong class=html><a href="../fontstyle/big.html">BIG</a></strong> could also be used to help express the meaning of <strong class=html>LEGEND</strong> to non-supporting browsers.</p>
+<p>An example follows:</p>
+<pre class=example><code class=html>&lt;FIELDSET&gt;
+  <strong>&lt;LEGEND ACCESSKEY=C&gt;Credit Card Information&lt;/LEGEND&gt;</strong>
+  &lt;P&gt;
+    &lt;LABEL ACCESSKEY=V&gt;
+      &lt;INPUT TYPE=radio NAME=card VALUE=visa&gt; Visa
+    &lt;/LABEL&gt;
+    &lt;LABEL ACCESSKEY=M&gt;
+      &lt;INPUT TYPE=radio NAME=card VALUE=mc&gt; MasterCard
+    &lt;/LABEL&gt;
+    &lt;BR&gt;
+    &lt;LABEL ACCESSKEY=N&gt;
+      Number: &lt;INPUT TYPE=text NAME=number&gt;
+    &lt;/LABEL&gt;
+    &lt;BR&gt;
+    &lt;LABEL ACCESSKEY=E&gt;
+      Expiry: &lt;INPUT TYPE=text NAME=expiry&gt;
+    &lt;/LABEL&gt;
+  &lt;/P&gt;
+&lt;/FIELDSET&gt;</code></pre>
+<p><strong class=html>LEGEND</strong>'s <strong class=html>ACCESSKEY</strong> attribute, used throughout the preceding example, specifies a single Unicode character as a shortcut key for giving focus to the <strong class=html>LEGEND</strong>, allowing the user to quickly jump to a group of form controls. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<div class=transitional>
+<p>The <a href="../deprecated.html">deprecated</a> <strong class=html>ALIGN</strong> attribute of <strong class=html>LEGEND</strong> suggests where the caption should be positioned relative to the <strong class=html><a href="fieldset.html">FIELDSET</a></strong> on visual browsers. Possible values are <strong class=html>top</strong>, <strong class=html>bottom</strong>, <strong class=html>left</strong>, and <strong class=html>right</strong>. While <strong class=html>ALIGN</strong> is deprecated, no alternative currently exists in <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a>.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-LEGEND">LEGEND in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

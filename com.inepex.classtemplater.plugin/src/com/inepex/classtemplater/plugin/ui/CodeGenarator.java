@@ -1,7 +1,5 @@
 package com.inepex.classtemplater.plugin.ui;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +20,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.inepex.classtemplater.plugin.codegeneration.GenerationType;
 import com.inepex.classtemplater.plugin.logic.Attribute;
 import com.inepex.classtemplater.plugin.logic.Class;
+import com.inepex.classtemplater.plugin.logic.FileUtil;
 import com.inepex.classtemplater.plugin.logic.ResourceUtil;
 import com.inepex.classtemplater.plugin.logic.StringUtil;
 import com.inepex.classtemplater.plugin.logic.TemplateGen;
@@ -34,27 +33,15 @@ public class CodeGenarator {
 	
 	private List<IFile> modifiedFiles = new ArrayList<IFile>();
 	
-	public CodeGenarator(GenerationType type, IWorkbenchPart targetPart) {
+	public CodeGenarator(GenerationType type, IWorkbenchPart targetPart, TemplateGen templateGen) throws Exception {
 		this.type = type;
 		this.targetPart = targetPart;
-		templateGen = new TemplateGen(type);
+		this.templateGen = templateGen;		
 	}
-	
-	private String readFile(IFile file) throws Exception{
-		BufferedReader breader = new BufferedReader(new InputStreamReader(file.getContents(), "UTF-8"));
-		String content = "";
-		String strLine = "";
-		while ((strLine = breader.readLine()) != null) {
-			content += strLine + "\n";
-		}
-		breader.close();
-		return content;
-	}
-	
 	
 	
 	public String generate(boolean organize, IResource template, Attribute attr) throws Exception {
-		String templateContent = readFile((IFile)template);
+		String templateContent = FileUtil.readFile((IFile)template);
 		String outpath = "";
 		if (templateContent.startsWith("outpath")){
 			outpath = templateContent.substring(8, templateContent.indexOf('\n'));
@@ -64,7 +51,8 @@ public class CodeGenarator {
 			templateContent = templateContent.substring(templateContent.indexOf('\n') + 1);
 		}
 		String generated = templateGen.generate(
-				templateContent
+				template.getName()
+				, true
 				, attr
 				);
 
@@ -83,21 +71,27 @@ public class CodeGenarator {
 			, Class classModel
 			, boolean ignoreHcContent
 			, boolean dontRenderHc) throws Exception {
-		String templateContent = readFile((IFile)template);
-		if (dontRenderHc) templateContent = removeHcs(templateContent);
+		String templateContent = FileUtil.readFile((IFile)template);
 		String outpath = "";
 		if (templateContent.startsWith("outpath")){
 			outpath = templateContent.substring(8, templateContent.indexOf('\n'));
 			outpath = outpath.replace("${classname}", classModel.getName());
 			outpath = outpath.replace("${class.workspaceRelativePath}", classModel.getWorkspaceRelativePath());
-			templateContent = templateContent.substring(templateContent.indexOf('\n') + 1);
+			outpath = outpath.replace("${class.getParentRelativePath(1)}", classModel.getParentRelativePath(1));
+			outpath = outpath.replace("${class.getParentRelativePath(2)}", classModel.getParentRelativePath(2));
+			outpath = outpath.replace("${class.getParentRelativePath(3)}", classModel.getParentRelativePath(3));
+			outpath = outpath.replace("${class.getParentRelativePath(4)}", classModel.getParentRelativePath(4));
+			outpath = outpath.replace("${class.getParentRelativePath(5)}", classModel.getParentRelativePath(5));
+			outpath = outpath.replace("${class.getParentRelativePath(6)}", classModel.getParentRelativePath(6));
+			outpath = outpath.replace("${class.getParentRelativePath(7)}", classModel.getParentRelativePath(7));
 		}
 		String generated = templateGen.generate(
-				templateContent
+				template.getName()
+				, !dontRenderHc
 				, classModel
 				);
 
-		if (!outpath.equals("")){
+		if (!dontRenderHc && !outpath.equals("")){
 			if (!ignoreHcContent){
 				String actual = readActualVersion(outpath);
 				String merged = mergeHandWrittenCode(actual, generated);
@@ -176,7 +170,7 @@ public class CodeGenarator {
 		IWorkspaceRoot root = workspace.getRoot();
 		IFile file = root.getFile(new Path(path));
 		if (file.exists()){
-			content = readFile(file);
+			content = FileUtil.readFile(file);
 		}
 		return content;
 	}
@@ -213,17 +207,19 @@ public class CodeGenarator {
 		}
 	}
 	
-	private String removeHcs(String content){
+	public static String removeHcs(String content){
 		int pos = 0;
 		
 		do {
 			StringBuffer sb = new StringBuffer(content);
 			int start = content.indexOf("/*hc:", pos);
 			if (start != -1){
-				int end = content.indexOf("/*hc*/", start);
-				pos = start;
+				int startEnd = content.indexOf("/", start + 1);
 				
-				sb.replace(start, end + 6, "");
+				int end = content.indexOf("/*hc*/", startEnd);
+				pos = start;
+				String defaultContent = sb.substring(startEnd + 1, end);
+				sb.replace(start, end + 6, defaultContent);
 			} else {
 				pos = -1;
 			}
@@ -231,5 +227,5 @@ public class CodeGenarator {
 		} while (pos != -1);
 		return content;
 	}
-	
+
 }

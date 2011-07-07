@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>SCRIPT - Client-side Script</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's SCRIPT element for client-side scripts.">
+<meta name="keywords" content="script element, scripting, scripts, client-side scripting, javascript, jscript, vbscript, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;script&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>SCRIPT - Client-side Script</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;SCRIPT&gt;</strong>...<strong class=required>&lt;/SCRIPT&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>TYPE=<var><a href="../values.html#contenttype">ContentType</a></var> (content-type of scripting language)</strong></li>
+        <li>LANGUAGE=<var><a href="../values.html#cdata">CDATA</a></var> (scripting language name)</li>
+        <li>SRC=<var><a href="../values.html#uri">URI</a></var> (external script location)</li>
+        <li>CHARSET=<var><a href="../values.html#charset">Charset</a></var> (character encoding of external script)</li>
+        <li>DEFER (script execution may wait)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>An embedded script</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../head/head.html">HEAD</a>, <a href="../block.html">block-level elements</a>, <a href="../inline.html">inline elements</a> except <a href="../forms/select.html">SELECT</a> and SCRIPT</td>
+  </tr>
+</table>
+<p>The <strong class=html>SCRIPT</strong> element includes a <em>client-side script</em> in the document. Client-side scripts allow greater interactivity in a document by responding to user events. For example, a script could be used to check the user's form input prior to submission to provide immediate notice of any errors by the user.</p>
+<div class=note>
+<p>Note that not all browsers support client-side scripting, and supporting browsers allow the user to disable scripting, so authors should avoid dependence on client-side scripting wherever possible. The <strong class=html><a href="../block/noscript.html">NOSCRIPT</a></strong> element can be used to provide content for browsers that do not support client-side scripting or have it disabled. In the case of form validation, any error checking done by the client-side script should be repeated by the <abbr class=initialism title="Common Gateway Interface">CGI</abbr> script or Java servlet that handles the submission at the server.</p>
+<p>Also note that different browsers support different variants of scripting languages with different bugs. Authors are encouraged to check their scripts on as many browsers as possible. Browsers that support client-side scripting include <a href="http://www.netscape.com/navigator/">Netscape Navigator</a> 2.0 and up, <a href="http://www.microsoft.com/ie/">Microsoft Internet Explorer</a> 3.0 and up, and <a href="http://www.opera.com/">Opera</a> 3.0 and up.</p>
+</div>
+<p>The required <strong class=html>TYPE</strong> attribute of <strong class=html>SCRIPT</strong> specifies the media type of the scripting language, <i lang=la>e.g.</i>, <strong class=html>text/javascript</strong>. However, most browsers only support the <a href="../deprecated.html">deprecated</a> <strong class=html>LANGUAGE</strong> attribute, which specifies the language name. Examples of supported <strong class=html>LANGUAGE</strong> values include <strong class=html>JavaScript</strong>, <strong class=html>JavaScript1.1</strong>, and <strong class=html>VBScript</strong>. The values are not case sensitive.</p>
+<p>Browsers will ignore scripts with <strong class=html>LANGUAGE</strong> values that they do not support. For example, Netscape Navigator 3.0 will execute scripts with <strong class=html>LANGUAGE="JavaScript"</strong> or <strong class=html>LANGUAGE="JavaScript1.1"</strong> but will ignore scripts with <strong class=html>LANGUAGE="JavaScript1.2"</strong> or <strong class=html>LANGUAGE="VBScript"</strong>.</p>
+<p>An <em>embedded script</em> is given as the content of the <strong class=html>SCRIPT</strong> element. The <strong class=html>SRC</strong> attribute allows authors to reuse code by specifying an <em>external script</em>. The optional <strong class=html>CHARSET</strong> attribute gives the character encoding of the external script (typically <strong class=html>ISO-8859-1</strong>). When the <strong class=html>SRC</strong> attribute is used, the embedded script is ignored. An example follows:</p>
+<pre class=example><code class=html>&lt;SCRIPT TYPE="text/javascript" SRC="foo.js" CHARSET="ISO-8859-1"&gt;</code>
+<code class=javascript>&lt;!--
+  <var>// embedded script ignored</var>
+// --&gt;</code>
+<code class=html>&lt;/SCRIPT&gt;</code></pre>
+<p class=note>Netscape Navigator requires that external scripts be served with a Content-Type of <strong>application/x-javascript</strong>.</p>
+<p>The <strong class=html>DEFER</strong> attribute indicates that the browser may wait to parse the script until the rest of the document has been rendered. Scripts that use <strong class=html>DEFER</strong> must not generate any document content, and should not be required to respond to user events (<i lang=la>e.g.</i>, form submission) that may occur while the document is loading. The <strong class=html>DEFER</strong> attribute can be useful for delaying scripts that pre-load images or harass the user with scrolling messages in the status bar, though current browsers do not generally support this attribute.</p>
+<p>The <strong class=html>SCRIPT</strong> element may occur any number of times in the document <strong class=html><a href="../head/head.html">HEAD</a></strong> or <strong class=html><a href="../html/body.html">BODY</a></strong>. Typically the <strong class=html>SCRIPT</strong> element is used in the <strong class=html>HEAD</strong> unless it generates <strong class=html>BODY</strong> content.</p>
+<p>Pre-<a href="http://www.htmlhelp.com/reference/wilbur/">HTML 3.2</a> browsers, unaware of the <strong class=html>SCRIPT</strong> element, will treat the content of <strong class=html>SCRIPT</strong> as normal HTML. To make these browsers ignore the <strong class=html>SCRIPT</strong>'s content, scripting languages generally allow <abbr class=initialism title="Standard Generalized Markup Language">SGML</abbr> comments to be used around an embedded script. For example:</p>
+<pre class=example><code class=html>&lt;SCRIPT TYPE="text/javascript"&gt;</code>
+<code class=javascript>&lt;!-- comment to end of line
+  document.write("foo");
+// comment to end of line --&gt;</code>
+<code class=html>&lt;/SCRIPT&gt;</code></pre>
+<p>Note that "<strong class=javascript>--&gt;</strong>" is contained within a JavaScript single-line comment (started with two slashes).</p>
+<p>Technically, the first occurrence of "<strong class=html>&lt;/</strong>" followed by any letter is considered the end tag for the <strong class=html>SCRIPT</strong> element. While browsers are forgiving in this, authors should avoid using strings such as "&lt;/P&gt;" in their embedded scripts. JavaScript allows authors to use a backslash to avoid ending the <strong class=html>SCRIPT</strong> element prematurely, <i lang=la>e.g.</i>, <strong class=javascript>document.write("&lt;\/P&gt;")</strong>.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/scripts.html#edef-SCRIPT">SCRIPT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#script">SCRIPT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/head/script.html">SCRIPT in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.46.html">SCRIPT in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://developer.netscape.com/docs/manuals/communicator/jsguide4/index.htm">JavaScript Guide</a>
+    <ul>
+      <li><a href="http://developer.netscape.com/docs/manuals/communicator/jsguide4/getstart.htm#1009491">Embedding JavaScript in HTML</a></li>
+    </ul>
+  </li>
+  <li><a href="http://developer.netscape.com/docs/manuals/communicator/jsref/index.htm">JavaScript Reference</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>
+

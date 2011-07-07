@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>FORM - Interactive Form</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's FORM element for interactive forms.">
+<meta name="keywords" content="FORM, form element, forms, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;form&gt; tag, &lt;FORM&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>FORM - Interactive Form</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements and attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;FORM&gt;</strong>...<strong class=required>&lt;/FORM&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>ACTION=<var><a href="../values.html#uri">URI</a></var> (form handler)</strong></li>
+        <li>METHOD=[ <em class=default>get</em> | post ] (<abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> method for submitting form)</li>
+        <li>ENCTYPE=<var><a href="../values.html#contenttype">ContentType</a></var> (content type to submit form as)</li>
+        <li>ACCEPT-CHARSET=<var><a href="../values.html#charsets">Charsets</a></var> (supported character encodings)</li>
+        <li class=transitional>TARGET=<var><a href="../values.html#frametarget">FrameTarget</a></var> (frame to render form result in)</li>
+        <li>ONSUBMIT=<var><a href="../values.html#script">Script</a></var> (form was submitted)</li>
+        <li>ONRESET=<var><a href="../values.html#script">Script</a></var> (form was reset)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>
+      <ul>
+        <li>In <a href="../html/doctype.html#strict">HTML 4.0 Strict</a>, one or more <a href="../special/script.html">SCRIPT</a> or <a href="../block.html">block-level elements</a> except FORM</li>
+        <li class=transitional>In <a href="../html/doctype.html#transitional">HTML 4.0 Transitional</a>, <a href="../inline.html">inline elements</a> or <a href="../block.html">block-level elements</a> except FORM</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="../block/blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <span class=transitional><a href="../block/center.html">CENTER</a>, </span><a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="../block/div.html">DIV</a>, <a href="fieldset.html">FIELDSET</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span><a href="../block/noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>FORM</strong> element defines an <em>interactive form</em>. The element should contain form controls--<strong class=html><a href="input.html">INPUT</a></strong>, <strong class=html><a href="select.html">SELECT</a></strong>, <strong class=html><a href="textarea.html">TEXTAREA</a></strong>, and <strong class=html><a href="button.html">BUTTON</a></strong>--through which the user interacts.</p>
+<p>When the user submits the form, through an <strong class=html>INPUT</strong> or <strong class=html>BUTTON</strong> element with <strong class=html>TYPE=submit</strong>, the form values are submitted to the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> given in <strong class=html>FORM</strong>'s required <strong class=html>ACTION</strong> attribute. <strong class=html>ACTION</strong> usually points to a <abbr class=initialism title="Common Gateway Interface">CGI</abbr> script or Java servlet that handles the form submission.</p>
+<div class=note>
+<p>A mailto <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> (<abbr title="for example"><i lang=la>e.g.</i></abbr>, <strong class=html>mailto:liam@htmlhelp.com</strong>) is also allowed as an <strong class=html>ACTION</strong>, but this is not supported by all browsers. Non-supporting browsers such as Microsoft Internet Explorer 3.<var>x</var> typically will open a blank e-mail message when the user submits a mailto form. Even on supporting browsers, mailto forms are troublesome in that they fail to provide feedback to the user after the form submission.</p>
+<p><a href="http://www.cgi-resources.com/Programs_and_Scripts/">Free <abbr class=initialism title="Common Gateway Interface">CGI</abbr> scripts</a> exist for handling forms; some are even <a href="http://www.cgi-resources.com/Programs_and_Scripts/Remotely_Hosted/Form_Processing/">remotely hosted</a> for authors whose providers refuse to allow <abbr class=initialism title="Common Gateway Interface">CGI</abbr> scripts to be run locally.</p>
+</div>
+<p>How the form input is sent to the server depends on the <strong class=html>METHOD</strong> and <strong class=html>ENCTYPE</strong> attributes. When the <strong class=html>METHOD</strong> is <strong class=html>get</strong> (the default), the form input is submitted as an <abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> GET request with <strong class=html>?<var>form_data</var></strong> appended to the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> specified in the <strong class=html>ACTION</strong> attribute.</p>
+<p>Using the <strong class=html>get</strong> method allows the form submission to be contained completely in a <abbr class=initialism title="Uniform Resource Locator">URL</abbr>. This can be advantageous in that it permits bookmarking in current browsers, but it also prevents form data from containing non-<acronym title="American Standard Code for Information Interchange">ASCII</acronym> characters such as "é" and "©". As well, the amount of form data that can be handled by the <strong class=html>get</strong> method is limited by the maximum length of the <abbr class=initialism title="Uniform Resource Locator">URL</abbr> that the server and browser can process. To be safe, any form whose input might contain non-<acronym title="American Standard Code for Information Interchange">ASCII</acronym> characters or more than 100 characters should use <strong class=html>METHOD=post</strong>.</p>
+<p>With a <strong class=html>METHOD</strong> value of <strong class=html>post</strong>, the form input is submitted as an <abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> POST request with the form data sent in the body of the request. Most current browsers are unable to bookmark POST requests, but POST does not entail the character encoding and length restrictions imposed by GET.</p>
+<p>The <strong class=html>ENCTYPE</strong> attribute specifies the content type used in submitting the form, and defaults to <strong class=html>application/x-www-form-urlencoded</strong>. This content type results in name/value pairs sent to the server as <var>name1</var>=<var>value1</var>&amp;<var>name2</var>=<var>value2...</var> with space characters replaced by "+" and reserved characters (like "#") replaced by "%<var>HH</var>" where <var>HH</var> is the <acronym title="American Standard Code for Information Interchange">ASCII</acronym> code of the character in hexadecimal. Line breaks are encoded as "%0D%0A"--a carriage return followed by a line feed.</p>
+<p>Authors should generally only use a different <strong class=html>ENCTYPE</strong> when the form includes a <strong class=html>TYPE=file</strong> <strong class=html><a href="input.html">INPUT</a></strong> element, in which case the <strong class=html>ENCTYPE</strong> should be <strong class=html>multipart/form-data</strong> and the <strong class=html>METHOD</strong> must be <strong class=html>post</strong>. The format of multipart/form-data requests is given in <cite><a href="http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt" title="Form-based File Upload in HTML"><abbr class=initialism title="Request for Comments">RFC</abbr> 1867</a></cite>.</p>
+<p class=note>Tools such as <a href="http://www.htmlhelp.com/tools/cg-eye/">cg-eye</a> allow authors to easily create and view a request, simulating the submission of a form. However, authors often do not need to concern themselves with the exact format of the submission; <abbr class=initialism title="Common Gateway Interface">CGI</abbr> libraries including <a href="http://stein.cshl.org/WWW/software/CGI/cgi_docs.html" title="CGI.pm - a Perl5 CGI Library">CGI.pm</a> transparently handle <strong class=html>get</strong> and <strong class=html>post</strong> submissions sent as application/x-www-form-urlencoded or multipart/form-data.</p>
+<p>The <strong class=html>ACCEPT-CHARSET</strong> attribute specifies a list of character encodings that are accepted by the form handler. The value consists of a list of "charsets" separated by commas and/or spaces. The default value is <strong class=html>UNKNOWN</strong> and is usually considered to be the character encoding used to transmit the document containing the <strong class=html>FORM</strong>.</p>
+<div class=transitional>
+<p>The <strong class=html>TARGET</strong> attribute is used with <a href="../frames/index.html">frames</a> to specify in which frame the form response should be rendered. If no frame with such a name exists, the response is rendered in a new window unless overridden by the user. Special frame names begin with an underscore:</p>
+<ul>
+  <li><strong class=html>_blank</strong> renders the response in a new, unnamed window</li>
+  <li><strong class=html>_self</strong> renders the response in the current frame (useful for overriding a <strong class=html><a href="../head/base.html">BASE</a> TARGET</strong>)</li>
+  <li><strong class=html>_parent</strong> renders the response in the immediate <strong class=html><a href="../frames/frameset.html">FRAMESET</a></strong> parent</li>
+  <li><strong class=html>_top</strong> renders the response in the full, unframed window</li>
+</ul>
+<p class=note>In HTML 4.0, the <strong class=html>TARGET</strong> attribute value is <em>case-insensitive</em>, so that <strong class=html>_top</strong> and <strong class=html>_TOP</strong> both have the same meaning. However, most browsers treat the <strong class=html>TARGET</strong> attribute value as <em>case-sensitive</em> and do not recognize <strong class=html>_TOP</strong> as having the special meaning of <strong class=html>_top</strong>.</p>
+</div>
+<p>The <strong class=html>FORM</strong> element also takes a number of attributes to specify client-side scripting actions for various events. In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>INPUT</strong> accepts the following event attributes:</p>
+<ul>
+  <li><strong class=html>ONSUBMIT</strong>, when the form is submitted;</li>
+  <li><strong class=html>ONRESET</strong>, when the form is reset.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-FORM">FORM in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#form">FORM in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_8.html#SEC8.1.1">FORM in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/block/form.html">FORM in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.25.html">FORM in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt"><abbr class=initialism title="Request for Comments">RFC</abbr> 1867: Form-based File Upload in HTML</a></li>
+  <li><a href="http://hoohoo.ncsa.uiuc.edu/cgi/">The Common Gateway Interface</a></li>
+  <li><a href="http://java.sun.com/products/servlet/index.html">Java Servlets</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

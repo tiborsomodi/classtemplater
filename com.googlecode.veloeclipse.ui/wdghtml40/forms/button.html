@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>BUTTON - Button</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's BUTTON element for submit, reset, or push buttons.">
+<meta name="keywords" content="BUTTON, button element, submit, reset, push, forms, form, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;button&gt; tag, &lt;BUTTON&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>BUTTON - Button</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;BUTTON&gt;</strong>...<strong class=required>&lt;/BUTTON&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (key in submitted form)</li>
+        <li>VALUE=<var><a href="../values.html#cdata">CDATA</a></var> (value in submitted form)</li>
+        <li>TYPE=[ <em class=default>submit</em> | reset | button ] (type of button)</li>
+        <li>DISABLED (disable button)</li>
+        <li>ACCESSKEY=<var><a href="../values.html#character">Character</a></var> (shortcut key)</li>
+        <li>TABINDEX=<var><a href="../values.html#number">Number</a></var> (position in tabbing order)</li>
+        <li>ONFOCUS=<var><a href="../values.html#script">Script</a></var> (element received focus)</li>
+        <li>ONBLUR=<var><a href="../values.html#script">Script</a></var> (element lost focus)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>
+      <ul>
+        <li><a href="../inline.html">Inline elements</a> except <a href="../special/a.html">A</a>, <a href="input.html">INPUT</a>, <a href="select.html">SELECT</a>, <a href="textarea.html">TEXTAREA</a>, <a href="label.html">LABEL</a>, BUTTON, and <a href="../special/iframe.html">IFRAME</a></li>
+        <li><a href="../block.html">Block-level elements</a> except <a href="form.html">FORM</a>, <a href="../block/isindex.html">ISINDEX</a>, and <a href="fieldset.html">FIELDSET</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../block.html">Block-level elements</a>, <a href="../inline.html">inline elements</a> except BUTTON</td>
+  </tr>
+</table>
+<p>The <strong class=html>BUTTON</strong> element defines a <em>submit button, reset button, or push button</em>. Authors can also use <strong class=html><a href="input.html">INPUT</a></strong> to specify these buttons, but the <strong class=html>BUTTON</strong> element allows richer labels, including images and emphasis. However, <strong class=html>BUTTON</strong> is new in HTML 4.0 and poorly supported among current browsers, so <strong class=html>INPUT</strong> is a more reliable choice at this time.</p>
+<p>The <strong class=html>TYPE</strong> attribute of <strong class=html>BUTTON</strong> specifies the kind of button and takes the value <strong class=html>submit</strong> (the default), <strong class=html>reset</strong>, or <strong class=html>button</strong>. The <strong class=html>NAME</strong> and <strong class=html>VALUE</strong> attributes determine the name/value pair sent to the server when a submit button is pushed. These attributes allow authors to provide multiple submit buttons and have the form handler take a different action depending on the submit button used.</p>
+<p>Some examples of <strong class=html>BUTTON</strong> follow:</p>
+<ul class=example>
+  <li><code class=html>&lt;BUTTON NAME=submit VALUE=modify ACCESSKEY=M&gt;Modify information&lt;/BUTTON&gt;<br>&lt;BUTTON NAME=submit VALUE=continue ACCESSKEY=C&gt;Continue with application&lt;/BUTTON&gt;</code></li>
+  <li><code class=html>&lt;BUTTON ACCESSKEY=S&gt;Submit &lt;IMG SRC="checkmark.gif" ALT="&amp;#10004;"&gt;&lt;/BUTTON&gt;<br>&lt;BUTTON TYPE=reset ACCESSKEY=R&gt;Reset &lt;IMG SRC="x.gif" ALT="&amp;#10008;"&gt;&lt;/BUTTON&gt;</code></li>
+  <li><code class=html>&lt;BUTTON TYPE=button ID=toggler ONCLICK="toggle()" ACCESSKEY=H&gt;Hide &lt;strong&gt;non-strict&lt;/strong&gt; attributes&lt;/BUTTON&gt;</code></li>
+</ul>
+<p>The <strong class=html>ACCESSKEY</strong> attribute, used throughout the preceding examples, specifies a single Unicode character as a shortcut key for pressing the button. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<p>The boolean <strong class=html>DISABLED</strong> attribute makes the <strong class=html>BUTTON</strong> element unavailable. The user is unable to push the button, the button cannot receive focus, and the button is skipped when navigating the document by tabbing.</p>
+<p>The <strong class=html>TABINDEX</strong> attribute specifies a number between 0 and 32767 to indicate the tabbing order of the button. A <strong class=html>BUTTON</strong> element with <strong class=html>TABINDEX=0</strong> or no <strong class=html>TABINDEX</strong> attribute will be visited after any elements with a positive <strong class=html>TABINDEX</strong>. Among positive <strong class=html>TABINDEX</strong> values, the lower number receives focus first. In the case of a tie, the element appearing first in the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document takes precedence.</p>
+<p>The <strong class=html>BUTTON</strong> element also takes a number of attributes to specify client-side scripting actions for various events. In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>BUTTON</strong> accepts the following event attributes:</p>
+<ul>
+  <li><strong class=html>ONFOCUS</strong>, when the element receives focus;</li>
+  <li><strong class=html>ONBLUR</strong>, when the element loses focus.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-BUTTON">BUTTON in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

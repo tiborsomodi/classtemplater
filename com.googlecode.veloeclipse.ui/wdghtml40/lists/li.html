@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LI - List Item</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's LI element for list items.">
+<meta name="keywords" content="LI, li element, list item, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;li&gt; tag, &lt;LI&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>LI - List Item</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements and attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;LI&gt;</strong>...&lt;/LI&gt;</td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li class=transitional>TYPE=[ disc | square | circle | 1 | a | A | i | I ] (style of list item marker)</li>
+        <li class=transitional>VALUE=<var><a href="../values.html#number">Number</a></var> (number in sequence)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a> <span class=transitional>(except for LIs used within <a href="dir.html">DIR</a> and <a href="menu.html">MENU</a>, which do not allow block-level elements)</span></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="ol.html">OL</a>, <a href="ul.html">UL</a><span class=transitional>, <a href="dir.html">DIR</a>, <a href="menu.html">MENU</a></span></td>
+  </tr>
+</table>
+<p>The <strong class=html>LI</strong> element defines a <em>list item</em>. The element must be contained within <span class=transitional><strong class=html><a href="dir.html">DIR</a></strong>, <strong class=html><a href="menu.html">MENU</a></strong>, </span><strong class=html><a href="ol.html">OL</a></strong> or <strong class=html><a href="ul.html">UL</a></strong>.</p>
+<p><span class=transitional>Unless used with the <a href="../deprecated.html">deprecated</a> <strong class=html>MENU</strong> or <strong class=html>DIR</strong> elements, </span><strong class=html>LI</strong> may contain <a href="../block.html">block-level elements</a>, including <strong class=html><a href="../block/h2.html">H2</a></strong>, <strong class=html><a href="../tables/table.html">TABLE</a></strong>, <strong class=html><a href="ul.html">UL</a></strong>, and <strong class=html><a href="ol.html">OL</a></strong>. This allows <strong class=html>OL</strong> and <strong class=html>UL</strong> to be nested, as in the following example:</p>
+<pre class=example><code class=html>&lt;UL&gt;
+  &lt;LI&gt;
+    &lt;H2&gt;HTML Document Type Definitions&lt;/H2&gt;
+    &lt;UL&gt;
+      &lt;LI&gt;&lt;A HREF="html.dtd"&gt;HTML 2.0&lt;/A&gt;&lt;/LI&gt;
+      &lt;LI&gt;&lt;A HREF="HTML32.dtd"&gt;HTML 3.2&lt;/A&gt;&lt;/LI&gt;
+      &lt;LI&gt;&lt;A HREF="strict.dtd"&gt;HTML 4.0 Strict&lt;/A&gt;&lt;/LI&gt;
+    &lt;/UL&gt;
+  &lt;/LI&gt;
+  &lt;LI&gt;
+    &lt;H2&gt;SGML Character Entity References&lt;/H2&gt;
+    &lt;UL&gt;
+      &lt;LI&gt;&lt;A HREF="HTMLlat1.ent"&gt;Latin-1 Entities&lt;/A&gt;&lt;/LI&gt;
+      &lt;LI&gt;&lt;A HREF="HTMLsymbol.ent"&gt;Symbols and Greek Letters&lt;/A&gt;&lt;/LI&gt;
+      &lt;LI&gt;&lt;A HREF="HTMLspecial.ent"&gt;Other Special Characters&lt;/A&gt;&lt;/LI&gt;
+    &lt;/UL&gt;
+  &lt;/LI&gt;
+&lt;/UL&gt;</code></pre>
+<div class=transitional>
+<p>When used with <strong class=html><a href="menu.html">MENU</a></strong> and <strong class=html><a href="dir.html">DIR</a></strong>, <strong class=html>LI</strong> may not contain <a href="../block.html">block-level elements</a>, and lists cannot be nested.</p>
+<p>The <a href="../deprecated.html">deprecated</a> <strong class=html>TYPE</strong> attribute of <strong class=html>LI</strong> suggests the rendering of the list item marker. Possible values are as follows:</p>
+<ul>
+  <li>Case-insensitive values for <strong class=html>LI</strong> within a <strong class=html><a href="ul.html">UL</a></strong><span class=transitional>, <strong class=html><a href="dir.html">DIR</a></strong>, or <strong class=html><a href="menu.html">MENU</a></strong></span>:
+    <ul>
+      <li><strong class=html>disc</strong> (a filled-in circle)</li>
+      <li><strong class=html>square</strong> (a square outline)</li>
+      <li><strong class=html>circle</strong> (a circle outline)</li>
+    </ul>
+  </li>
+  <li>Case-sensitive values for <strong class=html>LI</strong> within an <strong class=html><a href="ol.html">OL</a></strong>:
+    <ul>
+      <li><strong class=html>1</strong> (decimal numbers: 1, 2, 3, 4, 5, ...)</li>
+      <li><strong class=html>a</strong> (lowercase alphabetic: a, b, c, d, e, ...)</li>
+      <li><strong class=html>A</strong> (uppercase alphabetic: A, B, C, D, E, ...)</li>
+      <li><strong class=html>i</strong> (lowercase Roman numerals: i, ii, iii, iv, v, ...)</li>
+      <li><strong class=html>I</strong> (uppercase Roman numerals: I, II, III, IV, V, ...)</li>
+    </ul>
+  </li>
+</ul>
+</div>
+<p><a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> provide <span class=transitional>greater </span>flexibility in suggesting list item styles. The <strong class=css><a href="http://www.htmlhelp.com/reference/css/classification/list-style.html">list-style</a></strong> property of <abbr class=initialism title="Cascading Style Sheets">CSS</abbr> includes the <span class=transitional>added </span>abilities to suppress list item markers, use images as markers, and more.</p>
+<div class=transitional>
+<p><strong class=html>LI</strong>'s <strong class=html>VALUE</strong> attribute specifies the number of the list item when used with an <strong class=html><a href="ol.html">OL</a></strong>. The number must be given as an integer, though the list item marker may be rendered in another form (for example, as a Roman numeral). Any <strong class=html>LI</strong> element following in the same list will take its default sequence number based on the first preceding <strong class=html>VALUE</strong> attribute. <strong class=html>VALUE</strong> is <a href="../deprecated.html">deprecated</a> in HTML 4.0, but no substitute currently exists in <abbr class=initialism title="Cascading Style Sheets"><a href="http://www.htmlhelp.com/reference/css/">CSS</a></abbr>.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/lists.html#edef-LI">LI in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#lists">LI in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.6.1">LI in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/list/li.html">LI in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.35.html">LI in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

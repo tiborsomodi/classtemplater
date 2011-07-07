@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>BDO - BiDi Override</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's BDO element for overriding the bidirectional algorithm.">
+<meta name="keywords" content="bdo element, bidi, BiDi, BIDI, bidirectional, bidirectionality, override, overriding, bidirectional algorithm, bidirectional text, unicode, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;bdo&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>BDO - <acronym title="Bidirectional">BiDi</acronym> Override</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;BDO&gt;</strong>...<strong class=required>&lt;/BDO&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required><a href="../attrs.html#dir">DIR</a>=[ ltr | rtl ] (directionality of text)</strong></li>
+        <li><a href="../attrs.html#lang">LANG</a>=<var><a href="../values.html#languagecode">LanguageCode</a></var> (language of text)</li>
+        <li><a href="../attrs.html#core">core attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+</table>
+<p><a name=bidi>The <strong class=html>BDO</strong> element <em>overrides the bidirectional algorithm</em> for the enclosed text.</a> Characters in <a href="http://www.unicode.org/">Unicode</a> are assigned a directionality, left-to-right or right-to-left, to allow the text to be rendered properly. For example, while English characters are presented left-to-right, Hebrew characters are presented right-to-left.</p>
+<p>Unicode defines a <dfn>bidirectional algorithm</dfn> that must be applied whenever a document contains right-to-left characters. While this algorithm usually gives the proper presentation, occasionally authors must override the bidirectional algorithm and specify the directionality of the text. One such case is when Hebrew characters are stored in <em>visual order</em>, where the first character of a word is after the second character. Unicode assumes that the characters are stored in <em>logical order</em>, where the first character of a word is before the second character, so the bidirectional algorithm would result in a rendering with the first character incorrectly to the <em>left</em> of the second character.</p>
+<p>The <strong class=html>BDO</strong> element requires the <strong class=html><a href="../attrs.html#dir">DIR</a></strong> attribute to specify the directionality of the enclosed text. If a document contains Hebrew characters stored in visual order, one should use <strong class=html>&lt;BDO DIR=ltr&gt;<var>text</var>&lt;/BDO&gt;</strong> to force the proper presentation for that text.</p>
+<p>Authors may alternatively override the bidirectional algorithm using the Unicode character <strong class=html>&amp;#x202D;</strong> to force left-to-right directionality or <strong class=html>&amp;#x202E;</strong> to force right-to-left directionality. The character <strong class=html>&amp;#x202C;</strong> ends the overriding of the algorithm. These characters should not be used in combination with the <strong class=html><a href="../attrs.html#dir">DIR</a></strong> attribute.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/dirlang.html#edef-BDO">BDO in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/dirlang.html#h-8.2.1">Introduction to the bidirectional algorithm</a></li>
+  <li><a href="http://www.unicode.org/">Unicode</a></li>
+  <li><a href="http://www.microsoft.com/globaldev/mideast/meissues.htm">Middle Eastern Language Issues</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>
+

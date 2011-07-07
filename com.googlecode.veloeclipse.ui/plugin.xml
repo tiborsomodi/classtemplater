@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="com.googlecode.veloeclipse.ui"
+   name="veloeclipse"
+   version="2.0.9"
+   provider-name="veloeclipse"
+   class="com.googlecode.veloeclipse.vaulttec.ui.VelocityPlugin">
+
+   <runtime>
+   <library name="htmlparser-1.5.jar">
+      <export name="*"/>
+   </library>
+   <library name="jtidy-r8-SNAPSHOT.jar">
+      <export name="*"/>
+   </library>
+   <library name="velocityui.jar">
+      <export name="*"/>
+   </library>
+   <library name="commons-collections-3.2.1.jar">
+      <export
+            name="*">
+      </export>
+   </library>
+   <library name="commons-lang-2.4.jar">
+      <export
+            name="*">
+      </export>
+   </library>
+   <library name="dtdparser121.jar">
+      <export
+            name="*">
+      </export>
+   </library>
+   <library name="velocity.jar">
+      <export
+            name="*">
+      </export>
+   </library>
+      
+   </runtime>
+   <requires>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.core.runtime"/>
+     <!-- <import plugin="org.eclipse.core.runtime.compatibility"/>-->
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.jdt.ui"/>
+      <import plugin="org.eclipse.jdt.core"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.apache.velocity" version="1.7.0"/>
+   </requires>
+   <extension-point id="completionproviders" name="Completion Providers" schema="schema/completionproviders.exsd"/>
+ <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="%editorName"
+            extensions="%fileExtensions"
+            icon="icons/full/obj16/vsl_file.gif"
+            class="com.googlecode.veloeclipse.editor.VelocityEditor"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            id="com.googlecode.veloeclipse.editor.Editor">
+      </editor>
+   </extension>
+  
+   <extension
+	point="org.eclipse.ui.ide.markerResolution">
+	<markerResolutionGenerator
+		markerType="org.eclipse.core.resources.problemmarker"
+		class="com.googlecode.veloeclipse.editor.VelocityMarkerResolutionGenerator">
+	</markerResolutionGenerator>
+</extension>
+  <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            objectClass="org.eclipse.core.resources.IResource"
+            nameFilter="*.vm"
+            id="com.googlecode.veloeclipse.vaulttec.ui.edit.format">
+         <action
+               label="VeloFormat ..."
+               icon="icons/full/obj16/vsl_file.gif"
+               class="com.googlecode.veloeclipse.vaulttec.ui.editor.actions.FormatResourceAction"
+               menubarPath="additions"
+               enablesFor="*"
+               id="com.googlecode.veloeclipse.vaulttec.ui.edit.format">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            objectClass="org.eclipse.core.resources.IFolder"
+           
+            id="com.googlecode.veloeclipse.vaulttec.ui.edit.format2">
+         <action
+               label="VeloFormat ..."
+               icon="icons/full/obj16/vsl_file.gif"
+               class="com.googlecode.veloeclipse.vaulttec.ui.editor.actions.FormatResourceAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="com.googlecode.veloeclipse.vaulttec.ui.edit.format">
+         </action>
+      </objectContribution>
+   </extension>
+ 
+   <extension
+         point="org.eclipse.ui.commands">
+  
+       <command
+            name="(Veloeclipse)Toggle Comment"
+            category="org.eclipse.ui.category.textEditor"
+            description="%command.togglecomment.description"
+            id="com.googlecode.veloeclipse.vaulttec.ui.edit.toggle.comment">
+      </command>
+      <command
+            name="(Veloeclipse)Format"
+            category="org.eclipse.ui.category.textEditor"
+            description="%command.format.description"
+            id="com.googlecode.veloeclipse.vaulttec.ui.edit.format">
+      </command>
+     <keyBinding
+            string="Ctrl+Alt+f"
+            scope="com.googlecode.veloeclipse.vaulttec.ui.velocityEditorScope"
+            command="com.googlecode.veloeclipse.vaulttec.ui.edit.format"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration"
+			keyConfigurationId="com.googlecode.veloeclipse.formatkey">
+      </keyBinding>
+      <keyBinding
+            string="Ctrl+7"
+            scope="com.googlecode.veloeclipse.vaulttec.ui.velocityEditorScope"
+            command="com.googlecode.veloeclipse.vaulttec.ui.edit.toggle.comment"
+            configuration="org.eclipse.ui.defaultAcceleratorConfiguration"
+			keyConfigurationId="com.googlecode.veloeclipse.togglecommentkey2">
+      </keyBinding>
+       <command
+            name="(Veloeclipse)JTidy"
+            category="org.eclipse.ui.category.textEditor"
+            description="%command.jtidy.description"
+            id="com.googlecode.veloeclipse.vaulttec.ui.edit.jtidy">
+      </command>
+
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="General Preferences"
+            category="com.googlecode.veloeclipse.preferences"
+            class="com.googlecode.veloeclipse.preferences.GeneralPreferencePage"
+            id="com.googlecode.veloeclipse.preferences.general">
+      </page>
+      <page
+            name="Tidy Preferences"
+            category="com.googlecode.veloeclipse.preferences"
+            class="com.googlecode.veloeclipse.preferences.JtidyPreferencePage"
+            id="com.googlecode.veloeclipse.preferences.jtidy">
+      </page>
+      <page
+            name="%mainPreferencesName"
+            class="com.googlecode.veloeclipse.preferences.VelocityPreferencePage"
+            id="com.googlecode.veloeclipse.preferences">
+      </page>
+      <page
+            name="%libraryPreferencesName"
+            category="com.googlecode.veloeclipse.preferences"
+            class="com.googlecode.veloeclipse.preferences.LibraryPreferencePage"
+            id="com.googlecode.veloeclipse.preferences.library">
+      </page>
+      <page
+            name="%editorPreferencesName"
+            category="com.googlecode.veloeclipse.preferences"
+            class="com.googlecode.veloeclipse.preferences.EditorPreferencePage"
+            id="com.googlecode.veloeclipse.preferences.editor">
+      </page>
+      <page
+            name="Veloeclipse Templates"
+            category="com.googlecode.veloeclipse.preferences"
+            class="com.googlecode.veloeclipse.preferences.TemplatesPreferencePage"
+            id="com.googlecode.veloeclipse.ui.page1">
+      </page>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.editors.templates">
+      <contextType
+            name="%vm.contextType.name"
+            class="com.googlecode.veloeclipse.ui.VeloContextType"
+            id="com.googlecode.veloeclipse.ui.contextType1">
+      </contextType>
+      <!--template
+            name="bold"
+            icon="icons/template.gif"
+            description="make selected word bold"
+            contextTypeId="com.googlecode.veloeclipse.ui.contextType1"
+            id="com.googlecode.veloeclipse.ui.templates.bold">
+         <pattern>
+            &lt;B&gt; ${word_selection}&lt;/B&gt;
+         </pattern>
+      </template-->
+      <template
+            name="space"
+            icon="icons/template.gif"
+            description="add space"
+            contextTypeId="com.googlecode.veloeclipse.ui.contextType1"
+            id="com.googlecode.veloeclipse.ui.templates.space">
+         <pattern>
+            &amp;nbsp;
+         </pattern>
+      </template>
+   </extension>
+   
+   <extension
+        point="org.eclipse.debug.ui.consoleLineTrackers">
+        <consoleLineTracker
+            class="com.googlecode.veloeclipse.console.ConsoleLineTracker"
+            processType="java"
+            id="com.googlecode.veloeclipse.console.ConsoleLineTracker">
+        </consoleLineTracker>
+   </extension>   
+   
+</plugin>

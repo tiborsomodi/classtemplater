@@ -1,2 +1,6 @@
 .metadata
 com.inepex.classtemplater.plugin/bin
+com.googlecode.veloeclipse.ui/bin
+org.apache.velocity/bin
+com.inepex.classtemplater.updatesite/features
+com.inepex.classtemplater.updatesite/plugins

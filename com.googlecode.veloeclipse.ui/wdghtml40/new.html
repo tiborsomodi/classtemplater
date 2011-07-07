@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>What's New in HTML 4.0</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=StyleSheet href="style.css" type="text/css">
+<link rel=StyleSheet href="aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A summary of the new features in HTML 4.0 and a look at the key concepts behind the new standard.">
+<meta name="keywords" content="new, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG">
+</head>
+<body>
+<h2><img src="wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>What's New in HTML 4.0</h1>
+<ul>
+  <li><a href="#elements">New Elements in HTML 4.0</a></li>
+  <li><a href="#separation">Separation of Structure and Presentation</a></li>
+  <li><a href="#accessibility">Accessibility</a></li>
+  <li><a href="#i18n">Internationalization</a></li>
+  <li><a href="#stylesheets">Style Sheets</a></li>
+  <li><a href="#scripting">Client-side Scripting</a></li>
+  <li><a href="#frames">Frames</a></li>
+  <li><a href="#tables">Advanced Tables</a></li>
+</ul>
+<h2><a name=elements>New Elements in HTML 4.0</a></h2>
+<p>The following elements are new in HTML 4.0:</p>
+<ul class=elements>
+  <li><a href="phrase/abbr.html">ABBR</a> - Abbreviation</li>
+  <li><a href="phrase/acronym.html">ACRONYM</a> - Acronym</li>
+  <li><a href="special/bdo.html">BDO</a> - <acronym title="Bidirectional">BiDi</acronym> override</li>
+  <li><a href="forms/button.html">BUTTON</a> - Button</li>
+  <li><a href="tables/col.html">COL</a> - Table column</li>
+  <li><a href="tables/colgroup.html">COLGROUP</a> - Table column group</li>
+  <li><a href="phrase/del.html">DEL</a> - Deleted text</li>
+  <li><a href="forms/fieldset.html">FIELDSET</a> - Form control group</li>
+  <li class=frameset><a href="frames/frame.html">FRAME</a> - Frame</li>
+  <li class=frameset><a href="frames/frameset.html">FRAMESET</a> - Frameset</li>
+  <li class=transitional><a href="special/iframe.html">IFRAME</a> - Inline frame</li>
+  <li><a href="phrase/ins.html">INS</a> - Inserted text</li>
+  <li><a href="forms/label.html">LABEL</a> - Form field label</li>
+  <li><a href="forms/legend.html">LEGEND</a> - Fieldset caption</li>
+  <li class=transitional><a href="frames/noframes.html">NOFRAMES</a> - Frames alternate content</li>
+  <li><a href="block/noscript.html">NOSCRIPT</a> - Alternate script content</li>
+  <li><a href="special/object.html">OBJECT</a> - Object</li>
+  <li><a href="forms/optgroup.html">OPTGROUP</a> - Option group</li>
+  <li><a href="special/q.html">Q</a> - Short quotation</li>
+  <li class=transitional><a href="fontstyle/s.html">S</a> - Strike-through text</li>
+  <li><a href="special/span.html">SPAN</a> - Generic inline container</li>
+  <li><a href="tables/tbody.html">TBODY</a> - Table body</li>
+  <li><a href="tables/tfoot.html">TFOOT</a> - Table foot</li>
+  <li><a href="tables/thead.html">THEAD</a> - Table head</li>
+</ul>
+<h2><a name=separation>Separation of Structure and Presentation</a></h2>
+<p>By <a href="deprecated.html">deprecating</a> many presentational features from <a href="http://www.htmlhelp.com/reference/wilbur/">HTML 3.2</a> and adding hooks for style sheets, HTML 4.0 encourages separating a document's structure from its presentation. This concept is key to understanding HTML 4.0.</p>
+<p>When authors use <abbr class=initialism title="HyperText Markup Language">HTML</abbr> to markup a document's structure and <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> to suggest the document's presentation, they can more easily achieve the device-independence that helped bring <abbr class=initialism title="HyperText Markup Language">HTML</abbr> its initial popularity. A document with a rich structure can be presented in many different ways on different media, allowing the document to adjust to new technologies such as phone or in-car aural browsers. The separation of content and presentation also allows authors to change the presentation of an entire site by editing a single style sheet, providing significant advantages in site maintenance.</p>
+<h2><a name=accessibility>Accessibility</a></h2>
+<p>Many of HTML 4.0's improvements in the area of accessibility follow from its emphasis on the separation of structure and presentation. When <abbr class=initialism title="HyperText Markup Language">HTML</abbr> is used structurally, a document can adapt to different browsing environments, accommodating large fonts, special colors, speech synthesizers, and Braille tactile feedback devices. This adaptability allows blind, low-vision, colorblind, and cognitively-challenged users access to the Web, opening a door for the world's 600 million disabled people.</p>
+<p>HTML 4.0 includes many new elements and attributes aimed at improving the Web's accessibility. The multi-dimensional nature of <abbr class=initialism title="HyperText Markup Language">HTML</abbr> tables has long posed problems for non-visual browsing, but new attributes on the <strong class=html><a href="tables/table.html">TABLE</a></strong>, <strong class=html><a href="tables/th.html">TH</a></strong>, and <strong class=html><a href="tables/td.html">TD</a></strong> elements allow table summaries and a more explicit association between a cell and its header information. These attributes give non-visual browsers the ability to render a cell's header information, possibly in an abbreviated form, before giving the cell's content.</p>
+<p>New elements in HTML 4.0 also bring accessibility improvements to forms. The new <strong class=html><a href="forms/fieldset.html">FIELDSET</a></strong> element allows form controls to be grouped together and the <strong class=html><a href="forms/legend.html">LEGEND</a></strong> element provides a caption for the group. By grouping related form controls, authors allow those with non-visual browsers to more easily navigate complicated forms. As well, the new <strong class=html><a href="forms/label.html">LABEL</a></strong> element associates a text label with a form control so that users can more easily determine what information is required in a given field.</p>
+<p>Other accessibility improvements include full image descriptions through the <strong class=html>LONGDESC</strong> attribute on the <strong class=html><a href="special/img.html">IMG</a></strong> element, rich alternatives to images and videos through the <strong class=html><a href="special/object.html">OBJECT</a></strong> element, and richer alternatives to image maps through a new content model for the <strong class=html><a href="special/map.html">MAP</a></strong> element.</p>
+<h2><a name=i18n>Internationalization</a></h2>
+<p>To allow representation of the world's languages, HTML 4.0 adopts the <em>Universal Character Set</em> as its character set. Previous versions of <abbr class=initialism title="HyperText Markup Language">HTML</abbr> were restricted to ISO-8859-1, a character set that only handled some western European languages. The Universal Character Set is character-by-character equivalent to <a href="http://www.unicode.org/">Unicode</a> 2.0 and contains characters for almost all of the world's languages.</p>
+<p>The <strong class=html><a href="attrs.html#lang">LANG</a></strong> and <strong class=html><a href="attrs.html#dir">DIR</a></strong> attributes are new in HTML 4.0 and apply to almost all elements. These attributes allow authors to specify the language and directionality of text. The <strong class=html><a href="special/bdo.html">BDO</a></strong> element allows authors to override the bidirectional algorithm used when right-to-left text such as Hebrew is presented.</p>
+<p>HTML 4.0 also offers new <a href="entities/index.html">entities</a> for easy entry of <a href="entities/symbols.html">mathematical symbols and Greek letters</a> as well as <a href="entities/special.html">other special characters</a>.</p>
+<h2><a name=stylesheets>Style Sheets</a></h2>
+<p>HTML 4.0 adds new hooks for <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, which suggest how a document is presented. The new <strong class=html><a href="attrs.html#id">ID</a></strong>, <strong class=html><a href="attrs.html#class">CLASS</a></strong>, and <strong class=html><a href="attrs.html#style">STYLE</a></strong> attributes allow style information to be attached to specific elements. The <strong class=html><a href="head/link.html">LINK</a></strong> and <strong class=html><a href="head/style.html">STYLE</a></strong> elements have new <strong class=html>TYPE</strong> and <strong class=html>MEDIA</strong> attributes for specifying the style sheet language and target media, respectively.</p>
+<h2><a name=scripting>Client-side Scripting</a></h2>
+<p>HTML 4.0 embraces client-side scripting through the addition of a number of new attributes. The <strong class=html><a href="special/script.html">SCRIPT</a></strong> element now includes attributes for specifying the scripting language, embedding an external script, and deferring execution of a script. As well, a number of event attributes have been added to enable execution of a script upon events such as the user clicking an element, pressing a key, moving the mouse over an element, or changing the value of a form control.</p>
+<p>The <strong class=html><a href="block/noscript.html">NOSCRIPT</a></strong> element, also new in HTML 4.0, provides alternate content for browsers with client-side scripting disabled or not supported.</p>
+<h2><a name=frames>Frames</a></h2>
+<p>The inclusion of <a href="frames/index.html">frames</a> in HTML 4.0 gives authors the ability to present multiple documents in one window. The frames model used in HTML 4.0 is not changed from the <a href="http://www.htmlhelp.com/design/frames/whatswrong.html" title="What's wrong with frames?">flawed frames model</a> originally proposed by <a href="http://www.netscape.com/">Netscape</a>.</p>
+<h2><a name=tables>Advanced Tables</a></h2>
+<p>The simple table model of <a href="http://www.htmlhelp.com/reference/wilbur/">HTML 3.2</a> is expanded in HTML 4.0 to include row and column groups, greater flexibility in defining a table's rules, and accessibility improvements. The use of row groups (<strong class=html><a href="tables/thead.html">THEAD</a></strong>, <strong class=html><a href="tables/tfoot.html">TFOOT</a></strong>, <strong class=html><a href="tables/tbody.html">TBODY</a></strong>) allows visual browsers to render static header and footer rows with scrollable body rows, thus improving the readability of large tables.</p>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="olist.html">Elements by Function</a> ~ <a href="alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

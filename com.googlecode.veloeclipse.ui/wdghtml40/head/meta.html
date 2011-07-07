@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>META - Metadata</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's META element for metadata.">
+<meta name="keywords" content="META, meta element, metadata, metainformation, meta data, meta information, keywords, description, refresh, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;meta&gt; tag, &lt;META&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>META - Metadata</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;META&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>NAME=<var><a href="../values.html#name">Name</a></var> (property name)</li>
+        <li>HTTP-EQUIV=<var><a href="../values.html#name">Name</a></var> (<abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> response header name)</li>
+        <li><strong class=required>CONTENT=<var><a href="../values.html#cdata">CDATA</a></var> (associated data)</strong></li>
+        <li>SCHEME=<var><a href="../values.html#cdata">CDATA</a></var> (form of data)</li>
+        <li><a href="../attrs.html#i18n">internationalization attributes</a> (for the CONTENT)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="head.html">HEAD</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>META</strong> element provides <em>metadata</em> such as a document's keywords, description, and author. Any number of <strong class=html>META</strong> elements may be contained in the <strong class=html><a href="head.html">HEAD</a></strong> of a document.</p>
+<p><strong class=html>META</strong>'s <strong class=html>NAME</strong> attribute provides a property name while the <strong class=html>CONTENT</strong> attribute gives the corresponding value. The <strong class=html>CONTENT</strong> attribute value may contain text and <a href="../entities/index.html">entities</a>, but it may not contain <abbr class=initialism title="HyperText Markup Language">HTML</abbr> tags.</p>
+<p>The optional <strong class=html>SCHEME</strong> attribute gives the format of the property value. For example, a date property may require <strong class=html>SCHEME="Month-Day-Year"</strong> to disambiguate the date from other formats such as <strong class=html>SCHEME="Day-Month-Year"</strong>.</p>
+<p>There is no standard list of <strong class=html>META</strong> properties, so authors may define whatever metadata they like. The following example defines the author of the document:</p>
+<p class=example><code class=html>&lt;META NAME=author CONTENT="Liam Quinn"&gt;</code></p>
+<p>Some search engines use <strong class=html>keywords</strong> and <strong class=html>description</strong> properties, giving extra weight to a document's keywords and providing its description with the link to the document. Example:</p>
+<p class=example><code class=html>&lt;META NAME="description" CONTENT="A description of HTML 4.0's META element for metadata."&gt;<br>&lt;META NAME="keywords" CONTENT="META, meta element, metadata, metainformation, meta data, meta information, keywords, description, refresh, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &amp;lt;meta&amp;gt; tag, &amp;lt;META&amp;gt; tag"&gt;</code></p>
+<p>To avoid being truncated by search engines, the description should be brief--no more than 200 characters. Keywords are separated by commas and may be considered case sensitive by search engines. If the same keywords are repeated too often in the <strong class=html>META</strong> element, some search engines will not index the document. Search engines typically only process the first 1000 characters of the keywords list.</p>
+<p>Some search engines also support the <strong class=html>robots</strong> property for indicating whether a document should be indexed and whether its links should be followed. The associated <strong class=html>CONTENT</strong> value is a comma-separated list of case-insensitive directives:</p>
+<ul>
+  <li><strong class=html>index</strong> specifies that the page should be indexed while <strong class=html>noindex</strong> specifies that it should not be indexed;</li>
+  <li><strong class=html>follow</strong> specifies that the page's links should be followed while <strong class=html>nofollow</strong> specifies that they should not be followed;</li>
+  <li><strong class=html>all</strong> is equivalent to <strong class=html>index,follow</strong> (the default value);</li>
+  <li><strong class=html>none</strong> is equivalent to <strong class=html>noindex,nofollow</strong>.</li>
+</ul>
+<p>For example, the following <strong class=html>META</strong> element tells search engines and other robots not to index the page but to follow links on it:</p>
+<p class=example><code class=html>&lt;META NAME=robots CONTENT="noindex,follow"&gt;</code></p>
+<p class=note>Few search engines support the <strong class=html>robots</strong> property at this time. For greater compliance by robots, authors should use the <a href="http://www.robotstxt.org/wc/exclusion.html#robotstxt">Robots Exclusion Protocol</a> if possible.</p>
+<p>The <strong class=html>HTTP-EQUIV</strong> attribute may be used in place of the <strong class=html>NAME</strong> attribute to indicate that the property is an <abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> header. Some servers will send the <abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> header specified in the <strong class=html>META</strong> element, and browsers often recognize the header even when it is not sent by the server. Examples:</p>
+<dl class=example>
+  <dt><code class=html>&lt;META HTTP-EQUIV=Expires CONTENT="Sun, 22 Mar 1998 16:18:35 GMT"&gt;</code></dt>
+  <dd>sets the expiry date of the document.</dd>
+  <dt><code class=html>&lt;META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript"&gt;</code></dt>
+  <dd>sets the client-side scripting language for inline scripts to JavaScript.</dd>
+  <dt><code class=html>&lt;META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css"&gt;</code></dt>
+  <dd>sets the style language for inline styles to <abbr class=initialism title="Cascading Style Sheets">CSS</abbr>.</dd>
+  <dt><code class=html>&lt;META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=SHIFT_JIS"&gt;</code></dt>
+  <dd>sets the character encoding for the document to SHIFT_JIS (a Japanese encoding). Note that using <strong class=html>META</strong> for this purpose rather than a true <abbr class=initialism title="HyperText Transfer Protocol">HTTP</abbr> header causes some browsers to redraw the page after initially displaying it.</dd>
+  <dt><a name=refresh><code class=html>&lt;META HTTP-EQUIV=Refresh CONTENT="10; URL=http://www.htmlhelp.com/"&gt;</code></a></dt>
+  <dd>tells the browser to load <strong class=html>http://www.htmlhelp.com/</strong> 10 seconds after the current document has finished loading. Not all browsers support this, so authors should provide an alternate means of moving to the new page where necessary. The <strong class=html>Refresh</strong> header is sometimes used for "splash screens" or when a page has moved, but the technique is not very effective since users may not even be looking at the window that is to be refreshed and since it messes up the user's history on many browsers. Some search engines penalize pages that use a <strong class=html>Refresh</strong> of a few seconds or less.</dd>
+</dl>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/global.html#edef-META">META in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#meta">META in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.2.5">META in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/head/meta.html">META in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.39.html">META in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://www.w3.org/Metadata/">Metadata at W3C</a></li>
+  <li><a href="http://www.lycos.com/help/robots.html#meta">Lycos Help: Robots Meta Tag</a></li>
+  <li><a href="http://www.robotstxt.org/wc/exclusion.html">Robots Exclusion</a>
+    <ul>
+      <li><a href="http://www.robotstxt.org/wc/meta-user.html">HTML Author's Guide to the Robots META tag</a></li>
+    </ul>
+  </li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

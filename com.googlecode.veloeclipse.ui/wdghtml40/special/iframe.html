@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IFRAME - Inline Frame</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's IFRAME element for inline frames.">
+<meta name="keywords" content="iframe element, inline frame, floating frame, inline frames, floating frames, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;iframe&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>IFRAME - Inline Frame</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;IFRAME&gt;</strong>...<strong class=required>&lt;/IFRAME&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>SRC=<var><a href="../values.html#uri">URI</a></var> (<abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of frame content)</li>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (name of frame)</li>
+        <li>LONGDESC=<var><a href="../values.html#uri">URI</a></var> (link to long description)</li>
+        <li>WIDTH=<var><a href="../values.html#length">Length</a></var> (frame width)</li>
+        <li>HEIGHT=<var><a href="../values.html#length">Length</a></var> (frame height)</li>
+        <li>ALIGN=[ top | middle | bottom | left | right ] (frame alignment)</li>
+        <li>FRAMEBORDER=[ <em class=default>1</em> | 0 ] (frame border)</li>
+        <li>MARGINWIDTH=<var><a href="../values.html#pixels">Pixels</a></var> (margin width)</li>
+        <li>MARGINHEIGHT=<var><a href="../values.html#pixels">Pixels</a></var> (margin height)</li>
+        <li>SCROLLING=[ yes | no | <em class=default>auto</em> ] (ability to scroll)</li>
+        <li><a href="../attrs.html#core">core attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../block.html">Block-level elements</a>, <a href="../inline.html">inline elements</a> except <a href="../forms/button.html">BUTTON</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>IFRAME</strong> element defines an <em>inline frame</em> for the inclusion of external objects including other HTML documents. <strong class=html>IFRAME</strong> provides a subset of the functionality of <strong class=html><a href="object.html">OBJECT</a></strong>; the only advantage to <strong class=html>IFRAME</strong> is that an inline frame can act as a <a href="a.html#target">target</a> for other links. <strong class=html>OBJECT</strong> is more widely supported than <strong class=html>IFRAME</strong>, and, unlike <strong class=html>IFRAME</strong>, <strong class=html>OBJECT</strong> is included in <a href="../html/doctype.html#strict">HTML 4.0 Strict</a>.</p>
+<p><strong class=html>IFRAME</strong>'s <strong class=html>SRC</strong> attribute provides the location of the frame content--typically an HTML document. The optional <strong class=html>NAME</strong> attribute specifies the name of the inline frame, allowing links to <a href="a.html#target">target</a> the frame.</p>
+<p>The content of the <strong class=html>IFRAME</strong> element is used as an alternative for browsers that are not configured to show or do not support inline frames. The content may consist of <a href="../inline.html">inline</a> or <a href="../block.html">block-level</a> elements, though any block-level elements must be allowed inside the containing element of <strong class=html>IFRAME</strong>. For example, an <strong class=html>IFRAME</strong> within an <strong class=html><a href="../block/h1.html">H1</a></strong> cannot contain an <strong class=html><a href="../block/h2.html">H2</a></strong>, but an <strong class=html>IFRAME</strong> within a <strong class=html><a href="../block/div.html">DIV</a></strong> can contain any block-level elements.</p>
+<p>The <strong class=html>LONGDESC</strong> attribute gives the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of a long description of the frame's contents. This is particularly useful for full descriptions of embedded objects. Note that <strong class=html>LONGDESC</strong> <em>describes</em> the frame content while the content of the <strong class=html>IFRAME</strong> element acts as a <em>replacement</em> when the external resource cannot be inlined.</p>
+<p>An example follows:</p>
+<p class=example><code class=html>&lt;IFRAME SRC="recipe.html" TITLE="The Famous Recipe"&gt;<br>&lt;!-- Alternate content for non-supporting browsers --&gt;<br>&lt;H2&gt;The Famous Recipe&lt;/H2&gt;<br>&lt;H3&gt;Ingredients&lt;/H3&gt;<br><var>...</var><br>&lt;/IFRAME&gt;</code></p>
+<p>The <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> attributes specify the dimensions of the inline frame in pixels or as a percentage of the available space. The <strong class=html>FRAMEBORDER</strong> attribute specifies whether or not a border should be drawn. The default value of <strong class=html>1</strong> results in a border while a value of <strong class=html>0</strong> suppresses the border. <a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> allow greater flexibility in suggesting the border presentation.</p>
+<p>The <strong class=html>ALIGN</strong> attribute specifies the alignment of the inline frame. The values <strong class=html>top</strong>, <strong class=html>middle</strong>, and <strong class=html>bottom</strong> specify the frame's position with respect to surrounding content on its left and right.</p>
+<div class=note>
+<p><strong class=html>ALIGN=middle</strong> aligns the center of the frame with the current baseline. To center the frame horizontally on the page, place the frame in a centered block, <i lang=la>e.g.</i>,</p>
+<p class=example><code class=html>&lt;P ALIGN=center&gt;&lt;IFRAME SRC="foo.html" WIDTH=300 HEIGHT=100&gt;&lt;/IFRAME&gt;&lt;/P&gt;</code></p>
+</div>
+<p>The other <strong class=html>ALIGN</strong> values, <strong class=html>left</strong> and <strong class=html>right</strong>, specify a <em>floating</em> frame; the frame is placed at the left or right margin and content flows around it. To place content below the frame, use <strong class=html>&lt;BR CLEAR=left|right|all&gt;</strong> as appropriate.</p>
+<p class=note>The <strong class=css><a href="http://www.htmlhelp.com/reference/css/text/vertical-align.html">vertical-align</a></strong> and <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/float.html">float</a></strong> properties of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provide more flexible methods of aligning inline frames.</p>
+<p>The <strong class=html>MARGINWIDTH</strong> and <strong class=html>MARGINHEIGHT</strong> attributes define the number of pixels to use as the left/right margins and top/bottom margins, respectively, within the inline frame. The value must be greater than one pixel.</p>
+<p>The <strong class=html>SCROLLING</strong> attribute specifies whether scrollbars are provided for the inline frame. The default value, <strong class=html>auto</strong>, generates scrollbars only when necessary. The value <strong class=html>yes</strong> gives scrollbars at all times, and the value <strong class=html>no</strong> suppresses scrollbars--even when they are needed to see all the content. The value <strong class=html>no</strong> should never be used.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/frames.html#edef-IFRAME">IFRAME in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/html/iframe.html">Using inline frames</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>
+

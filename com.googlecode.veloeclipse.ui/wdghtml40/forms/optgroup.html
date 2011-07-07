@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>OPTGROUP - Option Group</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's OPTGROUP element for option groups in a select menu.">
+<meta name="keywords" content="OPTGROUP, optgroup element, option group, select group, cascading menu, cascading menus, hierarchical menu, drop-down option, list box item, menu option, menu item, forms, form, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;optgroup&gt; tag, &lt;OPTGROUP&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>OPTGROUP - Option Group</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;OPTGROUP&gt;</strong>...<strong class=required>&lt;/OPTGROUP&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>LABEL=<var><a href="../values.html#text">Text</a></var> (group label)</strong></li>
+        <li>DISABLED (disable group of choices)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>One or more <a href="option.html">OPTION</a> elements</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="select.html">SELECT</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>OPTGROUP</strong> element defines a <em>group of choices</em> within a <strong class=html><a href="select.html">SELECT</a></strong> menu. <strong class=html>OPTGROUP</strong> must contain one or more <strong class=html><a href="option.html">OPTION</a></strong> elements to define the actual choices.</p>
+<p>The required <strong class=html>LABEL</strong> attribute specifies the group label presented to the user. The <strong class=html>LABEL</strong> should describe the group of choices available through the <strong class=html>OPTGROUP</strong>'s <strong class=html>OPTION</strong>s. Each <strong class=html>OPTION</strong> generally uses a <strong class=html>LABEL</strong> attribute as well to provide a shortened label that, together with the <strong class=html>OPTGROUP</strong>'s <strong class=html>LABEL</strong>, gives a complete description of the option. An example follows:</p>
+<pre class=example><code class=html>&lt;P&gt;Which Web browser do you use most often?
+  &lt;SELECT NAME=browser&gt;
+    &lt;OPTGROUP LABEL="Netscape Navigator"&gt;
+      &lt;OPTION LABEL="4.x or higher"&gt;
+        Netscape Navigator 4.x or higher
+      &lt;/OPTION&gt;
+      &lt;OPTION LABEL="3.x"&gt;Netscape Navigator 3.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="2.x"&gt;Netscape Navigator 2.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="1.x"&gt;Netscape Navigator 1.x&lt;/OPTION&gt;
+    &lt;/OPTGROUP&gt;
+    &lt;OPTGROUP LABEL="Microsoft Internet Explorer"&gt;
+      &lt;OPTION LABEL="4.x or higher"&gt;
+        Microsoft Internet Explorer 4.x or higher
+      &lt;/OPTION&gt;
+      &lt;OPTION LABEL="3.x"&gt;Microsoft Internet Explorer 3.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="2.x"&gt;Microsoft Internet Explorer 2.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="1.x"&gt;Microsoft Internet Explorer 1.x&lt;/OPTION&gt;
+    &lt;/OPTGROUP&gt;
+    &lt;OPTGROUP LABEL="Opera"&gt;
+      &lt;OPTION LABEL="3.x or higher"&gt;Opera 3.x or higher&lt;/OPTION&gt;
+      &lt;OPTION LABEL="2.x"&gt;Opera 2.x&lt;/OPTION&gt;
+    &lt;/OPTGROUP&gt;
+    &lt;OPTION&gt;Other&lt;/OPTION&gt;
+  &lt;/SELECT&gt;
+&lt;/P&gt;</code></pre>
+<p><strong class=html>OPTGROUP</strong> is not well supported by current browsers, but its design allows authors to use it today without sacrificing compatibility with non-supporting browsers. Supporting browsers will render the preceding example using the <strong class=html>LABEL</strong> attribute of <strong class=html>OPTION</strong> to provide just the version number, along with the <strong class=html>OPTGROUP</strong>'s <strong class=html>LABEL</strong>, which gives the full name of the application. This allows a compact display with easy-to-use cascading menus.</p>
+<p>Non-supporting browsers will ignore the <strong class=html>OPTGROUP</strong> elements and <strong class=html>LABEL</strong> attributes, providing the full name and version for each choice. Thus authors can fully use <strong class=html>OPTGROUP</strong> despite its lack of browser support.</p>
+<p class=note>Note that, in HTML 4.0, <strong class=html>OPTGROUP</strong> is limited to containing only <strong class=html>OPTION</strong> elements, thus preventing nested <strong class=html>OPTGROUP</strong>s with multi-level cascades. Future versions of <abbr class=initialism title="HyperText Markup Language">HTML</abbr> may add support for nested option groups.</p>
+<p>The boolean <strong class=html>DISABLED</strong> attribute makes the option group unavailable. The options of a disabled option group cannot be selected by the user and are never submitted with the form.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-OPTGROUP">OPTGROUP in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

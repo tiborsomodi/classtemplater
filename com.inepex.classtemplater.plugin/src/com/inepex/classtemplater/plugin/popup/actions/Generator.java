@@ -7,27 +7,20 @@
 
 package com.inepex.classtemplater.plugin.popup.actions;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.StringBufferInputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IMethod;
-import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.ui.actions.OrganizeImportsAction;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -41,7 +34,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.inepex.classtemplater.plugin.Log;
 import com.inepex.classtemplater.plugin.codegeneration.GenerationType;
 import com.inepex.classtemplater.plugin.logic.Class;
-import com.inepex.classtemplater.plugin.logic.ResourceUtil;
+import com.inepex.classtemplater.plugin.logic.FileUtil;
 import com.inepex.classtemplater.plugin.logic.TemplateGen;
 import com.inepex.classtemplater.plugin.ui.CodeGenarator;
 import com.inepex.classtemplater.plugin.ui.GeneratorDialog;
@@ -56,6 +49,7 @@ public class Generator implements IObjectActionDelegate {
 	private ISelection selection;
 	private List<Class> classModels = new ArrayList<Class>();
 	private String mode = "";
+	private TemplateGen templateGen;
 	
 	private LogiSelectionListener filterListener = new LogiSelectionListener() {
 		
@@ -117,6 +111,8 @@ public class Generator implements IObjectActionDelegate {
 	 */
 	public void run(IAction action) {
 		try {
+			templateGen = new TemplateGen(GenerationType.CLASS);
+			readTemplatesFromWorkspace();
 			processSelection((IStructuredSelection)selection);
 			ui = new GeneratorDialog(shell, mode);
 			ui.open();
@@ -150,7 +146,7 @@ public class Generator implements IObjectActionDelegate {
 	
 	private void save(boolean simpleMode, boolean organize){
 		try {
-			CodeGenarator generator = new CodeGenarator(GenerationType.CLASS, targetPart);
+			CodeGenarator generator = new CodeGenarator(GenerationType.CLASS, targetPart, templateGen);
 			ui.clearText();
 			for (IResource template : ui.getSelectedTemplates()){
 				for (Class classModel : classModels){
@@ -182,4 +178,29 @@ public class Generator implements IObjectActionDelegate {
 		this.selection = selection;
 	}
 
+	private void readTemplatesFromWorkspace() throws Exception {
+		final ArrayList<IResource> ress = new ArrayList<IResource>();
+		IWorkspaceRoot workspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		
+		workspaceRoot.accept(new IResourceVisitor() {
+			
+			@Override
+			public boolean visit(IResource resource) throws CoreException {
+				if (resource.getName().endsWith(".vm"))
+					ress.add(resource);
+				return true;
+			}
+			
+		});
+		
+		for (IResource res : ress){
+			String templateContent = FileUtil.readFile((IFile)res);
+			if (templateContent.startsWith("outpath")){
+				templateContent = templateContent.substring(templateContent.indexOf('\n') + 1);
+			}
+			
+			templateGen.putTemplate(res.getName(), templateContent);
+			templateGen.putTemplate("withoutHc_" + res.getName(), CodeGenarator.removeHcs(templateContent));			
+		}
+	}
 }

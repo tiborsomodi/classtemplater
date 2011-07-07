@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>HR - Horizontal Rule</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's HR element for horizontal rules.">
+<meta name="keywords" content="HR, hr element, horizontal rule, line, divider, separator, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;hr&gt; tag, &lt;HR&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>HR - Horizontal Rule</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements and attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;HR&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li class=transitional>ALIGN=[ left | center | right ] (horizontal alignment)</li>
+        <li class=transitional>NOSHADE (solid line)</li>
+        <li class=transitional>SIZE=<var><a href="../values.html#pixels">Pixels</a></var> (line height)</li>
+        <li class=transitional>WIDTH=<var><a href="../values.html#length">Length</a></var> (line width)</li>
+        <li><a href="../attrs.html#core">core attributes</a></li>
+        <li><a href="../attrs.html#events">common events</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <span class=transitional><a href="center.html">CENTER</a>, </span><a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span><a href="noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>HR</strong> element defines a <em>horizontal rule</em> for visual browsers. While this element is inherently presentational, it can be used structurally as a section divider. However, for greater flexibility the <strong class=html>HR</strong> element can be replaced with the <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/border-bottom.html">border-bottom</a></strong> or <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/border-top.html">border-top</a></strong> properties of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a>. For example, the following style rule would suggest a horizontal line above all <strong class=html><a href="div.html">DIV</a></strong> elements with <strong class=html>CLASS=navbar</strong>:</p>
+<p class=example><code class=css>div.navbar { border-top: solid medium navy }</code></p>
+<div class=transitional>
+<p><strong class=html>HR</strong>'s <a href="../deprecated.html">deprecated</a> <strong class=html>ALIGN</strong> attribute suggests the horizontal alignment of the line. Possible values are <strong class=html>left</strong>, <strong class=html>right</strong>, and <strong class=html>center</strong>. The deprecated <strong class=html>WIDTH</strong> attribute specifies the width of the line as a percentage or a number of pixels. If a width is specified, percentages are generally preferred since they adjust to varying window sizes. The <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/width.html">width</a></strong> property of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provides greater flexibility in suggesting the width of horizontal rules.</p>
+<p>The boolean <strong class=html>NOSHADE</strong> attribute suggests that the rule be rendered as a solid line rather than the groove style commonly used. The <strong class=html>SIZE</strong> attribute suggests the height of the line in pixels. These attributes are both <a href="../deprecated.html">deprecated</a> in favor of <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/graphics.html#edef-HR">HR in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#hr">HR in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.9">HR in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/block/hr.html">HR in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.28.html">HR in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

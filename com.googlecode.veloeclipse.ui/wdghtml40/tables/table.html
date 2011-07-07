@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TABLE - Table</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's TABLE element for tables.">
+<meta name="keywords" content="TABLE, table element, tables, tabled, two-dimensional, multi-dimensional, dimensions, columns, rows, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;table&gt; tag, &lt;TABLE&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>TABLE - Table</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements and attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;TABLE&gt;</strong>...<strong class=required>&lt;/TABLE&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>SUMMARY=<var><a href="../values.html#text">Text</a></var> (purpose/structure of table)</li>
+        <li>WIDTH=<var><a href="../values.html#length">Length</a></var> (table width)</li>
+        <li>BORDER=<var><a href="../values.html#pixels">Pixels</a></var> (border width)</li>
+        <li>FRAME=[ void | above | below | hsides | lhs | rhs | vsides | box | border ] (outer border)</li>
+        <li>RULES=[ none | groups | rows | cols | all ] (inner borders)</li>
+        <li>CELLSPACING=<var><a href="../values.html#length">Length</a></var> (spacing between cells)</li>
+        <li>CELLPADDING=<var><a href="../values.html#length">Length</a></var> (spacing within cells)</li>
+        <li class=transitional>ALIGN=[ left | center | right ] (table alignment)</li>
+        <li class=transitional>BGCOLOR=<var><a href="../values.html#color">Color</a></var> (table background color)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>An optional <a href="caption.html">CAPTION</a>, followed by zero or more <a href="col.html">COL</a> and <a href="colgroup.html">COLGROUP</a> elements, followed by an optional <a href="thead.html">THEAD</a> element, an optional <a href="tfoot.html">TFOOT</a> element, and then one or more <a href="tbody.html">TBODY</a> elements</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="../block/blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <span class=transitional><a href="../block/center.html">CENTER</a>, </span><a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="../block/div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span><a href="../block/noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="td.html">TD</a>, <a href="th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>TABLE</strong> element defines a <em>table</em> for multi-dimensional data arranged in rows and columns. <strong class=html>TABLE</strong> is commonly used as a layout device, but authors should avoid this practice as much as possible. Tables can cause problems for users of narrow windows, large fonts, or non-visual browsers, and these problems are often accentuated when tables are used solely for layout purposes. As well, current visual browsers will not display anything until the complete table has been downloaded, which can have very noticeable effects when an entire document is laid out within a <strong class=html>TABLE</strong>. Authors should try to use <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> in place of <strong class=html>TABLE</strong> for layout, though bugs in current browser implementations of style sheets can make this difficult.</p>
+<p>The <strong class=html>TABLE</strong> may contain a number of optional elements to provide a rich structure to the table. The optional <strong class=html><a href="caption.html">CAPTION</a></strong> element gives a caption for the table and is followed by optional <strong class=html><a href="col.html">COL</a></strong> and <strong class=html><a href="colgroup.html">COLGROUP</a></strong> elements that specify column widths and groupings. The <strong class=html><a href="thead.html">THEAD</a></strong>, <strong class=html><a href="tfoot.html">TFOOT</a></strong>, and <strong class=html><a href="tbody.html">TBODY</a></strong> elements then follow with groups of rows. The optional <strong class=html>THEAD</strong> and <strong class=html>TFOOT</strong> elements contain header and footer rows, respectively, while <strong class=html>TBODY</strong> elements supply the table's main row groups. A row group contains <strong class=html><a href="tr.html">TR</a></strong> elements for individual rows, and each <strong class=html>TR</strong> contains <strong class=html><a href="th.html">TH</a></strong> or <strong class=html><a href="td.html">TD</a></strong> elements for header cells or data cells, respectively.</p>
+<p>At least one <strong class=html>TBODY</strong> element is required within a <strong class=html>TABLE</strong>, but <strong class=html>TBODY</strong>'s start and end tags are both optional if there is only one <strong class=html>TBODY</strong> and no <strong class=html>THEAD</strong> or <strong class=html>TFOOT</strong>. A simple table could thus be expressed as follows:</p>
+<pre class=example><code class=html><strong>&lt;TABLE&gt;</strong>
+  &lt;TR&gt;
+    &lt;TH&gt;Abbreviation&lt;/TH&gt;
+    &lt;TH&gt;Long Form&lt;/TH&gt;
+  &lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;AFAIK&lt;/TD&gt;
+    &lt;TD&gt;As Far As I Know&lt;/TD&gt;
+  &lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;IMHO&lt;/TD&gt;
+    &lt;TD&gt;In My Humble Opinion&lt;/TD&gt;
+  &lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;OTOH&lt;/TD&gt;
+    &lt;TD&gt;On The Other Hand&lt;/TD&gt;
+  &lt;/TR&gt;
+<strong>&lt;/TABLE&gt;</strong></code></pre>
+<p>The same table could be expressed with a richer structure by grouping rows and adding a caption, as in the next example. The extra structural information allows an author to more easily suggest the presentation of the table using <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> or <strong class=html>TABLE</strong>'s <a href="#presentation">presentational attributes</a>.</p>
+<pre class=example><code class=html><strong>&lt;TABLE&gt;</strong>
+  &lt;CAPTION&gt;Common Usenet Abbreviations&lt;/CAPTION&gt;
+  &lt;THEAD&gt;
+    &lt;TR&gt;
+      &lt;TH&gt;Abbreviation&lt;/TH&gt;
+      &lt;TH&gt;Long Form&lt;/TH&gt;
+    &lt;/TR&gt;
+  &lt;/THEAD&gt;
+  &lt;TBODY&gt;
+    &lt;TR&gt;
+      &lt;TD&gt;AFAIK&lt;/TD&gt;
+      &lt;TD&gt;As Far As I Know&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;
+      &lt;TD&gt;IMHO&lt;/TD&gt;
+      &lt;TD&gt;In My Humble Opinion&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;
+      &lt;TD&gt;OTOH&lt;/TD&gt;
+      &lt;TD&gt;On The Other Hand&lt;/TD&gt;
+    &lt;/TR&gt;
+  &lt;/TBODY&gt;
+<strong>&lt;/TABLE&gt;</strong></code></pre>
+<p><a name=summary>The <strong class=html>TABLE</strong> element takes an optional <strong class=html>SUMMARY</strong> attribute to describe the purpose and/or structure of the table.</a> The overview provided by the <strong class=html>SUMMARY</strong> attribute is particularly helpful to users of non-visual browsers. With simple tables, a good <strong class=html><a href="caption.html">CAPTION</a></strong> is usually a sufficient summary, but complex tables may benefit from a more detailed overview via the <strong class=html>SUMMARY</strong> attribute. The following example uses <strong class=html>SUMMARY</strong> to describe a table. Note that the summary could also be included in a paragraph before the table, which is helpful since few browsers support <strong class=html>SUMMARY</strong>.</p>
+<pre class=example><code class=html><strong>&lt;TABLE SUMMARY="This table gives the character entity reference,
+                decimal character reference, and hexadecimal character
+                reference for symbols and Greek letters."&gt;</strong>
+  &lt;COLGROUP&gt;
+  &lt;COLGROUP SPAN=3&gt;
+  &lt;THEAD&gt;
+    &lt;TR&gt;
+      &lt;TH SCOPE=col&gt;Character&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Entity&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Decimal&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Hex&lt;/TH&gt;
+    &lt;/TR&gt;
+  &lt;/THEAD&gt;
+  &lt;TBODY&gt;
+    &lt;TR&gt;
+      &lt;TD SCOPE=row&gt;Latin small f with hook&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;fnof;&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;#402;&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;#x192;&lt;/TD&gt;
+    &lt;/TR&gt;
+    <var>...</var>
+  &lt;/TBODY&gt;
+<strong>&lt;/TABLE&gt;</strong></code></pre>
+<p><a name=presentation>The <strong class=html>TABLE</strong> element also takes a number of optional attributes to provide presentational hints in visual browsers.</a> Equivalents of these attributes in <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> are <a href="http://www.w3.org/TR/REC-CSS2/tables.html" title="Tables in CSS2">under development</a> and not widely supported by browsers.</p>
+<ul>
+  <li><p>The <strong class=html>WIDTH</strong> attribute specifies the width of the table as a number of pixels or as a percentage of the available horizontal space. Widths in pixels should be avoided, especially widths above 500 pixels, since this causes unnecessary horizontal scrolling for some users.</p></li>
+  <li><p>The <strong class=html>BORDER</strong> attribute specifies the width in pixels of the border around a table.</p></li>
+  <li><p>The <strong class=html>FRAME</strong> attribute, poorly supported by browsers, specifies which sides of the table's outer border are visible. Possible values are <strong class=html>void</strong> for no border, <strong class=html>above</strong> for a top border only, <strong class=html>below</strong> for a bottom border only, <strong class=html>hsides</strong> for left and right borders only, <strong class=html>vsides</strong> for top and bottom borders only, <strong class=html>lhs</strong> for a left border only, <strong class=html>rhs</strong> for a right border only, and either <strong class=html>box</strong> or <strong class=html>border</strong> for a border on all sides. The default value is <strong class=html>void</strong> unless the <strong class=html>BORDER</strong> attribute gives a positive width, in which case <strong class=html>FRAME=border</strong> is the default. <strong class=html>&lt;TABLE BORDER&gt;</strong> is a valid, well-supported shorthand for <strong class=html>&lt;TABLE FRAME=border&gt;</strong>.</p></li>
+  <li><p>The <strong class=html>RULES</strong> attribute, poorly supported by browsers, specifies the borders between table cells. Possible values are <strong class=html>none</strong> for no inner borders, <strong class=html>groups</strong> for borders between row groups and column groups only, <strong class=html>rows</strong> for borders between rows only, <strong class=html>cols</strong> for borders between columns only, and <strong class=html>all</strong> for borders between all cells. <strong class=html>None</strong> is the default value if <strong class=html>BORDER=0</strong> is used or if no <strong class=html>BORDER</strong> attribute is given. <strong class=html>All</strong> is the default value for any other use of <strong class=html>BORDER</strong>.</p></li>
+  <li><p>The <strong class=html>CELLSPACING</strong> attribute defines the amount of space between table cells, and the <strong class=html>CELLPADDING</strong> attribute defines the amount of space within table cells (<abbr title="that is"><i lang=la>i.e.</i></abbr>, between the border and cell contents). The value may be given as a number of pixels or as a percentage, though most browsers do not support percentages, treating <strong class=html>CELLPADDING="20%"</strong> as if it were <strong class=html>CELLPADDING="20"</strong>. A percentage value is relative to the vertical space available for vertical padding or spacing, and the amount is split evenly between the top and bottom. Horizontal padding and spacing behave similarly. The padding or spacing is always applied to all four sides.</p>
+<p class=note>The <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/padding.html">padding</a></strong> properties of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> allow an author to suggest different padding for different sides, but are not as well supported as the <strong class=html>CELLPADDING</strong> attribute.</p></li>
+<li class=transitional><p>The <a href="../deprecated.html">deprecated</a> <strong class=html>ALIGN</strong> attribute suggests the horizontal alignment of the table on visual browsers. Possible values are <strong class=html>left</strong>, <strong class=html>right</strong>, and <strong class=html>center</strong>. Browsers generally present left- or right-aligned tables as <em>floating</em> tables, with the content following the <strong class=html>TABLE</strong> flowing around it. To prevent content from flowing around the table, use <strong class=html>&lt;BR CLEAR=all&gt;</strong> after the end of the <strong class=html>TABLE</strong>.</p>
+<div class=note>
+<p>Since many browsers do not support <strong class=html>ALIGN=center</strong> with <strong class=html>TABLE</strong>, authors may wish to place the <strong class=html>TABLE</strong> within a <strong class=html><a href="../block/center.html">CENTER</a></strong> element.</p>
+<p><a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> provide more flexibility in suggesting table alignment but with less browser support than the <strong class=html>ALIGN</strong> attribute.</p>
+</div>
+</li>
+<li class=transitional><p>The <a href="../deprecated.html">deprecated</a> <strong class=html>BGCOLOR</strong> attribute suggests a background color for the table. The combination of this attribute with <strong class=html>&lt;<a href="../special/font.html">FONT</a> COLOR=<var>...</var>&gt;</strong> can leave invisible or unreadable text on Netscape Navigator 2.<var>x</var>, which does not support <strong class=html>BGCOLOR</strong> on table elements. <strong class=html>BGCOLOR</strong> is dangerous even on supporting browsers, since most fail to override it when overriding other author-specified colors. <a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> provide a safer, more flexible method of specifying a table's background color.</p></li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/tables.html#edef-TABLE">TABLE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#table">TABLE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/table/table.html">TABLE in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.54.html">TABLE in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>BASE - Document Base URI</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's BASE element for setting a document's base URI.">
+<meta name="keywords" content="BASE, base element, base URI, base URL, base href, baseref, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;base&gt; tag, &lt;BASE&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+<script type="text/javascript">
+<!--
+var hrefspecText = null;
+
+function adjustHrefSpec(strict) {
+  var hrefspec = null;
+  if (document.all) {
+    hrefspec = document.all.hrefspec;
+  } else if (document.getElementById) {
+    hrefspec = document.getElementById("hrefspec");
+  }
+    
+  if (hrefspec != null && hrefspec.innerHTML) {
+    if (strict) {
+      if (hrefspecText == null) {
+        hrefspecText = hrefspec.innerHTML;
+      }
+      hrefspec.innerHTML = "<strong class=required>" + hrefspecText + "<\/strong>";
+    } else {
+      if (hrefspecText != null) {
+        hrefspec.innerHTML = hrefspecText;
+      }
+    }
+  }
+}
+
+hideNonStrictAction = adjustHrefSpec;
+// -->
+</script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>BASE - Document Base <abbr class=initialism title="Uniform Resource Identifier">URI</abbr></h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;BASE&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li id=hrefspec>HREF=<var><a href="../values.html#uri">URI</a></var> (base <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> reference)</li>
+        <li class=transitional>TARGET=<var><a href="../values.html#frametarget">FrameTarget</a></var> (frame to render links in)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="head.html">HEAD</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>BASE</strong> element defines the document's <em>base <abbr class=initialism title="Uniform Resource Identifier">URI</abbr></em> for resolving relative <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s contained within the document. A document cannot contain more than one <strong class=html>BASE</strong> element. When present, the <strong class=html>BASE</strong> element must appear in the <strong class=html><a href="head.html">HEAD</a></strong>, prior to any elements that include a partial <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>.</p>
+<p><strong class=html>BASE</strong>'s <strong class=html>HREF</strong> attribute, required in <a href="../html/doctype.html#strict">HTML 4.0 Strict</a>, specifies the absolute <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> used to resolve relative <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s. See <cite><a href="http://www.stack.nl/%7Egalactus/html/urls.html">Using Relative <abbr class=initialism title="Uniform Resource Locator">URL</abbr>s</a></cite> for more details on using and resolving relative <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s.</p>
+<p>Most Web pages do not require an explicit base <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> since the document's <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> is a suitable base. An explicit base <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> is only required when the same document may be accessed at different <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s or when the document has no <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> (<abbr title="for example"><i lang=la>e.g.</i></abbr>, sending an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document by e-mail).</p>
+<div class=transitional>
+<p><a name="target">The <strong class=html>TARGET</strong> attribute</a> is used with <a href="../frames/index.html">frames</a> to specify in which frame all links in document should be rendered by default. The target frame specified by <strong class=html>BASE</strong> can be overridden by a given link using the link's <strong class=html>TARGET</strong> attribute.</p>
+<p>If no frame with the specified target name exists, the links are rendered in a new window unless overridden by the user. Special frame names begin with an underscore:</p>
+<ul>
+  <li><strong class=html>_blank</strong> renders the links in a new, unnamed window</li>
+  <li><strong class=html>_self</strong> renders the links in the current frame</li>
+  <li><strong class=html>_parent</strong> renders the links in the immediate <strong class=html><a href="../frames/frameset.html">FRAMESET</a></strong> parent</li>
+  <li><strong class=html>_top</strong> renders the links in the full, unframed window</li>
+</ul>
+<p class=note>In HTML 4.0, the <strong class=html>TARGET</strong> attribute value is <em>case-insensitive</em>, so that <strong class=html>_top</strong> and <strong class=html>_TOP</strong> both have the same meaning. However, most browsers treat the <strong class=html>TARGET</strong> attribute value as <em>case-sensitive</em> and do not recognize <strong class=html>_TOP</strong> as having the special meaning of <strong class=html>_top</strong>.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/links.html#edef-BASE">BASE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#base">BASE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.2.2">BASE in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/head/base.html">BASE in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.7.html">BASE in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

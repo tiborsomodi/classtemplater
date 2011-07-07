@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CAPTION - Table Caption</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's CAPTION element for table captions.">
+<meta name="keywords" content="CAPTION, caption element, table caption, table captions, captioning, tables, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;caption&gt; tag, &lt;CAPTION&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>CAPTION - Table Caption</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;CAPTION&gt;</strong>...<strong class=required>&lt;/CAPTION&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li class=transitional>ALIGN=[ top | bottom | left | right ] (caption alignment)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="table.html">TABLE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>CAPTION</strong> element defines a <em>table caption</em>. When used, <strong class=html>CAPTION</strong> must be the first element in the <strong class=html><a href="table.html">TABLE</a></strong>. Only <a href="../inline.html">inline elements</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr>, <strong class=html><a href="../phrase/strong.html">STRONG</a></strong>) may be used within <strong class=html>CAPTION</strong>.</p>
+<p>A good caption should provide a short heading for the table. For simple tables, the caption can also act as an adequate summary, but for more complex tables, authors should supplement the <strong class=html>CAPTION</strong> with a full summary, either through <strong class=html><a href="table.html">TABLE</a></strong>'s <strong class=html><a href="table.html#summary">SUMMARY</a></strong> attribute or within a paragraph outside of the <strong class=html>TABLE</strong>. The following example features a simple table where the <strong class=html>CAPTION</strong> provides a heading and an adequate table summary:</p>
+<pre class=example><code class=html>&lt;TABLE&gt;
+  <strong>&lt;CAPTION&gt;Common Usenet Abbreviations&lt;/CAPTION&gt;</strong>
+  &lt;THEAD&gt;
+    &lt;TR&gt;
+      &lt;TH&gt;Abbreviation&lt;/TH&gt;
+      &lt;TH&gt;Long Form&lt;/TH&gt;
+    &lt;/TR&gt;
+  &lt;/THEAD&gt;
+  &lt;TBODY&gt;
+    &lt;TR&gt;
+      &lt;TD&gt;AFAIK&lt;/TD&gt;
+      &lt;TD&gt;As Far As I Know&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;
+      &lt;TD&gt;IMHO&lt;/TD&gt;
+      &lt;TD&gt;In My Humble Opinion&lt;/TD&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;
+      &lt;TD&gt;OTOH&lt;/TD&gt;
+      &lt;TD&gt;On The Other Hand&lt;/TD&gt;
+    &lt;/TR&gt;
+  &lt;/TBODY&gt;
+&lt;/TABLE&gt;</code></pre>
+<p>The next example uses <strong class=html>TABLE</strong>'s <strong class=html>SUMMARY</strong> attribute to complement the <strong class=html>CAPTION</strong>:</p>
+<pre class=example><code class=html>&lt;TABLE SUMMARY="This table gives the character entity reference,
+                decimal character reference, and hexadecimal character
+                reference for symbols and Greek letters."&gt;
+  <strong>&lt;CAPTION&gt;Symbols and Greek Letters in HTML 4.0&lt;/CAPTION&gt;</strong>
+  &lt;COLGROUP&gt;
+  &lt;COLGROUP SPAN=3&gt;
+  &lt;THEAD&gt;
+    &lt;TR&gt;
+      &lt;TH SCOPE=col&gt;Character&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Entity&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Decimal&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Hex&lt;/TH&gt;
+    &lt;/TR&gt;
+  &lt;/THEAD&gt;
+  &lt;TBODY&gt;
+    &lt;TR&gt;
+      &lt;TD SCOPE=row&gt;Latin small f with hook&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;fnof;&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;#402;&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;#x192;&lt;/TD&gt;
+    &lt;/TR&gt;
+    <var>...</var>
+  &lt;/TBODY&gt;
+&lt;/TABLE&gt;</code></pre>
+<div class=transitional>
+<p>The <a href="../deprecated.html">deprecated</a> <strong class=html>ALIGN</strong> attribute of <strong class=html>CAPTION</strong> specifies the alignment of the caption relative to the table. Possible values are <strong class=html>top</strong> (the default), <strong class=html>bottom</strong>, <strong class=html>left</strong>, and <strong class=html>right</strong>.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/tables.html#edef-CAPTION">CAPTION in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#table">CAPTION in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/table/caption.html">CAPTION in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.13.html">CAPTION in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

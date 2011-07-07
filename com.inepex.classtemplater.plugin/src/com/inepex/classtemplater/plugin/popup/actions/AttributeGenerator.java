@@ -19,6 +19,7 @@ import org.eclipse.ui.IWorkbenchPart;
 import com.inepex.classtemplater.plugin.Log;
 import com.inepex.classtemplater.plugin.codegeneration.GenerationType;
 import com.inepex.classtemplater.plugin.logic.Attribute;
+import com.inepex.classtemplater.plugin.logic.TemplateGen;
 import com.inepex.classtemplater.plugin.ui.CodeGenarator;
 import com.inepex.classtemplater.plugin.ui.GeneratorDialog;
 import com.inepex.classtemplater.plugin.ui.LogiSelectionEvent;
@@ -34,7 +35,9 @@ public class AttributeGenerator implements IObjectActionDelegate {
 	
 	private List<Attribute> models = new ArrayList<Attribute>();
 	
-	private CodeGenarator codeGenarator = new CodeGenarator(GenerationType.ATTRIBUTE, targetPart);
+	private CodeGenarator codeGenarator;
+	
+	private TemplateGen templateGen;
 	
 	private LogiSelectionListener filterListener = new LogiSelectionListener() {
 		
@@ -56,6 +59,8 @@ public class AttributeGenerator implements IObjectActionDelegate {
 	@Override
 	public void run(IAction action) {
 		try {
+			templateGen = new TemplateGen(GenerationType.ATTRIBUTE);
+			codeGenarator = new CodeGenarator(GenerationType.ATTRIBUTE, targetPart, templateGen);
 			processSelection((IStructuredSelection)selection);
 			ui = new GeneratorDialog(shell, "Attribute templater");
 			ui.open();

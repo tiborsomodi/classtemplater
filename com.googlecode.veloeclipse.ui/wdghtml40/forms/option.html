@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>OPTION - Menu Option</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's OPTION element for menu options in a form.">
+<meta name="keywords" content="OPTION, option element, select option, drop-down option, list box item, menu option, menu item, forms, form, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;option&gt; tag, &lt;OPTION&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>OPTION - Menu Option</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;OPTION&gt;</strong>...&lt;/OPTION&gt;</td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>VALUE=<var><a href="../values.html#cdata">CDATA</a></var> (value of option)
+        <li>SELECTED (choice initially selected)</li>
+        <li>DISABLED (disable choice)</li>
+        <li>LABEL=<var><a href="../values.html#text">Text</a></var> (option label)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Plain text (including <a href="../entities/index.html">entities</a>)</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="select.html">SELECT</a>, <a href="optgroup.html">OPTGROUP</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>OPTION</strong> element defines a <em>menu choice</em> within a <strong class=html><a href="select.html">SELECT</a></strong> menu. The value of the option, sent with a submitted form, is specified with the <strong class=html>VALUE</strong> attribute. In the absence of a <strong class=html>VALUE</strong> attribute, the value is the content of the <strong class=html>OPTION</strong> element.</p>
+<p>The boolean <strong class=html>SELECTED</strong> attribute defines the <strong class=html>OPTION</strong> to be initially selected. A <strong class=html>SELECT</strong> element can only have one <strong class=html>OPTION</strong> selected at any time unless the <strong class=html>MULTIPLE</strong> attribute is present on <strong class=html>SELECT</strong>.</p>
+<div class=note>
+<p>If the <strong class=html>SELECT</strong> element does not use the <strong class=html>MULTIPLE</strong> or <strong class=html>SIZE</strong> attributes, some browsers will automatically (and incorrectly) select an option. To ensure that a suitable option is selected, authors may wish to use the <strong class=html>SELECTED</strong> attribute on an <strong class=html>OPTION</strong>. If no option is a suitable default, consider using a dummy option, as in the following example:</p>
+<p class=example><code class=html>&lt;SELECT NAME="marital_status"&gt;<br>&lt;OPTION SELECTED VALUE=""&gt;Select...&lt;/OPTION&gt;<br>&lt;OPTION&gt;Single&lt;/OPTION&gt;<br>&lt;OPTION&gt;Married&lt;/OPTION&gt;<br>&lt;OPTION&gt;Separated&lt;/OPTION&gt;<br>&lt;OPTION&gt;Divorced&lt;/OPTION&gt;<br>&lt;OPTION&gt;Widowed&lt;/OPTION&gt;<br>&lt;/SELECT&gt;</code></p>
+</div>
+<p>The boolean <strong class=html>DISABLED</strong> attribute, new in HTML 4.0 and poorly supported by current browsers, makes the <strong class=html>OPTION</strong> element unavailable. A disabled option cannot be selected by the user and is never submitted with the form.</p>
+<p>The <strong class=html>LABEL</strong> attribute specifies the option label presented to the user. This defaults to the content of the <strong class=html>OPTION</strong> element, but the <strong class=html>LABEL</strong> attribute allows authors to more easily use <strong class=html><a href="optgroup.html">OPTGROUP</a></strong> without sacrificing compatibility with browsers that do not support option groups. The following example illustrates the technique:</p>
+<pre class=example><code class=html>&lt;P&gt;Which Web browser do you use most often?
+  &lt;SELECT NAME=browser&gt;
+    &lt;OPTGROUP LABEL="Netscape Navigator"&gt;
+      &lt;OPTION LABEL="4.x or higher"&gt;
+        Netscape Navigator 4.x or higher
+      &lt;/OPTION&gt;
+      &lt;OPTION LABEL="3.x"&gt;Netscape Navigator 3.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="2.x"&gt;Netscape Navigator 2.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="1.x"&gt;Netscape Navigator 1.x&lt;/OPTION&gt;
+    &lt;/OPTGROUP&gt;
+    &lt;OPTGROUP LABEL="Microsoft Internet Explorer"&gt;
+      &lt;OPTION LABEL="4.x or higher"&gt;
+        Microsoft Internet Explorer 4.x or higher
+      &lt;/OPTION&gt;
+      &lt;OPTION LABEL="3.x"&gt;Microsoft Internet Explorer 3.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="2.x"&gt;Microsoft Internet Explorer 2.x&lt;/OPTION&gt;
+      &lt;OPTION LABEL="1.x"&gt;Microsoft Internet Explorer 1.x&lt;/OPTION&gt;
+    &lt;/OPTGROUP&gt;
+    &lt;OPTGROUP LABEL="Opera"&gt;
+      &lt;OPTION LABEL="3.x or higher"&gt;Opera 3.x or higher&lt;/OPTION&gt;
+      &lt;OPTION LABEL="2.x"&gt;Opera 2.x&lt;/OPTION&gt;
+    &lt;/OPTGROUP&gt;
+    &lt;OPTION&gt;Other&lt;/OPTION&gt;
+  &lt;/SELECT&gt;
+&lt;/P&gt;</code></pre>
+<p><strong class=html>OPTGROUP</strong> and <strong class=html>OPTION</strong>'s <strong class=html>LABEL</strong> attribute were introduced together, so browsers should support both features or neither of them. Supporting browsers will render the preceding example using the <strong class=html>LABEL</strong> attribute of <strong class=html>OPTION</strong> to provide just the version number, along with the <strong class=html>OPTGROUP</strong>'s <strong class=html>LABEL</strong>, which gives the full name of the application. This allows a compact display with cascading menus, but many browsers do not yet support <strong class=html>OPTGROUP</strong>. These browsers will ignore the <strong class=html>OPTGROUP</strong> elements and <strong class=html>LABEL</strong> attributes, providing the full name and version for each choice. Thus authors can fully use <strong class=html>OPTGROUP</strong> despite its lack of browser support.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-OPTION">OPTION in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#select">OPTION in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_8.html#SEC8.1.3.1">OPTION in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/form/option.html">OPTION in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.41.html">OPTION in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

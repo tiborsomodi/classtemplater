@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>FONT - Font Change</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's FONT element for font changes.">
+<meta name="keywords" content="font element, font change, color, colour, colors, colours, face, faces, font size, sizes, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;font&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>FONT - Font Change</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;FONT&gt;</strong>...<strong class=required>&lt;/FONT&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>SIZE=<var><a href="../values.html#cdata">CDATA</a></var> (font size adjustment)</li>
+        <li>COLOR=<var><a href="../values.html#color">Color</a></var> (font color adjustment)</li>
+        <li>FACE=<var><a href="../values.html#cdata">CDATA</a></var> (font face adjustment)</li>
+        <li><a href="../attrs.html#core">core attributes</a></li>
+        <li><a href="../attrs.html#i18n">internationalization attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a> except <a href="../block/pre.html">PRE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>FONT</strong> element, <a href="../deprecated.html">deprecated</a> in HTML 4.0 in favor of <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, allows authors to suggest rudimentary <em>font changes</em>. Use of the <strong class=html>FONT</strong> element brings numerous usability and accessibility problems, as discussed in the article <cite><a href="http://www.mcsr.olemiss.edu/%7Emudws/font.html">What's Wrong With FONT?</a></cite></p>
+<p>The least harmful use of the <strong class=html>FONT</strong> element is in suggesting relative changes in font size with <strong class=html>&lt;FONT SIZE="+1"&gt;</strong> or <strong class=html>&lt;FONT SIZE="-1"&gt;</strong>. These tags increment or decrement the font size relative to the size specified in the <strong class=html><a href="basefont.html">BASEFONT</a></strong> element, or relative to a base size of <strong class=html>3</strong> if no <strong class=html>BASEFONT</strong> element is used. Sizes are based on a seven-point scale (<strong class=html>1</strong>..<strong class=html>7</strong>) that is browser dependent.</p>
+<p>While authors can specify <strong class=html>SIZE</strong> values such as <strong class=html>-2</strong> and <strong class=html>+3</strong>, as well as absolute values such as <strong class=html>1</strong>, these kinds of changes are strongly discouraged due to the sensitivity some users have to different font sizes. While a value like <strong class=html>-2</strong> may look right to you with your eyesight and user settings, it could easily be unreadable to a user with different eyesight and user settings.</p>
+<p>The <strong class=html>COLOR</strong> attribute suggests a text color. While most browsers allow users to override author color changes, the widely used Netscape Navigator 2.<var>x</var>, 3.<var>x</var>, and 4.<var>x</var> do not override colors specified with <strong class=html>FONT</strong>. This makes the <strong class=html>COLOR</strong> attribute very dangerous from an accessibility point of view.</p>
+<p>Authors often use the <strong class=html>COLOR</strong> attribute as a form of emphasis or to indicate a heading. In these cases, use of structural <abbr class=initialism title="HyperText Markup Language">HTML</abbr> (<abbr title="for example"><i lang=la>e.g.</i></abbr>, <strong class=html><a href="../phrase/strong.html">STRONG</a></strong>, <strong class=html><a href="../block/h1.html">H1</a></strong>) along with a style sheet provides a more flexible, accessible document.</p>
+<p>The <strong class=html>FACE</strong> attribute gives a comma-separated list of font faces in which to display text. The fonts are listed in order of preference, so that if the browser does not have the first font listed, it will try the second, then the third, and so on.</p>
+<p>The <strong class=html>FONT</strong> element is an <a href="../inline.html">inline element</a>, meaning that it cannot contain <a href="../block.html">block-level elements</a> such as <strong class=html><a href="../block/p.html">P</a></strong> and <strong class=html><a href="../tables/table.html">TABLE</a></strong>. Again, <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> provide much more flexibility in suggesting font styles.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/graphics.html#edef-FONT">FONT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#font">FONT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/font.html">FONT in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.24.html">FONT in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><cite><a href="http://www.mcsr.olemiss.edu/%7Emudws/font.html">What's Wrong With FONT?</a></cite></li>
+  <li><cite><a href="http://babel.alis.com:8080/web_ml/html/fontface.html">&lt;FONT FACE&gt; considered harmful</a></cite></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

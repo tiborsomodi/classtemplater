@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>AREA - Image Map Region</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's AREA element for image map regions.">
+<meta name="keywords" content="AREA, area element, image map, imagemap, region, hotspot, hotzone, zone, spot, hot, click, clickable, client-side image map, client-side imagemap, CSIM, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;area&gt; tag, &lt;AREA&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>AREA - Image Map Region</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;AREA&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>SHAPE=[ <em class=default>rect</em> | circle | poly | default ] (shape of region)</li>
+        <li>COORDS=<var><a href="#coords">Coords</a></var> (coordinates of region)</li>
+        <li>HREF=<var><a href="../values.html#uri">URI</a></var> (linked resource)</li>
+        <li class=transitional>TARGET=<var><a href="../values.html#frametarget">FrameTarget</a></var> (frame to render link in)</li>
+        <li>NOHREF (inactive region)</li>
+        <li><strong class=required>ALT=<var><a href="../values.html#text">Text</a></var> (alternate text)</strong></li>
+        <li>TABINDEX=<var><a href="../values.html#number">Number</a></var> (position in tabbing order)</li>
+        <li>ONFOCUS=<var><a href="../values.html#script">Script</a></var> (region received focus)</li>
+        <li>ONBLUR=<var><a href="../values.html#script">Script</a></var> (region lost focus)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="map.html">MAP</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>AREA</strong> element defines a <em>map region</em> in a <a href="map.html">client-side image map</a>. Each map region is a piece of the image with a different action when clicked.</p>
+<p>The <strong class=html>SHAPE</strong> and <strong class=html><a name=coords>COORDS</a></strong> attributes of <strong class=html>AREA</strong> specify what part of the image is included in the region. The default <strong class=html>SHAPE</strong> value is <strong class=html>rect</strong>, which defines a rectangular region using <strong class=html>COORDS="<var>left</var>, <var>top</var>, <var>right</var>, <var>bottom</var>"</strong>. Other <strong class=html>SHAPE</strong> values are</p>
+<ul>
+  <li><strong class=html>default</strong>, which specifies the entire image;</li>
+  <li><strong class=html>circle</strong>, which specifies a circular region using <strong class=html>COORDS="<var>center-x</var>, <var>center-y</var>, <var>radius</var>"</strong>;</li>
+  <li><strong class=html>poly</strong>, which specifies a polygonal region using <strong class=html>COORDS="<var>x<sub>1</sub></var>, <var>y<sub>1</sub></var>, <var>x<sub>2</sub></var>, <var>y<sub>2</sub></var>, <var>...</var>, <var>x<sub>N</sub></var>, <var>y<sub>N</sub></var>"</strong>.</li>
+</ul>
+<p>Coordinate values are relative to the top left corner of the object and may be expressed as pixels or percentages. A percentage radius value for circular regions is calculated relative to the smaller of the object's width and height. If two or more regions overlap, the earliest specified region takes precedence.</p>
+<p>The <strong class=html>HREF</strong> attribute specifies a link to another resource, such as an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document or a <acronym title="Joint Photographic Experts Group">JPEG</acronym> image. The <strong class=html>TITLE</strong> attribute can be used to briefly describe the contents of the link and is rendered as a "tooltip" by some visual browsers. The boolean <strong class=html>NOHREF</strong> attribute indicates that the region has no link.</p>
+<p>The required <strong class=html>ALT</strong> attribute provides alternate text for those not loading images. Effective <strong class=html>ALT</strong> text should generally give the <em>function</em> of the map region rather than a <em>description</em> of the region. For example, <strong class=html>ALT="WDG Home"</strong> or <strong class=html>ALT="Web Design Group"</strong> would be more appropriate than <strong class=html>ALT="WDG Logo"</strong> for a map region whose link went to the <a href="http://www.htmlhelp.com/"><abbr class=initialism title="Web Design Group">WDG</abbr> home page</a>. Good <strong class=html>ALT</strong> text is crucial to the document's accessibility for the significant portion of users who do not load images.</p>
+<div class=transitional>
+<p><a name="target">The <strong class=html>TARGET</strong> attribute</a> is used with <a href="../frames/index.html">frames</a> to specify in which frame the link should be rendered. If no frame with such a name exists, the link is rendered in a new window unless overridden by the user. Special frame names begin with an underscore:</p>
+<ul>
+  <li><strong class=html>_blank</strong> renders the link in a new, unnamed window</li>
+  <li><strong class=html>_self</strong> renders the link in the current frame (useful for overriding a <strong class=html><a href="../head/base.html">BASE</a> TARGET</strong>)</li>
+  <li><strong class=html>_parent</strong> renders the link in the immediate <strong class=html><a href="../frames/frameset.html">FRAMESET</a></strong> parent</li>
+  <li><strong class=html>_top</strong> renders the link in the full, unframed window</li>
+</ul>
+<p class=note>In HTML 4.0, the <strong class=html>TARGET</strong> attribute value is <em>case-insensitive</em>, so that <strong class=html>_top</strong> and <strong class=html>_TOP</strong> both have the same meaning. However, most browsers treat the <strong class=html>TARGET</strong> attribute value as <em>case-sensitive</em> and do not recognize <strong class=html>_TOP</strong> as having the special meaning of <strong class=html>_top</strong>.</p>
+</div>
+<p>The <strong class=html>ACCESSKEY</strong> attribute specifies a single Unicode character as a shortcut key for following the link. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<p>The <strong class=html>TABINDEX</strong> attribute specifies a number between 0 and 32767 to indicate the tabbing order of the map region. A region with <strong class=html>TABINDEX=0</strong> or no <strong class=html>TABINDEX</strong> attribute will be visited after any elements with a positive <strong class=html>TABINDEX</strong>. Among positive <strong class=html>TABINDEX</strong> values, the lower number receives focus first. In the case of a tie, the element appearing first in the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document takes precedence.</p>
+<p>In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>AREA</strong> accepts the following event attributes for client-side scripting:</p>
+<ul>
+  <li><strong class=html>ONFOCUS</strong>, when the region receives focus;</li>
+  <li><strong class=html>ONBLUR</strong>, when the region loses focus.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/objects.html#edef-AREA">AREA in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#map">AREA in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/area.html">AREA in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.5.html">AREA in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

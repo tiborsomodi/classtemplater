@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>TEXTAREA - Multi-line Text Input</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's TEXTAREA element for multi-line text input.">
+<meta name="keywords" content="TEXTAREA, textarea element, textbox, text box, multiline, multi-line, input, text field, forms, form, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;textarea&gt; tag, &lt;TEXTAREA&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>TEXTAREA - Multi-line Text Input</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;TEXTAREA&gt;</strong>...<strong class=required>&lt;/TEXTAREA&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (key in submitted form)</li>
+        <li><strong class=required>ROWS=<var><a href="../values.html#number">Number</a></var> (number of rows)</strong></li>
+        <li><strong class=required>COLS=<var><a href="../values.html#number">Number</a></var> (number of columns)</strong></li>
+        <li>DISABLED (disable element)</li>
+        <li>READONLY (prevent changes)</li>
+        <li>ACCESSKEY=<var><a href="../values.html#character">Character</a></var> (shortcut key)</li>
+        <li>TABINDEX=<var><a href="../values.html#number">Number</a></var> (position in tabbing order)</li>
+        <li>ONFOCUS=<var><a href="../values.html#script">Script</a></var> (element received focus)</li>
+        <li>ONBLUR=<var><a href="../values.html#script">Script</a></var> (element lost focus)</li>
+        <li>ONSELECT=<var><a href="../values.html#script">Script</a></var> (element text selected)</li>
+        <li>ONCHANGE=<var><a href="../values.html#script">Script</a></var> (element value changed)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Plain text (including <a href="../entities/index.html">entities</a>)</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../block.html">Block-level elements</a>, <a href="../inline.html">inline elements</a> except <a href="button.html">BUTTON</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>TEXTAREA</strong> element defines a form control for the user to enter <em>multi-line text input</em>. While <strong class=html>TEXTAREA</strong> is most useful within a <strong class=html><a href="form.html">FORM</a></strong>, HTML 4.0 allows <strong class=html>TEXTAREA</strong> in any <a href="../block.html">block-level</a> or <a href="../inline.html">inline</a> element other than <strong class=html><a href="button.html">BUTTON</a></strong>. However, <a href="http://www.netscape.com/navigator/">Netscape Navigator</a> will not display any <strong class=html>TEXTAREA</strong> elements outside of a <strong class=html>FORM</strong>.</p>
+<p>The initial value of the <strong class=html>TEXTAREA</strong> is provided as the content of the element and must not contain any <abbr class=initialism title="HyperText Markup Language">HTML</abbr> tags. When a form is submitted, the current value of any <strong class=html>TEXTAREA</strong> element within the <strong class=html><a href="form.html">FORM</a></strong> is sent to the server as a name/value pair. The <strong class=html>TEXTAREA</strong> element's <strong class=html>NAME</strong> attribute provides the name used.</p>
+<p>The required <strong class=html>ROWS</strong> and <strong class=html>COLS</strong> attributes specify the number of visible rows and columns, respectively, in a visual browser. These attributes provide a <em>guide</em> for the user rather than a <em>restriction</em>; browsers allow an unlimited amount of text input in theory, though in practice many browsers limit the contents of a <strong class=html>TEXTAREA</strong> to 32 or 64 kilobytes. Author restrictions on the amount of data entered should be enforced by the <abbr class=initialism title="Common Gateway Interface">CGI</abbr> script or Java servlet handling the form.</p>
+<p>The boolean <strong class=html>READONLY</strong> attribute, new in HTML 4.0 and poorly supported by current browsers, prevents the user from editing the content of the <strong class=html>TEXTAREA</strong>. Read-only elements are still submitted with the form. The <strong class=html>DISABLED</strong> attribute, also poorly supported, disables the <strong class=html>TEXTAREA</strong>. Disabled elements are read-only elements with the added restrictions that the values are not submitted with the form, the elements cannot receive focus, and the elements are skipped when navigating the document by tabbing.</p>
+<p>The <strong class=html>ACCESSKEY</strong> attribute specifies a single Unicode character as a shortcut key for giving focus to the <strong class=html>TEXTAREA</strong>. Authors can set the access key on the <strong class=html>TEXTAREA</strong> element or the <strong class=html><a href="label.html">LABEL</a></strong> element associated with it. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<p>The <strong class=html>TABINDEX</strong> attribute specifies a number between 0 and 32767 to indicate the tabbing order of the element. A <strong class=html>TEXTAREA</strong> with <strong class=html>TABINDEX=0</strong> or no <strong class=html>TABINDEX</strong> attribute will be visited after any elements with a positive <strong class=html>TABINDEX</strong>. Among positive <strong class=html>TABINDEX</strong> values, the lower number receives focus first. In the case of a tie, the element appearing first in the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document takes precedence.</p>
+<p>The <strong class=html>TEXTAREA</strong> element also takes a number of attributes to specify client-side scripting actions for various events. In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>TEXTAREA</strong> accepts the following event attributes:</p>
+<ul>
+  <li><strong class=html>ONFOCUS</strong>, when the element receives focus;</li>
+  <li><strong class=html>ONBLUR</strong>, when the element loses focus;</li>
+  <li><strong class=html>ONSELECT</strong>, when text in the element is selected;</li>
+  <li><strong class=html>ONCHANGE</strong>, when the element loses focus and its value has changed since it received focus.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-TEXTAREA">TEXTAREA in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#textarea">TEXTAREA in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_8.html#SEC8.1.4">TEXTAREA in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/form/textarea.html">TEXTAREA in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.56.html">TEXTAREA in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>COLGROUP - Table Column Group</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's COLGROUP element for table column groups.">
+<meta name="keywords" content="COLGROUP, colgroup element, column group, column groups, table columns, grouping, table, tables, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;colgroup&gt; tag, &lt;COLGROUP&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>COLGROUP - Table Column Group</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;COLGROUP&gt;</strong>...&lt;/COLGROUP&gt;</td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>SPAN=<var><a href="../values.html#number">Number</a></var> (number of columns in group)</li>
+        <li>WIDTH=<var><a href="../values.html#multilength">MultiLength</a></var> (width of each column)</li>
+        <li>ALIGN=[ left | center | right | justify | char ] (horizontal alignment of cells in group)</li>
+        <li>CHAR=<var><a href="../values.html#character">Character</a></var> (alignment character for cells)</li>
+        <li>CHAROFF=<var><a href="../values.html#length">Length</a></var> (alignment character offset)</li>
+        <li>VALIGN=[ top | middle | bottom | baseline ] (vertical alignment of cells in group)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Zero or more <a href="col.html">COL</a> elements</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="table.html">TABLE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>COLGROUP</strong> element defines a <em>column group</em> in a table. If used, <strong class=html>COLGROUP</strong> must be after the optional <strong class=html><a href="caption.html">CAPTION</a></strong> and before the optional <strong class=html><a href="thead.html">THEAD</a></strong> in the <strong class=html><a href="table.html">TABLE</a></strong>. The structural divisions defined by <strong class=html>COLGROUP</strong> allow authors to easily suggest a presentation for groups of columns through <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>.</p>
+<p><strong class=html>COLGROUP</strong>'s <strong class=html>SPAN</strong> attribute defines the number of columns in the group; the default value is <strong class=html>1</strong>. A number of other attributes are permitted on <strong class=html>COLGROUP</strong>, and these are shared among the cells of the group. <strong class=html>COLGROUP</strong> may contain <strong class=html><a href="col.html">COL</a></strong> elements that define attributes for the cells of individual columns, overriding attributes defined for the column group. The <strong class=html>SPAN</strong> attribute should not be used if the <strong class=html>COLGROUP</strong> contains any <strong class=html>COL</strong> elements.</p>
+<p>The next example features three column groups to structurally divide the table into three parts. The first part is a single column that gives the description of a character. The second part consists of three columns giving different ways of representing the character in HTML. The third part consists of three columns with renderings of the character in the user's browser.</p>
+<pre class=example><code class=html>&lt;TABLE SUMMARY="This table gives the character entity reference,
+                decimal character reference, and hexadecimal character
+                reference for 8-bit Latin-1 characters, as well as the
+                rendering of each in your browser."&gt;
+  <strong>&lt;COLGROUP&gt;</strong>
+  <strong>&lt;COLGROUP SPAN=3&gt;</strong>
+  <strong>&lt;COLGROUP SPAN=3&gt;</strong>
+  &lt;THEAD&gt;
+    &lt;TR&gt;
+      &lt;TH SCOPE=col ROWSPAN=2&gt;Character&lt;/TH&gt;
+      &lt;TH SCOPE=col ROWSPAN=2&gt;Entity&lt;/TH&gt;
+      &lt;TH SCOPE=col ROWSPAN=2&gt;Decimal&lt;/TH&gt;
+      &lt;TH SCOPE=col ROWSPAN=2&gt;Hex&lt;/TH&gt;
+      &lt;TH SCOPE=colgroup COLSPAN=3&gt;Rendering in Your Browser&lt;/TH&gt;
+    &lt;/TR&gt;
+    &lt;TR&gt;
+      &lt;TH SCOPE=col&gt;Entity&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Decimal&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Hex&lt;/TH&gt;
+    &lt;/TR&gt;
+  &lt;/THEAD&gt;
+  &lt;TBODY&gt;
+    &lt;TR&gt;
+      &lt;TD SCOPE=row&gt;non-breaking space&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;nbsp;&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;#160;&lt;/TD&gt;
+      &lt;TD&gt;&amp;amp;#xA0;&lt;/TD&gt;
+      &lt;TD&gt;&amp;nbsp;&lt;/TD&gt;
+      &lt;TD&gt;&amp;#160;&lt;/TD&gt;
+      &lt;TD&gt;&amp;#xA0;&lt;/TD&gt;
+    &lt;/TR&gt;
+    <var>...</var>
+  &lt;/TBODY&gt;
+&lt;/TABLE&gt;</code></pre>
+<p>In place of the <strong class=html>&lt;COLGROUP SPAN=3&gt;</strong> tag in the preceding example, a <strong class=html>COLGROUP</strong> with three <strong class=html>COL</strong> elements could have been used:</p>
+<pre class=example><code class=html>&lt;COLGROUP&gt;
+  &lt;COL CLASS=entity&gt;
+  &lt;COL CLASS=decimal&gt;
+  &lt;COL CLASS=hex&gt;
+&lt;/COLGROUP&gt;</code></pre>
+<p>Here we have used the <strong class=html><a href="../attrs.html#class">CLASS</a></strong> attribute to distinguish the individual columns of the group, allowing us to easily suggest different presentations for the columns through <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>.</p>
+<p><strong class=html>COLGROUP</strong> also takes a number of presentational attributes, many of which cannot be completely replaced by style sheets. Since few browsers support <strong class=html>COLGROUP</strong>, authors may wish to specify these attributes on the <strong class=html><a href="td.html">TD</a></strong> or <strong class=html><a href="th.html">TH</a></strong> elements instead.</p>
+<p>The <strong class=html>WIDTH</strong> attribute specifies a width for each column in the group. The value must be a number in pixels, a percentage of the table width, or a relative length expressed as <strong class=html><var>i</var>*</strong> where <strong class=html><var>i</var></strong> is an integer. A column with <strong class=html>WIDTH="3*"</strong> will be allotted three times the width of a column with <strong class=html>WIDTH="1*"</strong>. The value <strong class=html>0*</strong> is equivalent to the minimum width necessary for the column's contents.</p>
+<p>The <strong class=html>ALIGN</strong> attribute specifies the horizontal alignment for each cell in the column group. Possible values are <strong class=html>left</strong>, <strong class=html>center</strong>, <strong class=html>right</strong>, <strong class=html>justify</strong>, and <strong class=html>char</strong>. <strong class=html>ALIGN=char</strong> aligns a cell's contents on the character given in the <strong class=html>CHAR</strong> attribute. The default value for the <strong class=html>CHAR</strong> attribute is the decimal point of the current language--a period in English. The <strong class=html>CHAROFF</strong> attribute specifies the offset to the first occurrence of the alignment character. The attribute's value is a number in pixels or a percentage of the cell's width; <strong class=html>CHAROFF="50%"</strong> centers the alignment character horizontally in a cell.</p>
+<p>The <strong class=html>VALIGN</strong> attribute specifies the vertical position of a cell's contents. Possible values are:</p>
+<ul>
+  <li><strong class=html>top</strong>, which positions data at the top of the cell;
+  <li><strong class=html>middle</strong>, the default value, which centers the cell data vertically;
+  <li><strong class=html>bottom</strong>, which positions data at the bottom of the cell;
+  <li><strong class=html>baseline</strong>, which specifies that the first line of each cell in the row with <strong class=html>VALIGN=baseline</strong> should occur on a common baseline.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/tables.html#edef-COLGROUP">COLGROUP in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

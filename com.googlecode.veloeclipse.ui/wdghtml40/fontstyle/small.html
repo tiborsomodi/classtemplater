@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>SMALL - Small Font</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's SMALL element for small text.">
+<meta name="keywords" content="small element, small font, small text, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;small&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>SMALL - Small Font</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;SMALL&gt;</strong>...<strong class=required>&lt;/SMALL&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a> except <a href="../block/pre.html">PRE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>SMALL</strong> element suggests that text be rendered in a <em>smaller font</em>. Since HTML 4.0 has no element to indicate de-emphasis, <strong class=html>SMALL</strong> is often useful for this purpose. For example:</p>
+<p class=example><code class=html>&lt;P&gt;&lt;SMALL&gt;Copyright © 1998 Liam Quinn. All rights reserved.&lt;/SMALL&gt;&lt;/P&gt;</code></p>
+<p class=note>Most browsers support nested <strong class=html>SMALL</strong> elements, but this practice should be avoided. Since different users have different font sizes and eyesight, significant changes in font size can leave text too small to read even though it may look fine to the author.</p>
+<p>Using <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> in place of <strong class=html>SMALL</strong> provides greater flexibility in changing the presentation. The previous example could also be marked up as follows:</p>
+<p class=example><code class=html>&lt;P CLASS=copyright&gt;Copyright © 1998 Liam Quinn. All rights reserved.&lt;/P&gt;</code></p>
+<p>This could then be <a href="http://www.htmlhelp.com/reference/css/style-html.html">linked</a> to the following style sheet:</p>
+<pre class=example><code class=css>.copyright {
+  <a href="http://www.htmlhelp.com/reference/css/font/font-size.html">font-size</a>: smaller;
+  <a href="http://www.htmlhelp.com/reference/css/text/text-align.html">text-align</a>: center
+}
+
+<a href="http://www.w3.org/TR/REC-CSS2/media.html#at-media-rule">@media</a> aural {
+  .copyright { <a href="http://www.w3.org/TR/REC-CSS2/aural.html#propdef-volume">volume</a>: soft }
+}</code></pre>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/graphics.html#edef-SMALL">SMALL in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#font-style">SMALL in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/font/small.html">SMALL in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.48.html">SMALL in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

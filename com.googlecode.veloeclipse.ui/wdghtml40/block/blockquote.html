@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>BLOCKQUOTE - Block Quotation</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's BLOCKQUOTE element for block quotations.">
+<meta name="keywords" content="BLOCKQUOTE, blockquote element, bq, BQ, block quotation, quotes, quoted, quoting, quotations, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;blockquote&gt; tag, &lt;BLOCKQUOTE&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>BLOCKQUOTE - Block Quotation</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;BLOCKQUOTE&gt;</strong>...<strong class=required>&lt;/BLOCKQUOTE&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>CITE=<var><a href="../values.html#uri">URI</a></var> (source of quotation)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>
+      <ul>
+        <li>In <a href="../html/doctype.html#strict">HTML 4.0 Strict</a>: one or more <a href="../block.html">block-level elements</a> or <a href="../special/script.html">SCRIPT</a></li>
+        <li class=transitional>In <a href="../html/doctype.html#transitional">HTML 4.0 Transitional</a>: <a href="../inline.html">inline elements</a> or <a href="../block.html">block-level elements</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <span class=transitional><a href="center.html">CENTER</a>, </span><a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span><a href="noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>BLOCKQUOTE</strong> element defines a <em>block quotation</em>. Unlike <a href="../special/q.html">inline quotations</a>, block quotations may contain <a href="../block.html">block-level elements</a> such as <strong class=html><a href="p.html">P</a></strong> and <strong class=html><a href="../tables/table.html">TABLE</a></strong>, but <strong class=html>BLOCKQUOTE</strong> may not be contained within a paragraph or <a href="../inline.html">inline element</a>.</p>
+<p>The optional <strong class=html>CITE</strong> attribute of <strong class=html>BLOCKQUOTE</strong> provides the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of the source of the quotation. This attribute, not widely supported among browsers, allows readers to verify the authenticity of the quotation and also find related information.</p>
+<p>The content of the <strong class=html>BLOCKQUOTE</strong> element should be contained within other block-level elements, typically <strong class=html><a href="p.html">P</a></strong>. The following example features a quotation that includes multiple paragraphs and its own block quotation:</p>
+<p class=example><code class=html>&lt;BLOCKQUOTE CITE="http://www.bibliomania.com/Fiction/joyce/ulysses/telemac.html"&gt;<br>&lt;P&gt;He pointed his finger in friendly jest and went over to the parapet, laughing to himself. Stephen Dedalus stepped up, followed him wearily half way and sat down on the edge of the gunrest, watching him still as he propped his mirror on the parapet, dipped the brush in the bowl and lathered cheeks and neck.&lt;/P&gt;<br>&lt;P&gt;Buck Mulligan's gay voice went on.&lt;/P&gt;<br>&lt;BLOCKQUOTE&gt;&lt;P&gt;My name is absurd too: Malachi Mulligan, two dactyls. But it has a Hellenic ring, hasn't it? Tripping and sunny like the buck himself. We must go to Athens. Will you come if I can get the aunt to fork out twenty quid?&lt;/P&gt;&lt;/BLOCKQUOTE&gt;<br>&lt;/BLOCKQUOTE&gt;</code></p>
+<p class=note>Authors should not use <strong class=html>BLOCKQUOTE</strong> for unquoted material just to achieve a block indentation in common visual browsers. With the rise of style sheets, such misuse of <strong class=html>BLOCKQUOTE</strong> will become less reliable while also reducing the author's ability to fully exploit the power of style sheets. <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provide the <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/margin-left.html">margin-left</a></strong> property to indent a block.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/text.html#edef-BLOCKQUOTE">BLOCKQUOTE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#bq">BLOCKQUOTE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.5.4">BLOCKQUOTE in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/block/blockquote.html">BLOCKQUOTE in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.10.html">BLOCKQUOTE in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

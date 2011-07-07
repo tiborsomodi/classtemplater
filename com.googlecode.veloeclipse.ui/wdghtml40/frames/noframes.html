@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>NOFRAMES - Frames Alternate Content</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's NOFRAMES element for alternate content to frames.">
+<meta name="keywords" content="NOFRAMES, noframes element, non-frames, noframe, alternate, content, alternative, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;noframes&gt; tag, &lt;NOFRAMES&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>NOFRAMES - Frames Alternate Content</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;NOFRAMES&gt;</strong>...<strong class=required>&lt;/NOFRAMES&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>
+      <ul>
+        <li class=transitional>In <a href="../html/doctype.html#transitional">HTML 4.0 Transitional</a>: <a href="../inline.html">inline elements</a>, <a href="../block.html">block-level elements</a></li>
+        <li class=frameset>In <a href="../html/doctype.html#frameset">HTML 4.0 Frameset</a>: one <a href="../html/body.html">BODY</a> element that must not contain any NOFRAMES elements</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../special/applet.html">APPLET</a>, <a href="../block/blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <a href="../block/center.html">CENTER</a>, <a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="../block/div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <span class=frameset><a href="frameset.html">FRAMESET</a>,</span> <a href="../special/iframe.html">IFRAME</a>, <a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <a href="../block/noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>NOFRAMES</strong> element contains content that should only be rendered when <em>frames are not displayed</em>. <strong class=html>NOFRAMES</strong> is typically used in a <a href="../html/doctype.html#frameset">Frameset</a> document to provide alternate content for browsers that do not support frames or have frames disabled.</p>
+<p>When used within a <strong class=html>FRAMESET</strong>, <strong class=html>NOFRAMES</strong> must contain a <strong class=html><a href="../html/body.html">BODY</a></strong> element. There must not be any <strong class=html>NOFRAMES</strong> elements contained within this <strong class=html>BODY</strong> element.</p>
+<p>A meaningful <strong class=html>NOFRAMES</strong> element should always be provided in a Frameset document and should at the very least contain links to the main frame or frames. <strong class=html>NOFRAMES</strong> should not contain a message telling the user to upgrade his or her browser. Some browsers support frames but allow the user to disable them.</p>
+<p class=note>Various methods of automatically creating non-frames content exist. See <cite><a href="http://www.htmlhelp.com/design/frames/guidelines/auto-noframes.html">Frames design guidelines: automatic no-frames content</a></cite> for more details.</p>
+<p>An example follows:</p>
+<pre class=example><code class=html>&lt;FRAMESET ROWS="*,100"&gt;
+  &lt;FRAMESET COLS="40%,*"&gt;
+    &lt;FRAME NAME="Menu" SRC="nav.html" TITLE="Menu"&gt;
+    &lt;FRAME NAME="Content" SRC="main.html" TITLE="Content"&gt;
+  &lt;/FRAMESET&gt;
+  &lt;FRAME NAME="Ad" SRC="ad.html" TITLE="Advertisement"&gt;
+  <strong>&lt;NOFRAMES&gt;</strong>
+    &lt;BODY&gt;
+      &lt;H1&gt;Table of Contents&lt;/H1&gt;
+      &lt;UL&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/html40/"&gt;HTML 4.0 Reference&lt;/A&gt;
+        &lt;/LI&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/wilbur/"&gt;HTML 3.2 Reference&lt;/A&gt;
+        &lt;/LI&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/css/"&gt;CSS Guide&lt;/A&gt;
+        &lt;/LI&gt;
+      &lt;/UL&gt;
+      &lt;P&gt;
+        &lt;IMG SRC="ad.gif" ALT="Ad: Does your bank charge too much?"&gt;
+      &lt;/P&gt;
+    &lt;/BODY&gt;
+  <strong>&lt;/NOFRAMES&gt;</strong>
+&lt;/FRAMESET&gt;</code></pre>
+<p>In <a href="../html/doctype.html#transitional">HTML 4.0 Transitional</a>, the <strong class=html>NOFRAMES</strong> element is also permitted within most <a href="../block.html">block-level elements</a>. This allows authors to include content, such as navigation aids, that should only be displayed if the document is not being viewed within a frameset. Such use helps to ensure that a frame could stand on its own if bookmarked or accessed through a search engine while not burdening the frames user with duplicate content. However, most browsers do not support this use of <strong class=html>NOFRAMES</strong> and will always display the content.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/frames.html#edef-NOFRAMES">NOFRAMES in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

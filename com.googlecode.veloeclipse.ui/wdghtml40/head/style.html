@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>STYLE - Embedded Style Sheet</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's STYLE element for embedded style sheets.">
+<meta name="keywords" content="STYLE, style element, embedded style sheet, stylesheet, embedding, CSS, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;style&gt; tag, &lt;STYLE&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>STYLE - Embedded Style Sheet</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;STYLE&gt;</strong>...<strong class=required>&lt;/STYLE&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>TYPE=<var><a href="../values.html#contenttype">ContentType</a></var> (content-type of style language)</strong></li>
+        <li>MEDIA=<var><a href="../values.html#mediadesc">MediaDesc</a></var> (media to apply style to)</li>
+        <li>TITLE=<var><a href="../values.html#text">Text</a></var> (title of style sheet)</li>
+        <li><a href="../attrs.html#i18n">internationalization attributes</a> (for the TITLE)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>An embedded style sheet</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="head.html">HEAD</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>STYLE</strong> element embeds a <em>style sheet</em> in the document. Any number of <strong class=html>STYLE</strong> elements may be contained in the <strong class=html><a href="head.html">HEAD</a></strong> of a document.</p>
+<p>The required <strong class=html>TYPE</strong> attribute of <strong class=html>STYLE</strong> is used to specify the Internet media type of the style language. For <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a>, the <strong class=html>TYPE</strong> attribute value should be <strong class=html>text/css</strong>.</p>
+<p>The optional <strong class=html>TITLE</strong> attribute gives a title for the style sheet. Without a <strong class=html>TITLE</strong> attribute, the style sheet is always applied when style sheets are enabled. With a <strong class=html>TITLE</strong> attribute, the style sheet is automatically applied but the user may choose to disable the style sheet while keeping or enabling other style sheets. Style sheets with the same title are considered to be the same style sheet.</p>
+<p class=note>Most current browsers ignore the <strong class=html>TITLE</strong> attribute on style sheets and do not allow the user to selectively enable or disable individual style sheets.</p>
+<p>The <strong class=html>MEDIA</strong> attribute specifies the media on which the style sheet should be applied. This allows authors to restrict a style sheet to certain output devices, such as printers or aural browsers. The attribute's value is a comma-separated list of media descriptors. The following media descriptors are defined in HTML 4.0 and are case-sensitive:</p>
+<ul>
+  <li><strong class=html>screen</strong> (the default), for non-paged computer screens;</li>
+  <li><strong class=html>tty</strong>, for fixed-pitch character grid displays (such as the display used by <a href="http://lynx.browser.org/">Lynx</a>);</li>
+  <li><strong class=html>tv</strong>, for television-type devices with low resolution and limited scrollability;</li>
+  <li><strong class=html>projection</strong>, for projectors;</li>
+  <li><strong class=html>handheld</strong>, for handheld devices (characterized by a small, monochrome display and limited bandwidth);</li>
+  <li><strong class=html>print</strong>, for output to a printer;</li>
+  <li><strong class=html>braille</strong>, for braille tactile feedback devices;</li>
+  <li><strong class=html>aural</strong>, for speech synthesizers;</li>
+  <li><strong class=html>all</strong>, for all devices.</li>
+</ul>
+<p class=note><a href="http://home.netscape.com/comprod/products/communicator/navigator.html">Netscape Navigator 4.<var>x</var></a> incorrectly ignores any <strong class=html>STYLE</strong> element with a <strong class=html>MEDIA</strong> value other than <strong class=html>screen</strong>. For example, <strong class=html>MEDIA="screen, projection"</strong> will cause the style sheet to be ignored by Navigator 4.<var>x</var>, even if the presentation device is a computer screen. Navigator 4.<var>x</var> also ignores style sheets declared with <strong class=html>MEDIA=all</strong>. Most other browsers ignore the <strong class=html>MEDIA</strong> attribute.</p>
+<p>An example of an embedded style sheet follows:</p>
+<pre class=example><code class=html>&lt;STYLE TYPE="text/css" MEDIA=screen&gt;</code>
+<code class=css>&lt;!--
+  BODY  { background: url(foo.gif) red; color: black }
+  P EM  { background: yellow; color: black }
+  .note { margin-left: 5em; margin-right: 5em }
+--&gt;</code>
+<code class=html>&lt;/STYLE&gt;</code></pre>
+<p>Pre-<a href="http://www.htmlhelp.com/reference/wilbur/">HTML 3.2</a> browsers, unaware of the <strong class=html>STYLE</strong> element, would normally show its contents as if they were part of the <strong class=html><a href="../html/body.html">BODY</a></strong>, thus making the style sheet visible to the user. To prevent this, style languages like <abbr class=initialism title="Cascading Style Sheets"><a href="http://www.htmlhelp.com/reference/css/">CSS</a></abbr> allow the style sheet to be contained within an <abbr class=initialism title="Standard Generalized Markup Language">SGML</abbr> comment (<strong class=html>&lt;!-- comment --&gt;</strong>), as in the preceding example.</p>
+<p>An embedded style sheet should be used when a single document has a unique style. If the same style sheet is used in multiple documents, then an <a href="link.html#stylesheet">external style sheet</a> would be more appropriate.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/styles.html#edef-STYLE">STYLE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#script">STYLE in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/head/style.html">STYLE in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.51.html">STYLE in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

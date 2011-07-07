@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>CENTER - Centered Block</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's CENTER element for centered blocks.">
+<meta name="keywords" content="CENTER, center element, centered text, centering, centred, centre, CENTRE, centring, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;center&gt; tag, &lt;CENTER&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>CENTER - Centered Block</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;CENTER&gt;</strong>...<strong class=required>&lt;/CENTER&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../special/applet.html">APPLET</a>, <a href="blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <a href="center.html">CENTER</a>, <a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <a href="../special/iframe.html">IFRAME</a>, <a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <a href="../frames/noframes.html">NOFRAMES</a>, <a href="noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>CENTER</strong> element defines a block whose contents are <em>centered</em> horizontally on visual browsers. <strong class=html>&lt;CENTER&gt;</strong> is a shorthand for <strong class=html>&lt;<a href="div.html">DIV</a> ALIGN=center&gt;</strong>, though <strong class=html>CENTER</strong> is slightly better supported among browsers. Both methods of centering are <a href="../deprecated.html">deprecated</a> in favor of <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>.</p>
+<p><strong class=html>CENTER</strong> is still useful for centering <a href="../tables/table.html">tables</a> since many browsers lack support for <strong class=html>&lt;TABLE ALIGN=center&gt;</strong> as well as the method of centering tables with Cascading Style Sheets (setting <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/margin-left.html">margin-left</a></strong> and <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/margin-right.html">margin-right</a></strong> to <strong class=css>auto</strong>). An example follows:</p>
+<pre class=example><code class=html><strong>&lt;CENTER&gt;</strong>
+  &lt;TABLE&gt;
+    &lt;TR ALIGN=center&gt;
+      &lt;TH SCOPE=col&gt;Name&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Age&lt;/TH&gt;
+      &lt;TH SCOPE=col&gt;Country&lt;/TH&gt;
+    &lt;/TR&gt;
+    &lt;TR ALIGN=center&gt;
+      &lt;TD&gt;Liam Quinn&lt;/TD&gt;
+      &lt;TD&gt;20&lt;/TD&gt;
+      &lt;TD&gt;Canada&lt;/TD&gt;
+    &lt;/TR&gt;
+  &lt;/TABLE&gt;
+<strong>&lt;/CENTER&gt;</strong></code></pre>
+<p>Note that <strong class=html>CENTER</strong> only centers the table as a whole, not the contents of each table cell. The preceding example uses the <strong class=html>ALIGN</strong> attribute of <strong class=html><a href="../tables/tr.html">TR</a></strong> to center the contents of each cell. The <strong class=css><a href="http://www.htmlhelp.com/reference/css/text/text-align.html">text-align</a></strong> property of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provides greater flexibility in suggesting horizontal alignment.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/graphics.html#edef-CENTER">CENTER in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#center">CENTER in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/block/center.html">CENTER in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.14.html">CENTER in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

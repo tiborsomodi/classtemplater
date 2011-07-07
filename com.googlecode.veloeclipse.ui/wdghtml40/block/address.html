@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>ADDRESS - Contact Information</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's ADDRESS element for author contact information.">
+<meta name="keywords" content="ADDRESS, address element, author, contact information, info, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;address&gt; tag, &lt;ADDRESS&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>ADDRESS - Contact Information</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;ADDRESS&gt;</strong>...<strong class=required>&lt;/ADDRESS&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>
+      <ul>
+        <li>In <a href="../html/doctype.html#strict">HTML 4.0 Strict</a>: <a href="../inline.html">inline elements</a></li>
+        <li class=transitional>In <a href="../html/doctype.html#transitional">HTML 4.0 Transitional</a>: <a href="../inline.html">inline elements</a>, <a href="p.html">P</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <span class=transitional><a href="center.html">CENTER</a>, </span><a href="../lists/dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="../lists/li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span><a href="noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>ADDRESS</strong> element provides <em>contact information</em> for a document or part of a document. Information provided by <strong class=html>ADDRESS</strong> may include the names of the document's maintainers, links to the maintainers' Web pages, e-mail addresses for feedback, postal addresses, phone numbers, and so on. The <strong class=html>ADDRESS</strong> element is not appropriate for all postal and e-mail addresses; it should be reserved for providing such information about the contact people for the document.</p>
+<p>The following example, most appropriate at the end of a document, gives contact information about the maintainer:</p>
+<p class=example><code class=html>&lt;ADDRESS&gt;Maintained by &lt;A HREF="/%7Eliam/"&gt;Liam Quinn&lt;/A&gt;<br>&amp;lt;&lt;A HREF="mailto:liam@htmlhelp.com"&gt;liam@htmlhelp.com&lt;/A&gt;&amp;gt;&lt;/ADDRESS&gt;</code></p>
+<p><strong class=html>ADDRESS</strong> can also be used to provide contact information for a portion of a document, typically a <a href="../forms/form.html">form</a>. The next example gives users contact information to use in conjunction with an order form:</p>
+<pre class=example><code class=html>&lt;FORM METHOD=post ACTION="/cgi-bin/order.cgi"&gt;
+
+  &lt;FIELDSET&gt;
+    &lt;LEGEND ACCESSKEY=C&gt;Credit Card Information&lt;BR&gt;&lt;/LEGEND&gt;
+    &lt;P&gt;
+      &lt;LABEL ACCESSKEY=V&gt;
+        &lt;INPUT TYPE=radio NAME=card VALUE=visa&gt; Visa
+      &lt;/LABEL&gt;
+      &lt;LABEL ACCESSKEY=M&gt;
+        &lt;INPUT TYPE=radio NAME=card VALUE=mc&gt; MasterCard
+      &lt;/LABEL&gt;
+      &lt;BR&gt;
+      &lt;LABEL ACCESSKEY=N&gt;
+        Number: &lt;INPUT TYPE=text NAME=number&gt;
+      &lt;/LABEL&gt;
+      &lt;LABEL ACCESSKEY=E&gt;
+        Expiry: &lt;INPUT TYPE=text NAME=expiry&gt;
+      &lt;/LABEL&gt;
+    &lt;/P&gt;
+  &lt;/FIELDSET&gt;
+
+  &lt;P&gt;
+    &lt;INPUT TYPE=submit VALUE="Submit order" ACCESSKEY=S&gt;
+  &lt;/P&gt;
+
+<strong>  &lt;ADDRESS&gt;
+    If you have any questions about ordering, contact us at
+    &lt;A HREF="mailto:orders@htmlhelp.com"&gt;orders@htmlhelp.com&lt;/A&gt;,
+    or phone our offices at 555-5555.
+  &lt;/ADDRESS&gt;</strong>
+
+&lt;/FORM&gt;</code></pre>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/global.html#edef-ADDRESS">ADDRESS in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#address">ADDRESS in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.5.3">ADDRESS in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/block/address.html">ADDRESS in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.3.html">ADDRESS in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

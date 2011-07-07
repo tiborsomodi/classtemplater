@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>FRAME - Frame</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's FRAME element for frames.">
+<meta name="keywords" content="FRAME, frame element, frames, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;frame&gt; tag, &lt;FRAME&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>FRAME - Frame</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;FRAME&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (name of frame)</li>
+        <li>SRC=<var><a href="../values.html#uri">URI</a></var> (content of frame)</li>
+        <li>LONGDESC=<var><a href="../values.html#uri">URI</a></var> (long description of frame)</li>
+        <li>FRAMEBORDER=[ <em class=default>1</em> | 0 ] (frame border)</li>
+        <li>MARGINWIDTH=<var><a href="../values.html#pixels">Pixels</a></var> (margin width)</li>
+        <li>MARGINHEIGHT=<var><a href="../values.html#pixels">Pixels</a></var> (margin height)</li>
+        <li>NORESIZE (disallow frame resizing)</li>
+        <li>SCROLLING=[ yes | no | <em class=default>auto</em> ] (ability to scroll)</li>
+        <li><a href="../attrs.html#core">core attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="frameset.html">FRAMESET</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>FRAME</strong> element defines a <em>frame</em>--a rectangular subspace within a <a href="../html/doctype.html#frameset">Frameset</a> document. Each <strong class=html>FRAME</strong> must be contained within a <strong class=html><a href="frameset.html">FRAMESET</a></strong> that defines the dimensions of the frame.</p>
+<p>The <strong class=html>SRC</strong> attribute provides the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of the frame's content, which is typically an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document. If the frame's content is an image, video, or similar object, and if the object cannot be described adequately using the <strong class=html><a href="../attrs.html#title">TITLE</a></strong> attribute of <strong class=html>FRAME</strong>, then authors should use the <strong class=html>LONGDESC</strong> attribute to provide the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of a full <abbr class=initialism title="HyperText Markup Language">HTML</abbr> description of the object.</p>
+<p class=note>For better accessibility to disabled users and better indexing with search engines, authors should not use an image or similar object as the content of a frame. Rather, the object should be embedded within an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document to allow the indexing of keywords and easier provision of alternate content.</p>
+<p>The <strong class=html>NAME</strong> attribute gives a name to the frame for use with the <strong class=html>TARGET</strong> attribute of the <strong class=html><a href="../special/a.html">A</a></strong>, <strong class=html><a href="../special/area.html">AREA</a></strong>, <strong class=html><a href="../head/base.html">BASE</a></strong>, <strong class=html><a href="../forms/form.html">FORM</a></strong>, and <strong class=html><a href="../head/link.html">LINK</a></strong> elements. The <strong class=html>NAME</strong> attribute value must begin with a character in the range A-Z or a-z.</p>
+<p>The <strong class=html>NAME</strong> should be human-readable and based on the content of the frame since non-windows browsers may use the <strong class=html>NAME</strong> as a title for presenting a list of frames to the user. For example, <strong class=html>NAME=left</strong> would be inappropriate since it says nothing about the content while <strong class=html>NAME=nav</strong> would be inappropriate since it is not very human-readable. More suitable would be <strong class=html>NAME=Content</strong> and <strong class=html>NAME=Navigation</strong>. The <strong class=html>TITLE</strong> attribute can also be used to provide a slightly longer title for the frame, though this is not widely supported by current browsers.</p>
+<p>An example follows:</p>
+<pre class=example><code class=html>&lt;FRAMESET ROWS="*,100"&gt;
+  &lt;FRAMESET COLS="40%,*"&gt;
+    <strong>&lt;FRAME NAME="Menu" SRC="nav.html" TITLE="Menu"&gt;</strong>
+    <strong>&lt;FRAME NAME="Content" SRC="main.html" TITLE="Content"&gt;</strong>
+  &lt;/FRAMESET&gt;
+  <strong>&lt;FRAME NAME="Ad" SRC="ad.html" TITLE="Advertisement"&gt;</strong>
+  &lt;NOFRAMES&gt;
+    &lt;BODY&gt;
+      &lt;H1&gt;Table of Contents&lt;/H1&gt;
+      &lt;UL&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/html40/"&gt;HTML 4.0 Reference&lt;/A&gt;
+        &lt;/LI&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/wilbur/"&gt;HTML 3.2 Reference&lt;/A&gt;
+        &lt;/LI&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/css/"&gt;CSS Guide&lt;/A&gt;
+        &lt;/LI&gt;
+      &lt;/UL&gt;
+      &lt;P&gt;
+        &lt;IMG SRC="ad.gif" ALT="Ad: Does your bank charge too much?"&gt;
+      &lt;/P&gt;
+    &lt;/BODY&gt;
+  &lt;/NOFRAMES&gt;
+&lt;/FRAMESET&gt;</code></pre>
+<p>The <strong class=html>FRAME</strong> element also accepts a number of attributes to specify the presentation on visual browsers. <a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> provide a more flexible method of defining the presentation of frames, but the element's presentational attributes are more widely supported.</p>
+<p>The <strong class=html>FRAMEBORDER</strong> attribute specifies whether or not the frame has a visible border. The default value, <strong class=html>1</strong>, tells the browser to draw a border between the frame and all adjoining frames. The value <strong class=html>0</strong> indicates that no border should be drawn, though borders from other frames will override this.</p>
+<div class=note>
+<p>To fully remove the border, some browsers also require the use of other, non-standard attributes. See <cite><a href="http://www.htmlhelp.com/faq/html/frames.html#frame-noborder">How do I remove the border around frames?</a></cite> for more details.</p>
+<p>Note that removing the border of a frame takes away the user's ability to resize the frame on most browsers.</p>
+</div>
+<p>The <strong class=html>MARGINWIDTH</strong> and <strong class=html>MARGINHEIGHT</strong> attributes define the number of pixels to use as the left/right margins and top/bottom margins, respectively, within the frame. The value must be non-negative.</p>
+<p>The boolean <strong class=html>NORESIZE</strong> attribute prevents the user from resizing the frame. This attribute should never be used in a user-friendly Web site.</p>
+<p>The <strong class=html>SCROLLING</strong> attribute specifies whether scrollbars are provided for the frame. The default value, <strong class=html>auto</strong>, generates scrollbars only when necessary. The value <strong class=html>yes</strong> gives scrollbars at all times, and the value <strong class=html>no</strong> suppresses scrollbars--even when they are needed to see all the content. The value <strong class=html>no</strong> should never be used.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/frames.html#edef-FRAME">FRAME in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>IMG - Inline Image</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's IMG element for inline images.">
+<meta name="keywords" content="img element, image, images, inline image, inlined, inlining, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;img&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>IMG - Inline Image</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;IMG&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>SRC=<var><a href="../values.html#uri">URI</a></var> (location of image)</strong></li>
+        <li><strong class=required>ALT=<var><a href="../values.html#text">Text</a></var> (alternate text)</strong></li>
+        <li>LONGDESC=<var><a href="../values.html#uri">URI</a></var> (link to long description)</li>
+        <li>WIDTH=<var><a href="../values.html#length">Length</a></var> (image width)</li>
+        <li>HEIGHT=<var><a href="../values.html#length">Length</a></var> (image height)</li>
+        <li>USEMAP=<var><a href="../values.html#uri">URI</a></var> (client-side image map)</li>
+        <li>ISMAP (server-side image map)</li>
+        <li class=transitional>ALIGN=top|middle|bottom|left|right (image alignment)</li>
+        <li class=transitional>BORDER=<var><a href="../values.html#length">Length</a></var> (link border width)</li>
+        <li class=transitional>HSPACE=<var><a href="../values.html#pixels">Pixels</a></var> (horizontal gutter)</li>
+        <li class=transitional>VSPACE=<var><a href="../values.html#pixels">Pixels</a></var> (vertical gutter)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a> except <a href="../block/pre.html">PRE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>IMG</strong> element specifies an <em>inline image</em>. The required <strong class=html>SRC</strong> attribute specifies the location of the image. The image can be any format, though browsers generally only support <acronym title="Graphics Interchange Format">GIF</acronym> and <acronym title="Joint Photographic Experts Group">JPEG</acronym> images. Support for the <acronym title="Portable Network Graphics"><a href="http://www.libpng.org/pub/png/">PNG</a></acronym> image format is growing slowly.</p>
+<p>The required <strong class=html>ALT</strong> attribute provides alternate text for those not loading images. Effective <strong class=html>ALT</strong> text should generally give the <em>function</em> of the image rather than a <em>description</em> of the image. For example, <strong class=html>ALT="Welcome to XYZ Corp."</strong> would be more appropriate than <strong class=html>ALT="XYZ Corp. Logo"</strong> for a company's logo on its welcome page. Good <strong class=html>ALT</strong> text is crucial to the document's accessibility for the significant portion of users who do not load images; see <cite><a href="http://www.htmlhelp.com/feature/art3.htm">Use of ALT texts in IMGs</a></cite> for a thorough discussion.</p>
+<p>The <strong class=html>LONGDESC</strong> attribute gives the location of a long description of the image. This attribute should be used to provide a long description of an image where this would be useful. For example, a painting, graph, or corporate logo could be given a description so that blind and other text-only users can develop a mental picture of the image.</p>
+<p>The <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> attributes are most useful when they specify the exact dimensions of the image in pixels. This allows image-loading browsers to reserve the proper amount of space for the image and continue to render the rest of the document, thus giving the appearance of a faster-loading page.</p>
+<p class=note>Unfortunately, many graphical browsers will use these dimensions when not loading images, which can cause the <strong class=html>ALT</strong> text to be cut off if the image is small or the <strong class=html>ALT</strong> text is large. In such cases, authors may wish to leave off the <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> attributes, depending on the importance of the <strong class=html>ALT</strong> text and the placement of the image on the page (an image towards the end of the document without <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> attributes will generally not noticeably slow the rendering of the page).</p>
+<p>Authors can also specify different dimensions for the <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> attributes, in which case browsers should scale the image. Percentages, relative to the horizontal or vertical space available (<em>not</em> relative to the image's natural size) can also be specified, though these are not as widely supported as pixel lengths. Since browsers typically do a poor job of scaling images, authors should avoid using <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> for this purpose as much as possible.</p>
+<div class=transitional>
+<p>The <strong class=html>ALIGN</strong> attribute, <a href="../deprecated.html">deprecated</a> in HTML 4.0, specifies the alignment of the image. The values <strong class=html>top</strong>, <strong class=html>middle</strong>, and <strong class=html>bottom</strong> specify the image's position with respect to surrounding content on its left and right.</p>
+<div class=note>
+<p><strong class=html>ALIGN=middle</strong> aligns the center of the image with the current baseline. To center the image horizontally on the page, place the image in a centered block, <i lang=la>e.g.</i>,</p>
+<p class=example><code class=html>&lt;H1 ALIGN=center&gt;&lt;IMG SRC="logo.gif" ALT="Welcome to XYZ Company"&gt;&lt;/H1&gt;</code></p>
+</div>
+<p>The other <strong class=html>ALIGN</strong> values, <strong class=html>left</strong> and <strong class=html>right</strong>, specify a <em>floating</em> image; the image is placed at the left or right margin and content flows around it. To place content below the image, use <strong class=html>&lt;BR CLEAR=left|right|all&gt;</strong> as appropriate.</p>
+<p class=note>The <strong class=css><a href="http://www.htmlhelp.com/reference/css/text/vertical-align.html">vertical-align</a></strong> and <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/float.html">float</a></strong> properties of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provide more flexible methods of aligning images.</p>
+<p>The <strong class=html>BORDER</strong> attribute, <a href="../deprecated.html">deprecated</a> in HTML 4.0, specifies the width of the image's border. Specifying <strong class=html>BORDER=0</strong> will eliminate the border around a linked image in most browsers, though some allow the user to override this. Authors should only use <strong class=html>BORDER=0</strong> if the image would be clearly recognizable as a link, or as a method of de-emphasizing a link. For example:</p>
+<p class=example><code class=html>&lt;A HREF="reference/"&gt;&lt;IMG SRC="icon/reference.gif" ALT="" WIDTH=90 HEIGHT=90 BORDER=0&gt;Web Authoring Reference&lt;/A&gt;</code></p>
+<p>The <a href="../deprecated.html">deprecated</a> <strong class=html>HSPACE</strong> and <strong class=html>VSPACE</strong> attributes allow an author to suggest horizontal gutters and vertical gutters, respectively, around the image. The value must be in pixels and applies to both sides of the image. <a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> provide more flexibility in specifying the space around images.</p>
+</div>
+<p>The <strong class=html>USEMAP</strong> attribute is used with client-side image maps to give the location of the <a href="map.html">map definition</a>. While this value may be a full <a href="../values.html#uri">URI</a>--allowing a single map definition to be applied to multiple pages--<a href="http://www.netscape.com/navigator/">Netscape Navigator</a> will only find map definitions in the same file, effectively limiting the <strong class=html>USEMAP</strong> value to a fragment identifier such as <strong class=html>"#map"</strong>.</p>
+<p>The <strong class=html>ISMAP</strong> attribute is used with server-side image maps. When the <strong class=html>ISMAP</strong> attribute is included with a linked image and the user clicks the image, the image coordinates clicked are sent to the server, from which a location can be returned. The method of handling the coordinates is server-dependent, but the <a href="http://hoohoo.ncsa.uiuc.edu/docs/tutorials/imagemapping.html">NCSA server's method</a> is most common.</p>
+<p>Server-side image maps are better supported than client-side image maps, but almost all browsers today support both methods. Client-side image maps are generally preferred since they do not require an extra request to the server (and so are faster), and since they allow a usable menu to be provided to text-only users. Using both methods in combination is a good approach, since browsers supporting client-side image maps will use that method while older browsers will use the server-side image map. An example follows:</p>
+<p class=example><code class=html>&lt;A HREF="/cgi-bin/imagemap/sitemap.map"&gt;&lt;IMG SRC="sitemap.gif" ALT="Site Map" ISMAP USEMAP="#map" WIDTH=100 HEIGHT=100&gt;&lt;/A&gt;</code></p>
+<p>A <strong class=html><a href="map.html">MAP</a></strong> element named <strong class=html>map</strong> would have to be included in the same document.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/objects.html#edef-IMG">IMG in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#img">IMG in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.10">IMG in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/img.html">IMG in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.31.html">IMG in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://www.htmlhelp.com/feature/art3.htm">Use of ALT texts in IMGs</a></li>
+  <li><a href="http://www.htmlhelp.com/design/imageuse.htm">Image Use on the Web</a></li>
+  <li><a href="http://www.landfield.com/faqs/jpeg-faq/"><acronym title="Joint Photographic Experts Group">JPEG</acronym> <abbr class=initialism title="Frequently Asked Questions">FAQ</abbr></a></li>
+  <li><a href="http://www.libpng.org/pub/png/"><acronym>PNG</acronym> (Portable Network Graphics) Home Site</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

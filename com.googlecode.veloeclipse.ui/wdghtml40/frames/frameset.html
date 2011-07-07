@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>FRAMESET - Frameset</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's FRAMESET element for framesets.">
+<meta name="keywords" content="FRAMESET, frameset element, frames, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;frameset&gt; tag, &lt;FRAMESET&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>FRAMESET - Frameset</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;FRAMESET&gt;</strong>...<strong class=required>&lt;/FRAMESET&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>ROWS=<var><a href="../values.html#multilengths">MultiLengths</a></var> (row lengths)</li>
+        <li>COLS=<var><a href="../values.html#multilengths">MultiLengths</a></var> (column lengths)</li>
+        <li>ONLOAD=<var><a href="../values.html#script">Script</a></var> (all frames have been loaded)</li>
+        <li>ONUNLOAD=<var><a href="../values.html#script">Script</a></var> (all frames have been removed)</li>
+        <li><a href="../attrs.html#core">core attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>One or more FRAMESET and <a href="frame.html">FRAME</a> elements, as well as an optional <a href="noframes.html">NOFRAMES</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../html/html.html">HTML</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>FRAMESET</strong> element is a <em>frame container</em> for dividing a window into rectangular subspaces called <em>frames</em>. In a <a href="../html/doctype.html#frameset">Frameset</a> document, the outermost <strong class=html>FRAMESET</strong> element takes the place of <strong class=html><a href="../html/body.html">BODY</a></strong> and immediately follows the <strong class=html><a href="../head/head.html">HEAD</a></strong>.</p>
+<p>The <strong class=html>FRAMESET</strong> element contains one or more <strong class=html>FRAMESET</strong> or <strong class=html><a href="frame.html">FRAME</a></strong> elements, along with an optional <strong class=html><a href="noframes.html">NOFRAMES</a></strong> element to provide alternate content for browsers that do not support frames or have frames disabled. A meaningful <strong class=html>NOFRAMES</strong> element should always be provided and should at the very least contain links to the main frame or frames.</p>
+<p>The <strong class=html>ROWS</strong> and <strong class=html>COLS</strong> attributes define the dimensions of each frame in the set. Each attribute takes a comma-separated list of lengths, specified in pixels, as a percentage, or as a relative length. A relative length is expressed as <strong class=html><var>i</var>*</strong> where <strong class=html><var>i</var></strong> is an integer. For example, a frameset defined with <strong class=html>ROWS="3*,*"</strong> (<strong class=html>*</strong> is equivalent to <strong class=html>1*</strong>) will have its first row allotted three times the height of the second row.</p>
+<p>The values specified for the <strong class=html>ROWS</strong> attribute give the height of each row, from top to bottom. The <strong class=html>COLS</strong> attribute gives the width of each column from left to right. If <strong class=html>ROWS</strong> or <strong class=html>COLS</strong> is omitted, the implied value for the attribute is <strong class=html>100%</strong>. If both attributes are specified, a grid is defined and filled left-to-right then top-to-bottom.</p>
+<p>The following example sets up a grid with two rows and three columns:</p>
+<pre class=example><code class=html><strong>&lt;FRAMESET ROWS="70%,30%" COLS="33%,33%,34%"&gt;</strong>
+  &lt;FRAME NAME="Photo1" SRC="Row1_Column1.html"&gt;
+  &lt;FRAME NAME="Photo2" SRC="Row1_Column2.html"&gt;
+  &lt;FRAME NAME="Photo3" SRC="Row1_Column3.html"&gt;
+  &lt;FRAME NAME="Caption1" SRC="Row2_Column1.html"&gt;
+  &lt;FRAME NAME="Caption2" SRC="Row2_Column2.html"&gt;
+  &lt;FRAME NAME="Caption3" SRC="Row2_Column3.html"&gt;
+  &lt;NOFRAMES&gt;
+    &lt;BODY&gt;
+      &lt;H1&gt;Table of Contents&lt;/H1&gt;
+        &lt;UL&gt;
+          &lt;LI&gt;
+            &lt;A HREF="Row1_Column1.html"&gt;Photo 1&lt;/A&gt;
+            (&lt;A HREF="Row2_Column1.html"&gt;Caption&lt;/A&gt;)
+          &lt;/LI&gt;
+          &lt;LI&gt;
+            &lt;A HREF="Row1_Column2.html"&gt;Photo 2&lt;/A&gt;
+            (&lt;A HREF="Row2_Column2.html"&gt;Caption&lt;/A&gt;)
+          &lt;/LI&gt;
+          &lt;LI&gt;
+            &lt;A HREF="Row1_Column3.html"&gt;Photo 3&lt;/A&gt;
+            (&lt;A HREF="Row2_Column3.html"&gt;Caption&lt;/A&gt;)
+          &lt;/LI&gt;
+      &lt;/UL&gt;
+    &lt;/BODY&gt;
+  &lt;/NOFRAMES&gt;
+<strong>&lt;/FRAMESET&gt;</strong></code></pre>
+<p>The next example features nested <strong class=html>FRAMESET</strong> elements to define two frames in the first row and one frame in the second row:</p>
+<pre class=example><code class=html><strong>&lt;FRAMESET ROWS="*,100"&gt;</strong>
+  <strong>&lt;FRAMESET COLS="40%,*"&gt;</strong>
+    &lt;FRAME NAME="Menu" SRC="nav.html" TITLE="Menu"&gt;
+    &lt;FRAME NAME="Content" SRC="main.html" TITLE="Content"&gt;
+  <strong>&lt;/FRAMESET&gt;</strong>
+  &lt;FRAME NAME="Ad" SRC="ad.html" TITLE="Advertisement"&gt;
+  &lt;NOFRAMES&gt;
+    &lt;BODY&gt;
+      &lt;H1&gt;Table of Contents&lt;/H1&gt;
+      &lt;UL&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/html40/"&gt;HTML 4.0 Reference&lt;/A&gt;
+        &lt;/LI&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/wilbur/"&gt;HTML 3.2 Reference&lt;/A&gt;
+        &lt;/LI&gt;
+        &lt;LI&gt;
+          &lt;A HREF="reference/css/"&gt;CSS Guide&lt;/A&gt;
+        &lt;/LI&gt;
+      &lt;/UL&gt;
+      &lt;P&gt;
+        &lt;IMG SRC="ad.gif" ALT="Ad: Does your bank charge too much?"&gt;
+      &lt;/P&gt;
+    &lt;/BODY&gt;
+  &lt;/NOFRAMES&gt;
+<strong>&lt;/FRAMESET&gt;</strong></code></pre>
+<p class=note>When pixel lengths are used, they should always be combined with a relative length to handle various window sizes. Pixel lengths should only be used when the frame consists primarily of images or other objects with a fixed size in pixels. Due to their ability to adapt to different window sizes, percentages and relative lengths are generally preferred.</p>
+<p>The <strong class=html>FRAMESET</strong> element also accepts <strong class=html>ONLOAD</strong> and <strong class=html>ONUNLOAD</strong> attributes to specify client-side scripting actions to perform when the frames have all been loaded or removed.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/frames.html#edef-FRAMESET">FRAMESET in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

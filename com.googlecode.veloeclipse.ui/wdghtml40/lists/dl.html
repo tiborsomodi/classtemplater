@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>DL - Definition List</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's DL element for definition lists.">
+<meta name="keywords" content="DL, dl element, definition list, lists, list, definitions, terms, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;dl&gt; tag, &lt;DL&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>DL - Definition List</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements and attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;DL&gt;</strong>...<strong class=required>&lt;/DL&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li class=transitional>COMPACT (compact display)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>One or more <a href="dt.html">DT</a> or <a href="dd.html">DD</a> elements</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><span class=transitional><a href="../special/applet.html">APPLET</a>, </span><a href="../block/blockquote.html">BLOCKQUOTE</a>, <a href="../html/body.html">BODY</a>, <a href="../forms/button.html">BUTTON</a>, <span class=transitional><a href="../block/center.html">CENTER</a>, </span><a href="dd.html">DD</a>, <a href="../phrase/del.html">DEL</a>, <a href="../block/div.html">DIV</a>, <a href="../forms/fieldset.html">FIELDSET</a>, <a href="../forms/form.html">FORM</a>, <span class=transitional><a href="../special/iframe.html">IFRAME</a>, </span><a href="../phrase/ins.html">INS</a>, <a href="li.html">LI</a>, <a href="../special/map.html">MAP</a>, <span class=transitional><a href="../frames/noframes.html">NOFRAMES</a>, </span> <a href="../block/noscript.html">NOSCRIPT</a>, <a href="../special/object.html">OBJECT</a>, <a href="../tables/td.html">TD</a>, <a href="../tables/th.html">TH</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>DL</strong> element defines a <em>definition list</em>. An entry in the list is created using the <strong class=html><a href="dt.html">DT</a></strong> element for the term being defined and the <strong class=html><a href="dd.html">DD</a></strong> element for the definition of the term.</p>
+<p>A definition list can have multiple terms for a given definition as well as multiple definitions for a given term. Authors can also give a term without a corresponding definition, and vice versa, but such a structure rarely makes sense.</p>
+<p>An example follows:</p>
+<pre class=example><code class=html><strong>&lt;DL&gt;</strong>
+
+  &lt;DT&gt;Block-level elements&lt;/DT&gt;
+  &lt;DD&gt;
+    &lt;P&gt;
+      In HTML, block-level elements may generally contain
+      inline elements and other block-level elements. They are
+      usually formatted differently than inline elements,
+      typically on a new line in visual browsers.
+    &lt;/P&gt;
+  &lt;/DD&gt;
+
+  &lt;DT&gt;Inline elements&lt;/DT&gt;
+  &lt;DT&gt;Text-level elements&lt;/DT&gt;
+  &lt;DD&gt;
+    &lt;P&gt;
+      Inline (or text-level) elements generally only contain
+      character data and other inline elements.
+    &lt;/P&gt;
+  &lt;/DD&gt;
+
+<strong>&lt;/DL&gt;</strong></code></pre>
+<p>The <strong class=html>DL</strong> element can be adapted for use with structures that are not strict terms and definitions, a practice that is justified when other <abbr class=initialism title="HyperText Markup Language">HTML</abbr> elements cannot adequately describe a structure. Some examples follow:</p>
+<ul class=example>
+  <li><pre><code class=html>&lt;H1&gt;Community Calendar&lt;/H1&gt;
+
+<strong>&lt;DL CLASS=calendar&gt;</strong>
+
+  &lt;DT&gt;March 8&lt;/DT&gt;
+  &lt;DD&gt;
+    The Symphony Orchestra presents &lt;CITE&gt;A Rising Star&lt;/CITE&gt;
+    at the Anderson Center. Call 555-1234 for details.
+  &lt;/DD&gt;
+
+  &lt;DT&gt;March 10&lt;/DT&gt;
+  &lt;DD&gt;
+    Bereaved Families Support Night, 7:00 to 9:00 at
+    523 Main &lt;ABBR TITLE=Street&gt;St.&lt;/ABBR&gt;
+  &lt;/DD&gt; 
+
+<strong>&lt;/DL&gt;</strong></code></pre></li>
+
+  <li><pre><code class=html><strong>&lt;DL CLASS=play&gt;</strong>
+
+  &lt;DT&gt;Brutus&lt;/DT&gt;
+  &lt;DD CLASS="role Brutus"&gt;
+    &lt;P&gt;
+      I kiss thy hand, but not in flattery, Caesar;&lt;BR&gt;
+      Desiring thee that Publius Cimber may&lt;BR&gt;
+      Have an immediate freedom of repeal.
+    &lt;/P&gt;
+  &lt;/DD&gt;
+
+  &lt;DT&gt;Caesar&lt;/DT&gt;
+  &lt;DD CLASS="role Caesar"&gt;
+    &lt;P&gt;
+      What, Brutus!
+    &lt;/P&gt;
+  &lt;/DD&gt;
+
+  &lt;DT&gt;Cassius&lt;/DT&gt;
+  &lt;DD CLASS="role Cassius"&gt;
+    &lt;P&gt;
+      Pardon, Caesar; Caesar, pardon:&lt;BR&gt;
+      As low as to thy foot doth Cassius fall,&lt;BR&gt;
+      To beg enfranchisement for Publius Cimber.
+    &lt;/P&gt;
+  &lt;/DD&gt;
+
+<strong>&lt;/DL&gt;</strong></code></pre></li>
+</ul>
+<p>Note the use of the <strong class=html><a href="../attrs.html#class">CLASS</a></strong> attribute in the preceding examples. This allows the author to easily suggest, through <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, a distinguishing presentation for different kinds of definition lists.</p>
+<div class=transitional>
+<p>In addition to the <a href="../attrs.html">common attributes</a> shared by most elements, <strong class=html>DL</strong> takes a <strong class=html>COMPACT</strong> attribute. This attribute, <a href="../deprecated.html">deprecated</a> in HTML 4.0 and poorly supported among browsers, suggests that visual browsers render the list compactly, perhaps with reduced spacing between items.</p>
+</div>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/lists.html#edef-DL">DL in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#dl">DL in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.6.5">DL in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/list/dl.html">DL in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.21.html">UL in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

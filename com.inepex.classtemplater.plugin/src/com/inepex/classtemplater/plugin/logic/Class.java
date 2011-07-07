@@ -13,217 +13,248 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IField;
 import org.eclipse.jdt.core.IMethod;
 import org.eclipse.jdt.core.IType;
 
 public class Class {
-  static final Pattern getterPattern = Pattern.compile("(get|is)([A-Z])(.*)");
-  static final Pattern setterSetter = Pattern.compile("(set)([A-Z])(.*)");
-  
-  String name;
+	static final Pattern getterPattern = Pattern.compile("(get|is)([A-Z])(.*)");
+	static final Pattern setterSetter = Pattern.compile("(set)([A-Z])(.*)");
 
-  String packageName;
+	String name;
 
-  List<Attribute> attributes = new ArrayList<Attribute>();
+	String packageName;
 
-  List<Method> methods = new ArrayList<Method>();
+	List<Attribute> attributes = new ArrayList<Attribute>();
 
-  List<Property> properthies;
+	List<Method> methods = new ArrayList<Method>();
 
-  Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+	List<Property> properthies;
 
-  String workspaceRelativePath;
+	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
 
-  public Class(String name, String packageName) {
+	String workspaceRelativePath;
 
-    super();
-    this.name = name;
-    this.packageName = packageName;
-  }
+	public Class(String name, String packageName) {
 
-  public Class(List<IField> jdtFields) throws Exception {
+		super();
+		this.name = name;
+		this.packageName = packageName;
+	}
 
-    this.name = jdtFields.get(0).getDeclaringType().getTypeQualifiedName();
-    this.packageName =
-        ((ICompilationUnit) jdtFields.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
-    for (IField field : jdtFields) {
-      this.attributes.add(new Attribute(field));
-    }
-    this.annotations = Annotation.getAnnotationsOf(jdtFields.get(0).getDeclaringType());
-    this.workspaceRelativePath =
-        ResourceUtil.getWorkspaceRelativePath((ICompilationUnit) jdtFields.get(0).getParent().getParent());
-  }
+	public Class(List<IField> jdtFields) throws Exception {
 
-  public Class(List<IMethod> jdtMethods, boolean isMethods) throws Exception {
+		this.name = jdtFields.get(0).getDeclaringType().getTypeQualifiedName();
+		this.packageName = ((ICompilationUnit) jdtFields.get(0).getParent()
+				.getParent()).getPackageDeclarations()[0].getElementName();
+		for (IField field : jdtFields) {
+			this.attributes.add(new Attribute(field));
+		}
+		this.annotations = Annotation.getAnnotationsOf(jdtFields.get(0)
+				.getDeclaringType());
+		this.workspaceRelativePath = ResourceUtil
+				.getWorkspaceRelativePath((ICompilationUnit) jdtFields.get(0)
+						.getParent().getParent());
+	}
 
-    this.name = jdtMethods.get(0).getDeclaringType().getTypeQualifiedName();
-    this.packageName =
-        ((ICompilationUnit) jdtMethods.get(0).getParent().getParent()).getPackageDeclarations()[0].getElementName();
-    for (IMethod method : jdtMethods) {
-      this.methods.add(new Method(method));
-    }
-    this.annotations = Annotation.getAnnotationsOf(jdtMethods.get(0).getDeclaringType());
-    this.workspaceRelativePath =
-        ResourceUtil.getWorkspaceRelativePath((ICompilationUnit) jdtMethods.get(0).getParent().getParent());
-  }
+	public Class(List<IMethod> jdtMethods, boolean isMethods) throws Exception {
 
-  public Class(ICompilationUnit compunit) throws Exception {
+		this.name = jdtMethods.get(0).getDeclaringType().getTypeQualifiedName();
+		this.packageName = ((ICompilationUnit) jdtMethods.get(0).getParent()
+				.getParent()).getPackageDeclarations()[0].getElementName();
+		for (IMethod method : jdtMethods) {
+			this.methods.add(new Method(method));
+		}
+		this.annotations = Annotation.getAnnotationsOf(jdtMethods.get(0)
+				.getDeclaringType());
+		this.workspaceRelativePath = ResourceUtil
+				.getWorkspaceRelativePath((ICompilationUnit) jdtMethods.get(0)
+						.getParent().getParent());
+	}
 
-    this.name = compunit.findPrimaryType().getTypeQualifiedName();
-    this.packageName = compunit.getPackageDeclarations()[0].getElementName();
-    this.attributes = getAttrs(compunit);
-    this.methods = getMethods(compunit);
-    this.annotations = Annotation.getAnnotationsOf(compunit.getAllTypes()[0]);
-    this.workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath(compunit);
-  }
+	public Class(ICompilationUnit compunit) throws Exception {
 
-  private void buildProperthies() {
-    Map<String, Property> props = new HashMap<String, Property>();
+		this.name = compunit.findPrimaryType().getTypeQualifiedName();
+		this.packageName = compunit.getPackageDeclarations()[0]
+				.getElementName();
+		this.attributes = getAttrs(compunit);
+		this.methods = getMethods(compunit);
+		this.annotations = Annotation
+				.getAnnotationsOf(compunit.getAllTypes()[0]);
+		this.workspaceRelativePath = ResourceUtil
+				.getWorkspaceRelativePath(compunit);
+	}
 
-    for (Method method : this.methods) {
-      Matcher matcher = getterPattern.matcher(method.name);
-      if (matcher.matches()) {
-        if (!method.getReturnType().equals("void")) {
-          Property prop = getOrCreateProperty(matcher, props);
-          prop.setGetter(method);
-        }
-      } else {
-        matcher = setterSetter.matcher(method.name);
-        if (matcher.matches() && method.getParameters().size() == 1) {
-          Property prop = getOrCreateProperty(matcher, props);
-          prop.setSetter(method);
-        }
-      }
-    }
-    this.properthies = new ArrayList<Property>(props.values());
-  }
+	private void buildProperthies() {
+		Map<String, Property> props = new HashMap<String, Property>();
 
-  private Property getOrCreateProperty(Matcher matcher, Map<String, Property> props) {
+		for (Method method : this.methods) {
+			Matcher matcher = getterPattern.matcher(method.name);
+			if (matcher.matches()) {
+				if (!method.getReturnType().equals("void")) {
+					Property prop = getOrCreateProperty(matcher, props);
+					prop.setGetter(method);
+				}
+			} else {
+				matcher = setterSetter.matcher(method.name);
+				if (matcher.matches() && method.getParameters().size() == 1) {
+					Property prop = getOrCreateProperty(matcher, props);
+					prop.setSetter(method);
+				}
+			}
+		}
+		this.properthies = new ArrayList<Property>(props.values());
+	}
 
-    String propertyName = matcher.group(2).toLowerCase().concat(matcher.group(3));
-    Property prop = props.get(propertyName);
-    if (prop == null) {
-      props.put(propertyName, prop = new Property(propertyName));
-    }
-    return prop;
-  }
+	private Property getOrCreateProperty(Matcher matcher,
+			Map<String, Property> props) {
 
-  private ArrayList<Attribute> getAttrs(ICompilationUnit unit) throws Exception {
+		String propertyName = matcher.group(2).toLowerCase()
+				.concat(matcher.group(3));
+		Property prop = props.get(propertyName);
+		if (prop == null) {
+			props.put(propertyName, prop = new Property(propertyName));
+		}
+		return prop;
+	}
 
-    ArrayList<Attribute> attrs = new ArrayList<Attribute>();
-    IType[] allTypes = unit.getAllTypes();
-    for (IType type : allTypes) {
-      for (IField field : type.getFields()) {
-        attrs.add(new Attribute(field));
-      }
-    }
-    return attrs;
-  }
+	private ArrayList<Attribute> getAttrs(ICompilationUnit unit)
+			throws Exception {
 
-  private ArrayList<Method> getMethods(ICompilationUnit unit) throws Exception {
+		ArrayList<Attribute> attrs = new ArrayList<Attribute>();
+		IType[] allTypes = unit.getAllTypes();
+		for (IType type : allTypes) {
+			for (IField field : type.getFields()) {
+				attrs.add(new Attribute(field));
+			}
+		}
+		return attrs;
+	}
 
-    ArrayList<Method> methods = new ArrayList<Method>();
-    IType[] allTypes = unit.getAllTypes();
-    for (IType type : allTypes) {
-      for (IMethod method : type.getMethods()) {
-        methods.add(new Method(method));
-      }
-    }
-    return methods;
-  }
+	private ArrayList<Method> getMethods(ICompilationUnit unit)
+			throws Exception {
 
-  public String getName() {
+		ArrayList<Method> methods = new ArrayList<Method>();
+		IType[] allTypes = unit.getAllTypes();
+		for (IType type : allTypes) {
+			for (IMethod method : type.getMethods()) {
+				methods.add(new Method(method));
+			}
+		}
+		return methods;
+	}
 
-    return this.name;
-  }
+	public String getName() {
 
-  public void setName(String name) {
+		return this.name;
+	}
 
-    this.name = name;
-  }
+	public void setName(String name) {
 
-  public String getPackageName() {
+		this.name = name;
+	}
 
-    return this.packageName;
-  }
+	public String getPackageName() {
 
-  public void setPackageName(String packageName) {
+		return this.packageName;
+	}
 
-    this.packageName = packageName;
-  }
+	public void setPackageName(String packageName) {
 
-  public List<Attribute> getAttributes() {
+		this.packageName = packageName;
+	}
 
-    return this.attributes;
-  }
+	public List<Attribute> getAttributes() {
 
-  public void setAttributes(List<Attribute> attributes) {
+		return this.attributes;
+	}
 
-    this.attributes = attributes;
-  }
+	public void setAttributes(List<Attribute> attributes) {
 
-  public Map<String, Annotation> getAnnotations() {
+		this.attributes = attributes;
+	}
 
-    return this.annotations;
-  }
+	public Map<String, Annotation> getAnnotations() {
 
-  public void setAnnotations(Map<String, Annotation> annotations) {
+		return this.annotations;
+	}
 
-    this.annotations = annotations;
-  }
+	public void setAnnotations(Map<String, Annotation> annotations) {
 
-  public boolean hasAnnotation(String name) {
+		this.annotations = annotations;
+	}
 
-    return (this.annotations.get(name) != null);
-  }
+	public boolean hasAnnotation(String name) {
 
-  public String getWorkspaceRelativePath() {
+		return (this.annotations.get(name) != null);
+	}
 
-    return this.workspaceRelativePath;
-  }
+	public String getWorkspaceRelativePath() {
 
-  public void setWorkspaceRelativePath(String workspaceRelativePath) {
+		return this.workspaceRelativePath;
+	}
 
-    this.workspaceRelativePath = workspaceRelativePath;
-  }
+	public void setWorkspaceRelativePath(String workspaceRelativePath) {
 
-  public List<Method> getMethods() {
+		this.workspaceRelativePath = workspaceRelativePath;
+	}
 
-    return this.methods;
-  }
+	public List<Method> getMethods() {
 
-  public List<Property> getProperties() {
-    if(this.properthies==null){
-      buildProperthies();
-    }
-    return this.properthies;
-  }
+		return this.methods;
+	}
 
-  public String getParentPackage() {
+	public List<Property> getProperties() {
+		if (this.properthies == null) {
+			buildProperthies();
+		}
+		return this.properthies;
+	}
 
-    int index = getPackageName().lastIndexOf(".");
-    if (index != -1) {
-      return getPackageName().substring(0, index);
-    } else {
-      return "";
-    }
-  }
-  
-  /**
-   * returns package without the last level segments
-   * @param level
-   * @return
-   */
-  public String getParentPackage(int level) {
-	  String[] parts = getPackageName().split("\\.");
-	  if (level >= parts.length) return "";
-	  String parentPackage = "";
-	  for (int i = 0; i < parts.length - level; i++){
-		  parentPackage += parts[i] + ".";
-	  }
-	  return parentPackage.substring(0, parentPackage.length()-1);
-	  }
+	public String getParentPackage() {
 
+		int index = getPackageName().lastIndexOf(".");
+		if (index != -1) {
+			return getPackageName().substring(0, index);
+		} else {
+			return "";
+		}
+	}
+
+	/**
+	 * returns package without the last level segments
+	 * 
+	 * @param level
+	 * @return
+	 */
+	public String getParentPackage(int level) {
+		String[] parts = getPackageName().split("\\.");
+		if (level >= parts.length)
+			return "";
+		String parentPackage = "";
+		for (int i = 0; i < parts.length - level; i++) {
+			parentPackage += parts[i] + ".";
+		}
+		return parentPackage.substring(0, parentPackage.length() - 1);
+	}
+	
+
+	/**
+	 * returns path without the last level segments
+	 * 
+	 * @param level
+	 * @return
+	 */
+	public String getParentRelativePath(int level) {
+		String[] parts = getWorkspaceRelativePath().split("/");
+		if (level >= parts.length)
+			return "";
+		String parentPath = "";
+		for (int i = 0; i < parts.length - level; i++) {
+			parentPath += parts[i] + "/";
+		}
+		return parentPath.substring(0, parentPath.length() - 1);
+	}
 }

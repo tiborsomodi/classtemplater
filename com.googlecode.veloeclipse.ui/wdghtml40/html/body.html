@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>BODY - Document Body</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's BODY element for a document's body.">
+<meta name="keywords" content="BODY, body element, document body, background, bgcolor, text, link, vlink, alink, BACKGROUND, BGCOLOR, TEXT, LINK, VLINK, ALINK, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;body&gt; tag, &lt;BODY&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>BODY - Document Body</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("elements and attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td>&lt;BODY&gt;...&lt;/BODY&gt;</td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li class=transitional>BACKGROUND=<var><a href="../values.html#uri">URI</a></var> (background image for document)</li>
+        <li class=transitional>BGCOLOR=<var><a href="../values.html#color">Color</a></var> (background color for document)</li>
+        <li class=transitional>TEXT=<var><a href="../values.html#color">Color</a></var> (text color for document)</li>
+        <li class=transitional>LINK=<var><a href="../values.html#color">Color</a></var> (link color for document)</li>
+        <li class=transitional>VLINK=<var><a href="../values.html#color">Color</a></var> (visited link color for document)</li>
+        <li class=transitional>ALINK=<var><a href="../values.html#color">Color</a></var> (active link color for document)</li>
+        <li>ONLOAD=<var><a href="../values.html#script">Script</a></var> (document has been loaded)</li>
+        <li>ONUNLOAD=<var><a href="../values.html#script">Script</a></var> (document has been exited)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>
+      <ul>
+        <li>In <a href="doctype.html#strict">HTML 4.0 Strict</a>: one or more <a href="../block.html">block-level elements</a> or <a href="../special/script.html">SCRIPT</a>, <a href="../phrase/ins.html">INS</a>, <a href="../phrase/del.html">DEL</a></li>
+        <li class=transitional>In <a href="doctype.html#transitional">HTML 4.0 Transitional</a>: <a href="../inline.html">inline elements</a>, <a href="../block.html">block-level elements</a>, <a href="../phrase/ins.html">INS</a>, <a href="../phrase/del.html">DEL</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td>
+      <ul>
+        <li>In HTML 4.0 <a href="doctype.html#strict">Strict</a><span class=transitional> or <a href="doctype.html#transitional">Transitional</a></span>: <a href="html.html">HTML</a></li>
+        <li class=frameset>In HTML 4.0 <a href="doctype.html#frameset">Frameset</a>: <a href="../frames/noframes.html">NOFRAMES</a></li>
+      </ul>
+    </td>
+  </tr>
+</table>
+<p>The <strong class=html>BODY</strong> element contains the <em>document body</em>. <strong class=html>BODY</strong> is required <span class=frameset>in non-frames documents</span>, but its start and end tags are always optional. <span class=frameset>In <a href="doctype.html#frameset">frames documents</a>, <strong class=html>BODY</strong> must be contained within the <strong class=html><a href="../frames/noframes.html">NOFRAMES</a></strong> element, if <strong class=html>NOFRAMES</strong> is used.</span></p>
+<p>The <strong class=html>BODY</strong> element contains the document's content. The content should be contained within <a href="../block.html">block-level elements</a> or <a href="../special/script.html">SCRIPT</a> elements<span class=transitional>, though <a href="doctype.html#transitional">HTML 4.0 Transitional</a> also allows <a href="../inline.html">inline elements</a> directly within <strong class=html>BODY</strong></span>.</p>
+<div class=transitional>
+<p><strong class=html>BODY</strong> takes a number of attributes for specifying the background and colors of the document on visual browsers. These attributes are <a href="../deprecated.html">deprecated</a> in HTML 4.0 in favor of <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, which provide greater flexibility in suggesting the presentation of a document. <strong class=html>BGCOLOR</strong> suggests a background color, <strong class=html>TEXT</strong> suggests a text color, <strong class=html>LINK</strong> suggests a link color, <strong class=html>VLINK</strong> suggests a visited link color, and <strong class=html>ALINK</strong> suggests an active link color (when the link is selected). If one of these attributes is given, then all of them should be included to ensure that the user's chosen colors do not interfere with those suggested in the <strong class=html>&lt;BODY&gt;</strong> tag. Authors should not rely on the specified colors being used since browsers allow these colors to be overridden by the user.</p>
+<p>The <strong class=html>BACKGROUND</strong> attribute suggests a background image for tiling on the document canvas. To help ensure a readable document, the <strong class=html>BGCOLOR</strong>, <strong class=html>TEXT</strong>, <strong class=html>LINK</strong>, <strong class=html>VLINK</strong>, and <strong class=html>ALINK</strong> attributes should always be included when <strong class=html>BACKGROUND</strong> is given. The <strong class=html>BGCOLOR</strong> will be used for those not loading images.</p>
+<p class=note><a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> allow more flexibility in suggesting a background image, including the ability to specify the <a href="http://www.htmlhelp.com/reference/css/color-background/background-position.html">position of the image</a>, <a href="http://www.htmlhelp.com/reference/css/color-background/background-repeat.html">how the image is tiled</a>, and <a href="http://www.htmlhelp.com/reference/css/color-background/background-attachment.html">whether the image should scroll with the document</a>.</p>
+</div>
+<p>In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>BODY</strong> accepts the following event attributes for client-side scripting:</p>
+<ul>
+  <li><strong class=html>ONLOAD</strong>, when the document has been loaded;</li>
+  <li><strong class=html>ONUNLOAD</strong>, when the document is exited.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/global.html#edef-BODY">BODY in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#body">BODY in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.3">BODY in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/body/body.html">BODY in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.11.html">BODY in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

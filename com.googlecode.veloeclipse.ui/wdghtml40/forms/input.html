@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>INPUT - Form Input</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's INPUT element for form input.">
+<meta name="keywords" content="INPUT, input element, form input, input, text, password, checkbox, radio button, radio, file, type, submit, reset, button, hidden, image, check box, field, form field, fields, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;input&gt; tag, &lt;INPUT&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>INPUT - Form Input</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;INPUT&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>TYPE=[ <em class=default>text</em> | password | checkbox | radio | submit | reset | file | hidden | image | button ] (type of input)</li>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (key in submitted form)</li>
+	<li>VALUE=<var><a href="../values.html#cdata">CDATA</a></var> (value of input)</li>
+        <li>CHECKED (check radio button or checkbox)</li>
+        <li>SIZE=<var><a href="../values.html#cdata">CDATA</a></var> (suggested number of characters for text input)</li>
+        <li>MAXLENGTH=<var><a href="../values.html#number">Number</a></var> (maximum number of characters for text input)</li>
+        <li>SRC=<var><a href="../values.html#uri">URI</a></var> (source for image)</li>
+        <li>ALT=<var><a href="../values.html#cdata">CDATA</a></var> (alternate text for image input)</li>
+        <li>USEMAP=<var><a href="../values.html#uri">URI</a></var> (client-side image map)</li>
+        <li class=transitional>ALIGN=[ top | middle | bottom | left | right ] (alignment of image input)</li>
+        <li>DISABLED (disable element)</li>
+        <li>READONLY (prevent changes)</li>
+        <li>ACCEPT=<var><a href="../values.html#contenttypes">ContentTypes</a></var> (media types for file upload)</li>
+        <li>ACCESSKEY=<var><a href="../values.html#character">Character</a></var> (shortcut key)</li>
+        <li>TABINDEX=<var><a href="../values.html#number">Number</a></var> (position in tabbing order)</li>
+        <li>ONFOCUS=<var><a href="../values.html#script">Script</a></var> (element received focus)</li>
+        <li>ONBLUR=<var><a href="../values.html#script">Script</a></var> (element lost focus)</li>
+        <li>ONSELECT=<var><a href="../values.html#script">Script</a></var> (element text selected)</li>
+        <li>ONCHANGE=<var><a href="../values.html#script">Script</a></var> (element value changed)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../block.html">Block-level elements</a>, <a href="../inline.html">inline elements</a> except <a href="button.html">BUTTON</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>INPUT</strong> element defines a <em>form control</em> for the user to enter input. While <strong class=html>INPUT</strong> is most useful within a <strong class=html><a href="form.html">FORM</a></strong>, HTML 4.0 allows <strong class=html>INPUT</strong> in any <a href="../block.html">block-level</a> or <a href="../inline.html">inline</a> element other than <strong class=html><a href="button.html">BUTTON</a></strong>. However, <a href="http://www.netscape.com/navigator/">Netscape Navigator</a> will not display any <strong class=html>INPUT</strong> elements outside of a <strong class=html>FORM</strong>.</p>
+<p>When a form is submitted, the current value of each <strong class=html>INPUT</strong> element within the <strong class=html><a href="form.html">FORM</a></strong> is sent to the server as name/value pairs. The <strong class=html>INPUT</strong> element's <strong class=html>NAME</strong> attribute provides the name used. The value sent depends on the type of form control and on the user's input.</p>
+<p>The type of form control defined by <strong class=html>INPUT</strong> is given by the <strong class=html>TYPE</strong> attribute. <a name=text>The default <strong class=html>TYPE</strong> is <strong class=html>text</strong></a>, which provides a single-line text input field. The <strong class=html>VALUE</strong> attribute specifies the initial value for the text field. The <strong class=html>SIZE</strong> and <strong class=html>MAXLENGTH</strong> attributes suggest the number of characters and maximum number of characters, respectively, of the text field.</p>
+<p class=note>While the <strong class=html>MAXLENGTH</strong> attribute can be an effective guide to the user, authors should not depend on the enforcement of a maximum number of characters by the client. A user could copy the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document, remove the <strong class=html>MAXLENGTH</strong> attribute, and submit the form. Thus authors of form handlers should ensure that any necessary input length checks are repeated on the server-side.</p>
+<p><a name=password>The <strong class=html>password</strong> input type</a> is a variation on the <strong class=html>text</strong> type. The only difference is that the input characters are masked, typically by a series of asterisks, to protect sensitive information from onlookers. Note, however, that the actual value is transmitted to the server as clear text, so <strong class=html>password</strong> inputs do not provide sufficient security for credit card numbers or other highly sensitive information.</p>
+<p>The following example uses <strong class=html>text</strong> and <strong class=html>password</strong> fields with the <strong class=html><a href="label.html">LABEL</a></strong> element to bind text labels to the <strong class=html>INPUT</strong> elements:</p>
+<p class=example><code class=html>&lt;P&gt;&lt;LABEL ACCESSKEY=U&gt;User name: <strong>&lt;INPUT TYPE=text NAME=username SIZE=8 MAXLENGTH=8&gt;</strong>&lt;/LABEL&gt;&lt;/P&gt;<br>&lt;P&gt;&lt;LABEL ACCESSKEY=P&gt;Password: <strong>&lt;INPUT TYPE=password NAME=pw SIZE=12 MAXLENGTH=12&gt;</strong>&lt;/LABEL&gt;&lt;/P&gt;</code></p>
+<p>The boolean <strong class=html>READONLY</strong> attribute, new in HTML 4.0 and poorly supported by current browsers, prevents the user from editing the content of the <strong class=html>text</strong> or <strong class=html>password</strong> input types. Read-only elements are still submitted with the form. The <strong class=html>DISABLED</strong> attribute, which applies to all input types but is also poorly supported, disables the control. Disabled elements are read-only elements with the added restrictions that the values are not submitted with the form, the elements cannot receive focus, and the elements are skipped when navigating the document by tabbing.</p>
+<p>The <a name=radio><strong class=html>radio</strong></a> and <a name=checkbox><strong class=html>checkbox</strong></a> input types provide switches that can be turned on and off by the user. The two types differ in that radio buttons are grouped (by specifying the same <strong class=html>NAME</strong> attribute on each <strong class=html>INPUT</strong>) so that only one radio button in a group can be selected at any time. Checkboxes can be checked without changing the state of other checkboxes with the same <strong class=html>NAME</strong>. The <strong class=html>VALUE</strong> attribute, required for radio buttons and checkboxes, gives the value of the control when it is checked. The boolean <strong class=html>CHECKED</strong> attribute specifies that the control is initially checked.</p>
+<p class=note>Some browsers require one radio button in a group to be selected at all times. To ensure that an appropriate default choice is made, authors may wish to define one of the radio <strong class=html>INPUT</strong> elements as <strong class=html>CHECKED</strong>.</p>
+<p>In the following example, only one payment method may be selected by the user since the radio buttons have the same <strong class=html>NAME</strong>:</p>
+<div class=example>
+<p><code class=html>&lt;P&gt;Please indicate your method of payment:&lt;/P&gt;<br>&lt;P&gt;&lt;LABEL ACCESSKEY=C&gt;<strong>&lt;INPUT TYPE=radio NAME="payment_method" VALUE="credit card" CHECKED&gt;</strong> Credit card&lt;/LABEL&gt;&lt;BR&gt;<br>&lt;LABEL ACCESSKEY=D&gt;<strong>&lt;INPUT TYPE=radio NAME="payment_method" VALUE="debit card"&gt;</strong> Debit card&lt;/LABEL&gt;&lt;BR&gt;<br>&lt;LABEL ACCESSKEY=M&gt;<strong>&lt;INPUT TYPE=radio NAME="payment_method" VALUE="money order"&gt;</strong> Money order&lt;/LABEL&gt;&lt;/P&gt;</code></p>
+<p><code class=html>&lt;P&gt;&lt;LABEL ACCESSKEY=S&gt;<strong>&lt;INPUT TYPE=checkbox NAME="send_receipt" VALUE="yes" CHECKED&gt;</strong> Send receipt by e-mail&lt;/LABEL&gt;&lt;/P&gt;</code></p>
+</div>
+<p><a name=file>The <strong class=html>file</strong> input type</a> creates a field through which users can upload files from their local computer or network. The <strong class=html>VALUE</strong> attribute specifies the name of the initial file, but it is typically ignored by browsers as a security precaution. The <strong class=html>ACCEPT</strong> attribute gives a comma-separated list of media types accepted, allowing the browser to filter out inappropriate files. Current browsers generally ignore the <strong class=html>ACCEPT</strong> attribute.</p>
+<p>A form that includes a <strong class=html>file</strong> <strong class=html>INPUT</strong> must specify <strong class=html>METHOD=post</strong> and <strong class=html>ENCTYPE="multipart/form-data"</strong> in the <strong class=html>&lt;FORM&gt;</strong> tag. <abbr class=initialism title="Common Gateway Interface">CGI</abbr> libraries such as <a href="http://stein.cshl.org/WWW/software/CGI/cgi_docs.html" title="CGI.pm - a Perl5 CGI Library">CGI.pm</a> allow simple handling of such forms.</p>
+<p class=note>Form-based file upload is unsupported by many currently deployed browsers. Authors should provide alternative methods of input where possible.</p>
+<p>The following example allows the user to upload an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document for validation:</p>
+<p class=example><code class=html>&lt;FORM METHOD=post ACTION="/cgi-bin/validate.cgi" ENCTYPE="multipart/form-data"&gt;<br>&lt;P&gt;Select an HTML document to upload and validate. If your browser does not support form-based file upload, use one of our &lt;A HREF="methods.html"&gt;alternate methods of validation&lt;/A&gt;.&lt;/P&gt;<br>&lt;P&gt;<strong>&lt;INPUT TYPE=file NAME="html_file" ACCEPT="text/html"&gt;</strong>&lt;/P&gt;<br>&lt;P&gt;&lt;INPUT TYPE=submit VALUE="Validate it!"&gt;&lt;/P&gt;<br>&lt;/FORM&gt;</code></p>
+<p><a name=hidden>The <strong class=html>hidden</strong> input type</a> allows authors to include form data without having it rendered to the user. This is particularly useful in form applications that span several <abbr class=initialism title="HyperText Markup Language">HTML</abbr> documents; user input can be carried from form to form by <strong class=html>hidden</strong> <strong class=html>INPUT</strong>s. Some generalized <abbr class=initialism title="Common Gateway Interface">CGI</abbr> scripts use <strong class=html>hidden</strong> <strong class=html>INPUT</strong>s to define variables for the script, as in the following example, which defines a recipient and subject for the e-mailed contents of a form:</p>
+<p class=example><code class=html>&lt;INPUT TYPE=hidden NAME=recipient VALUE="liam@htmlhelp.com"&gt;<br>&lt;INPUT TYPE=hidden NAME=subject VALUE="Feedback on your HTML Reference"&gt;</code></p>
+<p class=note>Note that the fields are "hidden" in the sense that they are not rendered by the browser. Anyone can still view the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document's source to find the "hidden" fields.</p>
+<p><a name=reset>The <strong class=html>TYPE</strong> value <strong class=html>reset</strong></a> defines a button by which the user can reset the form to its initial values. The optional <strong class=html>VALUE</strong> attribute of a reset button overrides the browser's default text for the button.</p>
+<p><a name=submit>The <strong class=html>submit</strong> input type</a> defines a button for submitting the form. As with <strong class=html>reset</strong>, the optional <strong class=html>VALUE</strong> attribute provides the text of the button. The presence of the <strong class=html>NAME</strong> attribute will cause the browser to send a name/value pair for the submit button if it is used to submit the form. This allows authors to provide multiple submit buttons and have the form handler take a different action depending on the submit button used.</p>
+<p><a name=image>The <strong class=html>image</strong> input type</a> specifies a graphical submit button. The <strong class=html>SRC</strong> attribute must be included to specify the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of the image. The <strong class=html>ALT</strong> attribute should be used to give replacement text for those not loading images. <strong class=html>ALT</strong> is a new addition in HTML 4.0; many browsers rely on either the <strong class=html>NAME</strong> or <strong class=html>VALUE</strong> attribute as alternate text, so authors should use all three attributes for the same purpose where possible. The topic of graphical submit buttons for text users is discussed in detail in the article <cite><a href="http://www.htmlhelp.com/feature/art3c.htm">INPUT TYPE=IMAGE for text users?</a></cite>.</p>
+<p>When the graphical submit button is clicked, the coordinates of the click are sent with the form submission as <var>name</var>.x=<var>x-value</var> and <var>name</var>.y=<var>y-value</var> where <var>name</var> is the value of the <strong class=html>NAME</strong> attribute, <var>x-value</var> is the click's pixels from the left of the image, and <var>y-value</var> is the click's pixels from the top of the image. The <strong class=html>USEMAP</strong> attribute combined with <strong class=html>TYPE=image</strong> defines a client-side image map that can be used with client-side scripting, but this method is poorly supported. The <strong class=html>USEMAP</strong> attribute gives the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of the defining <strong class=html><a href="../special/map.html">MAP</a></strong>.</p>
+<div class=transitional>
+<p>The <a href="../deprecated.html">deprecated</a> <strong class=html>ALIGN</strong> attribute specifies the alignment of the graphical submit button. The values <strong class=html>top</strong>, <strong class=html>middle</strong>, and <strong class=html>bottom</strong> specify the button's position with respect to surrounding content on its left and right. The values <strong class=html>left</strong> and <strong class=html>right</strong> specify a <em>floating</em> button; the image is placed at the left or right margin and content flows around it. To place content below the button, use <strong class=html>&lt;BR CLEAR=left|right|all&gt;</strong> as appropriate.</p>
+<p class=note>The <strong class=css><a href="http://www.htmlhelp.com/reference/css/text/vertical-align.html">vertical-align</a></strong> and <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/float.html">float</a></strong> properties of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provide more flexible methods of aligning buttons.</p>
+</div>
+<p><a name=button>The input type <strong class=html>button</strong></a> specifies a push button for use with client-side scripting. The <strong class=html>VALUE</strong> attribute gives the text label of the button. The <strong class=html>ONCLICK</strong> attribute is typically used to define the action taken when the button is activated. An example follows:</p>
+<p class=example><code class=html>&lt;INPUT TYPE=button VALUE="Hide non-strict attributes" ID=toggler ONCLICK="toggle()"&gt;</code></p>
+<p>In this example, the <strong class=html>toggle()</strong> function, which would be defined earlier in a <strong class=html><a href="../special/script.html">SCRIPT</a></strong> element, will be executed when the button is clicked. Since the button is only useful with client-side scripting enabled, authors should usually output the <strong class=html>&lt;INPUT TYPE=button&gt;</strong> tag using the scripting language to avoid providing a non-functioning button to some users. A more complete version of the previous example would thus be as follows:</p>
+<pre class=example><code class=html>&lt;SCRIPT TYPE="text/javascript"&gt;</code>
+<code class=javascript>&lt;!--
+  document.write("&lt;INPUT TYPE=button VALUE=\"Hide non-strict attributes\""
+                 + "ID=toggler ONCLICK=\"toggle()\"&gt;");
+// --&gt;</code>
+<code class=html>&lt;/script&gt;</code></pre>
+<p class=note>The <strong class=html><a href="button.html">BUTTON</a></strong> element allows richer labels for submit, reset, and push buttons, but a lack of browser support makes <strong class=html>INPUT</strong> a more reliable choice at this time.</p>
+<p>The <strong class=html>ACCESSKEY</strong> and <strong class=html>TABINDEX</strong> attributes apply to all input types except <strong class=html>hidden</strong>. <strong class=html>ACCESSKEY</strong> specifies a single Unicode character as a shortcut key for giving focus to the form control. Authors can set the access key on the <strong class=html>INPUT</strong> element or the <strong class=html><a href="label.html">LABEL</a></strong> element associated with it. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<p>The <strong class=html>TABINDEX</strong> attribute specifies a number between 0 and 32767 to indicate the tabbing order of the element. A form control with <strong class=html>TABINDEX=0</strong> or no <strong class=html>TABINDEX</strong> attribute will be visited after any elements with a positive <strong class=html>TABINDEX</strong>. Among positive <strong class=html>TABINDEX</strong> values, the lower number receives focus first. In the case of a tie, the element appearing first in the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document takes precedence.</p>
+<p>The <strong class=html>INPUT</strong> element also takes a number of attributes to specify client-side scripting actions for various events. In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>INPUT</strong> accepts the following event attributes:</p>
+<ul>
+  <li><strong class=html>ONFOCUS</strong>, when the element receives focus;</li>
+  <li><strong class=html>ONBLUR</strong>, when the element loses focus;</li>
+  <li><strong class=html>ONSELECT</strong>, when text in an input of type <strong class=html>text</strong> or <strong class=html>password</strong> is selected;</li>
+  <li><strong class=html>ONCHANGE</strong>, when the element loses focus and its value has changed since it received focus.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-INPUT">INPUT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#input">INPUT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_8.html#SEC8.1.2">INPUT in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/form/input.html">INPUT in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.32.html">INPUT in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://www.ics.uci.edu/pub/ietf/html/rfc1867.txt"><abbr class=initialism title="Request for Comments">RFC</abbr> 1867: Form-based File Upload in HTML</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

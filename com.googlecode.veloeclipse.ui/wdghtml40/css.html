@@ -1,0 +1,1738 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html lang=en>
+<head>
+<title>CSS1 Properties</title>
+<link rev=Made href="mailto:liam&#64;htmlh&#101;lp.com">
+<link rel=Start href="./">
+<link rel=Up href="properties.html">
+<link rel=Glossary href="/glossary/glossary.html">
+<link rel=Copyright href="/copyright.html">
+<link rel=StyleSheet href="/style.css" type="text/css">
+<link rel=StyleSheet href="/aural.css" type="text/css" media=aural>
+<meta name="author" content="John Pozadzides/Liam Quinn">
+<meta name="description" content="A description of all the properties of Cascading Style Sheets, level 1.">
+<meta name="keywords" content="html authoring, newsgroup, web design group, web page design, help, frequently asked questions, internet help, site creation, page creation, site design, page design, site layout, page layout, html, hypertext markup language, hyper text markup language, questions, graphics, validation, validators, www pages, html 3.2, wilbur, help files, tutorials, articles, reference material, guide, wdg, style, stylesheet, style sheet, css, cascading style sheets, properties, answer">
+<meta http-equiv="Content-Style-Type" content="text/css">
+</head>
+<body bgcolor="#ffffff" text="#000000" link="#0000ff" vlink="#800080" alink="#000080">
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1 align=center>CSS1 Properties<img src="css.gif" alt="" align=right width=99 height=73 hspace=5></h1>
+<hr>
+<ul>
+<li><a href="#syntax">Syntax Used in Property Definitions</a></li>
+<li><a href="#font-properties">Font Properties</a></li>
+<li><a href="#color-background">Color and Background Properties</a></li>
+<li><a href="#text">Text Properties</a></li>
+<li><a href="#box">Box Properties</a></li>
+<li><a href="#classification">Classification Properties</a></li>
+<li><a href="#units">Units</a></li>
+</ul>
+<hr width="88%" align=center>
+<h2><a name="syntax">Syntax Used in Property Definitions</a></h2>
+<dl>
+<dt>&lt;Foo&gt;</dt>
+<dd>Value of type Foo. Common types are discussed in the <a href="#units">Units</a> section.</dd>
+<dt>Foo</dt>
+<dd>A keyword that must appear literally (though without case sensitivity). Commas and slashes must also appear literally.</dd>
+<dt>A B C</dt>
+<dd>A must occur, then B, then C, in that order.</dd>
+<dt>A | B</dt>
+<dd>A or B must occur.</dd>
+<dt>A || B</dt>
+<dd>A or B or both must occur, in any order.</dd>
+<dt>[ Foo ]</dt>
+<dd>Brackets are used to group items together.</dd>
+<dt>Foo*</dt>
+<dd>Foo is repeated zero or more times.</dd>
+<dt>Foo+</dt>
+<dd>Foo is repeated one or more times.</dd>
+<dt>Foo?</dt>
+<dd>Foo is optional.</dd>
+<dt>Foo{A,B}</dt>
+<dd>Foo must occur at least A times and at most B times.</dd>
+</dl>
+<hr width="88%" align=center>
+<h2><a name="font-properties">Font Properties</a></h2>
+<ul>
+<li><a href="#font-family">Font Family</a></li>
+<li><a href="#font-style">Font Style</a></li>
+<li><a href="#font-variant">Font Variant</a></li>
+<li><a href="#font-weight">Font Weight</a></li>
+<li><a href="#font-size">Font Size</a></li>
+<li><a href="#font">Font</a></li>
+</ul>
+<hr width="77%" align=center>
+<h3><a name="font-family">Font Family</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>font-family: [[&lt;family-name&gt; | &lt;generic-family&gt;],]* [&lt;family-name&gt; | &lt;generic-family&gt;]<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>&lt;family-name&gt;<ul><li>Any font family name may be used</ul>
+		&lt;generic-family&gt;<ul>
+<li><strong class=css><span style="font-family: serif">serif</span></strong> (<i>e.g.</i>, <span style="font-family: Times">Times</span>)</li>
+<li><strong class=css><span style="font-family: sans-serif">sans-serif</span></strong> (<i>e.g.</i>, <span style="font-family: Arial">Arial</span> or <span style="font-family: Helvetica">Helvetica</span>)</li>
+<li><strong class=css><span style="font-family: cursive">cursive</span></strong> (<i>e.g.</i>, <span style="font-family: Zapf-Chancery">Zapf-Chancery</span>)</li>
+<li><strong class=css><span style="font-family: fantasy">fantasy</span></strong> (<i>e.g.</i>, <span style="font-family: Western">Western</span>)</li>
+<li><strong class=css><span style="font-family: monospace">monospace</span></strong> (<i>e.g.</i>, <span style="font-family: Courier">Courier</span>)</li>
+</ul></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Determined by browser<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>Font families may be assigned by a specific font name or a generic font family. Obviously, defining a specific font will not be as likely to match as a generic font family. Multiple family assignments can be made, and if a specific font assignment is made it should be followed by a generic family name in case the first choice is not present.</p>
+<p>A sample <strong class=css>font-family</strong> declaration might look like this:</p>
+<pre><code class=css>P { font-family: "New Century Schoolbook", Times, serif }</code></pre>
+<p>Notice that the first two assignments are specific type faces: <span style="font-family: 'New Century Schoolbook'">New Century Schoolbook</span> and <span style="font-family: Times">Times</span>. However, since both of them are <strong class=css><span style="font-family: serif">serif</span></strong> fonts, the generic font family is listed as a backup in case the system does not have either of these but has another <strong class=css><span style="font-family: serif">serif</span></strong> font which meets the qualifications.</p>
+<p>Any font name containing whitespace must be quoted, with either single or double quotes.</p>
+<p>The font family may also be given with the <strong class=css><a href="#font">font</a></strong> property.</p>
+<hr width="67%" align=center>
+<h3><a name="font-style">Font Style</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>font-style: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><span style="font-style: normal">normal</span> | <span style="font-style: italic">italic</span> | <span style="font-style: oblique">oblique</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top><span style="font-style: normal">normal</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>font-style</strong> property defines that the font be displayed in one of three ways: <strong class=css><span style="font-style: normal">normal</span></strong>, <strong class=css><span style="font-style: italic">italic</span></strong> or <strong class=css><span style="font-style: oblique">oblique</span></strong> (slanted). A sample style sheet with <strong class=css>font-style</strong> declarations might look like this:</p>
+<pre><code class=css>H1 { font-style: oblique }
+P  { font-style: normal }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="font-variant">Font Variant</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>font-variant: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><span style="font-variant: normal">normal</span> | <span style="font-variant: small-caps">small-caps</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top><span style="font-variant: normal">normal</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>font-variant</strong> property determines if the font is to display in <strong class=css><span style="font-variant: normal">normal</span></strong> or <strong class=css><span style="font-variant: small-caps">small-caps</span></strong>. Small-caps are displayed when all the letters of the word are in capitals with uppercase characters slightly larger than lowercase. Later versions of CSS may support additional variants such as condensed, expanded, small-caps numerals or other custom variants. An example of a font-variant assignment would be:</p>
+<pre><code class=css>SPAN { font-variant: small-caps }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="font-weight">Font Weight</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>font-weight: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><span style="font-weight: normal">normal</span> | <span style="font-weight: bold">bold</span> | <span style="font-weight: bolder">bolder</span> | <span style="font-weight: lighter">lighter</span> | <span style="font-weight: 100">100</span> | <span style="font-weight: 200">200</span> | <span style="font-weight: 300">300</span> | <span style="font-weight: 400">400</span> | <span style="font-weight: 500">500</span> | <span style="font-weight: 600">600</span> | <span style="font-weight: 700">700</span> | <span style="font-weight: 800">800</span> | <span style="font-weight: 900">900</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top><span style="font-weight: normal">normal</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>font-weight</strong> property is used to specify the weight of the font. The <strong class=css><span style="font-weight: bolder">bolder</span></strong> and <strong class=css><span style="font-weight: lighter">lighter</span></strong> values are relative to the inherited font weight, while the other values are absolute font weights.</p>
+<div class=note>
+<p>Note: Since not all fonts have nine possible display weights some of the weights may be grouped together in assignment. If the specified weight is not available, an alternate will be chosen on the following basis:</p>
+<ul>
+<li><strong class=css><span style="font-weight: 500">500</span></strong> may be switched with <strong class=css><span style="font-weight: 400">400</span></strong>, and vice versa</li>
+<li><strong class=css><span style="font-weight: 100">100</span></strong>-<strong class=css><span style="font-weight: 300">300</span></strong> may be assigned to the next lighter weight, if any, or the next darker weight otherwise</li>
+<li><strong class=css><span style="font-weight: 600">600</span></strong>-<strong class=css><span style="font-weight: 900">900</span></strong> may be assigned to the next darker weight, if any, or the next lighter weight otherwise</li>
+</ul>
+</div>
+<p>Some example <strong class=css>font-weight</strong> assignments would be:</p>
+<pre><code class=css>H1 { font-weight: 800 }
+P  { font-weight: normal }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="font-size">Font Size</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>font-size: &lt;absolute-size&gt; | &lt;relative-size&gt; | &lt;length&gt; | &lt;percentage&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>
+<ul>
+<li>&lt;absolute-size&gt;
+		<ul><li><span style="font-size: xx-small">xx-small</span> | <span style="font-size: x-small">x-small</span> | <span style="font-size: small">small</span> | <span style="font-size: medium">medium</span> | <span style="font-size: large">large</span> | <span style="font-size: x-large">x-large</span> | <span style="font-size: xx-large">xx-large</span></ul>
+<li>&lt;relative-size&gt;
+		<ul><li><span style="font-size: larger">larger</span> | <span style="font-size: smaller">smaller</span></ul>
+<li><a href="#length">&lt;length&gt;</a>
+<li><a href="#percentage">&lt;percentage&gt;</a> (in relation to parent element)
+</ul>
+	<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top><span style="font-size: medium">medium</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>font-size</strong> property is used to modify the size of the displayed font. Absolute lengths (using units like <strong class=css>pt</strong> and <strong class=css>in</strong>) should be used sparingly due to their weakness in adapting to different browsing environments. Fonts with absolute lengths can very easily be too small or too large for a user.</p>
+<p>Some example size assignments would be:</p>
+<pre><code class=css>H1     { font-size: large }
+P      { font-size: 12pt }
+LI     { font-size: 90% }
+STRONG { font-size: larger }</code></pre>
+<div class=note>
+<p>Authors should be aware that <a href="http://www.microsoft.com/ie/">Microsoft Internet Explorer</a>&#160;3.x incorrectly treats <strong class=css>em</strong> and <strong class=css>ex</strong> units as pixels, which can easily make text using these units unreadable. The browser also incorrectly applies percentage values relative to its default font size for the selector, rather than relative to the parent element's font size. This makes rules like</p>
+<pre><code class=css>H1 { font-size: 200% }</code></pre>
+<p>dangerous in that the size will be twice IE's default font size for level-one headings, rather than twice the parent element's font size. In this case, <strong class=html>BODY</strong> would most likely be the parent element, and it would likely define a <strong class=css>medium</strong> font size, whereas the default level-one heading font size imposed by IE would probably be considered <strong class=css>xx-large</strong>.</p>
+<p>Given these bugs, authors should take care in using percentage values for <strong class=css>font-size</strong>, and should probably avoid <strong class=css>em</strong> and <strong class=css>ex</strong> units for this property.</p>
+</div>
+<hr width="67%" align=center>
+<h3><a name="font">Font</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>font: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>[ <a href="#font-style">&lt;font-style&gt;</a> || <a href="#font-variant">&lt;font-variant&gt;</a> || <a href="#font-weight">&lt;font-weight&gt;</a>&#160;]? <a href="#font-size">&lt;font-size&gt;</a> [&#160;/&#160;<a href="#line-height">&lt;line-height&gt;</a>&#160;]? <a href="#font-family">&lt;font-family&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>font</strong> property may be used as a shorthand for the various font properties, as well as the <a href="#line-height">line height</a>. For example,</p>
+<pre><code class=css>P { font: italic bold 12pt/14pt Times, serif }</code></pre>
+<p>specifies paragraphs with a bold and italic Times or serif font with a size of 12 points and a line height of 14 points.</p>
+<hr width="88%" align=center>
+<h2><a name="color-background">Color and Background Properties</a></h2>
+<ul>
+<li><a href="#color">Color</a></li>
+<li><a href="#background-color">Background Color</a></li>
+<li><a href="#background-image">Background Image</a></li>
+<li><a href="#background-repeat">Background Repeat</a></li>
+<li><a href="#background-attachment">Background Attachment</a></li>
+<li><a href="#background-position">Background Position</a></li>
+<li><a href="#background">Background</a></li>
+</ul>
+<hr width="77%" align=center>
+<h3><a name="color">Color</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>color: <a href="#color-units">&lt;color&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Determined by browser<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>color</strong> property allows authors to specify the color of an element. See the <a href="#color-units">Units section</a> for color value descriptions. Some example color rules include:</p>
+<pre><code class=css>H1 { color: blue }
+H2 { color: #000080 }
+H3 { color: #0c0 }</code></pre>
+<p>To help avoid conflicts with user style sheets, <strong class=css><a href="#background">background</a></strong> and <strong class=css>color</strong> properties should always be specified together.</p>
+<hr width="67%" align=center>
+<h3><a name="background-color">Background Color</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>background-color: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#color-units">&lt;color&gt;</a> | transparent<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>transparent<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>background-color</strong> property sets the background color of an element. For example:</p>
+<pre><code class=css>BODY { background-color: white }
+H1   { background-color: #000080 }</code></pre>
+<p>To help avoid conflicts with user style sheets, <strong class=css><a href="#background-image">background-image</a></strong> should be specified whenever <strong class=css>background-color</strong> is used. In most cases, <strong class=css>background-image: none</strong> is suitable.</p>
+<p>Authors may also use the shorthand <strong class=css><a href="#background">background</a></strong> property, which is currently better supported than the <strong class=css>background-color</strong> property.</p>
+<hr width="67%" align=center>
+<h3><a name="background-image">Background Image</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>background-image: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#urls">&lt;url&gt;</a> | none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>background-image</strong> property sets the background image of an element. For example:</p>
+<pre><code class=css>BODY { background-image: url(/images/foo.gif) }
+P    { background-image: url(http://www.htmlhelp.com/bg.png) }</code></pre>
+<p>When a background image is defined, a similar <a href="#background-color">background color</a> should also be defined for those not loading images.</p>
+<p>Authors may also use the shorthand <strong class=css><a href="#background">background</a></strong> property, which is currently better supported than the <strong class=css>background-image</strong> property.</p>
+<hr width="67%" align=center>
+<h3><a name="background-repeat">Background Repeat</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>background-repeat: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>repeat | repeat-x | repeat-y | no-repeat<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>repeat<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>background-repeat</strong> property determines how a specified <a href="#background-image">background image</a> is repeated. The <strong class=css>repeat-x</strong> value will repeat the image horizontally while the <strong class=css>repeat-y</strong> value will repeat the image vertically. For example:</p>
+<pre><code class=css>BODY { background: white url(candybar.gif);
+       background-repeat: repeat-x }</code></pre>
+<p>In the above example, the image will only be tiled horizontally.</p>
+<p>Authors may also use the shorthand <strong class=css><a href="#background">background</a></strong> property, which is currently better supported than the <strong class=css>background-repeat</strong> property.</p>
+<hr width="67%" align=center>
+<h3><a name="background-attachment">Background Attachment</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>background-attachment: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>scroll | fixed<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>scroll<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>background-attachment</strong> property determines if a specified <a href="#background-image">background image</a> will scroll with the content or be fixed with regard to the canvas. For example, the following specifies a fixed background image:</p>
+<pre><code class=css>BODY { background: white url(candybar.gif);
+       background-attachment: fixed }</code></pre>
+<p>Authors may also use the shorthand <strong class=css><a href="#background">background</a></strong> property, which is currently better supported than the <strong class=css>background-attachment</strong> property.</p>
+<hr width="67%" align=center>
+<h3><a name="background-position">Background Position</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>background-position: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>[<a href="#percentage">&lt;percentage&gt;</a> | <a href="#length">&lt;length&gt;</a>]{1,2} | [top | center | bottom] || [left | center | right]<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0% 0%<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Block-level and replaced elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>background-position</strong> property gives the initial position of a specified <a href="#background-image">background image</a>. This property may only be applied to <a href="/reference/html40/block.html">block-level elements</a> and replaced elements. (A <dfn>replaced element</dfn> is one for which only the intrinsic dimensions are known; HTML replaced elements include <strong class=html>IMG</strong>, <strong class=html>INPUT</strong>, <strong class=html>TEXTAREA</strong>, <strong class=html>SELECT</strong>, and <strong class=html>OBJECT</strong>.)</p>
+<p>The easiest way to assign a background position is with keywords:</p>
+<ul>
+<li>Horizontal keywords (<strong class=css>left</strong>, <strong class=css>center</strong>, <strong class=css>right</strong>)</li>
+<li>Vertical keywords (<strong class=css>top</strong>, <strong class=css>center</strong>, <strong class=css>bottom</strong>)</li>
+</ul>
+<p><a href="#percentage">Percentages</a> and <a href="#length">lengths</a> may also be used to assign the position of the background image. Percentages are relative to the size of the element. Although lengths are allowed, they are not recommended due to their inherent weakness in dealing with differing display resolutions.</p>
+<p>When using percentages or lengths, the horizontal position is specified first, followed by the vertical position. A value such as <strong class=css>20% 65%</strong> specifies that the point 20% across and 65% down the image be placed at the point 20% across and 65% down the element. A value such as <strong class=css>5px 10px</strong> specifies that the upper left corner of the image be placed 5 pixels to the right of and 10 pixels below the upper left corner of the element.</p>
+<p>If only the horizontal value is given, the vertical position will be 50%. Combinations of lengths and percentages are allowed, as are negative positions. For example, <strong class=css>10% -2cm</strong> is permitted. However, percentages and lengths cannot be combined with keywords.</p>
+<p>The keywords are interpreted as follows:</p>
+<ul>
+<li><strong class=css>top left</strong> = <strong class=css>left top</strong> = <strong class=css>0% 0%</strong></li>
+<li><strong class=css>top</strong> = <strong class=css>top center</strong> = <strong class=css>center top</strong> = <strong class=css>50% 0%</strong></li>
+<li><strong class=css>right top</strong> = <strong class=css>top right</strong> = <strong class=css>100% 0%</strong></li>
+<li><strong class=css>left</strong> = <strong class=css>left center</strong> = <strong class=css>center left</strong> = <strong class=css>0% 50%</strong></li>
+<li><strong class=css>center</strong> = <strong class=css>center center</strong> = <strong class=css>50% 50%</strong></li>
+<li><strong class=css>right</strong> = <strong class=css>right center</strong> = <strong class=css>center right</strong> = <strong class=css>100% 50%</strong></li>
+<li><strong class=css>bottom left</strong> = <strong class=css>left bottom</strong> = <strong class=css>0% 100%</strong></li>
+<li><strong class=css>bottom</strong> = <strong class=css>bottom center</strong> = <strong class=css>center bottom</strong> = <strong class=css>50% 100%</strong></li>
+<li><strong class=css>bottom right</strong> = <strong class=css>right bottom</strong> = <strong class=css>100% 100%</strong></li>
+</ul>
+<p>If the background image is <a href="#background-attachment">fixed</a> with regard to the canvas, the image is placed relative to the canvas instead of the element.</p>
+<p>Authors may also use the shorthand <strong class=css><a href="#background">background</a></strong> property, which is currently better supported than the <strong class=css>background-position</strong> property.</p>
+<hr width="67%" align=center>
+<h3><a name="background">Background</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>background: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#background-color">&lt;background-color&gt;</a> || <a href="#background-image">&lt;background-image&gt;</a> || <a href="#background-repeat">&lt;background-repeat&gt;</a> || <a href="#background-attachment">&lt;background-attachment&gt;</a> || <a href="#background-position">&lt;background-position&gt;</a>
+<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>background</strong> property is a shorthand for the more specific background-related properties. Some examples of <strong class=css>background</strong> declarations follow:</p>
+<pre><code class=css>BODY       { background: white url(http://www.htmlhelp.com/foo.gif) }
+BLOCKQUOTE { background: #7fffd4 }
+P          { background: url(../backgrounds/pawn.png) #f0f8ff fixed }
+TABLE      { background: #0c0 url(leaves.jpg) no-repeat bottom right }</code></pre>
+<p>A value not specified will receive its initial value. For example, in the first three rules above, the <strong class=css><a href="#background-position">background-position</a></strong> property will be set to <strong class=css>0% 0%</strong>.</p>
+<p>To help avoid conflicts with user style sheets, <strong class=css>background</strong> and <strong class=css><a href="#color">color</a></strong> properties should always be specified together.</p>
+<hr width="88%" align=center>
+<h2><a name="text">Text Properties</a></h2>
+<ul>
+<li><a href="#word-spacing">Word Spacing</a></li>
+<li><a href="#letter-spacing">Letter Spacing</a></li>
+<li><a href="#text-decoration">Text Decoration</a></li>
+<li><a href="#vertical-align">Vertical Alignment</a></li>
+<li><a href="#text-transform">Text Transformation</a></li>
+<li><a href="#text-align">Text Alignment</a></li>
+<li><a href="#text-indent">Text Indentation</a></li>
+<li><a href="#line-height">Line Height</a></li>
+</ul>
+<hr width="77%" align=center>
+<h3><a name="word-spacing">Word Spacing</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>word-spacing: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>normal | <a href="#length">&lt;length&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>normal<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>word-spacing</strong> property defines an additional amount of space between words. The value must be in the <a href="#length">length</a> format; negative values are permitted.</p>
+<p>Examples:</p>
+<pre><code class=css>P EM   { word-spacing: 0.4em }
+P.note { word-spacing: -0.2em }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="letter-spacing">Letter Spacing</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>letter-spacing: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>normal | <a href="#length">&lt;length&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>normal<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>letter-spacing</strong> property defines an additional amount of space between characters. The value must be in the <a href="#length">length</a> format; negative values are permitted. A setting of <strong class=css>0</strong> will prevent justification.</p>
+<p>Examples:</p>
+<pre><code class=css>H1     { letter-spacing: 0.1em }
+P.note { letter-spacing: -0.1em }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="text-decoration">Text Decoration</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>text-decoration: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><span style="text-decoration: none">none</span> | [ <span style="text-decoration: underline">underline</span> || <span style="text-decoration: overline">overline</span> || <span style="text-decoration: line-through">line-through</span> || <span style="text-decoration: blink">blink</span> ]<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top><span style="text-decoration: none">none</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>text-decoration</strong> property allows text to be decorated through one of five properties: <strong class=css><span style="text-decoration: underline">underline</span></strong>, <strong class=css><span style="text-decoration: overline">overline</span></strong>, <strong class=css><span style="text-decoration: line-through">line-through</span></strong>, <strong class=css><span style="text-decoration: blink">blink</span></strong>, or the default, <strong class=css><span style="text-decoration: none">none</span></strong>.</p>
+<p>For example, one can suggest that links not be underlined with</p>
+<pre><code class=css>A:link, A:visited, A:active { text-decoration: none }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="vertical-align">Vertical Alignment</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>vertical-align: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><span style="vertical-align: baseline">baseline</span> | <span style="vertical-align: sub">sub</span> | <span style="vertical-align: super">super</span> | <span style="vertical-align: top">top</span> | <span style="vertical-align: text-top">text-top</span> | <span style="vertical-align: middle">middle</span> | <span style="vertical-align: bottom">bottom</span> | <span style="vertical-align: text-bottom">text-bottom</span> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>baseline<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Inline elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>vertical-align</strong> property may be used to alter the vertical positioning of an inline element, relative to its parent element or to the element's line. (An <dfn>inline element</dfn> is one which has no line break before and after it, for example, <strong class=html>EM</strong>, <strong class=html>A</strong>, and <strong class=html>IMG</strong> in HTML.)</p>
+<p>The value may be a <a href="#percentage">percentage</a> relative to the element's <strong class=css><a href="#line-height">line-height</a></strong> property, which would raise the element's baseline the specified amount above the parent's baseline. Negative values are permitted.</p>
+<p>The value may also be a keyword. The following keywords affect the positioning relative to the parent element:</p>
+<ul>
+<li><strong class=css>baseline</strong> (align baselines of element and parent)</li>
+<li><strong class=css>middle</strong> (align vertical midpoint of element with baseline plus half the x-height--the height of the letter "x"--of the parent)</li>
+<li><strong class=css>sub</strong> (subscript)</li>
+<li><strong class=css>super</strong> (superscript)</li>
+<li><strong class=css>text-top</strong> (align tops of element and parent's font)</li>
+<li><strong class=css>text-bottom</strong> (align bottoms of element and parent's font)</li>
+</ul>
+<p>The keywords affecting the positioning relative to the element's line are</p>
+<ul>
+<li><strong class=css>top</strong> (align top of element with tallest element on the line)</li>
+<li><strong class=css>bottom</strong> (align bottom of element with lowest element on the line)</li>
+</ul>
+<p>The <strong class=css>vertical-align</strong> property is particularly useful for aligning images. Some examples follow:</p>
+<pre><code class=css>IMG.middle { vertical-align: middle }
+IMG        { vertical-align: 50% }
+.exponent  { vertical-align: super }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="text-transform">Text Transformation</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>text-transform: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>none | <span style="text-transform: capitalize">capitalize</span> | <span style="text-transform: uppercase">uppercase</span> | <span style="text-transform: lowercase">lowercase</span><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>text-transform</strong> property allows text to be transformed by one of four properties:</p>
+<ul>
+<li><strong class=css>capitalize</strong> (capitalizes first character of each word)</li>
+<li><strong class=css>uppercase</strong> (capitalizes all characters of each word)</li>
+<li><strong class=css>lowercase</strong> (uses small letters for all characters of each word)</li>
+<li><strong class=css>none</strong> (the initial value)</li>
+</ul>
+<p>Examples:</p>
+<pre><code class=css>H1 { text-transform: uppercase }
+H2 { text-transform: capitalize }</code></pre>
+<p>The <strong class=css>text-transform</strong> property should only be used to express a stylistic desire. It would be inappropriate, for example, to use <strong class=css>text-transform</strong> to capitalize a list of countries or names.</p>
+<hr width="67%" align=center>
+<h3><a name="text-align">Text Alignment</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>text-align: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>left | right | center | justify<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Determined by browser<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Block-level elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>text-align</strong> property can be applied to <a href="/reference/html40/block.html">block-level elements</a> (<strong class=html>P</strong>, <strong class=html>H1</strong>, etc.) to give the alignment of the element's text. This property is similar in function to HTML's <strong class=html>ALIGN</strong> attribute on paragraphs, headings, and divisions.</p>
+<p>Some examples follow:</p>
+<pre><code class=css>H1          { text-align: center }
+P.newspaper { text-align: justify }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="text-indent">Text Indentation</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>text-indent: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Block-level elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>text-indent</strong> property can be applied to <a href="/reference/html40/block.html">block-level elements</a> (<strong class=html>P</strong>, <strong class=html>H1</strong>, etc.) to define the amount of indentation that the first line of the element should receive. The value must be a <a href="#length">length</a> or a <a href="#percentage">percentage</a>; percentages refer to the parent element's width. A common use of <strong class=css>text-indent</strong> would be to indent a paragraph:</p>
+<pre><code class=css>P { text-indent: 5em }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="line-height">Line Height</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>line-height: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>normal | &lt;number&gt; | <a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>normal<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>line-height</strong> property will accept a value to control the spacing between baselines of text. When the value is a number, the line height is calculated by multiplying the element's font size by the number. Percentage values are relative to the element's font size. Negative values are not permitted.</p>
+<p>Line height may also be given in the <strong class=css><a href="#font">font</a></strong> property along with a font size.</p>
+<p>The <strong class=css>line-height</strong> property could be used to double space text:</p>
+<pre><code class=css>P { line-height: 200% }</code></pre>
+<p class=note><a href="http://www.microsoft.com/ie/">Microsoft Internet Explorer</a>&#160;3.x incorrectly treats number values and values with <strong class=css>em</strong> or <strong class=css>ex</strong> units as pixel values. This bug can easily make pages unreadable, and so authors should avoid provoking it wherever possible; percentage units are often a good choice.</p>
+<hr width="88%" align=center>
+<h2><a name="box">Box Properties</a></h2>
+<ul>
+<li><a href="#margin-top">Top Margin</a></li>
+<li><a href="#margin-right">Right Margin</a></li>
+<li><a href="#margin-bottom">Bottom Margin</a></li>
+<li><a href="#margin-left">Left Margin</a></li>
+<li><a href="#margin">Margin</a></li>
+<li><a href="#padding-top">Top Padding</a></li>
+<li><a href="#padding-right">Right Padding</a></li>
+<li><a href="#padding-bottom">Bottom Padding</a></li>
+<li><a href="#padding-left">Left Padding</a></li>
+<li><a href="#padding">Padding</a></li>
+<li><a href="#border-top-width">Top Border Width</a></li>
+<li><a href="#border-right-width">Right Border Width</a></li>
+<li><a href="#border-bottom-width">Bottom Border Width</a></li>
+<li><a href="#border-left-width">Left Border Width</a></li>
+<li><a href="#border-width">Border Width</a></li>
+<li><a href="#border-color">Border Color</a></li>
+<li><a href="#border-style">Border Style</a></li>
+<li><a href="#border-top">Top Border</a></li>
+<li><a href="#border-right">Right Border</a></li>
+<li><a href="#border-bottom">Bottom Border</a></li>
+<li><a href="#border-left">Left Border</a></li>
+<li><a href="#border">Border</a></li>
+<li><a href="#width">Width</a></li>
+<li><a href="#height">Height</a></li>
+<li><a href="#float">Float</a></li>
+<li><a href="#clear">Clear</a></li>
+</ul>
+<hr width="77%" align=center>
+<h3><a name="margin-top">Top Margin</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>margin-top: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a> | auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>margin-top</strong> property sets the top margin of an element by specifying a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative margins are permitted.</p>
+<p>For example, the following rule would eliminate the top margin of a document:</p>
+<pre><code class=css>BODY { margin-top: 0 }</code></pre>
+<p>Note that adjoining vertical margins are collapsed to use the maximum of the margin values.</p>
+<hr width="67%" align=center>
+<h3><a name="margin-right">Right Margin</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>margin-right: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a> | auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>margin-right</strong> property sets the right margin of an element by specifying a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative margins are permitted.</p>
+<p>Example:</p>
+<pre><code class=css>P.narrow { margin-right: 50% }</code></pre>
+<p>Note that adjoining horizontal margins are not collapsed.</p>
+<hr width="67%" align=center>
+<h3><a name="margin-bottom">Bottom Margin</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>margin-bottom: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a> | auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>margin-bottom</strong> property sets the bottom margin of an element by specifying a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative margins are permitted.</p>
+<p>Example:</p>
+<pre><code class=css>DT { margin-bottom: 3em }</code></pre>
+<p>Note that adjoining vertical margins are collapsed to use the maximum of the margin values.</p>
+<hr width="67%" align=center>
+<h3><a name="margin-left">Left Margin</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>margin-left: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a> | auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>margin-left</strong> property sets the left margin of an element by specifying a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative margins are permitted.</p>
+<p>Example:</p>
+<pre><code class=css>ADDRESS { margin-left: 50% }</code></pre>
+<p>Note that adjoining horizontal margins are not collapsed.</p>
+<hr width="67%" align=center>
+<h3><a name="margin">Margin</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>margin: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>[ <a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a> | auto&#160;]{1,4}<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>margin</strong> property sets the margins of an element by specifying between one and four values, where each value is a <a href="#length">length</a>, a <a href="#percentage">percentage</a>, or <strong class=css>auto</strong>. Percentage values refer to the parent element's width. Negative margins are permitted.</p>
+<p>If four values are given, they apply to top, right, bottom, and left margin, respectively. If one value is given, it applies to all sides. If two or three values are given, the missing values are taken from the opposite side.</p>
+<p>Examples of margin declarations include:</p>
+<pre><code class=css>BODY { margin: 5em }             /* all margins 5em */
+P    { margin: 2em 4em }         /* top and bottom margins 2em,
+                                    left and right margins 4em */
+DIV  { margin: 1em 2em 3em 4em } /* top margin 1em,
+                                    right margin 2em,
+                                    bottom margin 3em,
+                                    left margin 4em */</code></pre>
+<p>Note that adjoining vertical margins are collapsed to use the maximum of the margin values. Horizontal margins are not collapsed.</p>
+<p>Using the <strong class=css>margin</strong> property allows one to set all margins; alternatively, the properties <strong class=css><a href="#margin-top">margin-top</a></strong>, <strong class=css><a href="#margin-bottom">margin-bottom</a></strong>, <strong class=css><a href="#margin-left">margin-left</a></strong>, and <strong class=css><a href="#margin-right">margin-right</a></strong> may be used.</p>
+<hr width="67%" align=center>
+<h3><a name="padding-top">Top Padding</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>padding-top: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>padding-top</strong> property describes how much space to put between the <a href="#border-top">top border</a> and the content of the selector. The value is either a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative values are <em>not</em> permitted.</p>
+<hr width="67%" align=center>
+<h3><a name="padding-right">Right Padding</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>padding-right: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>padding-right</strong> property describes how much space to put between the <a href="#border-right">right border</a> and the content of the selector. The value is either a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative values are <em>not</em> permitted.</p>
+<hr width="67%" align=center>
+<h3><a name="padding-bottom">Bottom Padding</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>padding-bottom: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>padding-bottom</strong> property describes how much space to put between the <a href="#border-bottom">bottom border</a> and the content of the selector. The value is either a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative values are <em>not</em> permitted.</p>
+<hr width="67%" align=center>
+<h3><a name="padding-left">Left Padding</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>padding-left: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>padding-left</strong> property describes how much space to put between the <a href="#border-left">left border</a> and the content of the selector. The value is either a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative values are <em>not</em> permitted.</p>
+<hr width="67%" align=center>
+<h3><a name="padding">Padding</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>padding: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>[ <a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a>&#160;]{1,4}<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>0<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>padding</strong> property is a shorthand for the <strong class=css><a href="#padding-top">padding-top</a></strong>, <strong class=css><a href="#padding-right">padding-right</a></strong>, <strong class=css><a href="#padding-bottom">padding-bottom</a></strong>, and <strong class=css><a href="#padding-left">padding-left</a></strong> properties.</p>
+<p>An element's <dfn>padding</dfn> is the amount of space between the <a href="#border">border</a> and the content of the element. Between one and four values are given, where each value is either a <a href="#length">length</a> or a <a href="#percentage">percentage</a>. Percentage values refer to the parent element's width. Negative values are <em>not</em> permitted.</p>
+<p>If four values are given, they apply to top, right, bottom, and left padding, respectively. If one value is given, it applies to all sides. If two or three values are given, the missing values are taken from the opposite side.</p>
+<p>For example, the following rule sets the top padding to 2em, the right padding to 4em, the bottom padding to 5em, and the left padding to 4em:</p>
+<pre><code class=css>BLOCKQUOTE { padding: 2em 4em 5em }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="border-top-width">Top Border Width</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-top-width: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>thin | medium | thick | <a href="#length">&lt;length&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>medium<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-top-width</strong> property is used to specify the width of an element's <a href="#border-top">top border</a>. The value may be one of three keywords, which are not affected by font size, or a <a href="#length">length</a>, which can be used to achieve relative widths. Negative values are not allowed.</p>
+<p>One may also use the <strong class=css><a href="#border-top">border-top</a></strong>, <strong class=css><a href="#border-width">border-width</a></strong>, or <strong class=css><a href="#border">border</a></strong> shorthand properties.</p>
+<hr width="67%" align=center>
+<h3><a name="border-right-width">Right Border Width</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-right-width: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>thin | medium | thick | <a href="#length">&lt;length&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>medium<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-right-width</strong> property is used to specify the width of an element's <a href="#border-right">right border</a>. The value may be one of three keywords, which are not affected by font size, or a <a href="#length">length</a>, which can be used to achieve relative widths. Negative values are not allowed.</p>
+<p>One may also use the <strong class=css><a href="#border-right">border-right</a></strong>, <strong class=css><a href="#border-width">border-width</a></strong>, or <strong class=css><a href="#border">border</a></strong> shorthand properties.</p>
+<hr width="67%" align=center>
+<h3><a name="border-bottom-width">Bottom Border Width</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-bottom-width: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>thin | medium | thick | <a href="#length">&lt;length&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>medium<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-bottom-width</strong> property is used to specify the width of an element's <a href="#border-bottom">bottom border</a>. The value may be one of three keywords, which are not affected by font size, or a <a href="#length">length</a>, which can be used to achieve relative widths. Negative values are not allowed.</p>
+<p>One may also use the <strong class=css><a href="#border-bottom">border-bottom</a></strong>, <strong class=css><a href="#border-width">border-width</a></strong>, or <strong class=css><a href="#border">border</a></strong> shorthand properties.</p>
+<hr width="67%" align=center>
+<h3><a name="border-left-width">Left Border Width</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-left-width: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>thin | medium | thick | <a href="#length">&lt;length&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>medium<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-left-width</strong> property is used to specify the width of an element's <a href="#border-left">left border</a>. The value may be one of three keywords, which are not affected by font size, or a <a href="#length">length</a>, which can be used to achieve relative widths. Negative values are not allowed.</p>
+<p>One may also use the <strong class=css><a href="#border-left">border-left</a></strong>, <strong class=css><a href="#border-width">border-width</a></strong>, or <strong class=css><a href="#border">border</a></strong> shorthand properties.</p>
+<hr width="67%" align=center>
+<h3><a name="border-width">Border Width</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-width: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>[ thin | medium | thick | <a href="#length">&lt;length&gt;</a>&#160;]{1,4}<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-width</strong> property is used to set the border width of an element by specifying between one and four values, where each value is a keyword or a <a href="#length">length</a>. Negative lengths are not permitted.</p>
+<p>If four values are given, they apply to top, right, bottom, and left border width, respectively. If one value is given, it applies to all sides. If two or three values are given, the missing values are taken from the opposite side.</p>
+<p>This property is a shorthand for the <strong class=css><a href="#border-top-width">border-top-width</a></strong>, <strong class=css><a href="#border-right-width">border-right-width</a></strong>, <strong class=css><a href="#border-bottom-width">border-bottom-width</a></strong>, and <strong class=css><a href="#border-left-width">border-left-width</a></strong> properties.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border-color">Border Color</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-color: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#color-units">&lt;color&gt;</a>{1,4}<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>The value of the <strong class=css><a href="#color">color</a></strong> property<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-color</strong> property sets the color of an element's <a href="#border">border</a>. Between one and four <a href="#color-units">color values</a> are specified. If four values are given, they apply to top, right, bottom, and left border color, respectively. If one value is given, it applies to all sides. If two or three values are given, the missing values are taken from the opposite side.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border-style">Border Style</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-style: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>[ none | dotted | dashed | solid | double | groove | ridge | inset | outset&#160;]{1,4}<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-style</strong> property sets the style of an element's <a href="#border">border</a>. This property must be specified for the border to be visible.</p>
+<p>Between one and four keywords are specified. If four values are given, they apply to top, right, bottom, and left border style, respectively. If one value is given, it applies to all sides. If two or three values are given, the missing values are taken from the opposite side.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border-top">Top Border</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-top: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#border-top-width">&lt;border-top-width&gt;</a> || <a href="#border-style">&lt;border-style&gt;</a> || <a href="#color-units">&lt;color&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-top</strong> property is a shorthand for setting the <a href="#border-top-width">width</a>, <a href="#border-style">style</a>, and <a href="#border-color">color</a> of an element's top border.</p>
+<p>Note that only one <strong class=css><a href="#border-style">border-style</a></strong> value may be given.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border-right">Right Border</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-right: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#border-right-width">&lt;border-right-width&gt;</a> || <a href="#border-style">&lt;border-style&gt;</a> || <a href="#color-units">&lt;color&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-right</strong> property is a shorthand for setting the <a href="#border-right-width">width</a>, <a href="#border-style">style</a>, and <a href="#border-color">color</a> of an element's right border.</p>
+<p>Note that only one <strong class=css><a href="#border-style">border-style</a></strong> value may be given.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border-bottom">Bottom Border</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-bottom: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#border-bottom-width">&lt;border-bottom-width&gt;</a> || <a href="#border-style">&lt;border-style&gt;</a> || <a href="#color-units">&lt;color&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-bottom</strong> property is a shorthand for setting the <a href="#border-bottom-width">width</a>, <a href="#border-style">style</a>, and <a href="#border-color">color</a> of an element's bottom border.</p>
+<p>Note that only one <strong class=css><a href="#border-style">border-style</a></strong> value may be given.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border-left">Left Border</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border-left: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#border-left-width">&lt;border-left-width&gt;</a> || <a href="#border-style">&lt;border-style&gt;</a> || <a href="#color-units">&lt;color&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border-left</strong> property is a shorthand for setting the <a href="#border-left-width">width</a>, <a href="#border-style">style</a>, and <a href="#border-color">color</a> of an element's left border.</p>
+<p>Note that only one <strong class=css><a href="#border-style">border-style</a></strong> value may be given.</p>
+<p>One may also use the <strong class=css><a href="#border">border</a></strong> shorthand property.</p>
+<hr width="67%" align=center>
+<h3><a name="border">Border</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>border: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#border-width">&lt;border-width&gt;</a> || <a href="#border-style">&lt;border-style&gt;</a> || <a href="#color-units">&lt;color&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>border</strong> property is a shorthand for setting the <a href="#border-width">width</a>, <a href="#border-style">style</a>, and <a href="#border-color">color</a> of an element's border.
+<p>Examples of border declarations include:</p>
+<pre><code class=css>H2        { border: groove 3em }
+A:link    { border: solid blue }
+A:visited { border: thin dotted #800080 }
+A:active  { border: thick double red }</code></pre>
+<p>The <strong class=css>border</strong> property can only set all four borders; only one border width and border style may be given. To give different values to an element's four borders, an author must use one or more of the <strong class=css><a href="#border-top">border-top</a></strong>, <strong class=css><a href="#border-right">border-right</a></strong>, <strong class=css><a href="#border-bottom">border-bottom</a></strong>, <strong class=css><a href="#border-left">border-left</a></strong>, <strong class=css><a href="#border-color">border-color</a></strong>, <strong class=css><a href="#border-width">border-width</a></strong>, <strong class=css><a href="#border-style">border-style</a></strong>, <strong class=css><a href="#border-top-width">border-top-width</a></strong>, <strong class=css><a href="#border-right-width">border-right-width</a></strong>, <strong class=css><a href="#border-bottom-width">border-bottom-width</a></strong>, or <strong class=css><a href="#border-left-width">border-left-width</a></strong> properties.</p>
+<hr width="67%" align=center>
+<h3><a name="width">Width</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>width: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | <a href="#percentage">&lt;percentage&gt;</a> | auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Block-level and replaced elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>Each <a href="/reference/html40/block.html">block-level</a> or replaced element can be given a width, specified as a <a href="#length">length</a>, a <a href="#percentage">percentage</a>, or as <strong class=css>auto</strong>. (A <dfn>replaced element</dfn> is one for which only the intrinsic dimensions are known; HTML replaced elements include <strong class=html>IMG</strong>, <strong class=html>INPUT</strong>, <strong class=html>TEXTAREA</strong>, <strong class=html>SELECT</strong>, and <strong class=html>OBJECT</strong>.) The initial value for the <strong class=css>width</strong> property is <strong class=css>auto</strong>, which results in the element's intrinsic width (<i>i.e.</i>, the width of the element itself, for example the width of an image). Percentages refer to the parent element's width. Negative values are not allowed.</p>
+<p>This property could be used to give common widths to some <strong class=html>INPUT</strong> elements, such as submit and reset buttons:</p>
+<pre><code class=css>INPUT.button { width: 10em }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="height">Height</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>height: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#length">&lt;length&gt;</a> | auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>auto<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Block-level and replaced elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>Each <a href="/reference/html40/block.html">block-level</a> or replaced element can be given a height, specified as a <a href="#length">length</a> or as <strong class=css>auto</strong>. (A <dfn>replaced element</dfn> is one for which only the intrinsic dimensions are known; HTML replaced elements include <strong class=html>IMG</strong>, <strong class=html>INPUT</strong>, <strong class=html>TEXTAREA</strong>, <strong class=html>SELECT</strong>, and <strong class=html>OBJECT</strong>.) The initial value for the <strong class=css>height</strong> property is <strong class=css>auto</strong>, which results in the element's intrinsic height (<i>i.e.</i>, the height of the element itself, for example the height of an image). Negative lengths are not allowed.</p>
+<p>As with the <strong class=css><a href="#width">width</a></strong> property, <strong class=css>height</strong> can be used to scale an image:</p>
+<pre><code class=css>IMG.foo { width: 40px; height: 40px }</code></pre>
+<p>In most cases, authors are advised to scale the image in an image editing program, since browsers will not likely scale images with high quality, and since scaling down causes the user to download an unnecessarily large file. However, scaling through the <strong class=css>width</strong> and <strong class=css>height</strong> properties is a useful option for user-defined style sheets in order to overcome vision problems.</p>
+<hr width="67%" align=center>
+<h3><a name="float">Float</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>float: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>left | right | none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>float</strong> property allows authors to wrap text around an element. This is identical in purpose to <a href="/reference/wilbur/">HTML&#160;3.2</a>'s <strong class=html>ALIGN=left</strong> and <strong class=html>ALIGN=right</strong> for the <strong class=html>IMG</strong> element, but CSS1 allows all elements to "float," not just the <a href="/reference/wilbur/special/img.html">images</a> and <a href="/reference/wilbur/table/table.html">tables</a> that HTML&#160;3.2 allows.</p>
+<hr width="67%" align=center>
+<h3><a name="clear">Clear</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>clear: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>none | left | right | both<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>clear</strong> property specifies if an element allows floating elements to its sides. A value of <strong class=css>left</strong> moves the element below any floating element on its left; <strong class=css>right</strong> acts similarly for floating elements on the right. Other values are <strong class=css>none</strong>, which is the initial value, and <strong class=css>both</strong>, which moves the element below floating elements on both of its sides. This property is similar in function to <a href="/reference/wilbur/">HTML&#160;3.2</a>'s <strong class=html>&lt;BR CLEAR=left|right|all|none&gt;</strong>, but it can be applied to all elements.</p>
+<hr width="88%" align=center>
+<h2><a name="classification">Classification Properties</a></h2>
+<ul>
+<li><a href="#display">Display</a></li>
+<li><a href="#white-space">Whitespace</a></li>
+<li><a href="#list-style-type">List Style Type</a></li>
+<li><a href="#list-style-image">List Style Image</a></li>
+<li><a href="#list-style-position">List Style Position</a></li>
+<li><a href="#list-style">List Style</a></li>
+</ul>
+<hr width="77%" align=center>
+<h3><a name="display">Display</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>display: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>block | inline | list-item | none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>block<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>All elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>No<br></td>
+</tr>
+</table>
+<p>The <strong class=css>display</strong> property is used to define an element with one of four values:</p>
+<ul>
+<li><strong class=css>block</strong> (a line break before and after the element)</li>
+<li><strong class=css>inline</strong> (no line break before and after the element)</li>
+<li><strong class=css>list-item</strong> (same as <strong class=css>block</strong> except a list-item marker is added)</li>
+<li><strong class=css>none</strong> (no display)</li>
+</ul>
+<p>Each element typically is given a default <strong class=css>display</strong> value by the browser, based on suggested rendering in the HTML specification.</p>
+<p>The <strong class=css>display</strong> property can be dangerous because of its ability to display elements in what would otherwise be an improper format. The use of the value <strong class=css>none</strong> will turn off display of the element to which it is assigned, including any children elements!</p>
+<hr width="67%" align=center>
+<h3><a name="white-space">Whitespace</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>white-space: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>normal | pre | nowrap<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>normal<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Block-level elements<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>white-space</strong> property will determine how spaces within the element are treated. This property takes one of three values:</p>
+<ul>
+<li><strong class=css>normal</strong> (collapses multiple spaces into one)</li>
+<li><strong class=css>pre</strong> (does not collapse multiple spaces)</li>
+<li><strong class=css>nowrap</strong> (does not allow line wrapping without a <a href="/reference/html40/special/br.html">&lt;BR&gt;</a> tag)</li>
+</ul>
+<hr width="67%" align=center>
+<h3><a name="list-style-type">List Style Type</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>list-style-type: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>disc | circle | square | decimal | lower-roman | upper-roman | lower-alpha | upper-alpha | none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>disc<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Elements with <strong class=css><a href="#display">display</a></strong> value <strong class=css>list-item</strong><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>list-style-type</strong> property specifies the type of list-item marker, and is used if <strong class=css><a href="#list-style-image">list-style-image</a></strong> is <strong class=css>none</strong> or if image loading is turned off.</p>
+<p>Examples:</p>
+<pre><code class=css>LI.square { list-style-type: square }
+UL.plain  { list-style-type: none }
+OL        { list-style-type: upper-alpha }  /* A B C D E etc. */
+OL OL     { list-style-type: decimal }      /* 1 2 3 4 5 etc. */
+OL OL OL  { list-style-type: lower-roman }  /* i ii iii iv v etc. */</code></pre>
+<hr width="67%" align=center>
+<h3><a name="list-style-image">List Style Image</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>list-style-image: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#urls">&lt;url&gt;</a> | none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>none<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Elements with <strong class=css><a href="#display">display</a></strong> value <strong class=css>list-item</strong><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>list-style-image</strong> property specifies the image that will be used as list-item marker when image loading is turned on, replacing the marker specified in the <strong class=css><a href="#list-style-type">list-style-type</a></strong> property.</p>
+<p>Examples:</p>
+<pre><code class=css>UL.check { list-style-image: url(/LI-markers/checkmark.gif) }
+UL LI.x  { list-style-image: url(x.png) }</code></pre>
+<hr width="67%" align=center>
+<h3><a name="list-style-position">List Style Position</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>list-style-position: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top>inside | outside<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>outside<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Elements with <strong class=css><a href="#display">display</a></strong> value <strong class=css>list-item</strong><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>list-style-position</strong> property takes the value <strong class=css>inside</strong> or <strong class=css>outside</strong>, with <strong class=css>outside</strong> being the default. This property determines where the marker is placed in regard to the list item. If the value <strong class=css>inside</strong> is used, the lines will wrap under the marker instead of being indented. An example rendering is:</p>
+<pre><samp>Outside rendering:
+ * List item 1
+   second line of list item
+
+Inside rendering:
+   * List item 1
+   second line of list item</samp></pre>
+<hr width="67%" align=center>
+<h3><a name="list-style">List Style</a></h3>
+<table cellpadding=5>
+<tr>
+	<th valign=top align=left><b>Syntax:</b> </th> 
+	<td valign=top>list-style: &lt;value&gt;<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Possible Values:</b> </th> 
+	<td valign=top><a href="#list-style-type">&lt;list-style-type&gt;</a> || <a href="#list-style-position">&lt;list-style-position&gt;</a> || <a href="#urls">&lt;url&gt;</a><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Initial Value:</b> </th> 
+	<td valign=top>Not defined<br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Applies to:</b> </th> 
+	<td valign=top>Elements with <strong class=css><a href="#display">display</a></strong> value <strong class=css>list-item</strong><br></td>
+</tr>
+<tr>
+	<th valign=top align=left><b>Inherited:</b> </th> 
+	<td valign=top>Yes<br></td>
+</tr>
+</table>
+<p>The <strong class=css>list-style</strong> property is a shorthand for the <strong class=css><a href="#list-style-type">list-style-type</a></strong>, <strong class=css><a href="#list-style-position">list-style-position</a></strong>, and <strong class=css><a href="#list-style-image">list-style-image</a></strong> properties.</p>
+<p>Examples:</p>
+<pre><code class=css>LI.square { list-style: square inside }
+UL.plain  { list-style: none }
+UL.check  { list-style: url(/LI-markers/checkmark.gif) circle }
+OL        { list-style: upper-alpha }
+OL OL     { list-style: lower-roman inside }</code></pre>
+<hr width="88%" align=center>
+<h2><a name="units">Units</a></h2>
+<ul>
+<li><a href="#length">Length Units</a></li>
+<li><a href="#percentage">Percentage Units</a></li>
+<li><a href="#color-units">Color Units</a></li>
+<li><a href="#urls">URLs</a></li>
+</ul>
+<h3><a name="length">Length Units</a></h3>
+<p>A length value is formed by an optional <strong class=css>+</strong> or <strong class=css>-</strong>, followed by a number, followed by a two-letter abbreviation that indicates the unit. There are no spaces in a length value; <i>e.g.</i>, <strong class=css>1.3 em</strong> is not a valid length value, but <strong class=css>1.3em</strong> is valid. A length of <strong class=css>0</strong> does not require the two-letter unit identifier.</p>
+<p>Both <em>relative</em> and <em>absolute</em> length units are supported in CSS1. Relative units give a length relative to another length property, and are preferred since they will better adjust to different media. The following relative units are available:</p>
+<ul>
+<li><strong class=css>em</strong> (ems, the height of the element's font)</li>
+<li><strong class=css>ex</strong> (x-height, the height of the letter "x")</li>
+<li><strong class=css>px</strong> (pixels, relative to the canvas resolution)</li>
+</ul>
+<p>Absolute length units are highly dependent on the output medium, and so are less useful than relative units. The following absolute units are available:</p>
+<ul>
+<li><strong class=css>in</strong> (inches; 1in=2.54cm)</li>
+<li><strong class=css>cm</strong> (centimeters; 1cm=10mm)</li>
+<li><strong class=css>mm</strong> (millimeters)</li>
+<li><strong class=css>pt</strong> (points; 1pt=1/72in)</li>
+<li><strong class=css>pc</strong> (picas; 1pc=12pt)</li>
+</ul>
+<hr width="67%" align=center>
+<h3><a name="percentage">Percentage Units</a></h3>
+<p>A percentage value is formed by an optional <strong class=css>+</strong> or <strong class=css>-</strong>, followed by a number, followed by <strong class=css>%</strong>. There are no spaces in a percentage value.</p>
+<p>Percentage values are relative to other values, as defined for each property. Most often the percentage value is relative to the element's font size.</p>
+<hr width="67%" align=center>
+<h3><a name="color-units">Color Units</a></h3>
+<p>A color value is a keyword or a numerical RGB specification.</p>
+<p>The 16 keywords are taken from the Windows VGA palette: <strong class=css><span style="color: aqua">aqua</span></strong>, <strong class=css><span style="color: black">black</span></strong>, <strong class=css><span style="color: blue">blue</span></strong>, <strong class=css><span style="color: fuchsia">fuchsia</span></strong>, <strong class=css><span style="color: gray">gray</span></strong>, <strong class=css><span style="color: green">green</span></strong>, <strong class=css><span style="color: lime">lime</span></strong>, <strong class=css><span style="color: maroon">maroon</span></strong>, <strong class=css><span style="color: navy">navy</span></strong>, <strong class=css><span style="color: olive">olive</span></strong>, <strong class=css><span style="color: purple">purple</span></strong>, <strong class=css><span style="color: red">red</span></strong>, <strong class=css><span style="color: silver">silver</span></strong>, <strong class=css><span style="color: teal">teal</span></strong>, <strong class=css><span style="color: white; background: silver">white</span></strong>, and <strong class=css><span style="color: yellow; background: silver">yellow</span></strong>.</p>
+<p>RGB colors are given in one of four ways:</p>
+<ul>
+<li><strong class=css>#rrggbb</strong> (<i>e.g.</i>, <strong class=css>#00cc00</strong>)</li>
+<li><strong class=css>#rgb</strong> (<i>e.g.</i>, <strong class=css>#0c0</strong>)</li>
+<li><strong class=css>rgb(x,x,x)</strong> where <strong class=css>x</strong> is an integer between 0 and 255 inclusive (<i>e.g.</i>, <strong class=css>rgb(0,204,0)</strong>)</li>
+<li><strong class=css>rgb(y%,y%,y%)</strong> where <strong class=css>y</strong> is a number between 0.0 and 100.0 inclusive (<i>e.g.</i>, <strong class=css>rgb(0%,80%,0%)</strong>)</li>
+</ul>
+<p>The examples above all specify the same color.</p>
+<p>Douglas R. Jacobson has also developed a handy quick reference <a href="../hexchart.gif">RGB Color Chart</a> (61 kB).</p>
+<hr width="67%" align=center>
+<h3><a name="urls">URLs</a></h3>
+<p>A URL value is given by <strong class=css>url(foo)</strong>, where <strong class=css>foo</strong> is the URL. The URL may be optionally quoted with either single (<strong class=css>'</strong>) or double (<strong class=css>"</strong>) quotes and may contain whitespace before or after the (optionally quoted) URL.</p>
+<p>Parentheses, commas, spaces, single quotes, or double quotes in the URL must be escaped with a backslash. Partial URLs are interpreted relative to the style sheet source, not to the HTML source.</p>
+<p class=note>Note that Netscape Navigator 4.<var>x</var> incorrectly interprets partial URLs relative to the HTML source. Given this bug, authors may wish to use full URLs where possible.</p>
+<p>Examples:</p>
+<pre><code class=css>BODY { background: url(stripe.gif) }
+BODY { background: url(http://www.htmlhelp.com/stripe.gif) }
+BODY { background: url( stripe.gif ) }
+BODY { background: url("stripe.gif") }
+BODY { background: url(\"Ulalume\".png) } /* quotes in URL escaped */</code></pre>
+<hr width="60%" align=right>
+<p align=right>Maintained by John Pozadzides and <a href="/~liam/">Liam Quinn</a></p>
+<hr>
+<p class=toolbar align=center><a href="/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~ "></a><a href="./">CSS&#160;Index</a>&#160;~ <a href="structure.html">CSS&#160;Structure</a>&#160;~ <a href="properties.html">CSS&#160;Properties</a></p>
+<p align=center><small><a href="/copyright.html">Copyright &#169;</a> 1997 John Pozadzides and Liam Quinn. All rights reserved.</small></p>
+</body>
+</html>

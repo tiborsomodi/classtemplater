@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Q - Short Quotation</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's Q element for short quotations.">
+<meta name="keywords" content="q element, quotation, quote, quoted, quoting, citing, quotations, quotes, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;q&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>Q - Short Quotation</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;Q&gt;</strong>...<strong class=required>&lt;/Q&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>CITE=<var><a href="../values.html#uri">URI</a></var> (source of quotation)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>Q</strong> element is used for <em>short, inline quotations</em>. For longer (block) quotations, use the <strong class=html>BLOCKQUOTE</strong> element.</p>
+<p>The <strong class=html>Q</strong> element's optional <strong class=html>CITE</strong> attribute provides a <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of the source of the quotation. Some examples follow:</p>
+<p class=example><code class=html>&lt;P&gt;In the words of Albert Einstein, &lt;Q&gt;God does &lt;EM&gt;not&lt;/EM&gt; play dice.&lt;/Q&gt;&lt;/P&gt;</code></p>
+<p class=example><code class=html>&lt;P&gt;According to Dave Raggett, &lt;Q CITE="http://www.w3.org/Press/HTML4-REC"&gt;HTML 4.0 gives Web designers the ability to create dynamic visually exciting pages that are accessible to all.&lt;/Q&gt;&lt;/P&gt;</code></p>
+<p>Note that authors should not include their own quotation marks when using the <strong class=html>Q</strong> element. However, this can be a problem since almost all current browsers lack support for <strong class=html>Q</strong>. Authors may prefer to avoid <strong class=html>Q</strong> and insert their own quotation marks. Another alternative is to use <strong class=html><a href="../fontstyle/i.html">I</a></strong> in combination with <strong class=html>Q</strong> so that the quotation is distinguished from other text in most browsers. The previous example could also be given as follows:</p>
+<p class=example><code class=html>&lt;P&gt;According to Dave Raggett, &lt;I&gt;&lt;Q CITE="http://www.w3.org/Press/HTML4-REC"&gt;HTML 4.0 gives Web designers the ability to create dynamic visually exciting pages that are accessible to all.&lt;/Q&gt;&lt;/I&gt;&lt;/P&gt;</code></p>
+<p>Browsers supporting <strong class=html>Q</strong> should properly handle nested quotations. They should also use quotation marks suitable to the language of the quotation, based on the <strong class=html><a href="../attrs.html#lang">LANG</a></strong> attribute of <strong class=html>Q</strong> or the language of its parent.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/text.html#edef-Q">Q in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

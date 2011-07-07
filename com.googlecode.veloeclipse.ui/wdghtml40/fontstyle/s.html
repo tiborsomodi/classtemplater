@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>S - Strike-through Text</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's S element for text with a strike-through style.">
+<meta name="keywords" content="s element, strike-through text, line-through, struck, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;s&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>S - Strike-through Text</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;S&gt;</strong>...<strong class=required>&lt;/S&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>S</strong> element, <a href="../deprecated.html">deprecated</a> in HTML 4.0, suggests that text be rendered with a <em>strike-through style</em>. In many cases, use of a <a href="../phrase/index.html">phrase element</a> such as <strong class=html><a href="../phrase/del.html">DEL</a></strong> is more appropriate since such elements express the <em>meaning</em> of the text more clearly. However, since support for <strong class=html>DEL</strong> among browsers is weak, <strong class=html>S</strong> could be useful in combination with <strong class=html>DEL</strong>, as in the following example:</p>
+<p class=example><code class=html>The latest version of HTML recommended by the W3C is HTML &lt;DEL DATETIME="1997-12-19T00:00:00-05:00"&gt;<strong>&lt;S&gt;</strong>3.2<strong>&lt;/S&gt;</strong>&lt;/DEL&gt; &lt;INS DATETIME="1997-12-19T00:00:00-05:00"&gt;4.0&lt;/INS&gt;.</code></p>
+<p>Note that <strong class=html><a href="strike.html">STRIKE</a></strong> is better supported than <strong class=html>S</strong> (based on Netscape 2.<var>x</var> and 1.22 supporting <strong class=html>STRIKE</strong> but not <strong class=html>S</strong>), and so <strong class=html>STRIKE</strong> should be used in place of <strong class=html>S</strong>. There does not appear to be any advantage to using both <strong class=html>STRIKE</strong> and <strong class=html>S</strong>; all browsers that support <strong class=html>S</strong> also seem to support <strong class=html>STRIKE</strong>.</p>
+<p>If <strong class=html><a href="../phrase/del.html">DEL</a></strong> is not a suitable structure, <a href="http://www.htmlhelp.com/reference/css/">style sheets</a> should be used to complement or replace instances of <strong class=html>S</strong>. <a href="http://www.htmlhelp.com/reference/css/">CSS1</a> provides the <strong class=css><a href="http://www.htmlhelp.com/reference/css/text/text-decoration.html">text-decoration</a></strong> property for strike-through text.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/graphics.html#edef-S">S in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

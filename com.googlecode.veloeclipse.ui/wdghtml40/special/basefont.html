@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>BASEFONT - Base Font Change</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's BASEFONT element for changes to the base font.">
+<meta name="keywords" content="basefont element, base font change, color, colour, colors, colours, face, faces, font size, sizes, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;basefont&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>BASEFONT - Base Font Change</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;BASEFONT&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li><strong class=required>SIZE=<var><a href="../values.html#cdata">CDATA</a></var> (font size adjustment)</strong></li>
+        <li>COLOR=<var><a href="../values.html#color">Color</a></var> (font color adjustment)</li>
+        <li>FACE=<var><a href="../values.html#cdata">CDATA</a></var> (font face adjustment)</li>
+        <li><a href="../attrs.html#id">ID</a>=<var><a href="../values.html#id">ID</a></var> (unique ID)</li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td>Empty</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a> except <a href="../block/pre.html">PRE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>BASEFONT</strong> element, <a href="../deprecated.html">deprecated</a> in HTML 4.0 in favor of <a href="http://www.htmlhelp.com/reference/css/">style sheets</a>, allows authors to suggest rudimentary <em>font changes</em>. Use of the <strong class=html>BASEFONT</strong> element brings the same usability and accessibility problems as <strong class=html><a href="font.html">FONT</a></strong>, as discussed in the article <cite><a href="http://www.mcsr.olemiss.edu/%7Emudws/font.html">What's Wrong With FONT?</a></cite></p>
+<p>Unlike <strong class=html>FONT</strong>, <strong class=html>BASEFONT</strong>'s changes affect the base font, and so apply to all content following the <strong class=html>BASEFONT</strong> element except for headings. However, most browsers fail to apply changes in the base font size and color to <strong class=html><a href="../tables/table.html">TABLE</a></strong>s.</p>
+<p><strong class=html>BASEFONT</strong>'s required <strong class=html>SIZE</strong> attribute specifies the font size to use on a browser-dependent scale of <strong class=html>1</strong> to <strong class=html>7</strong>, with the default being <strong class=html>3</strong>.</p>
+<p>The poorly supported <strong class=html>COLOR</strong> and <strong class=html>FACE</strong> attributes suggest a font color and face, respectively. <a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> are better supported and more flexible than <strong class=html>BASEFONT</strong>'s <strong class=html>COLOR</strong> and <strong class=html>FACE</strong> attributes.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/present/graphics.html#edef-BASEFONT">BASEFONT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#basefont">BASEFONT in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/basefont.html">BASEFONT in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.8.html">BASEFONT in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

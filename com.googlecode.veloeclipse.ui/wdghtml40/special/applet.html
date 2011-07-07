@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>APPLET - Java Applet</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's APPLET element for Java applets.">
+<meta name="keywords" content="applet element, java applets, Java, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;applet&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>APPLET - Java Applet</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;APPLET&gt;</strong>...<strong class=required>&lt;/APPLET&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>CODE=<var><a href="../values.html#cdata">CDATA</a></var> (class file)</li>
+        <li>CODEBASE=<var><a href="../values.html#uri">URI</a></var> (base <abbr class=initialism title="Uniform Resource Indicator">URI</abbr> for class files)</li>
+        <li><strong class=required>WIDTH=<var><a href="../values.html#length">Length</a></var> (applet width)</strong></li>
+        <li><strong class=required>HEIGHT=<var><a href="../values.html#length">Length</a></var> (applet height)</strong></li>
+        <li>ARCHIVE=<var><a href="../values.html#cdata">CDATA</a></var> (archive files)</li>
+        <li>OBJECT=<var><a href="../values.html#cdata">CDATA</a></var> (serialized applet)</li>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (name for inter-applet communication)</li>
+        <li>ALT=<var><a href="../values.html#text">Text</a></var> (alternate text)</li>
+        <li>ALIGN=[ top | middle | bottom | left | right ] (applet alignment)</li>
+        <li>HSPACE=<var><a href="../values.html#pixels">Pixels</a></var> (horizontal gutter)</li>
+        <li>VSPACE=<var><a href="../values.html#pixels">Pixels</a></var> (vertical gutter)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="param.html">PARAM</a> elements followed by <a href="../block.html">block-level elements</a> and/or <a href="../inline.html">inline elements</a></td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../inline.html">Inline elements</a>, <a href="../block.html">block-level elements</a> except <a href="../block/pre.html">PRE</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>APPLET</strong> element is used to embed <em>Java applets</em>. It has been <a href="../deprecated.html">deprecated</a> in HTML 4.0 in favor of the more generalized <strong class=html><a href="object.html">OBJECT</a></strong> element. However, since the few browsers that support <strong class=html>OBJECT</strong> do so with significant bugs, <strong class=html>APPLET</strong> is currently a more reliable method of embedding Java applets.</p>
+<p><strong class=html>APPLET</strong>'s <strong class=html>CODE</strong> attribute specifies the name of the class file that contains the compiled Applet subclass. The value is relative to the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> specified in the <strong class=html>CODEBASE</strong> attribute, or to the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document's base <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> if the <strong class=html>CODEBASE</strong> attribute is not given.</p>
+<p>The required <strong class=html>WIDTH</strong> and <strong class=html>HEIGHT</strong> attributes define the dimensions of the applet. The value may be given in pixels or as a percentage of the parent element's width or height.</p>
+<p>The <strong class=html>ALT</strong> attribute can be used to give alternate text for browsers that recognize the <strong class=html>APPLET</strong> element but do not support Java or do not have Java enabled. Authors can also give alternate content between the start and end tags of the <strong class=html>APPLET</strong> element--a better method than using the <strong class=html>ALT</strong> attribute since it allows authors to include <abbr class=initialism title="HyperText Markup Language">HTML</abbr> markup in the alternate content and also works with pre-<a href="http://www.htmlhelp.com/reference/wilbur/">HTML 3.2</a> browsers that do not support <strong class=html>APPLET</strong>.</p>
+<p>An <strong class=html>APPLET</strong> may contain <strong class=html><a href="param.html">PARAM</a></strong> elements to define applet-specific parameters. <strong class=html>PARAM</strong> elements should be specified before any other content of the <strong class=html>APPLET</strong> element. In the following example, a decorative Java applet takes two parameters. The <strong class=html>APPLET</strong> contains an animated GIF as an alternative for non-Java browsers.</p>
+<p class=example><code class=html>&lt;APPLET CODE="Animate.class" WIDTH=100 HEIGHT=100&gt;<br>&lt;PARAM NAME=img1 VALUE="/images/1.jpg"&gt;<br>&lt;PARAM NAME=img2 VALUE="/images/2.jpg"&gt;<br>&lt;IMG SRC="animation.gif" ALT="" WIDTH=100 HEIGHT=100&gt;<br>&lt;/APPLET&gt;</code></p>
+<p>The <strong class=html>ARCHIVE</strong> attribute can specify a comma-separated list of archived files (either absolute <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s or <abbr class=initialism title="Uniform Resource Identifier">URI</abbr>s relative to the <strong class=html>CODEBASE</strong>), allowing the browser to download many files with a single connection and hence decreasing the total download time. The standard archive format for Java files is <a href="http://java.sun.com/products/jdk/1.1/docs/guide/jar/index.html">JAR</a>. JAR files can be created with the <strong>jar</strong> tool included with the <a href="http://java.sun.com/products/jdk/">Java Development Kit</a> 1.1 and up.</p>
+<p class=note>Note that some browsers do not support the <strong class=html>ARCHIVE</strong> attribute, so all necessary files should be available unarchived as well. Other browsers only support a single <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> as the <strong class=html>ARCHIVE</strong> value.</p>
+<p>The <strong class=html>OBJECT</strong> attribute specifies a serialized (saved) representation of an applet. The <strong class=html>CODE</strong> attribute should not be used if and only if the <strong class=html>OBJECT</strong> attribute is specified. When the applet is deserialized, its <strong class=java>init()</strong> method is not invoked, but its <strong class=java>start()</strong> method is. Sun recommends restraint in using this poorly supported feature.</p>
+<p>The <strong class=html>ALIGN</strong> attribute specifies the alignment of the applet. The values <strong class=html>top</strong>, <strong class=html>middle</strong>, and <strong class=html>bottom</strong> specify the applet's position with respect to surrounding content on its left and right.</p>
+<div class=note>
+<p><strong class=html>ALIGN=middle</strong> aligns the center of the applet with the current baseline. To center the applet horizontally on the page, place the applet in a centered block, <i lang=la>e.g.</i>,</p>
+<p class=example><code class=html>&lt;P ALIGN=center&gt;&lt;APPLET CODE="Game.class" WIDTH=300 HEIGHT=100&gt;&lt;/APPLET&gt;&lt;/P&gt;</code></p>
+</div>
+<p>The other <strong class=html>ALIGN</strong> values, <strong class=html>left</strong> and <strong class=html>right</strong>, specify a <em>floating</em> applet; the applet is placed at the left or right margin and content flows around it. To place content below the applet, use <strong class=html>&lt;BR CLEAR=left|right|all&gt;</strong> as appropriate.</p>
+<p class=note>The <strong class=css><a href="http://www.htmlhelp.com/reference/css/text/vertical-align.html">vertical-align</a></strong> and <strong class=css><a href="http://www.htmlhelp.com/reference/css/box/float.html">float</a></strong> properties of <a href="http://www.htmlhelp.com/reference/css/">Cascading Style Sheets</a> provide more flexible methods of aligning applets.</p>
+<p>The <strong class=html>HSPACE</strong> and <strong class=html>VSPACE</strong> attributes allow an author to suggest horizontal gutters and vertical gutters, respectively, around the applet. The value must be in pixels and applies to both sides of the applet. <a href="http://www.htmlhelp.com/reference/css/">Style sheets</a> provide more flexibility in specifying the space around applets.</p>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/objects.html#edef-APPLET">APPLET in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#applet">APPLET in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/applet.html">APPLET in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.4.html">APPLET in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+  <li><a href="http://java.sun.com/products/jdk/1.1/docs/guide/misc/applet.html">The APPLET Tag (<abbr class=initialism title="Java Development Kit">JDK</abbr> 1.1 Documentation)</a>
+  <li><a href="http://java.sun.com/docs/books/tutorial/index.html">The Java Tutorial</a>
+    <ul>
+      <li><a href="http://java.sun.com/docs/books/tutorial/applet/appletsonly/html.html">Using the &lt;APPLET&gt; Tag</a></li>
+    </ul>
+  </li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

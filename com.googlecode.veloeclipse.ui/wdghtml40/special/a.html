@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en-us>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>A - Anchor</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<link rel="Alternate StyleSheet" href="../strictHTMLonly.css" type="text/css" title="Strict HTML only">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's A element for anchors.">
+<meta name="keywords" content="a element, anchor, link, name, href, hyperlink, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;a&gt; tag">
+<script type="text/javascript" src="../hideNonStrict.js"></script>
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>A - Anchor</h1>
+<script type="text/javascript">
+<!--
+  if (document.styleSheets && writeButton) {
+    writeButton("attributes");
+  }
+// -->
+</script>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;A&gt;</strong>...<strong class=required>&lt;/A&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>HREF=<var><a href="../values.html#uri">URI</a></var> (hypertext reference)</li>
+        <li>NAME=<var><a href="../values.html#cdata">CDATA</a></var> (named link destination)</li>
+        <li>REL=<var><a href="../values.html#linktypes">LinkTypes</a></var> (relationship to link)</li>
+        <li>REV=<var><a href="../values.html#linktypes">LinkTypes</a></var> (relationship from link)</li>
+        <li>TYPE=<var><a href="../values.html#contenttype">ContentType</a></var> (content-type of link)</li>
+        <li class=transitional>TARGET=<var><a href="../values.html#frametarget">FrameTarget</a></var> (frame to render link in)</li>
+        <li>HREFLANG=<var><a href="../values.html#languagecode">LanguageCode</a></var> (language of link)</li>
+        <li>CHARSET=<var><a href="../values.html#charset">Charset</a></var> (character encoding of link)</li>
+        <li>ACCESSKEY=<var><a href="../values.html#character">Character</a></var> (shortcut key)</li>
+        <li>TABINDEX=<var><a href="../values.html#number">Number</a></var> (position in tabbing order)</li>
+        <li>SHAPE=[ <em class=default>rect</em> | circle | poly | default ] (client-side image map)</li>
+        <li>COORDS=<var><a href="#coords">Coords</a></var> (client-side image map)</li>
+        <li>ONFOCUS=<var><a href="../values.html#script">Script</a></var> (element received focus)</li>
+        <li>ONBLUR=<var><a href="../values.html#script">Script</a></var> (element lost focus)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a> except A</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../block.html">Block-level elements</a>, <a href="../inline.html">inline elements</a> except A and <a href="../forms/button.html">BUTTON</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>A</strong> element denotes an <em>anchor</em>--a hypertext link or the destination of a link. The <strong class=html>HREF</strong> attribute specifies a hypertext link to another resource, such as an <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document or a <acronym title="Joint Photographic Experts Group">JPEG</acronym> image. Examples:</p>
+<ul class=example>
+  <li><code class=html>&lt;A HREF="album.html"&gt;My photo album&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="../images/me.jpg"&gt;Picture of me&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="/sounds/auldlang.mid" TYPE="audio/midi" ACCESSKEY=A&gt;Auld Lang Syne (5 kB MIDI)&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="section2.html" <span class=transitional>TARGET="content" </span>TITLE="Elements of the HEAD" REL=next&gt;Section 2&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="mailto:liam@htmlhelp.com" TITLE="Feedback on HTML 4.0 Reference"&gt;liam@htmlhelp.com&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="http://www.htmlhelp.com/"<span class=transitional> TARGET="_top"</span>&gt;Web Design Group&lt;/A&gt;</code></li>
+  <li><code class=html>&lt;A HREF="http://babel.alis.com:8080/langues/iso639.zh.htm" CHARSET="big5" HREFLANG=zh&gt;ISO 639&lt;/A&gt;</code></li>
+</ul>
+<p>The value of the <strong class=html>HREF</strong> attribute is the <abbr class=initialism title="Uniform Resource Identifier">URI</abbr> of the link. The <strong class=html>TYPE</strong> attribute can be used to specify the Internet media type of the link, allowing browsers to avoid fetching a resource that they cannot handle.</p>
+<p>The <strong class=html>TITLE</strong> attribute can be used to briefly describe the contents of the link and is rendered as a "tooltip" by some visual browsers. With mailto links, some browsers use the <strong class=html>TITLE</strong> attribute value as a subject for the e-mail message.</p>
+<p class=note>The content of an <strong class=html>A</strong> element used as a link should be as context-free as possible. In other words, a user should be able to pull all <strong class=html>A</strong> elements from a document and still have an idea what lies behind each link. Link text that contains <q><strong class=oops>Click here</strong></q> or simply <q><strong class=oops>here</strong></q> is extremely bad form.</p>
+<div class=transitional>
+<p><a name="target">The <strong class=html>TARGET</strong> attribute</a> is used with <a href="../frames/index.html">frames</a> to specify in which frame the link should be rendered. If no frame with such a name exists, the link is rendered in a new window unless overridden by the user. Special frame names begin with an underscore:</p>
+<ul>
+  <li><strong class=html>_blank</strong> renders the link in a new, unnamed window</li>
+  <li><strong class=html>_self</strong> renders the link in the current frame (useful for overriding a <strong class=html><a href="../head/base.html">BASE</a> TARGET</strong>)</li>
+  <li><strong class=html>_parent</strong> renders the link in the immediate <strong class=html><a href="../frames/frameset.html">FRAMESET</a></strong> parent</li>
+  <li><strong class=html>_top</strong> renders the link in the full, unframed window</li>
+</ul>
+<p class=note>In HTML 4.0, the <strong class=html>TARGET</strong> attribute value is <em>case-insensitive</em>, so that <strong class=html>_top</strong> and <strong class=html>_TOP</strong> both have the same meaning. However, most browsers treat the <strong class=html>TARGET</strong> attribute value as <em>case-sensitive</em> and do not recognize <strong class=html>_TOP</strong> as having the special meaning of <strong class=html>_top</strong>.</p>
+</div>
+<p>The optional <strong class=html>HREFLANG</strong> and <strong class=html>CHARSET</strong> attributes give the language and character encoding, respectively, of the link. The language should be specified according to <a href="http://www.ietf.org/rfc/rfc1766.txt" title="Tags for the Identification of Languages"><abbr class=initialism title="Request for Comments">RFC</abbr> 1766</a>; examples include <strong class=html>en</strong> for English, <strong class=html>en-US</strong> for American English, and <strong class=html>ja</strong> for Japanese. Examples of character encodings include <strong class=html>ISO-8859-1</strong>, <strong class=html>SHIFT_JIS</strong>, and <strong class=html>UTF-8</strong>.</p>
+<p>The <strong class=html>ACCESSKEY</strong> attribute specifies a single Unicode character as a shortcut key for following the link. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<p>The <strong class=html>TABINDEX</strong> attribute specifies a number between 0 and 32767 to indicate the tabbing order of the element. An anchor with <strong class=html>TABINDEX=0</strong> or no <strong class=html>TABINDEX</strong> attribute will be visited after any elements with a positive <strong class=html>TABINDEX</strong>. Among positive <strong class=html>TABINDEX</strong> values, the lower number receives focus first. In the case of a tie, the element appearing first in the <abbr class=initialism title="HyperText Markup Language">HTML</abbr> document takes precedence.</p>
+<p>The <strong class=html>REL</strong> and <strong class=html>REV</strong> attributes define relationships between an anchor and the linked resource. <strong class=html>REL</strong> defines a link relationship from the current document to the linked document while <strong class=html>REV</strong> defines a relationship in the opposite direction. For example,</p>
+<p class=example><code class=html>&lt;A HREF="foo.html" REL=glossary&gt;...&lt;/A&gt;</code></p>
+<p>indicates that <strong class=html>foo.html</strong> is a glossary for the current document while</p>
+<p class=example><code class=html>&lt;A HREF="bar.html" REV=subsection&gt;...&lt;/A&gt;</code></p>
+<p>indicates that the current document is a subsection of <strong class=html>bar.html</strong>. The value of the <strong class=html>REL</strong> and <strong class=html>REV</strong> attributes is a space-separated list of <a href="../values.html#linktypes">link types</a>.</p>
+<p><a name=name>The <strong class=html>NAME</strong> attribute defines a destination for a link.</a> For example, a document containing</p>
+<p class=example><code class=html>&lt;H1&gt;&lt;A NAME=foo&gt;My Heading&lt;/A&gt;&lt;/H1&gt;</code></p>
+<p>defines a link destination named "foo" at the indicated heading. One could then use <strong class=html>HREF="#foo"</strong> in an <strong class=html>A</strong> element within the same document or <strong class=html>HREF="somedoc.html#foo"</strong> from within another document.</p>
+<p class=note>An <strong class=html>A</strong> element cannot contain another <strong class=html>A</strong> element, so one must be careful that named anchors do not contain link anchors. Authors can use both the <strong class=html>NAME</strong> and <strong class=html>HREF</strong> attributes in a single <strong class=html>A</strong> element to avoid this problem.</p>
+<p>HTML 4.0's <strong class=html><a href="../attrs.html#id">ID</a></strong> attribute is intended to eliminate the need for <strong class=html>A NAME</strong>. The <strong class=html>ID</strong> attribute can be used with almost any element to define a link destination, so that the following could be used in place of the previous example:</p>
+<p class=example><code class=html>&lt;H1 ID=foo&gt;My heading&lt;/H1&gt;</code></p>
+<p>However, browser support for <strong class=html>ID</strong> link destinations is very poor, so <strong class=html>A NAME</strong> will be needed for quite awhile.</p>
+<p><strong class=html>NAME</strong> and <strong class=html>ID</strong> values must be unique in any document, and different values must differ by more than just the case. <strong class=html>ID</strong> values must begin with a letter in the range A-Z or a-z, and may be followed by A-Z, a-z, 0-9, hyphens, underscores, colons, or periods. When linking to a named anchor, the name is treated as case sensitive.</p>
+<p>The <strong class=html>SHAPE</strong> and <strong class=html><a name=coords>COORDS</a></strong> attributes of <strong class=html>A</strong> can be used to create <a href="object.html#csim">client-side image maps</a> via the <strong class=html><a href="object.html">OBJECT</a></strong> element. The default <strong class=html>SHAPE</strong> value is <strong class=html>rect</strong>, which defines a rectangular region using <strong class=html>COORDS="<var>left</var>, <var>top</var>, <var>right</var>, <var>bottom</var>"</strong>. Other <strong class=html>SHAPE</strong> values are</p>
+<ul>
+  <li><strong class=html>default</strong>, which specifies the entire image;</li>
+  <li><strong class=html>circle</strong>, which specifies a circular region using <strong class=html>COORDS="<var>center-x</var>, <var>center-y</var>, <var>radius</var>"</strong>;</li>
+  <li><strong class=html>poly</strong>, which specifies a polygonal region using <strong class=html>COORDS="<var>x<sub>1</sub></var>, <var>y<sub>1</sub></var>, <var>x<sub>2</sub></var>, <var>y<sub>2</sub></var>, <var>...</var>, <var>x<sub>N</sub></var>, <var>y<sub>N</sub></var>"</strong>.</li>
+</ul>
+<p>Coordinate values are relative to the top left corner of the object and may be expressed as pixels or percentages. A percentage radius value for circular regions is calculated relative to the smaller of the object's width and height. If two or more regions overlap, the earliest specified region takes precedence.</p>
+<p>In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>A</strong> accepts the following event attributes for client-side scripting:</p>
+<ul>
+  <li><strong class=html>ONFOCUS</strong>, when the link receives focus;</li>
+  <li><strong class=html>ONBLUR</strong>, when the link loses focus.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/struct/links.html#edef-A">A in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+  <li><a href="http://www.w3.org/TR/REC-html32#anchor">A in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 3.2 Recommendation</a></li>
+  <li><a href="http://www.w3.org/MarkUp/html-spec/html-spec_5.html#SEC5.7.3">A in HTML 2.0 Standard</a></li>
+  <li><a href="http://www.htmlhelp.com/reference/wilbur/special/a.html">A in <abbr class=initialism title="Web Design Group">WDG</abbr> HTML 3.2 Reference</a></li>
+  <li><a href="http://www.malibutelecom.com/yucca/HTML3.2/5.2.html">A in <cite>Learning HTML 3.2 by Examples</cite></a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

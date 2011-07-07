@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN"
+   "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html lang=en>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>LABEL - Form Field Label</title>
+<link rev=Made href="mailto:liam@htmlhelp.com">
+<link rel=Start href="../index.html">
+<link rel=StyleSheet href="../style.css" type="text/css">
+<link rel=StyleSheet href="../aural.css" type="text/css" media=aural>
+<meta name="author" content="Liam Quinn">
+<meta name="description" content="A description of HTML 4.0's LABEL element for form field labels.">
+<meta name="keywords" content="LABEL, label element, labels, text field, forms, form, form field, HyperText Markup Language, HTML, HTML4, HTML 4.0, Web Design Group, WDG, &lt;label&gt; tag, &lt;LABEL&gt; tag">
+</head>
+<body>
+<h2><img src="../wdglogo1.gif" width=250 height=83 alt="The Web Design Group"></h2>
+<h1>LABEL - Form Field Label</h1>
+<table>
+  <tr valign=top>
+    <th>Syntax</th>
+    <td><strong class=required>&lt;LABEL&gt;</strong>...<strong class=required>&lt;/LABEL&gt;</strong></td>
+  </tr>
+  <tr valign=top>
+    <th>Attribute Specifications</th>
+    <td>
+      <ul>
+        <li>FOR=<var><a href="../values.html#idref">IDREF</a></var> (associated form field)</li>
+        <li>ACCESSKEY=<var><a href="../values.html#character">Character</a></var> (shortcut key)</li>
+        <li>ONFOCUS=<var><a href="../values.html#script">Script</a></var> (element received focus)</li>
+        <li>ONBLUR=<var><a href="../values.html#script">Script</a></var> (element lost focus)</li>
+        <li><a href="../attrs.html">common attributes</a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr valign=top>
+    <th>Contents</th>
+    <td><a href="../inline.html">Inline elements</a> except LABEL</td>
+  </tr>
+  <tr valign=top>
+    <th>Contained in</th>
+    <td><a href="../block.html">Block-level elements</a>, <a href="../inline.html">inline elements</a> except <a href="button.html">BUTTON</a></td>
+  </tr>
+</table>
+<p>The <strong class=html>LABEL</strong> element <em>associates a label with a form control</em>. By associating labels with form controls, authors give important hints to users of speech browsers while also allowing visual browsers to duplicate common <acronym title="Graphical User Interface">GUI</acronym> features (<abbr title="for example"><i lang=la>e.g.</i></abbr>, the ability to click on a text label to select a radio button or checkbox).</p>
+<p>Each <strong class=html>LABEL</strong> element is associated with exactly one form control. The element's content is the label of the form control and may include <a href="../inline.html">inline elements</a> such as <strong class=html><a href="../special/img.html">IMG</a></strong> and <strong class=html><a href="../phrase/strong.html">STRONG</a></strong>.</p>
+<p>The <strong class=html>FOR</strong> attribute explicitly specifies the control associated with the <strong class=html>LABEL</strong>. The value of the <strong class=html>FOR</strong> attribute must match the value of the associated form control's <strong class=html><a href="../attrs.html#id">ID</a></strong> attribute. In the absence of the <strong class=html>FOR</strong> attribute, the <strong class=html>LABEL</strong> must contain the associated form control. This method of implicit association is convenient in many cases, but not an option when the form control and its label are in different table cells, paragraphs, or divisions. The following example illustrates both explicit and implicit label associations:</p>
+<pre class=example><code class=html>&lt;TABLE&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;
+      <strong>&lt;LABEL FOR=user ACCESSKEY=U&gt;User&lt;/LABEL&gt;</strong>
+    &lt;/TD&gt;
+    &lt;TD&gt;
+      &lt;SELECT NAME=user <strong>ID=user</strong>&gt;
+        &lt;OPTION&gt;Jean&lt;/OPTION&gt;
+        &lt;OPTION&gt;Kim&lt;/OPTION&gt;
+        &lt;OPTION&gt;Brian&lt;/OPTION&gt;
+      &lt;/SELECT&gt;
+    &lt;/TD&gt;
+  &lt;/TR&gt;
+  &lt;TR&gt;
+    &lt;TD&gt;<strong>&lt;LABEL FOR=passwd ACCESSKEY=P&gt;Password&lt;/LABEL&gt;</strong>&lt;/TD&gt;
+    &lt;TD&gt;&lt;INPUT TYPE=password NAME=password <strong>ID=passwd</strong>&gt;&lt;/TD&gt;
+  &lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;P&gt;
+  <strong>&lt;LABEL ACCESSKEY=S&gt;
+    &lt;INPUT TYPE=checkbox NAME=save VALUE=yes&gt;
+    Save user name and password in a cookie
+  &lt;/LABEL&gt;</strong>
+&lt;/P&gt;
+&lt;P&gt;
+  <strong>&lt;LABEL ACCESSKEY=C&gt;
+    Comments to post:
+    &lt;TEXTAREA NAME=comments ROWS=8 COLS=50&gt;&lt;/TEXTAREA&gt;
+  &lt;/LABEL&gt;</strong>
+&lt;/P&gt;</code></pre>
+<p>The <strong class=html>ACCESSKEY</strong> attribute, used throughout the preceding example, specifies a single Unicode character as a shortcut key for giving focus to the <strong class=html>LABEL</strong>, which passes the focus on to the associated form control. <a href="../entities/index.html">Entities</a> (<abbr title="for example"><i lang=la>e.g.</i></abbr> <strong class=html>&amp;eacute;</strong>) may be used as the <strong class=html>ACCESSKEY</strong> value.</p>
+<p>The <strong class=html>LABEL</strong> element also takes a number of attributes to specify client-side scripting actions for various events. In addition to the <a href="../attrs.html#events">core events</a> common to most elements, <strong class=html>LABEL</strong> accepts the following event attributes:</p>
+<ul>
+  <li><strong class=html>ONFOCUS</strong>, when the element receives focus;</li>
+  <li><strong class=html>ONBLUR</strong>, when the element loses focus.</li>
+</ul>
+<h2>More Information</h2>
+<ul>
+  <li><a href="http://www.w3.org/TR/REC-html40/interact/forms.html#edef-LABEL">LABEL in <abbr class=initialism title="World Wide Web Consortium">W3C</abbr> HTML 4.0 Recommendation</a></li>
+</ul>
+<div class=footer>
+<address>Maintained by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a> &lt;<a href="mailto:liam@htmlhelp.com">liam@htmlhelp.com</a>&gt;</address>
+<p class=toolbar><a href="http://www.htmlhelp.com/"><img src="../wdglogo-small.gif" width=105 height=40 alt="Web Design Group ~"></a> <a href="../index.html" rel=Start>HTML 4.0 Reference</a> ~ <a href="../olist.html">Elements by Function</a> ~ <a href="../alist.html">Elements Alphabetically</a></p>
+<p class=copyright>Copyright &copy; 1998 by <a href="http://www.htmlhelp.com/%7Eliam/">Liam Quinn</a>. This material may be distributed only subject to the terms and conditions set forth in the Open Publication License, v1.0 or later (the latest version is presently available at <a href="http://www.opencontent.org/openpub/">http://www.opencontent.org/openpub/</a>).</p>
+</div>
+</body>
+</html>

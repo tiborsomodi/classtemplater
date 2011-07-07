@@ -239,6 +239,10 @@ public class Attribute {
 		return paramValue == null ? "" : paramValue;
 			
 	}
+	
+	public Annotation getAnnotation(String name){
+		return annotations.get(name);
+	}
 
 	public String getFistGenType() {
 		return fistGenType;
