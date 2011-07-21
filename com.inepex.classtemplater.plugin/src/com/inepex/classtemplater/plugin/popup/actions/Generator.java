@@ -147,6 +147,7 @@ public class Generator implements IObjectActionDelegate {
 	private void save(boolean simpleMode, boolean organize){
 		try {
 			CodeGenarator generator = new CodeGenarator(GenerationType.CLASS, targetPart, templateGen);
+			generator.setFormat(ui.formatCode());
 			ui.clearText();
 			for (IResource template : ui.getSelectedTemplates()){
 				for (Class classModel : classModels){

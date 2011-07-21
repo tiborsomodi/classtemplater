@@ -7,8 +7,10 @@
 
 package com.inepex.classtemplater.plugin.logic;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,6 +34,7 @@ public class Attribute {
 	boolean isEnum = false;
 	String fistGenType;
 	Set<Importable> typesInGenerics = new HashSet<Importable>();
+	List<Importable> typesInGenericsList = new ArrayList<Importable>();	
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
 	private String workspaceRelativePath;
 	private String packageName;
@@ -77,7 +80,7 @@ public class Attribute {
 		}
 
 		//annotations
-		annotations = Annotation.getAnnotationsOf(field);
+		annotations = Annotation.getAnnotationsOf(field, field.getCompilationUnit());
 		
 		workspaceRelativePath = ResourceUtil.getWorkspaceRelativePath(field.getCompilationUnit());
 		
@@ -107,6 +110,7 @@ public class Attribute {
 					String type = s.substring(1);
 					if (typesInGenerics.size() == 0) fistGenType = type;
 					typesInGenerics.add(new Importable(type));
+					typesInGenericsList.add(new Importable(type));
 					partString +=  type + ", ";
 				}
 				if (typesInGenerics.size() > 0) isGeneric = true;
@@ -282,6 +286,14 @@ public class Attribute {
 
 	public String getPackageName() {
 		return packageName;
+	}
+
+	/**
+	 * 
+	 * @return generic types in order of declaration
+	 */
+	public List<Importable> getTypesInGenericsList() {
+		return typesInGenericsList;
 	}
 	
 	

@@ -51,7 +51,7 @@ public class Method {
 		Attribute returnAttr = new Attribute("return", method.getReturnType());
 		returnType = returnAttr.getType();
 		
-		annotations = Annotation.getAnnotationsOf(method);
+		annotations = Annotation.getAnnotationsOf(method, method.getCompilationUnit().getPrimary());
 		
 	}
 	

@@ -53,7 +53,7 @@ public class Class {
 			this.attributes.add(new Attribute(field));
 		}
 		this.annotations = Annotation.getAnnotationsOf(jdtFields.get(0)
-				.getDeclaringType());
+				.getDeclaringType(), jdtFields.get(0).getCompilationUnit());
 		this.workspaceRelativePath = ResourceUtil
 				.getWorkspaceRelativePath((ICompilationUnit) jdtFields.get(0)
 						.getParent().getParent());
@@ -68,7 +68,7 @@ public class Class {
 			this.methods.add(new Method(method));
 		}
 		this.annotations = Annotation.getAnnotationsOf(jdtMethods.get(0)
-				.getDeclaringType());
+				.getDeclaringType(), jdtMethods.get(0).getCompilationUnit());
 		this.workspaceRelativePath = ResourceUtil
 				.getWorkspaceRelativePath((ICompilationUnit) jdtMethods.get(0)
 						.getParent().getParent());
@@ -82,7 +82,7 @@ public class Class {
 		this.attributes = getAttrs(compunit);
 		this.methods = getMethods(compunit);
 		this.annotations = Annotation
-				.getAnnotationsOf(compunit.getAllTypes()[0]);
+				.getAnnotationsOf(compunit.getAllTypes()[0], compunit);
 		this.workspaceRelativePath = ResourceUtil
 				.getWorkspaceRelativePath(compunit);
 	}

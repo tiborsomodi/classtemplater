@@ -38,6 +38,7 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 	private Composite comp_buttons;
 	private Button ignoreHcContent;
 	private Button dontRenderHc;
+	private Button formatGeneratedCode;
 	private Button btn_savetofile;
 	private Button btn_savetofileAndOrganize;
 	private Button btn_close;
@@ -92,6 +93,9 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 	 	ignoreHcContent.setText("Ignore hc's content");
 	 	ignoreHcContent.setToolTipText("Ignore text written in hc part of generated code and replace " +
 	 			"it with the default value from template.");
+	 	formatGeneratedCode = new Button(comp_buttons, SWT.CHECK);
+	 	formatGeneratedCode.setText("Format code");
+	 	formatGeneratedCode.setToolTipText("Execute eclipse code formatter for the generated code. (only with Save and organize!)");
 	 	btn_savetofile = new Button(comp_buttons, SWT.PUSH);
 	 	btn_savetofile.setText("Save to file");
 	 	btn_savetofileAndOrganize = new Button(comp_buttons, SWT.PUSH);
@@ -160,6 +164,11 @@ public class GeneratorDialog extends Dialog implements GeneratorUI{
 	@Override
 	public boolean dontRenderHc() {
 		return dontRenderHc.getSelection();
+	}
+
+	@Override
+	public boolean formatCode() {
+		return formatGeneratedCode.getSelection();
 	}
 
 

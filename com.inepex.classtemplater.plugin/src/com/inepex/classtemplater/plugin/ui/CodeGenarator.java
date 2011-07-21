@@ -14,6 +14,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.jdt.ui.actions.FormatAllAction;
 import org.eclipse.jdt.ui.actions.OrganizeImportsAction;
 import org.eclipse.ui.IWorkbenchPart;
 
@@ -32,6 +33,7 @@ public class CodeGenarator {
 	private TemplateGen templateGen;
 	
 	private List<IFile> modifiedFiles = new ArrayList<IFile>();
+	boolean format = false;
 	
 	public CodeGenarator(GenerationType type, IWorkbenchPart targetPart, TemplateGen templateGen) throws Exception {
 		this.type = type;
@@ -201,9 +203,19 @@ public class CodeGenarator {
 		a.run(cu);
 	}
 	
+	private void format(IFile file) throws Exception {
+		ICompilationUnit cu = JavaCore.createCompilationUnitFrom(file);
+		ICompilationUnit[] cus = new ICompilationUnit[1];
+		cus[0] = cu;
+		FormatAllAction f = new FormatAllAction(targetPart.getSite());
+		f.runOnMultiple(cus);
+		
+	}
+	
 	public void organizeAll() throws Exception {
 		for (IFile file : modifiedFiles){
 			organizeImports(file);
+			if (format) format(file);
 		}
 	}
 	
@@ -226,6 +238,11 @@ public class CodeGenarator {
 			content = sb.toString();
 		} while (pos != -1);
 		return content;
+	}
+
+
+	public void setFormat(boolean format) {
+		this.format = format;
 	}
 
 }

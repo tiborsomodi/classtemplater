@@ -61,6 +61,7 @@ public class AttributeGenerator implements IObjectActionDelegate {
 		try {
 			templateGen = new TemplateGen(GenerationType.ATTRIBUTE);
 			codeGenarator = new CodeGenarator(GenerationType.ATTRIBUTE, targetPart, templateGen);
+			codeGenarator.setFormat(ui.formatCode());
 			processSelection((IStructuredSelection)selection);
 			ui = new GeneratorDialog(shell, "Attribute templater");
 			ui.open();

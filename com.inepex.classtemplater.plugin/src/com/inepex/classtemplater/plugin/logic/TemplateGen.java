@@ -17,6 +17,26 @@ import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
+import org.apache.velocity.tools.generic.AlternatorTool;
+import org.apache.velocity.tools.generic.ClassTool;
+import org.apache.velocity.tools.generic.ComparisonDateTool;
+import org.apache.velocity.tools.generic.ContextTool;
+import org.apache.velocity.tools.generic.ConversionTool;
+import org.apache.velocity.tools.generic.DateTool;
+import org.apache.velocity.tools.generic.DisplayTool;
+import org.apache.velocity.tools.generic.EscapeTool;
+import org.apache.velocity.tools.generic.FieldTool;
+import org.apache.velocity.tools.generic.IteratorTool;
+import org.apache.velocity.tools.generic.LinkTool;
+import org.apache.velocity.tools.generic.ListTool;
+import org.apache.velocity.tools.generic.LoopTool;
+import org.apache.velocity.tools.generic.MarkupTool;
+import org.apache.velocity.tools.generic.MathTool;
+import org.apache.velocity.tools.generic.NumberTool;
+import org.apache.velocity.tools.generic.RenderTool;
+import org.apache.velocity.tools.generic.ResourceTool;
+import org.apache.velocity.tools.generic.SortTool;
+import org.apache.velocity.tools.generic.XmlTool;
 
 import com.inepex.classtemplater.plugin.codegeneration.GenerationType;
 
@@ -64,6 +84,26 @@ public class TemplateGen {
 			context.put("attrs", classModel.getAttributes());
 			context.put("methods", classModel.getMethods());
 			context.put("parentPackage", classModel.getParentPackage());
+			//velocity tools			
+			context.put("alternatorTool", new AlternatorTool());
+			context.put("classTool", new ClassTool());
+			context.put("comparisonDateTool", new ComparisonDateTool());
+			context.put("contextTool", new ContextTool());
+			context.put("conversionTool", new ConversionTool());
+			context.put("dateTool", new DateTool());
+			context.put("displayTool", new DisplayTool());
+			context.put("escapeTool", new EscapeTool());
+			context.put("fieldTool", new FieldTool());
+			context.put("iteratorTool", new IteratorTool());
+			context.put("linkTool", new LinkTool());
+			context.put("listTool", new ListTool());
+			context.put("loopTool", new LoopTool());
+			context.put("markupTool", new MarkupTool());
+			context.put("mathTool", new MathTool());
+			context.put("numberTool", new NumberTool());
+			context.put("renderTool", new RenderTool());
+			context.put("resourceTool", new ResourceTool());
+			context.put("sortTool", new SortTool());
 			
 			//imports
 			Set<Importable> imports = new HashSet<Importable>();
@@ -107,7 +147,11 @@ public class TemplateGen {
 		template.merge(context, sw);
 
 		res = sw.toString();
-		return res;
+		return clearNewLinesFromBeginning(res);
+	}
+	
+	private String clearNewLinesFromBeginning(String s){
+		return s.trim();
 	}
 	
 	public String generate(

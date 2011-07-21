@@ -26,4 +26,5 @@ public interface GeneratorUI {
 	void selectTextAndFocus();
 	boolean ignoreHcContent();
 	boolean dontRenderHc();
+	boolean formatCode();
 }
