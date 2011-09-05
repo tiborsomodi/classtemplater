@@ -85,6 +85,7 @@ public class Class {
 				.getAnnotationsOf(compunit.getAllTypes()[0], compunit);
 		this.workspaceRelativePath = ResourceUtil
 				.getWorkspaceRelativePath(compunit);
+		
 	}
 
 	private void buildProperthies() {

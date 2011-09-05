@@ -83,8 +83,10 @@ public class ItemSelector extends Composite implements HasSelection{
 		list_items.removeAll();
 		String filtertext = tb_filter.getText();
 		for(IResource res : resources){
+			String name = res.getName().toLowerCase();
+			if (res.getProject() != null) name = (res.getProject().getName() + res.getName()).toLowerCase();
 			if (((extensionFilter != null && res.getName().endsWith(extensionFilter))
-				|| extensionFilter == null)	&& res.getName().toLowerCase().contains(filtertext.toLowerCase()))
+				|| extensionFilter == null)	&& name.contains(filtertext.toLowerCase()))
 			{
 				filtered.add(res);
 			}

@@ -18,12 +18,14 @@ import org.eclipse.jdt.core.IAnnotation;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IMemberValuePair;
 import org.eclipse.jdt.core.IType;
+import org.eclipse.jdt.core.ToolFactory;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.Expression;
-import org.eclipse.jdt.core.dom.NumberLiteral;
-import org.eclipse.jdt.core.dom.StringLiteral;
+import org.eclipse.jdt.core.util.IClassFileReader;
+import org.eclipse.jdt.core.util.IConstantPoolEntry;
+import org.eclipse.jdt.core.util.IMethodInfo;
+import org.eclipse.jdt.internal.core.util.AnnotationDefaultAttribute;
 
 import com.inepex.classtemplater.plugin.Log;
 
@@ -41,18 +43,46 @@ public class Annotation {
 		
 		//default values aren't found in JDT so using AST to get them
 		String[][] type = compilationUnit.findPrimaryType().resolveType(jdtAnnotation.getElementName());
-		IType annType = jdtAnnotation.getJavaProject().findType(type[0][0] + "." + type[0][1]);
-		AnnotationASTVisitor annASTVisitor = new AnnotationASTVisitor();
-		ASTParser parser = ASTParser.newParser(AST.JLS3);
-		parser.setKind(ASTParser.K_COMPILATION_UNIT);
-		parser.setSource(annType.getCompilationUnit());
-		parser.setResolveBindings(true);
-		CompilationUnit aParser = (CompilationUnit) parser.createAST(null);
-		aParser.accept(annASTVisitor);
-		Map<String, Object> defaultValues = annASTVisitor.getDefaultValueObjects();
-		for (Entry<String, Object> entry : defaultValues.entrySet()){
-			paramObjects.put(entry.getKey(), entry.getValue());
-			params.put(entry.getKey(), String.valueOf(entry.getValue()));
+		if (type != null)
+		{
+			IType annType = jdtAnnotation.getJavaProject().findType(type[0][0] + "." + type[0][1]);
+
+			//hint to read annotation default value from a classfile
+//						
+			
+			if (annType.getCompilationUnit() != null){
+				AnnotationASTVisitor annASTVisitor = new AnnotationASTVisitor();
+				ASTParser parser = ASTParser.newParser(AST.JLS3);
+				parser.setKind(ASTParser.K_COMPILATION_UNIT);
+				parser.setSource(annType.getCompilationUnit());
+				parser.setResolveBindings(true);
+				CompilationUnit aParser = (CompilationUnit) parser.createAST(null);
+				aParser.accept(annASTVisitor);
+				Map<String, Object> defaultValues = annASTVisitor.getDefaultValueObjects();
+				for (Entry<String, Object> entry : defaultValues.entrySet()){
+					paramObjects.put(entry.getKey(), entry.getValue());
+					params.put(entry.getKey(), String.valueOf(entry.getValue()));
+				}
+			} else {
+				//read annotation default value from .class file
+				IClassFileReader reader = ToolFactory.createDefaultClassFileReader(annType.getClassFile(), IClassFileReader.ALL);
+				if (reader != null){
+					for (IMethodInfo methodInfo : reader.getMethodInfos()){
+						if (methodInfo.getAttributes().length > 0 && methodInfo.getAttributes()[0] instanceof AnnotationDefaultAttribute){
+							String name = new String(methodInfo.getName());
+							Object value = parseDefaultObjectValueFromAnnotationDefaultAttribute(
+									(AnnotationDefaultAttribute)(methodInfo.getAttributes()[0]),
+									new String(methodInfo.getDescriptor()));
+							if (value != null) {
+								paramObjects.put(name, value);
+								params.put(name, String.valueOf(value));
+							}
+						}
+//						System.out.println(methodInfo.getName());
+						
+					}
+				}
+			}
 		}
 
 		for (IMemberValuePair pair : jdtAnnotation.getMemberValuePairs()){
@@ -64,6 +94,40 @@ public class Annotation {
 						"Only string values can be used for annotation-attribute");
 			}
 		}
+	}
+	
+	/**
+	 * kind = 1, String
+	 * kind = 4, float
+	 * kind = 5, long
+	 * kind = 6, double
+	 * kind = 3, int
+	 * kind = 3, boolean
+	 */
+	private Object parseDefaultObjectValueFromAnnotationDefaultAttribute(AnnotationDefaultAttribute a, String type){
+		if (a.getMemberValue().getConstantValue() != null){
+			IConstantPoolEntry constant = a.getMemberValue().getConstantValue();
+			switch (constant.getKind()){
+				case 1: 
+					return new String(constant.getUtf8Value());
+				case 5:
+					return constant.getLongValue();
+				case 6:
+					return constant.getDoubleValue();
+				case 4:
+					return constant.getFloatValue();
+				case 3:
+					if (type.contains("()Z")){
+						return constant.getIntegerValue() == 1;
+					} else return constant.getIntegerValue();
+				default: return null;
+			}
+		} else if (a.getMemberValue().getEnumConstantName() != null) {
+			String[] typeSplitted = new String(a.getMemberValue().getEnumConstantTypeName()).split("/");
+			String enumType = typeSplitted[typeSplitted.length-1].substring(0, typeSplitted[typeSplitted.length-1].length()-1);
+			return enumType + "." + new String(a.getMemberValue().getEnumConstantName());
+		} else return null;
+		
 	}
 	
 	public Annotation(String name, Map<String, String> params) {
