@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.eclipse.jdt.core.Flags;
 import org.eclipse.jdt.core.IMethod;
+import org.eclipse.jdt.core.JavaModelException;
 
 public class Method {
 
@@ -26,6 +27,8 @@ public class Method {
 	
 	Set<Importable> typesInGenerics = new HashSet<Importable>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
+	List<String> exceptions = new ArrayList<String>();
+	String firstException = "";
 
 	public Method(IMethod method) throws Exception {
 		name = method.getElementName();
@@ -53,8 +56,20 @@ public class Method {
 		
 		annotations = Annotation.getAnnotationsOf(method, method.getCompilationUnit().getPrimary());
 		
+		processExceptions(method);
 	}
 	
+	private void processExceptions(IMethod method) {
+		try {
+			for (String s : method.getExceptionTypes()){
+				if (firstException.equals("")) firstException = s.substring(1, s.length()-1);
+				exceptions.add(s.substring(1, s.length()-1));
+			}
+		} catch (JavaModelException e) {
+			// TODO: handle exception
+		}
+	}
+
 	public String getVisibility() {
 		return visibility;
 	}
@@ -130,7 +145,13 @@ public class Method {
 		return paramValue == null ? "" : paramValue;
 			
 	}
-	
-	
+
+	public List<String> getExceptions() {
+		return exceptions;
+	}
+
+	public String getFirstException() {
+		return firstException;
+	}	
 	
 }

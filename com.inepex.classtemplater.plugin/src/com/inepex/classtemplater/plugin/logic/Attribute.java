@@ -39,7 +39,6 @@ public class Attribute {
 	private String workspaceRelativePath;
 	private String packageName;
 	
-	
 	public Attribute(String name, String type, String visibility,
 			boolean isStatic, boolean isAbstract, boolean isFinal, boolean isList, boolean isGeneric
 			, boolean isEnum) {
@@ -102,20 +101,21 @@ public class Attribute {
 			if (signature.indexOf("<") == -1) signature = signature.substring(1, signature.length()-1);
 			else {
 				////process generic types 
-				String basetype = signature.substring(1, signature.indexOf("<"));
-				String gentype = signature.substring(signature.indexOf("<") + 1, signature.indexOf(">"));
-				String[] parts = gentype.split(";");
-				String partString = "";
-				for (String s : parts){
-					String type = s.substring(1);
-					if (typesInGenerics.size() == 0) fistGenType = type;
-					typesInGenerics.add(new Importable(type));
-					typesInGenericsList.add(new Importable(type));
-					partString +=  type + ", ";
-				}
-				if (typesInGenerics.size() > 0) isGeneric = true;
-				partString = partString.substring(0, partString.length() - 2);
-				signature = basetype + "<" + partString + ">";				
+				processGenericTypeInSignature(signature);
+//				String basetype = signature.substring(1, signature.indexOf("<"));
+//				String gentype = signature.substring(signature.indexOf("<") + 1, signature.indexOf(">"));
+//				String[] parts = gentype.split(";");
+//				String partString = "";
+//				for (String s : parts){
+//					String type = s.substring(1);
+//					if (typesInGenerics.size() == 0) fistGenType = type;
+//					typesInGenerics.add(new Importable(type));
+//					typesInGenericsList.add(new Importable(type));
+//					partString +=  type + ", ";
+//				}
+//				if (typesInGenerics.size() > 0) isGeneric = true;
+//				partString = partString.substring(0, partString.length() - 2);
+//				signature = basetype + "<" + partString + ">";				
 			}
 		}
 		else if (signature.equals("I")) signature = "int";
@@ -127,10 +127,44 @@ public class Attribute {
 		else if (signature.equals("F")) signature = "float";
 		else if (signature.equals("C")) signature = "char";
 		else if (signature.equals("V")) signature = "void";
-		type = signature;
+		if (isGeneric) {
+			type = signature.replace(";Q", ", ").replace("Q", "").replace(";", "");
+		} else {
+			type = signature;
+		}
 		
 		isList = signature.contains("List");
 				
+	}
+	
+	//List<QMap<QLong;QLong;>;>;
+	private void processGenericTypeInSignature(String signature){
+		String genericPart = signature.substring(signature.indexOf("<") + 1, signature.lastIndexOf(">") - 1);
+		processPartOfGenericTypeSignature(genericPart);
+		if (typesInGenerics.size() > 0) isGeneric = true;
+	}
+
+	private void processPartOfGenericTypeSignature(String part){
+		if (!part.contains("<")) {
+			String[] parts = part.split(";");
+			for (String s : parts){
+				String itype = s.substring(1);
+				addToTypesInGenerics(itype);
+			}			
+			return;
+		}
+		String basetype = part.substring(1, part.indexOf("<"));
+		addToTypesInGenerics(basetype);
+		String genericPart = part.substring(part.indexOf("<") + 1, part.lastIndexOf(">"));
+		processPartOfGenericTypeSignature(genericPart);
+		
+	}
+	
+	private void addToTypesInGenerics(String type){
+		if (typesInGenerics.size() == 0) fistGenType = type;
+		typesInGenerics.add(new Importable(type));
+		typesInGenericsList.add(new Importable(type));
+		
 	}
 	
 	public String getName() {
