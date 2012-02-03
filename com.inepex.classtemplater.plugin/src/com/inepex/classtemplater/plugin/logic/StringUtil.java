@@ -7,6 +7,9 @@
 
 package com.inepex.classtemplater.plugin.logic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringUtil {
 
 	public static String getL1(String s){
@@ -20,5 +23,6 @@ public class StringUtil {
 		sb.setCharAt(0, Character.toUpperCase(sb.charAt(0)));
 		return sb.toString(); 
 	}	
+
 	
 }

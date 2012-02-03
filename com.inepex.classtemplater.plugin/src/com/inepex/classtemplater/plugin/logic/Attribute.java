@@ -32,9 +32,10 @@ public class Attribute {
 	boolean isList = false;
 	boolean isGeneric = false;
 	boolean isEnum = false;
-	String fistGenType;
+	boolean isMap = false;
 	Set<Importable> typesInGenerics = new HashSet<Importable>();
-	List<Importable> typesInGenericsList = new ArrayList<Importable>();	
+	List<Importable> typesInGenericsList = new ArrayList<Importable>();
+	List<String> firstLevelGenericTypes = new ArrayList<String>();
 	Map<String, Annotation> annotations = new HashMap<String, Annotation>();
 	private String workspaceRelativePath;
 	private String packageName;
@@ -100,22 +101,7 @@ public class Attribute {
 		if (signature.startsWith("Q")) {
 			if (signature.indexOf("<") == -1) signature = signature.substring(1, signature.length()-1);
 			else {
-				////process generic types 
-				processGenericTypeInSignature(signature);
-//				String basetype = signature.substring(1, signature.indexOf("<"));
-//				String gentype = signature.substring(signature.indexOf("<") + 1, signature.indexOf(">"));
-//				String[] parts = gentype.split(";");
-//				String partString = "";
-//				for (String s : parts){
-//					String type = s.substring(1);
-//					if (typesInGenerics.size() == 0) fistGenType = type;
-//					typesInGenerics.add(new Importable(type));
-//					typesInGenericsList.add(new Importable(type));
-//					partString +=  type + ", ";
-//				}
-//				if (typesInGenerics.size() > 0) isGeneric = true;
-//				partString = partString.substring(0, partString.length() - 2);
-//				signature = basetype + "<" + partString + ">";				
+				processGenericTypeInSignature(signature);		
 			}
 		}
 		else if (signature.equals("I")) signature = "int";
@@ -133,38 +119,25 @@ public class Attribute {
 			type = signature;
 		}
 		
-		isList = signature.contains("List");
+		isList = signature.startsWith("QList");
+		isMap = signature.startsWith("QMap");
 				
 	}
 	
 	//List<QMap<QLong;QLong;>;>;
+	//QMap<QInteger;QList<QString;>;>;
 	private void processGenericTypeInSignature(String signature){
-		String genericPart = signature.substring(signature.indexOf("<") + 1, signature.lastIndexOf(">") - 1);
-		processPartOfGenericTypeSignature(genericPart);
-		if (typesInGenerics.size() > 0) isGeneric = true;
-	}
+		AttrTypeParser parser = new AttrTypeParser(signature, ";", "<", ">");
 
-	private void processPartOfGenericTypeSignature(String part){
-		if (!part.contains("<")) {
-			String[] parts = part.split(";");
-			for (String s : parts){
-				String itype = s.substring(1);
-				addToTypesInGenerics(itype);
-			}			
-			return;
+		for (String s : parser.getFirstLevelItemsInOrder()){
+			firstLevelGenericTypes.add(AttrTypeParser.clean(s));
 		}
-		String basetype = part.substring(1, part.indexOf("<"));
-		addToTypesInGenerics(basetype);
-		String genericPart = part.substring(part.indexOf("<") + 1, part.lastIndexOf(">"));
-		processPartOfGenericTypeSignature(genericPart);
 		
-	}
-	
-	private void addToTypesInGenerics(String type){
-		if (typesInGenerics.size() == 0) fistGenType = type;
-		typesInGenerics.add(new Importable(type));
-		typesInGenericsList.add(new Importable(type));
+		for (String s : parser.getItems()){
+			typesInGenerics.add(new Importable(AttrTypeParser.clean(s)));
+		}
 		
+		if (typesInGenerics.size() > 0) isGeneric = true;
 	}
 	
 	public String getName() {
@@ -246,6 +219,11 @@ public class Attribute {
 	public boolean isList() {
 		return isList;
 	}
+	
+	public boolean isMap() {
+		return isMap;
+	}
+	
 	public void setList(boolean isList) {
 		this.isList = isList;
 	}
@@ -283,19 +261,21 @@ public class Attribute {
 	}
 
 	public String getFistGenType() {
-		return fistGenType;
+		return getFirstGenType();
+	}
+	
+	public String getFirstGenType() {
+		if (firstLevelGenericTypes.size() > 0)
+			return firstLevelGenericTypes.get(0);
+		else return "";
 	}
 	
 	public String getFistGenTypeU1() {
-		return StringUtil.getU1(fistGenType);
+		return StringUtil.getU1(getFirstGenType());
 	}
 	
 	public String getFistGenTypeL1() {
-		return StringUtil.getL1(fistGenType);
-	}
-
-	public void setFistGenType(String fistGenType) {
-		this.fistGenType = fistGenType;
+		return StringUtil.getL1(getFirstGenType());
 	}
 
 	public boolean isGeneric() {
@@ -322,14 +302,9 @@ public class Attribute {
 		return packageName;
 	}
 
-	/**
-	 * 
-	 * @return generic types in order of declaration
-	 */
-	public List<Importable> getTypesInGenericsList() {
-		return typesInGenericsList;
+	public List<String> getFirstLevelGenericTypes() {
+		return firstLevelGenericTypes;
 	}
-	
 	
 	
 }

@@ -209,11 +209,9 @@ public class Attribute {
    	*/
   	public String getParentPackage(int level) 
   	
-  	/**
-	 * 
-	 * @return generic types in order of declaration
-	 */
-  	public List&lt;Importable&gt; getTypesInGenericsList()
+	public List&lt;String&gt; getFirstLevelGenericTypes() {
+		return firstLevelGenericTypes;
+	}
 
 }
 </pre>
