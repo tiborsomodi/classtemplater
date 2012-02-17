@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Classtemplater
 Bundle-SymbolicName: com.inepex.classtemplater.plugin;singleton:=true
-Bundle-Version: 1.4.12.20120131
+Bundle-Version: 1.4.13.20120217
 Bundle-Activator: com.inepex.classtemplater.plugin.Activator
 Bundle-Vendor: Inepex
 Require-Bundle: org.eclipse.ui,

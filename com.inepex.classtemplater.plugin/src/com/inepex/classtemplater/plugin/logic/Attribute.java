@@ -134,7 +134,9 @@ public class Attribute {
 		}
 		
 		for (String s : parser.getItems()){
-			typesInGenerics.add(new Importable(AttrTypeParser.clean(s)));
+			Importable i = new Importable(AttrTypeParser.clean(s));
+			typesInGenerics.add(i);
+			typesInGenericsList.add(i);
 		}
 		
 		if (typesInGenerics.size() > 0) isGeneric = true;
@@ -304,6 +306,10 @@ public class Attribute {
 
 	public List<String> getFirstLevelGenericTypes() {
 		return firstLevelGenericTypes;
+	}
+
+	public List<Importable> getTypesInGenericsList() {
+		return typesInGenericsList;
 	}
 	
 	
