@@ -99,8 +99,8 @@ public class CodeGenarator {
 				String merged = mergeHandWrittenCode(actual, generated);
 				generated = merged;
 			}
-			if (!simpleMode) saveToFile(organize, outpath, generated);
-		} 
+		}
+		if (!simpleMode) saveToFile(organize, outpath, generated);
 		return generated;		
 
 	}
