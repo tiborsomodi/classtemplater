@@ -50,25 +50,32 @@ public class TemplateGen {
 
 	
 	public TemplateGen(GenerationType type) throws Exception {
-		this.type = type;
-		ve = new VelocityEngine();
-		ve.setProperty("string.resource.loader.description",
-			"Velocity StringResource loader");
-		ve.setProperty("string.resource.loader.class",
-				"org.apache.velocity.runtime.resource.loader.StringResourceLoader");
-		ve.setProperty("string.resource.loader.repository.class",
-				"org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl");
-		ve.setProperty("string.resource.loader.repository.name", "repo");
-
-		ve.setProperty("resource.loader", "string");
-		ve.setProperty("input.encoding", "UTF-8");
-		ve.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
-	      "org.apache.velocity.runtime.log.Log4JLogChute" );
-		ve.setProperty("runtime.log.logsystem.log4j.logger",
-				loggerName);
-
-		ve.init();
-		repo = StringResourceLoader.getRepository("repo");
+		Thread thread = Thread.currentThread();
+		ClassLoader loader = thread.getContextClassLoader();
+		thread.setContextClassLoader(this.getClass().getClassLoader());
+		try {
+			this.type = type;
+			ve = new VelocityEngine();
+			ve.setProperty("string.resource.loader.description",
+				"Velocity StringResource loader");
+			ve.setProperty("string.resource.loader.class",
+					"org.apache.velocity.runtime.resource.loader.StringResourceLoader");
+			ve.setProperty("string.resource.loader.repository.class",
+					"org.apache.velocity.runtime.resource.util.StringResourceRepositoryImpl");
+			ve.setProperty("string.resource.loader.repository.name", "repo");
+	
+			ve.setProperty("resource.loader", "string");
+			ve.setProperty("input.encoding", "UTF-8");
+			ve.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
+		      "org.apache.velocity.runtime.log.Log4JLogChute" );
+			ve.setProperty("runtime.log.logsystem.log4j.logger",
+					loggerName);
+	
+			ve.init();
+			repo = StringResourceLoader.getRepository("repo");
+		} finally {
+			  thread.setContextClassLoader(loader);
+		}
 
 	}
 	
